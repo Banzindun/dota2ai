@@ -1,5 +1,6 @@
 package cz.cuni.mff.kocur.Dota2AIOverlay;
 import cz.cuni.mff.kocur.Logging.*;
+import cz.cuni.mff.kocur.Server.Server;
 import cz.cuni.mff.kocur.Configuration.GlobalConfiguration;
 import cz.cuni.mff.kocur.Exceptions.OverlayException;
 import cz.cuni.mff.kocur.Graphics.*;
@@ -24,7 +25,10 @@ public class App
 	 */
 	private Window window;
 	
-	private boolean running;
+	private Server server = null;
+	
+	private boolean running = false;
+	private boolean serverRunning = false;
 	
 	public App(){
 		logger.log(Log.Type.MESSAGE, 1, "APP initialization.");
@@ -44,7 +48,7 @@ public class App
 	 * Creates the window and runs the application.
 	 */
 	public void start() {
-		window = new Window();
+		window = new Window(this);
 		window.start();
 		running = true;
 	}
@@ -61,52 +65,66 @@ public class App
 	 * Runs the application - mainloop here.
 	 */
 	public void run() {
-		while(running) {
-			running = step();
+		while(running) {			
 			if (window.shouldStop()) running = false;
 		}
-		System.out.println("OUT");
+	}
+	
+	/** 
+	 * Starts the server.
+	 */
+	public void startServer() {
+		if (server == null) {
+			//server = new Server();
+			serverRunning = true;
+		}
+		
 	}
 	
 	/**
-	 * Makes one step towards something. Not sure if I will use it. 
+	 * 
+	 * @return Returns true if the server is running.
+	 */
+	public boolean isServerRunning() {
+		return serverRunning;
+	}
+	
+	/**
+	 * Stops the server.
+	 * Can be stopped due to errors ..
+	 */
+	public void stopServer() {
+		
+		
+		
+		serverRunning = false;
+	}
+	
+	/**
+	 * 
 	 * @return
 	 */
-	private boolean step() {
+	public Server getServer(){
 		
-		return true;
+		
+		return server;
 	}
-
-	
 	
 	/**
-	 * Loads configuration.
-	 * @param path
+	 * Starts the server and closes the gui.
 	 */
-	private void loadConfig(String path) {
-		// LOGS HERE
-		try {
-			// Loads configuration
-			cfg.load(path);
-		} catch (OverlayException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		    	
-		// LOGS HERE
+	public void release() {
+		startServer();
+		window.stop();		
+	}
+	
+	/**
+	 * Starts server - called before window utilized.
+	 */
+	public void fullRelease() {
+		
+		
 	}
 
-	/**
-	 * Saves configuration into file. 
-	 * TO DO: Move this to GlobalConfiguration.
-	 * @param path
-	 */
-	private void saveConfig(String path) {
-		try {
-			cfg.save(path);
-		} catch (OverlayException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
-	}
+
 }

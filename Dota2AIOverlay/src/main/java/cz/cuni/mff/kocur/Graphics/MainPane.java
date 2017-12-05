@@ -3,6 +3,8 @@ package cz.cuni.mff.kocur.Graphics;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -10,12 +12,19 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import cz.cuni.mff.kocur.Dota2AIOverlay.App;
+
 /**
  * Class responsible for layout of main tab.
  * @author Banzindun
  *
  */
 public class MainPane extends JPanel {
+	/**
+	 *  Reference to app. 
+	 */
+	App app;
+	
 	/**
 	 * Button for starting the debug mode.
 	 */
@@ -65,8 +74,11 @@ public class MainPane extends JPanel {
 	/**
 	 * Function for defining mainPanel.
 	 */
-	public MainPane() {
+	public MainPane(App app) {
     	super();
+    	
+    	this.app = app;
+     	
     	this.setLayout(new GridBagLayout());
 
     	// Set GBC
@@ -192,7 +204,20 @@ public class MainPane extends JPanel {
 	 */
 	private void buildFooter() {
 		debugButton = new JButton("Debug");
+		debugButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				app.startServer();
+			}			
+		});
+		
 		releaseButton = new JButton("Release");
+		releaseButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				app.release();				
+			}
+		});
     	footer = new JPanel();
     	footer.add(releaseButton);
     	footer.add(debugButton);		

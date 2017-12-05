@@ -1,4 +1,4 @@
-package cz.cuni.mff.kocur.Dota2AIOverlay;
+package cz.cuni.mff.kocur.Server;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -34,7 +34,7 @@ import cz.cuni.mff.kocur.World.*;
  * @author Tobias Mahlmann
  *
  */
-public class Dota2AIService extends NanoHTTPD {
+public class Server extends NanoHTTPD {
 	/**
 	 * Mapper from com.fasterxml.jackson.databind.ObjectMapper.
 	 * Maps objects from JSON data to a given object, when used as: 
@@ -45,7 +45,7 @@ public class Dota2AIService extends NanoHTTPD {
     /**
      * Basic java.util.logging Logger. Logs program behaviour and output. 
      */
-    private static final Logger LOGGER = Logger.getLogger( Dota2AIService.class.getName() );
+    private static final Logger LOGGER = Logger.getLogger( Server.class.getName() );
     
     
     /**
@@ -78,7 +78,7 @@ public class Dota2AIService extends NanoHTTPD {
      * @throws IllegalAccessException
      * @throws IOException
      */
-    public static void main( String[] args ) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IOException {
+    /*public static void main( String[] args ) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IOException {
         if (args.length < 1) {
             System.err.println( "First argument must be FQN of your bot class" );
             return;
@@ -86,7 +86,7 @@ public class Dota2AIService extends NanoHTTPD {
 
         // Class.forName creates new instance of a given class. newInstance() instantiates new object. 
         final Class<Bot> botClass = (Class<Bot>) Class.forName( args[0] );
-        final Dota2AIService service = new Dota2AIService( botClass.newInstance() );
+        final Server service = new Server( botClass.newInstance() );
         try {
             final Class<?> visualizerClass = Class.forName( "se.lu.lucs.visualizer.MatchVisualizer" );
             service.add( (FrameListener) visualizerClass.newInstance() );
@@ -95,13 +95,13 @@ public class Dota2AIService extends NanoHTTPD {
             //NOP
         }
         service.start( NanoHTTPD.SOCKET_READ_TIMEOUT, false );
-    }
+    }*/
 
     private final Set<FrameListener> listeners;
 
     private final Bot bot;
 
-    public Dota2AIService( Bot bot ) throws IOException {
+    public Server( Bot bot ) throws IOException {
         super( 8080 );
 
         this.bot = bot;

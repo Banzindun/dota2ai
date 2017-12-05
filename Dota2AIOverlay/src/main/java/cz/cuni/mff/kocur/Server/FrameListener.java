@@ -1,4 +1,4 @@
-package cz.cuni.mff.kocur.Dota2AIOverlay;
+package cz.cuni.mff.kocur.Server;
 
 import cz.cuni.mff.kocur.Bot.Bot.Command;
 import cz.cuni.mff.kocur.World.*;

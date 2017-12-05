@@ -7,6 +7,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import cz.cuni.mff.kocur.Configuration.GlobalConfiguration;
+import cz.cuni.mff.kocur.Dota2AIOverlay.App;
 import cz.cuni.mff.kocur.Logging.Logger;
 
 
@@ -16,6 +17,9 @@ import cz.cuni.mff.kocur.Logging.Logger;
  *
  */
 public class Window {
+	App app;
+	
+	
 	/**
 	 * Get logger registered for this class.
 	 */
@@ -51,7 +55,7 @@ public class Window {
 	/**
 	 * Lets user choose bot configuration files and start the bots.
 	 */
-	private MainPane main = new MainPane();
+	private MainPane main = new MainPane(app);
 	
 	/**
 	 * Lets user control the bots and UI.
@@ -72,8 +76,8 @@ public class Window {
 	/**
 	 * Window constructor. Does nothing now. WHY??
 	 */
-	public Window(){
-		
+	public Window(App app){
+		this.app = app;
 	}
 
 	
@@ -84,10 +88,18 @@ public class Window {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				createWindow();
-				shouldStop = true;
 			}
 		});		
 	}
+	
+	/**
+	 * Stops the window.
+	 */
+	public void stop() {
+		frame.setVisible(false);
+		frame.dispose();		
+	}
+	
 	
 	/**
 	 * 
@@ -126,7 +138,7 @@ public class Window {
     	frame.addWindowListener(new java.awt.event.WindowAdapter() {
     	    @Override
     	    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-    	        running = false;
+    	        shouldStop = true;
       	    }
     	});
     	

@@ -2,8 +2,8 @@ package cz.cuni.mff.kocur.Bot;
 
 import cz.cuni.mff.kocur.Bot.BotCommands.LevelUp;
 import cz.cuni.mff.kocur.Bot.BotCommands.Select;
+import cz.cuni.mff.kocur.Server.FrameListener;
 import cz.cuni.mff.kocur.World.ChatEvent;
-import cz.cuni.mff.kocur.Dota2AIOverlay.FrameListener;
 
 public interface Bot extends FrameListener {
     public interface Command {

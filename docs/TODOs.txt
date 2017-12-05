@@ -1,0 +1,9 @@
+---------------------------------------
+-----------------TODOs-----------------
+---------------------------------------
+
+- find a best way how to do msging 
+- find a best way how to do logging 
+- find a best way how to display configuration
+- find a best way how to store configuration (on disc)
+- find a best way how to store configuration (during execute)

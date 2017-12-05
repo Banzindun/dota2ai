@@ -1,0 +1,56 @@
+TO DO: 
+-> Add configuration check for loading to main frame -> WARNING on error
+Load the configurations and store them in global configuration
+Make configurations configurable in GUI
+
+Make bot launchable through GUI (exampleBot)
+Supply DEPLOY and DEBUG modes
+
+Log everything 
+
+Test mod for PAUSE functionality
+
+Entinty manager for one player
+
+
+
+
+
+
+
+
+THINK: 
+DEPLOY VS DEBUG
+	How do I structure the app to offer both possibilities?? 
+		DEPLOY and DEBUG buttons on main frame.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

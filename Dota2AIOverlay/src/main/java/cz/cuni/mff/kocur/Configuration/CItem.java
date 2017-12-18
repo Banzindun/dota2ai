@@ -1,6 +1,10 @@
 package cz.cuni.mff.kocur.Configuration;
 
+import java.util.ArrayList;
 import java.util.List;
+
+
+// TO DO ADD COMMENTS
 
 public class CItem {
 	/**
@@ -21,7 +25,7 @@ public class CItem {
 	/**
 	 * Selection, that user has.
 	 */
-	private List<String> selection;
+	private ArrayList<String> options;
 	
 	public String getType()	{
 		return type;		
@@ -39,12 +43,12 @@ public class CItem {
 		this.value = value;
 	}
 	
-	public List<String> getSelection(){
-		return selection;
+	public List<String> getOptions(){
+		return options;
 	}
 	
-	public void setSelection(List<String> selection) {
-		this.selection = selection;
+	public void setOptions(ArrayList<String> selection) {
+		this.options = selection;
 	}
 	
 	@Override
@@ -56,12 +60,12 @@ public class CItem {
 		builder.append("\t\t" + quote("value") + ": " + quote(value) + ",\n");
 		builder.append("\t\t" + quote("selection:") + " : [");
 		
-		for (int i = 0; i < selection.size(); i++) {
-			if (i == selection.size() - 1) builder.append(quote(selection.get(i)) + "]\n");
-			else builder.append(quote(selection.get(i)) + ", ");
+		for (int i = 0; i < options.size(); i++) {
+			if (i == options.size() - 1) builder.append(quote(options.get(i)) + "]\n");
+			else builder.append(quote(options.get(i)) + ", ");
 			
 		}
-		 
+				 
 		builder.append("\t}\n");
 		return builder.toString();
 	}

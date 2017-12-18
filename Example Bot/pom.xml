@@ -4,6 +4,11 @@
 	<artifactId>Dota2AIBot</artifactId>
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
 	<repositories>
 		<repository>
 			<id>dota2ai-mvn-repo</id>
@@ -28,9 +33,9 @@
 	</build>
 	<dependencies>
 		<dependency>
-			<groupId>se.lu.lucs</groupId>
-			<artifactId>Dota2BotFramework</artifactId>
-			<version>0.0.2-SNAPSHOT</version>
+			<groupId>cz.cuni.mff.kocur</groupId>
+			<artifactId>Dota2AIOverlay</artifactId>
+			<version>0.0.1</version>
 		</dependency>
-	</dependencies>
+</dependencies>
 </project>

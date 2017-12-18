@@ -65,5 +65,13 @@ public class GlobalConfiguration extends Configuration {
 	public Map<String, BotConfiguration> getConfigurations() {
 		return botConfigurations;		
 	}
+	
+	@Override
+	public String toString() {
+		StringBuilder out = new StringBuilder();
+		for (BotConfiguration b : botConfigurations.values()) out.append(b.toString());
+		
+		return out.toString();
+	}
 		
 }

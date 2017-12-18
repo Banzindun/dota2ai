@@ -4,4 +4,7 @@ import javax.swing.JPanel;
 
 public class LogsPane extends JPanel {
 
+	
+	
+	
 }

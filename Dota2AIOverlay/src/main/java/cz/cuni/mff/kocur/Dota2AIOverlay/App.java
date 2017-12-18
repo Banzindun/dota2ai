@@ -1,6 +1,9 @@
 package cz.cuni.mff.kocur.Dota2AIOverlay;
 import cz.cuni.mff.kocur.Logging.*;
 import cz.cuni.mff.kocur.Server.Server;
+
+import java.io.IOException;
+
 import cz.cuni.mff.kocur.Configuration.GlobalConfiguration;
 import cz.cuni.mff.kocur.Exceptions.OverlayException;
 import cz.cuni.mff.kocur.Graphics.*;
@@ -25,7 +28,9 @@ public class App
 	 */
 	private Window window;
 	
+	
 	private Server server = null;
+	
 	
 	private boolean running = false;
 	private boolean serverRunning = false;
@@ -73,9 +78,15 @@ public class App
 	/** 
 	 * Starts the server.
 	 */
-	public void startServer() {
+	private void startServer() {
 		if (server == null) {
-			//server = new Server();
+			try {
+				server = new Server(8080);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				// Will throw something meaningful later.
+			}
 			serverRunning = true;
 		}
 		
@@ -93,11 +104,9 @@ public class App
 	 * Stops the server.
 	 * Can be stopped due to errors ..
 	 */
-	public void stopServer() {
-		
-		
-		
+	private void stopServer() {
 		serverRunning = false;
+		server.stop();
 	}
 	
 	/**
@@ -117,6 +126,16 @@ public class App
 		startServer();
 		window.stop();		
 	}
+	
+	
+	/** 
+	 * Starts debugging.
+	 */
+	public void debug() {
+		startServer();
+		// Change main pane.		
+	}
+	
 	
 	/**
 	 * Starts server - called before window utilized.

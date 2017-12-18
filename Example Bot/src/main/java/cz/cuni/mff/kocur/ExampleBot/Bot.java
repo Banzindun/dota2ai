@@ -1,19 +1,19 @@
-package cz.cuni.mff.kocur.Bot;
+package cz.cuni.mff.kocur.ExampleBot;
 
 import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import se.lu.lucs.dota2.framework.bot.BaseBot;
-import se.lu.lucs.dota2.framework.bot.BotCommands.LevelUp;
-import se.lu.lucs.dota2.framework.bot.BotCommands.Select;
-import se.lu.lucs.dota2.framework.game.Ability;
-import se.lu.lucs.dota2.framework.game.BaseEntity;
-import se.lu.lucs.dota2.framework.game.BaseNPC;
-import se.lu.lucs.dota2.framework.game.ChatEvent;
-import se.lu.lucs.dota2.framework.game.Hero;
-import se.lu.lucs.dota2.framework.game.Tower;
-import se.lu.lucs.dota2.framework.game.World;
+import cz.cuni.mff.kocur.Bot.BaseBot;
+import cz.cuni.mff.kocur.Bot.BotCommands.LevelUp;
+import cz.cuni.mff.kocur.Bot.BotCommands.Select;
+import cz.cuni.mff.kocur.World.Ability;
+import cz.cuni.mff.kocur.World.BaseEntity;
+import cz.cuni.mff.kocur.World.BaseNPC;
+import cz.cuni.mff.kocur.World.ChatEvent;
+import cz.cuni.mff.kocur.World.Hero;
+import cz.cuni.mff.kocur.World.Tower;
+import cz.cuni.mff.kocur.World.World;
 
 public class Bot extends BaseBot {
     private enum Mode {

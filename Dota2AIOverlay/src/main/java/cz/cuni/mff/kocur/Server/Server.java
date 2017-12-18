@@ -20,18 +20,13 @@ import cz.cuni.mff.kocur.Bot.Bot;
 import cz.cuni.mff.kocur.Bot.Bot.Command;
 import cz.cuni.mff.kocur.Bot.BotCommands.LevelUp;
 import cz.cuni.mff.kocur.Bot.BotCommands.Select;
+import cz.cuni.mff.kocur.Dota2AIOverlay.App;
 import cz.cuni.mff.kocur.World.ChatEvent;
 import cz.cuni.mff.kocur.World.*;
 
-
 /**
- * This class uses NanoHTTD to provide a very simple webservice The webservice
- * binds to port 8080 and loads an instance of the Bot class supplied as the
- * first argument. It does not bind to specific URL yet, but only switches based
- * on the last part of the requested URL. Hence running multiple bots requires
- * multiple instances of this service yet.
- *
- * @author Tobias Mahlmann
+ * Class that implements NanoHTTPD server. 
+ * @author Banzindun
  *
  */
 public class Server extends NanoHTTPD {
@@ -42,12 +37,11 @@ public class Server extends NanoHTTPD {
 	 */
     private final static ObjectMapper MAPPER = new ObjectMapper();
 
-    /**
-     * Basic java.util.logging Logger. Logs program behaviour and output. 
-     */
-    private static final Logger LOGGER = Logger.getLogger( Server.class.getName() );
-    
-    
+	/**
+	 * logger registered in Logger class.	
+	 */
+	private static final Logger logger = Logger.getLogger(Server.class.getName());
+        
     /**
      * Serves for checking if received data are in a correct form.
      */
@@ -69,47 +63,16 @@ public class Server extends NanoHTTPD {
     }
 
     
-    /**
-     * Loads bot from arguments. Starts NanoHTTPD service.
-     * 
-     * @param args console arguments
-     * @throws ClassNotFoundException
-     * @throws InstantiationException
-     * @throws IllegalAccessException
-     * @throws IOException
-     */
-    /*public static void main( String[] args ) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IOException {
-        if (args.length < 1) {
-            System.err.println( "First argument must be FQN of your bot class" );
-            return;
-        }
-
-        // Class.forName creates new instance of a given class. newInstance() instantiates new object. 
-        final Class<Bot> botClass = (Class<Bot>) Class.forName( args[0] );
-        final Server service = new Server( botClass.newInstance() );
-        try {
-            final Class<?> visualizerClass = Class.forName( "se.lu.lucs.visualizer.MatchVisualizer" );
-            service.add( (FrameListener) visualizerClass.newInstance() );
-        }
-        catch (final ClassNotFoundException e) {
-            //NOP
-        }
-        service.start( NanoHTTPD.SOCKET_READ_TIMEOUT, false );
-    }*/
-
     private final Set<FrameListener> listeners;
 
-    private final Bot bot;
+    // private final Bot bot;
 
-    public Server( Bot bot ) throws IOException {
-        super( 8080 );
+    public Server( int port ) throws IOException {
+        super( port );
 
-        this.bot = bot;
+        //this.bot = bot;
 
         listeners = new HashSet<>();
-
-        LOGGER.fine( "Dota2AIService created" );
-
     }
 
     public void add( FrameListener l ) {
@@ -146,7 +109,7 @@ public class Server extends NanoHTTPD {
 
     private void chat( IHTTPSession session ) throws JsonParseException, JsonMappingException, IOException {
         final ChatEvent e = MAPPER.readValue( session.getInputStream(), ChatEvent.class );
-        bot.onChat( e );
+        //bot.onChat( e );
     }
 
     private Response levelup( IHTTPSession session ) throws JsonProcessingException {
@@ -154,8 +117,9 @@ public class Server extends NanoHTTPD {
         if (res != null) {
             return res;
         }
-        final LevelUp l = bot.levelUp();
-        return buildJSONResponse( l );
+        //final LevelUp l = bot.levelUp();
+        //return buildJSONResponse( l );
+        return null;
     }
 
     /**
@@ -175,13 +139,13 @@ public class Server extends NanoHTTPD {
     }
 
     private void reset( IHTTPSession session ) {
-        bot.reset();
+        //bot.reset();
     }
 
     private Response select( IHTTPSession session ) throws JsonProcessingException {
-        final Select s = bot.select();
-        LOGGER.info("Select was called. We returned " + s.getHero());
-        return buildJSONResponse( s );
+        //final Select s = bot.select();
+        //return buildJSONResponse( s );
+    	return null;
     }
 
    /**
@@ -245,16 +209,16 @@ public class Server extends NanoHTTPD {
     	byte[] bytes = new byte[msg.available()];
     	msg.read(bytes);
 
-    	//System.out.println(new String(bytes));
-    	//System.exit(0);
     	
+    	// MUST DO WorldUpdater
     	/* Loads whole world .. forgets the information about the previous state. */ 
         final World world = MAPPER.readValue( bytes, World.class );
-        /* INSERT SOME UPDATER CODE */
+        
         
         
         listeners.stream().forEach( l -> l.update( world ) );
-        final Command c = bot.update( world );
-        return buildJSONResponse( c );
+        //final Command c = bot.update( world );
+        //return buildJSONResponse( c );
+        return null;
     }
 }

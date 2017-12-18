@@ -207,7 +207,7 @@ public class MainPane extends JPanel {
 		debugButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				app.startServer();
+				app.debug();
 			}			
 		});
 		

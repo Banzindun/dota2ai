@@ -4,9 +4,7 @@ import java.util.Map;
 
 
 public class BotConfiguration extends Configuration {
-	private Map<String, CItem> configuration;
-	
-	
+
 	private String id;
 	
 	public String getId() {
@@ -24,4 +22,6 @@ public class BotConfiguration extends Configuration {
 	public void setConfiguration(Map<String, CItem> configuration) {
 		this.configuration = configuration;
 	}
+	
+	
 }

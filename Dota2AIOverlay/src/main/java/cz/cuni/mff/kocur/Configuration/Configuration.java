@@ -2,6 +2,7 @@ package cz.cuni.mff.kocur.Configuration;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import cz.cuni.mff.kocur.Exceptions.ConversionError;
 import cz.cuni.mff.kocur.Exceptions.KeyNotFound;
@@ -97,6 +98,19 @@ public class Configuration {
 	 */
 	public CItem getItem(String name) {
 		return configuration.get(name);
+	}
+	
+	
+	@Override
+	public String toString() {
+		StringBuilder out = new StringBuilder();
+
+		for (Entry<String, CItem> i : configuration.entrySet()) {
+			out.append("Name of this configuration is: " + i.getKey() + "\n");
+			out.append(i.getValue().toString());
+		}
+		
+		return out.toString();
 	}
 	
 	

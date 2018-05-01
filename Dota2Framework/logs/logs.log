@@ -1,0 +1,86 @@
+[INFO ] 16:04:05.982 <init> [main] App - Starting the Dota2AIFramework.
+[INFO ] 16:04:06.003 setup [main] Setup - Working directory path is: C:\Users\kocur\Dropbox\Dota2AI\Dota2AIOverlay
+[ERROR] 16:04:06.004 checkDirs [main] Setup - Missing directory: \data
+[ERROR] 16:04:06.005 setup [main] Setup - Missing directories.
+[ERROR] 16:04:06.005 setup [main] App - Setup not done correctly.
+[INFO ] 13:34:52.272 <init> [main] App - Starting the Dota2AIFramework.
+[INFO ] 13:34:52.283 setup [main] Setup - Working directory path is: C:\Users\kocur\Dropbox\Dota2AI\Dota2AIOverlay
+[ERROR] 13:34:52.285 checkDirs [main] Setup - Missing directory: \data
+[ERROR] 13:34:52.285 setup [main] Setup - Missing directories.
+[ERROR] 13:34:52.285 setup [main] App - Setup not done correctly.
+[FATAL] 13:34:52.286 main [main] Framework - Unable to setup the application
+[INFO ] 13:35:14.949 <init> [main] App - Starting the Dota2AIFramework.
+[INFO ] 13:35:14.961 setup [main] Setup - Working directory path is: C:\Users\kocur\Dropbox\Dota2AI\Dota2AIOverlay
+[ERROR] 13:35:14.961 checkDirs [main] Setup - Missing directory: \data
+[ERROR] 13:35:14.962 setup [main] Setup - Missing directories.
+[ERROR] 13:35:14.962 setup [main] App - Setup not done correctly.
+[FATAL] 13:35:14.963 main [main] Framework - Unable to setup the application
+[INFO ] 13:35:31.209 <init> [main] App - Starting the Dota2AIFramework.
+[INFO ] 13:35:31.217 setup [main] Setup - Working directory path is: C:\Users\kocur\Dropbox\Dota2AI\Dota2AIOverlay
+[INFO ] 13:35:31.445 loadConfiguration [main] MainBotConfigurationEntry - Loading configuration from: C:\Users\kocur\Dropbox\Dota2AI\Dota2AIOverlay\data\bot_lina.json
+[FATAL] 13:35:31.456 loadBot [main] BotLoader - Could not create bot from supplied classpath: kocur.lina.bot.Bot
+java.lang.ClassNotFoundException: kocur.lina.bot.Bot
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381) ~[?:1.8.0_161]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[?:1.8.0_161]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:338) ~[?:1.8.0_161]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[?:1.8.0_161]
+	at java.lang.Class.forName0(Native Method) ~[?:1.8.0_161]
+	at java.lang.Class.forName(Class.java:264) ~[?:1.8.0_161]
+	at cz.cuni.mff.kocur.bot.BotLoader.loadBot(BotLoader.java:83) [classes/:?]
+	at cz.cuni.mff.kocur.bot.BotLoader.canBeLoaded(BotLoader.java:128) [classes/:?]
+	at cz.cuni.mff.kocur.configuration.BotConfiguration.test(BotConfiguration.java:180) [classes/:?]
+	at cz.cuni.mff.kocur.graphics.MainBotConfigurationEntry.testConfiguration(MainBotConfigurationEntry.java:103) [classes/:?]
+	at cz.cuni.mff.kocur.graphics.MainBotConfigurationEntry.loadConfiguration(MainBotConfigurationEntry.java:225) [classes/:?]
+	at cz.cuni.mff.kocur.graphics.MainBotConfigurationEntry.<init>(MainBotConfigurationEntry.java:79) [classes/:?]
+	at cz.cuni.mff.kocur.graphics.MainBotConfiguration.<init>(MainBotConfiguration.java:53) [classes/:?]
+	at cz.cuni.mff.kocur.graphics.MainBody.<init>(MainBody.java:18) [classes/:?]
+	at cz.cuni.mff.kocur.graphics.MainPanel.<init>(MainPanel.java:33) [classes/:?]
+	at cz.cuni.mff.kocur.graphics.Tabs.build(Tabs.java:42) [classes/:?]
+	at cz.cuni.mff.kocur.graphics.MainWindow.build(MainWindow.java:39) [classes/:?]
+	at cz.cuni.mff.kocur.dota2AIFramework.App.start(App.java:88) [classes/:?]
+	at cz.cuni.mff.kocur.dota2AIFramework.Framework.main(Framework.java:39) [classes/:?]
+[WARN ] 13:35:31.464 canBeLoaded [main] BotLoader - Bot could not be loaded.
+[WARN ] 13:35:31.465 loadFailed [main] MainBotConfigurationEntry - Loading of bot configuration at: C:\Users\kocur\Dropbox\Dota2AI\Dota2AIOverlay\data\bot_lina.json has failed with message.
+[INFO ] 13:35:31.761 loadConfiguration [main] MainBotConfigurationEntry - Loading configuration from: C:\Users\kocur\Dropbox\Dota2AI\Dota2AIOverlay\data\bot_sniper.json
+[FATAL] 13:35:31.769 loadBot [main] BotLoader - Could not create bot from supplied classpath: kocur.sniper.bot.Bot
+java.lang.ClassNotFoundException: kocur.sniper.bot.Bot
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381) ~[?:1.8.0_161]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[?:1.8.0_161]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:338) ~[?:1.8.0_161]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[?:1.8.0_161]
+	at java.lang.Class.forName0(Native Method) ~[?:1.8.0_161]
+	at java.lang.Class.forName(Class.java:264) ~[?:1.8.0_161]
+	at cz.cuni.mff.kocur.bot.BotLoader.loadBot(BotLoader.java:83) [classes/:?]
+	at cz.cuni.mff.kocur.bot.BotLoader.canBeLoaded(BotLoader.java:128) [classes/:?]
+	at cz.cuni.mff.kocur.configuration.BotConfiguration.test(BotConfiguration.java:180) [classes/:?]
+	at cz.cuni.mff.kocur.graphics.MainBotConfigurationEntry.testConfiguration(MainBotConfigurationEntry.java:103) [classes/:?]
+	at cz.cuni.mff.kocur.graphics.MainBotConfigurationEntry.loadConfiguration(MainBotConfigurationEntry.java:225) [classes/:?]
+	at cz.cuni.mff.kocur.graphics.MainBotConfigurationEntry.<init>(MainBotConfigurationEntry.java:79) [classes/:?]
+	at cz.cuni.mff.kocur.graphics.MainBotConfiguration.<init>(MainBotConfiguration.java:53) [classes/:?]
+	at cz.cuni.mff.kocur.graphics.MainBody.<init>(MainBody.java:18) [classes/:?]
+	at cz.cuni.mff.kocur.graphics.MainPanel.<init>(MainPanel.java:33) [classes/:?]
+	at cz.cuni.mff.kocur.graphics.Tabs.build(Tabs.java:42) [classes/:?]
+	at cz.cuni.mff.kocur.graphics.MainWindow.build(MainWindow.java:39) [classes/:?]
+	at cz.cuni.mff.kocur.dota2AIFramework.App.start(App.java:88) [classes/:?]
+	at cz.cuni.mff.kocur.dota2AIFramework.Framework.main(Framework.java:39) [classes/:?]
+[WARN ] 13:35:31.770 canBeLoaded [main] BotLoader - Bot could not be loaded.
+[WARN ] 13:35:31.771 loadFailed [main] MainBotConfigurationEntry - Loading of bot configuration at: C:\Users\kocur\Dropbox\Dota2AI\Dota2AIOverlay\data\bot_sniper.json has failed with message.
+[INFO ] 13:35:42.457 windowClosing [AWT-EventQueue-0] Window - Closing the main window.
+[ERROR] 13:35:42.463 register [AWT-EventQueue-0] MainInfoEntry - Unable to register this listener to talker with id: RequestHandler
+[ERROR] 13:35:42.465 register [AWT-EventQueue-0] MainInfoEntry - Unable to register this listener to talker with id: WorldManager
+[INFO ] 13:35:42.469 windowClosing [AWT-EventQueue-0] Window - Closing the main window.
+[INFO ] 13:35:20.430 <init> [main] App - Starting the Dota2AIFramework.
+[INFO ] 13:35:20.438 setup [main] Setup - Working directory path is: C:\Users\kocur\Dropbox\Dota2AI\Dota2AIOverlay
+[DEBUG] 13:35:20.621 addCatcher [main] Sink - Adding catcher.
+[INFO ] 13:35:20.632 loadConfiguration [main] MainBotConfigurationEntry - Loading configuration from: C:\Users\kocur\Dropbox\Dota2AI\Dota2AIOverlay\data\bot_lina.json
+[INFO ] 13:35:20.649 addBotCfg [main] FrameworkConfiguration - Adding new bot configuration: bot_lina
+[INFO ] 13:35:20.649 loadPassed [main] MainBotConfigurationEntry - Successfully loaded bot cofiguration from: C:\Users\kocur\Dropbox\Dota2AI\Dota2AIOverlay\data\bot_lina.json
+[INFO ] 13:35:20.862 loadConfiguration [main] MainBotConfigurationEntry - Loading configuration from: C:\Users\kocur\Dropbox\Dota2AI\Dota2AIOverlay\data\bot_sniper.json
+[INFO ] 13:35:20.874 addBotCfg [main] FrameworkConfiguration - Adding new bot configuration: bot_sniper
+[INFO ] 13:35:20.874 loadPassed [main] MainBotConfigurationEntry - Successfully loaded bot cofiguration from: C:\Users\kocur\Dropbox\Dota2AI\Dota2AIOverlay\data\bot_sniper.json
+[DEBUG] 13:35:21.027 updateTabs [main] StreamsPanel - Updating tabs.
+[DEBUG] 13:35:21.027 updateTabs [main] StreamsPanel - I have obtained 1catchers.
+[INFO ] 13:35:22.741 windowClosing [AWT-EventQueue-0] Window - Closing the main window.
+[ERROR] 13:35:22.745 register [AWT-EventQueue-0] MainInfoEntry - Unable to register this listener to talker with id: RequestHandler
+[ERROR] 13:35:22.747 register [AWT-EventQueue-0] MainInfoEntry - Unable to register this listener to talker with id: WorldManager
+[INFO ] 13:35:22.750 windowClosing [AWT-EventQueue-0] Window - Closing the main window.

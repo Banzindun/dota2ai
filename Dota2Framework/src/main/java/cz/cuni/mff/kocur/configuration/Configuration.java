@@ -1,111 +1,243 @@
-package cz.cuni.mff.kocur.Configuration;
+package cz.cuni.mff.kocur.configuration;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import cz.cuni.mff.kocur.Exceptions.ConversionError;
-import cz.cuni.mff.kocur.Exceptions.KeyNotFound;
-import cz.cuni.mff.kocur.Exceptions.LoadingError;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-public class Configuration {
-	/**
-	 * 
-	 */
-	protected Map<String, CItem> configuration = new HashMap<String, CItem>();
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-	public Configuration() {}
-	
+import cz.cuni.mff.kocur.exceptions.ConfigurationSavingError;
+import cz.cuni.mff.kocur.exceptions.ConfigurationTestFailureException;
+import cz.cuni.mff.kocur.exceptions.LoadingError;
+
+/**
+ * Abstract configuration.
+ * Adds some basic methods for retrieving configuration values etc.
+ * @author kocur
+ *
+ */
+public abstract class Configuration {
+	/**
+	 * Register logger for this class.
+	 */
+	protected Logger logger = LogManager.getLogger(Configuration.class.getName());
 	
 	/**
-	 * 
-	 * @param items
+	 * Map that stores pairs that are specified in JSON file as pairs "name" : "value".
 	 */
-	public Configuration(Map<String, CItem> items) {
-		this.configuration = items;
+	protected Map<String, String> items = new HashMap<String, String>();
+	
+	/**
+	 * Path from where this configuration comes from.
+	 */
+	protected String path; 
+	
+	/**
+	 * List of ConfigurationChangeListener that listen for change of the configuration.
+	 * They will be alerted after the {@link #onChange()} method is called.
+	 */
+	@JsonIgnore
+	protected LinkedList<ConfigurationChangeListener> waiting = new LinkedList<>();
+	
+	/**
+	 * Adds the listener that will be alerted on configuration change.
+	 * @param l Listener that should be added to waiting list.
+	 */
+	public void addChangeListener(ConfigurationChangeListener l) {
+		waiting.add(l);
 	}
+	
+	/**
+	 * Removes the specified listener from waiting list of objects that are waiting for configuration change.
+	 * @param l Listener that should be removed.
+	 * @return Returns true if the listener was successfully removed.
+	 */
+	public boolean removeChangeListener(ConfigurationChangeListener l) {
+		return waiting.remove(l);
+	}
+	
+	/**
+	 * Sample constructor.
+	 */
+	public Configuration() {
+			
+	}
+	
+	
 		
-	
 	/**
-	 * 
-	 * @param path
-	 * @throws LoadingError 
+	 * Constructs configuration from supplied items.
+	 * @param items Map with keys and values giving fields in shape "name": "value" in JSON file.
 	 */
-	public void load(String path) throws LoadingError {
-		ConfigurationLoader loader = new ConfigurationLoader(path);
-		loader.load(this);
+	public Configuration(String path, Map<String, String> items) {
+		this.path = path;
+		this.items = items;
+		
 	}
 	
 	/**
-	 * 
-	 * @param path
-	 * @throws LoadingError
+	 * Saves the configuration to file.
 	 */
-	public void save(String path) throws LoadingError {
+	public void save(){
+		logger.info("Saving the configuration");
 		ConfigurationSaver saver = new ConfigurationSaver();
-		saver.save(this, path);		
+		
+		if (path == null || path.length() == 0) {
+			logger.error("Path is not supplied.");
+			return;
+		}
+		
+		try {
+			saver.save(this, path);
+		} catch (ConfigurationSavingError e) {
+			logger.error("Unable to save configuration.", e);
+		}		
+	}
+	
+	/**
+	 * Sets the path of this configuration.
+	 * @param path Sets the path.
+	 */
+	public void setPath(String path) {
+		this.path = path;
+	}
+	
+	/**
+	 * Returns the path of this configuration.
+	 * @return Path to this configuration.
+	 */
+	@JsonIgnore
+	public String getPath() {
+		return path;
 	}
 	
 	
 	/**
-	 * 
-	 * @param map
+	 * Sets items to be equal to the passed argument. 
+	 * @param items Map of new {@link #items}
 	 */
-	public void loadItems(Map<String, CItem> map) {
-		configuration = map;
+	public void setItems(Map<String, String> items) {
+		this.items = items;
 	}
 	
 	/**
 	 * 
-	 * @return
+	 * @return pairs of names and values of this configuration.
 	 */
-	public Map<String, CItem> getItems(){
-		return configuration;		
+	@JsonAnyGetter
+	public Map<String, String> getItems(){		
+		return items;		
 	}
 
 	
 	/**
-	 * Sets value of item in items to appropriate value.
-	 * @param name Name of variable.
-	 * @param value Value of variable of type String.
+	 * Sets value of record with given name to appropriate value.
+	 * @param name of variable.
+	 * @param value of variable of type String.
 	 */
-	public void set(String name, CItem value) {
-		configuration.put(name, value);
+	@JsonAnySetter
+	public void setItem(String name, String value) {
+		if (name == null) return;
+	
+		if (value == null)
+			items.put(name.toLowerCase(), null);
+		else if (value != null) 
+			items.put(name.toLowerCase(), value.toLowerCase());
+		
 	}
 	
 	/**
-	 * Should find the named item and cast it to type T.
-	 * @param name Name of variable.
-	 * @param cl Class of output variable. 
-	 * @return Returns value of variable with a given name, that is casted to type cl. 
-	 * @throws ConversionError If Conversion fails.
-	 * @throws KeyNotFound 
-	 */
-	public <T> T getItem(String name, Class<T> cl) throws ConversionError, KeyNotFound {
-		if (cl == null) return null;
-		CItem item = configuration.get(name);
-		if (item == null) throw new KeyNotFound("Can not find [" + name + "] in items.");
-		if (cl.isInstance(item)) return (T) item.getValue();
-		else throw new ConversionError("Couldn't convert [" + name + " = " + configuration.get(name) + "] to " + cl.toString());
-	}
-
-	/**
-	 * Should return the value of variable with {@link #name} represented as a string.
 	 * 
-	 * @param name Name of the variable.
-	 * @return Returns the value of variable with specified name.
-	 * @see {@link #getItem(String, Class)}
+	 * @param name name of the field which value we want to know
+	 * @return value of the field with given name, null if not found
 	 */
-	public CItem getItem(String name) {
-		return configuration.get(name);
+	public String getItem(String name){
+		String item = items.get(name.toLowerCase());
+		
+		if (item == null) {
+			logger.warn("I have not found item with name: " + name.toLowerCase());
+		}
+		return item;
 	}
 	
+	
+	/**
+	 * Method for classes that implement configuration fields. 
+	 * This method should return the value associated with given field name.
+	 * @param name Name of the field whose value you want to retrive.
+	 * @return Returns the value associated with given field or null.
+	 */
+	public String getConfigValue(String name){
+		return null;
+	}
+	
+	/**
+	 * Gets the whole config item associated with given name or null. 
+	 * @param name Name of the field. 
+	 * @return Returns the item associated with given name.
+	 */
+	public CItem getConfigItem(String name) {
+		return null;
+	}
+	
+	/**
+	 * Sets configuration item on given field.
+	 * @param name Name of the item. 
+	 * @param value The item that should be stored.
+	 */
+	public void setConfigItem(String name, CItem value) {}
+	
+	/**
+	 * Sets the value inside configuration field with given name.
+	 * @param name Name of the configuration field.
+	 * @param value Its new value.
+	 */
+	public void setConfigValue(String name, String value) {}
+	
+	
+	/**
+	 * Returns map that stores the configuration of this bot,
+	 * @return Configuration map. (keys and values as in JSON specified in "configuration": [..])
+	 */
+	public Map<String, CItem> getConfiguration() {
+		return null;
+	}
+	
+	/**
+	 * Should be called after there was a change in the configuration fields. </br>
+	 * This method allerts all the listeners that there was a change in configuration. 
+	 */
+	public void onChange() {
+		for (ConfigurationChangeListener l : waiting) {
+			l.configurationChanged();
+		}
+	}
+	
+	/**
+	 * Test the configuration for incorrect fields etc.	
+	 * @return returns result that says if the test passed and supplies message
+	 */
+	public void test() throws ConfigurationTestFailureException{
+		ConfigurationTestResult result = new ConfigurationTestResult();
+		result.setPassed(true);
+		
+		if (items == null) {
+			ConfigurationTestFailureException ex = new ConfigurationTestFailureException("Items that were set to this configuration are null.");
+			throw ex; 
+		}
+	}	
 	
 	@Override
 	public String toString() {
 		StringBuilder out = new StringBuilder();
 
-		for (Entry<String, CItem> i : configuration.entrySet()) {
+		for (Entry<String, String> i : items.entrySet()) {
 			out.append("Name of this configuration is: " + i.getKey() + "\n");
 			out.append(i.getValue().toString());
 		}

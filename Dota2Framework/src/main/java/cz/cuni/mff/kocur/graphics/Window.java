@@ -1,15 +1,13 @@
-package cz.cuni.mff.kocur.Graphics;
+package cz.cuni.mff.kocur.graphics;
 
+import java.awt.Component;
 import java.awt.Dimension;
 import javax.swing.JFrame;
-import javax.swing.JTabbedPane;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
-import cz.cuni.mff.kocur.Configuration.GlobalConfiguration;
-import cz.cuni.mff.kocur.Dota2AIOverlay.App;
-import cz.cuni.mff.kocur.Logging.Logger;
+import cz.cuni.mff.kocur.dota2AIFramework.App;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Class that handles mostly the window graphics etc. 
@@ -17,69 +15,67 @@ import cz.cuni.mff.kocur.Logging.Logger;
  *
  */
 public class Window {
-	App app;
-	
-	
+	/**
+	 * Application reference.
+	 */
+	protected App app = null;
+		
 	/**
 	 * Get logger registered for this class.
 	 */
-	private static final Logger logger = Logger.getLogger(Window.class.getName());
-	
-	/**
-	 * Global configuration that stores bot configurations.
-	 */
-	private GlobalConfiguration cfg = GlobalConfiguration.getInstance();
-	
-	/**
-	 * True if window is running.
-	 */
-	private boolean running = false;
-	
-	/**
-	 * True if window should stop. (so it can save the progress etc.)
-	 */
-	private boolean shouldStop = false;
-	
-	
-	/**
-	 * New java frame for displaying the overlay.
-	 */
-	private JFrame frame = new JFrame("Dota2AI");
-	
-	
-	/**
-	 * JTabbedPane for storing tabs
-	 */
-	private JTabbedPane tabs = new JTabbedPane(); 
-	
-	/**
-	 * Lets user choose bot configuration files and start the bots.
-	 */
-	private MainPane main = new MainPane(app);
-	
-	/**
-	 * Lets user control the bots and UI.
-	 */
-	private ConsolePane console = new ConsolePane();
-	
-	/**
-	 * Here are displayed the logs.
-	 */
-	private LogsPane logs = new LogsPane();
-	
-	/**
-	 * Configuration of bots. 
-	 */
-	private ConfigurationPane configuration = new ConfigurationPane();
+	private Logger logger = LogManager.getLogger(Window.class.getName());
 		
+	/**
+	 * Java frame for this window.
+	 */
+	protected JFrame frame;
 	
 	/**
-	 * Window constructor. Does nothing now. WHY??
+	 * True if the window is running.
 	 */
-	public Window(App app){
-		this.app = app;
+	protected boolean running = false;
+	
+	/**
+	 * A component that we can display in this window.
+	 */
+	private Component drawableComponent = null;
+	
+	/**
+	 * Constuctor, that takes reference to applicatoin.
+	 * @param app Reference to application.
+	 */
+	public Window(App app) {
+		this.app = app;		
+	}
+			
+	/**
+	 * Constructor.
+	 * @param title Title of this window.s
+	 */
+	public Window(String title) {
+		frame = new JFrame(title);		
+	}
+	
+	
+	/**
+	 * Constructor that takes app reference and a title.
+	 * @param app Reference to app.
+	 * @param title Title of the window.
+	 */
+	public Window(App app, String title){
+		this(app);
+		frame = new JFrame(title);
 	}
 
+	/**
+	 * Constructor that takes drawable component and a title.
+	 * @param comp Drawable component that should be displayed inside the window.
+	 * @param title Title of the window.
+	 */
+	public Window(Component comp, String title) {
+		this(title);
+		drawableComponent = comp;		
+	}
 	
 	/**
 	 * Starts the window.
@@ -87,6 +83,7 @@ public class Window {
 	public void start() {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
+				running = true;
 				createWindow();
 			}
 		});		
@@ -102,74 +99,62 @@ public class Window {
 	
 	
 	/**
-	 * 
-	 * @return true if app is running.
-	 */
-	public boolean isRunning() {
-		return running;
-	}
-	
-	
-	/**
-	 * 
-	 * @return true if app is sheduled to stop.
-	 */
-	public boolean shouldStop() {
-		return shouldStop;		
-	}
-	
-	
-	/**
 	 * Creates the window.
 	 */
-	private void createWindow() {
-		// Decorate window
-		JFrame.setDefaultLookAndFeelDecorated(true);
-		
-		// Create tabs
-    	createTabs();
-    	
-    	// Set sizes
-    	frame.setMinimumSize(new Dimension(400, 300));
-    	frame.setPreferredSize(new Dimension(800, 600));
-    	
-    	// Add close operation.
-    	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    	frame.addWindowListener(new java.awt.event.WindowAdapter() {
-    	    @Override
-    	    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-    	        shouldStop = true;
-      	    }
-    	});
-    	
+	protected void createWindow() {
+		initializeFrame();
+    	initializeComponent();
+    	    	    	
     	// Display the window
     	frame.pack();
     	frame.setVisible(true);
-        
+	}
+	
+	/**
+	 * Initializes the window's frame.
+	 */
+	protected void initializeFrame() {
+		// Decorate window
+		//JFrame.setDefaultLookAndFeelDecorated(true);
+				    	
+		JFrame.setDefaultLookAndFeelDecorated(false);
+		// Set sizes
+		frame.setMinimumSize(new Dimension(400, 300));
+		frame.setPreferredSize(new Dimension(1000, 800));
+		
+		// Add close operation.
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.addWindowListener(new java.awt.event.WindowAdapter() {
+			
+			@Override
+		    	public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+					running = false;
+		    	  	logger.info("Closing the supporting window.");
+		    	  	closing();
+		        }
+		    });
+	}
+	
+	/**
+	 * Initialize draeable component.
+	 */
+	protected void initializeComponent() {
+		if(drawableComponent != null) frame.getContentPane().add(drawableComponent);
 	}
 	
 	
 	/**
-	 * Crates the tabs.
+	 * Function that is called when the window is beeing closed.
 	 */
-	private void createTabs() {
-		tabs.add("main", main);
-		tabs.add("console", console);
-		tabs.add("configuration", configuration);
-		tabs.add("logs", logs);
-		
-		ChangeListener changeListener = new ChangeListener() {
-			public void stateChanged(ChangeEvent changeEvent) {
-	        	JTabbedPane sourceTabbedPane = (JTabbedPane) changeEvent.getSource();
-	        	int index = sourceTabbedPane.getSelectedIndex();
-	        	if (sourceTabbedPane.getTitleAt(index).equals("configuration")){
-	        		configuration.load();
-	        	}
-	        }
-	      };
-	    
-	     tabs.addChangeListener(changeListener);
-		
-		frame.getContentPane().add(tabs);
+	public void closing() {
+				
+	}
+	
+	/**
+	 * 
+	 * @return Returns true, if the window is running.
+	 */
+	public boolean isRunning() {
+		return running;		
 	}
 }

@@ -1,6 +1,7 @@
-package cz.cuni.mff.kocur.Configuration;
+package cz.cuni.mff.kocur.configuration;
 
 import java.io.File;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -8,114 +9,176 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.MapType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 
-import cz.cuni.mff.kocur.Exceptions.LoadingError;
-import cz.cuni.mff.kocur.Logging.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
+import cz.cuni.mff.kocur.exceptions.LoadingError;
+
+/**
+ * This class makes loading the configurations possible. 
+ * It uses {@link com.fasterxml.jackson.databind.ObjectMapper} and other Jackson functionalities
+ * to load both bot and framework configurations.
+ * @author kocur
+ *
+ */
 public class ConfigurationLoader {
-	private Path path;
-	
 	/**
-	 * logger registered in Logger class.	
+	 * Logger registered for this class.
 	 */
-	private static final Logger logger = Logger.getLogger(ConfigurationLoader.class.getName());
-	
+	private static final Logger logger = LogManager.getLogger(ConfigurationLoader.class.getName());
+		
 	/**
-	 * GlobalConfiguration reference
+	 * Path to the configuration.
 	 */
-	private GlobalConfiguration cfg = GlobalConfiguration.getInstance();
-	
-	
+	private Path path = null;
+
 	/**
-	 * Initial construct.
+	 * Constructor.
 	 */
 	public ConfigurationLoader() {
-		
-		
+	
 	}
 	
-		
 	/**
-	 * Initializes class.
+	 * Constructor that takes and uses path to initialize itself.
+	 * @param path String representing the path of the configuration that will be loaded.
+	 * @throws LoadingError
 	 */
 	public ConfigurationLoader(String path) throws LoadingError {
 		loadPath(path);
 	}
-
-	/**
-	 * 
-	 * @param cfg
-	 * @throws LoadingError
-	 */
-	public void load(Configuration cfg) throws LoadingError {
-		cfg.loadItems(loadJSON());
-	}
 	
 	/**
-	 * 
-	 * @param cfg
-	 * @throws LoadingError
-	 */
-	public void loadFromFile(Configuration cfg, File f) throws LoadingError {
-		path = f.toPath();
-		cfg.loadItems(loadJSON());
-	}
-	
-	/**
-	 * Resolves path, so it points to existing file which can be parsed
+	 * Resolves path, so it points to an existing file that can be parsed
 	 * @param _path Path to the file which contains JSON data
 	 * @throws LoadingError If {@link #path} does not exist.
 	 * @return True if path loaded correctly.
 	 */
-	private void loadPath(String _path) throws LoadingError {
-		File f = new File(_path);
-		if (f.exists()) path = Paths.get(_path);
-		else throw new LoadingError("JSON file [" + _path + "] does not exist.");
+	private void loadPath(String path) throws LoadingError {
+		File f = new File(path);
+		if (!f.exists()) {
+			logger.error("Unable to load configuration file at " + path);
+			throw new LoadingError("Unable to load configuration file at " + path);
+		}
+		
+		
+		// Check if the supplied path is file
+		if (f.isFile()) this.path = Paths.get(path);
+		else {
+			path = null; // Null the path, so the loading will fail etc.
+			throw new LoadingError("File at " + path + " is not a file!");
+		}
 	}
 	
 	
 	/**
-	 * 
-	 * @param path
-	 * @return
-	 * @throws LoadingError
+	 * Loads the Json to Map containing Strings. 
+	 * @return Returns map of items obtained from JSON.
+	 * @throws LoadingError when unable to parse JSON file.
 	 */
-	public Map<String, CItem> loadJSON() throws LoadingError {
-		Map<String, CItem> items = new HashMap<String, CItem>();
-				
-		// TODO check, that there are all the catches that are needed + return custom error messages 
+	public Map<String, String> loadJSON() throws LoadingError {
+		Map<String, String> items = new HashMap<String, String>();
 		try {
 			byte[] jsonData;
 			jsonData = Files.readAllBytes(path);
 			ObjectMapper objectMapper = new ObjectMapper();
+			objectMapper.setSerializationInclusion(Include.NON_NULL);
 	    	TypeFactory typeFactory = objectMapper.getTypeFactory();
-	    	MapType itemsMapType = typeFactory.constructMapType(HashMap.class, String.class, CItem.class);
+	    	MapType itemsMapType = typeFactory.constructMapType(HashMap.class, String.class, String.class);
 	    	items = objectMapper.readValue(jsonData, itemsMapType);
 		} catch (IOException e) {
-			e.printStackTrace();
-			throw new LoadingError("JSON file [" + path + "] could not be parsed.");
+			logger.error("Unable to parse JSON configuration file at " + path.toString(), e);
+			throw new LoadingError("Unable to parse JSON configuration file at " + path.toString());
 		}		
-		
 		return items;
 	}
 	
 	
-	
-	public void loadBotCFGFromJSON() throws LoadingError {
-		// TODO check, that there are all the catches that are needed + return custom error messages 
-		BotConfiguration botCFG = new BotConfiguration();		
+	/**
+	 * Loads class from path supplied on construction/loadPath. 
+	 * @param cl Class where should be the information stored. (and in what format it will be returned)
+	 * @return Returns new object of passed class that contains all the JSON data that could be parsed.
+	 * @throws LoadingError Thrown when the loading fails. (bad path, parsing failed..)
+	 */
+	public <T> T loadClass(Class<T> cl) throws LoadingError {
+		checkPath();
+		
+		// Create new instance of the supplied class
+		T out;
+		try {
+			out = cl.newInstance();
+		} catch (InstantiationException | IllegalAccessException e1) {
+			logger.error("Unable to create instance of class:" + cl.getName());
+			throw new LoadingError("Unable to create instance of class:" + cl.getName());
+		}
+		
+		// Parse the file
 		try {
 			byte[] jsonData;
 			jsonData = Files.readAllBytes(path);
 			ObjectMapper objectMapper = new ObjectMapper();
-	    	botCFG = objectMapper.readValue(jsonData, BotConfiguration.class);
-	    	cfg.setBotCfg(botCFG);
+	    	out = objectMapper.readValue(jsonData, cl);
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("Unable to parse JSON configuration file at " + path.toString(), e);
 			throw new LoadingError("JSON file [" + path + "] could not be parsed.");
+		}
+		
+		// Loaded successfully, return the new instance of the parsed class
+		return out;
+	}
+	
+	/**
+	 * Basically does the same thing as {@link #loadClass(Class)}, but outputs directly to {@link cz.cuni.mff.kocur.configuration.HeroConfiguration}
+	 * @return Returns new bot configuration. 
+	 */
+	public HeroConfiguration loadBotConfiguration() throws LoadingError{
+		checkPath();
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+    	try {
+			byte[] jsonData;
+			jsonData = Files.readAllBytes(path);
+			objectMapper.setSerializationInclusion(Include.NON_NULL);
+			HeroConfiguration bcfg = objectMapper.readValue(jsonData, HeroConfiguration.class);
+			bcfg.setPath(path.toAbsolutePath().toString());
+			return bcfg;
+		} catch (IOException e) {
+			logger.fatal("Could not load BotConfiguration from path:" + path, e);
+			throw new LoadingError("Could not load BotConfiguration from path:" + path);
+		}
+	}
+	
+	
+	/**
+	 * Checks if the path is not null. If it is it will throw LoadingError. 
+	 * @throws LoadingError If the path stored inside this instance is null.
+	 */
+	private void checkPath() throws LoadingError {
+		if (path == null) {
+			logger.error("Supplied path is null!");
+			throw new LoadingError("Supplied path is null!");
+		}
+	}
+	
+	/**
+	 * Loads the framework configuration. 
+	 */
+	public void loadFrameworkConfiguration() throws LoadingError {
+		checkPath();
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+    	try {
+			byte[] jsonData;
+			jsonData = Files.readAllBytes(path);
+			objectMapper.setSerializationInclusion(Include.NON_NULL);
+			objectMapper.readValue(jsonData, FrameworkConfiguration.class);
+		} catch (IOException e) {
+			logger.fatal("Could not load GlobalConfiguration.", e);
 		}
 	}
 }

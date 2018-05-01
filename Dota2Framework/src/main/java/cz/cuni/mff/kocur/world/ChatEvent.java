@@ -1,4 +1,4 @@
-package cz.cuni.mff.kocur.World;
+package cz.cuni.mff.kocur.world;
 
 public class ChatEvent {
     private boolean teamOnly;

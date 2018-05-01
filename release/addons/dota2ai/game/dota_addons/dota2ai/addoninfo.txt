@@ -1,0 +1,11 @@
+"AddonInfo"
+{
+
+	maps "dota"
+	"IsTemplate"	"0"
+	"IsPlayable"	"1"
+	"dota"
+  	{
+          "MaxPlayers"                    "10"
+  	}
+}

@@ -1,8 +1,0 @@
-Console 
----------------------------------------
-Requirements: 
-Is able to send commands to all components that are controllable 
-Is able to retrieve messages from all components 
-Is able to do everything, that graphics overlay can and more 
-Serves as longer hand than overlay
-Overlay is about configuration, console is about interaction

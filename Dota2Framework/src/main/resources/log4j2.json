@@ -1,0 +1,40 @@
+{
+    "configuration": {
+        "status": "error",
+        "name": "JSONConfigDemo",
+        "packages": "cz.cuni.mff.kocur.logging",
+        "ThresholdFilter": {
+            "level": "debug"
+        },
+
+        "appenders": {
+            "Console": {
+                "name": "STDOUT",
+                "target": "SYSTEM_OUT",
+                "PatternLayout": {
+                    "pattern": "%d{HH:mm:ss.SSS} [%t] %-5p %c - %m%n"
+                }
+            },
+            "File": {
+                "name": "fileAppender",
+                "fileName": "logs/logs.log",
+                "PatternLayout": {
+                    "pattern" : "[%-5level] %d{HH:mm:ss.SSS} %M [%t] %c{1} - %m%n"
+                }
+            }
+        },
+        "loggers": {
+            "root": {
+                "level": "DEBUG",   
+                "appender-ref": [
+                    {
+                        "ref": "fileAppender"
+                    },
+                    {
+                        "ref" : "STDOUT"
+                    }
+                ]
+            }
+        }
+    }
+}

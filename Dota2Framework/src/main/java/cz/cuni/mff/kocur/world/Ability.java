@@ -1,9 +1,9 @@
-package cz.cuni.mff.kocur.World;
+package cz.cuni.mff.kocur.world;
 
-import java.util.Arrays;
+import cz.cuni.mff.kocur.base.IndentationStringBuilder;
 
 public class Ability extends BaseEntity {
-    public static final int DAMAGE_TYPE_NONE = 0;
+	public static final int DAMAGE_TYPE_NONE = 0;
     public static final int DAMAGE_TYPE_PHYSICAL = 1;
     public static final int DAMAGE_TYPE_MAGICAL = 2;
     public static final int DAMAGE_TYPE_PURE = 4;
@@ -71,6 +71,8 @@ public class Ability extends BaseEntity {
     private int abilityDamage;
     private int abilityDamageType;
     private int behavior;
+    private int castRange;
+    
     private float cooldownTime;
     private float cooldownTimeRemaining;
 
@@ -169,44 +171,44 @@ public class Ability extends BaseEntity {
     public void setTargetType( int targetType ) {
         this.targetType = targetType;
     }
+    
+	public int getCastRange() {
+		return castRange;
+	}
+
+	public void setCastRange(int castRange) {
+		this.castRange = castRange;
+	}
 
     @Override
     public String toString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append( "Ability [targetFlags=" );
-        builder.append( targetFlags );
-        builder.append( ", targetTeam=" );
-        builder.append( targetTeam );
-        builder.append( ", targetType=" );
-        builder.append( targetType );
-        builder.append( ", abilityType=" );
-        builder.append( abilityType );
-        builder.append( ", abilityIndex=" );
-        builder.append( abilityIndex );
-        builder.append( ", level=" );
-        builder.append( level );
-        builder.append( ", maxLevel=" );
-        builder.append( maxLevel );
-        builder.append( ", abilityDamage=" );
-        builder.append( abilityDamage );
-        builder.append( ", abilityDamageType=" );
-        builder.append( abilityDamageType );
-        builder.append( ", behavior=" );
-        builder.append( behavior );
-        builder.append( ", cooldownTime=" );
-        builder.append( cooldownTime );
-        builder.append( ", cooldownTimeRemaining=" );
-        builder.append( cooldownTimeRemaining );
-        builder.append( ", origin=" );
-        builder.append( Arrays.toString( origin ) );
-        builder.append( ", name=" );
-        builder.append( name );
-        builder.append( ", health=" );
-        builder.append( health );
-        builder.append( ", maxHealth=" );
-        builder.append( maxHealth );
-        builder.append( "]" );
+    	IndentationStringBuilder builder = new IndentationStringBuilder();
+		builder.appendLine(name + " : " + abilityIndex);
+		builder.indent();
+		
+		builder.appendLines(
+				"targetFlags:" + targetFlags,
+				"targetTeam:" + targetTeam,
+				"targetType:" + targetType,
+				"abilityType:" + abilityType,
+				"abilityIndex:" + abilityIndex,
+				"level:" + level,
+				"maxLevel:" + maxLevel,
+				"abilityDamage:" + abilityDamage,
+				"abilityDamageType:" + abilityDamageType,
+				"behavior:" + behavior,
+				"cooldownTime:" + cooldownTime,
+				"cooldownTimeRemaining:" + cooldownTimeRemaining,
+				"origin: " + x + ", " + y + ", " + z,
+				"name:" + name,
+				"health: " + health,
+				"maxHealth:" + maxHealth,
+				"castRange" + castRange
+				);
+        
         return builder.toString();
     }
+
+
 
 }

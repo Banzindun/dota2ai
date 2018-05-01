@@ -1,0 +1,81 @@
+[INFO ] 23:29:59.124 setup [main] Setup - Working directory path is: C:\Users\kocur\Dropbox\Dota2AI\release\
+[INFO ] 23:29:59.132 setup [main] Setup - Output directory is:C:\Users\kocur\Dropbox\Dota2AI\release\out\
+[INFO ] 23:29:59.134 createDirs [main] Setup - I have created a new directory: out at C:\Users\kocur\Dropbox\Dota2AI\release\out
+[INFO ] 23:29:59.335 setup [main] Setup - I have loaded dota2_path C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta
+[INFO ] 23:29:59.355 setSize [main] GridSystem - Initializing grid with height and width: 2055 2183
+[DEBUG] 23:30:06.516 addCatcher [main] Sink - Adding catcher.
+[DEBUG] 23:30:10.303 addFrameworkListener [main] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.Tabs for: statechanged
+[DEBUG] 23:30:10.308 addFrameworkListener [main] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.SideButtons for: statechanged
+[DEBUG] 23:30:10.319 addFrameworkListener [main] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.MainBody for: statechanged
+[DEBUG] 23:30:10.420 updateTabs [main] StreamsPanel - Updating tabs.
+[DEBUG] 23:30:10.421 updateTabs [main] StreamsPanel - I have obtained 1catchers.
+[INFO ] 23:30:19.796 windowClosing [AWT-EventQueue-0] Window - Closing the main window.
+[INFO ] 23:30:19.800 windowClosing [AWT-EventQueue-0] Window - Closing the main window.
+[INFO ] 23:33:28.298 setup [main] Setup - Working directory path is: C:\Users\kocur\Dropbox\Dota2AI\release\
+[INFO ] 23:33:28.305 setup [main] Setup - Output directory is:C:\Users\kocur\Dropbox\Dota2AI\release\out\
+[INFO ] 23:33:28.426 setup [main] Setup - I have loaded dota2_path C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta
+[INFO ] 23:33:28.436 setSize [main] GridSystem - Initializing grid with height and width: 2055 2183
+[DEBUG] 23:33:33.438 addCatcher [main] Sink - Adding catcher.
+[DEBUG] 23:33:35.973 addFrameworkListener [main] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.Tabs for: statechanged
+[DEBUG] 23:33:35.976 addFrameworkListener [main] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.SideButtons for: statechanged
+[DEBUG] 23:33:35.983 addFrameworkListener [main] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.MainBody for: statechanged
+[DEBUG] 23:33:36.043 updateTabs [main] StreamsPanel - Updating tabs.
+[DEBUG] 23:33:36.043 updateTabs [main] StreamsPanel - I have obtained 1catchers.
+[INFO ] 23:33:39.952 loadConfiguration [AWT-EventQueue-0] MainAgentConfigurationEntry - Loading configuration from: C:\Users\kocur\Dropbox\Dota2AI\release\data\configurations\Scenario3\bot_sniper.json
+[INFO ] 23:33:39.993 loadPassed [AWT-EventQueue-0] MainAgentConfigurationEntry - Successfully loaded bot cofiguration from: C:\Users\kocur\Dropbox\Dota2AI\release\data\configurations\Scenario3\bot_sniper.json
+[INFO ] 23:33:40.006 addBotCfg [AWT-EventQueue-0] FrameworkConfiguration - Adding new bot configuration: bot_sniper
+[INFO ] 23:33:41.151 load [AWT-EventQueue-0] BotLoader - Loading 1 bots.
+[INFO ] 23:33:41.155 register [AWT-EventQueue-0] ConsoleManager - Registering new controllable with name: bot_sniper
+[INFO ] 23:33:41.155 load [AWT-EventQueue-0] TeamContext - BotManager loaded 1 bots.
+[INFO ] 23:33:41.156 load [AWT-EventQueue-0] BotLoader - Loading 0 bots.
+[INFO ] 23:33:41.157 load [AWT-EventQueue-0] TeamContext - BotManager loaded 0 bots.
+[INFO ] 23:33:41.162 register [AWT-EventQueue-0] ConsoleManager - Registering new controllable with name: server
+[INFO ] 23:33:41.164 setup [AWT-EventQueue-0] ServerManager - Binding server to port: 8080
+[INFO ] 23:33:41.250 register [AWT-EventQueue-0] ConsoleManager - Registering new controllable with name: handler
+[INFO ] 23:33:41.251 startServer [AWT-EventQueue-0] ServerManager - Starting server
+[DEBUG] 23:33:41.323 addFrameworkListener [Thread-17] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.MainRunningInfo for: statechanged
+[INFO ] 23:35:26.303 handleServer [qtp1381234550-28] ServerManager - Game is starting.
+[INFO ] 23:35:31.541 handleSelectedAgent [qtp1381234550-34] ControllersManager - Seting id: 941 to agent with name: bot_sniper
+[WARN ] 23:35:31.790 parseInterests [qtp1381234550-31] InterestPointsLoader - Unknown interest point:npc_dota_roshan
+[DEBUG] 23:35:31.814 addFrameworkListener [qtp1381234550-31] ListenersManager - Adding framework listener cz.cuni.mff.kocur.interests.InterestsBase for: towerdestroyed
+[INFO ] 23:35:31.814 handleInterests [qtp1381234550-31] ServerManager - Interests loaded sucessfully.
+[DEBUG] 23:35:31.820 addFrameworkListener [qtp1381234550-31] ListenersManager - Adding framework listener kocur.lina.bot.LayeredBotContext for: bigupdate
+[DEBUG] 23:35:31.822 loadFromItemNames [qtp1381234550-31] BuySequence - Item: item_branches
+[DEBUG] 23:35:31.824 loadFromItemNames [qtp1381234550-31] BuySequence - Item: item_slippers
+[DEBUG] 23:35:31.826 loadFromItemNames [qtp1381234550-31] BuySequence - Item: item_slippers
+[DEBUG] 23:35:31.827 loadFromItemNames [qtp1381234550-31] BuySequence - Item: item_flask
+[DEBUG] 23:35:31.828 loadFromItemNames [qtp1381234550-31] BuySequence - Item: item_circlet
+[DEBUG] 23:35:31.830 loadFromItemNames [qtp1381234550-31] BuySequence - Item: item_boots
+[DEBUG] 23:35:31.830 loadFromItemNames [qtp1381234550-31] BuySequence - Item: item_power_treads
+[DEBUG] 23:35:31.831 loadFromItemNames [qtp1381234550-31] BuySequence - Item: item_lesser_crit
+[DEBUG] 23:35:31.832 loadFromItemNames [qtp1381234550-31] BuySequence - Item: item_yasha
+[DEBUG] 23:35:31.832 loadFromItemNames [qtp1381234550-31] BuySequence - Item: item_manta
+[DEBUG] 23:35:31.833 loadFromItemNames [qtp1381234550-31] BuySequence - Item: item_desolator
+[DEBUG] 23:35:31.833 loadFromItemNames [qtp1381234550-31] BuySequence - Item: item_invis_sword
+[DEBUG] 23:35:31.834 loadFromItemNames [qtp1381234550-31] BuySequence - Item: item_sange_and_yasha
+[DEBUG] 23:35:32.803 addFrameworkListener [Thread-21] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.MainBotInfoEntry for: bigupdate
+[DEBUG] 23:35:32.825 updateTabs [Thread-18] StreamsPanel - Updating tabs.
+[DEBUG] 23:35:32.856 updateTabs [Thread-18] StreamsPanel - I have obtained 1catchers.
+[INFO ] 23:35:33.219 <init> [qtp1381234550-34] WorldManager - Creating the WorldManager.
+[INFO ] 23:35:33.219 register [qtp1381234550-34] ConsoleManager - Registering new controllable with name: world
+[INFO ] 23:35:33.225 addSource [qtp1381234550-34] Sink - Adding source: 
+[INFO ] 23:35:33.415 setLocalGameStartTime [qtp1381234550-34] TimeManager - Setting local game start time to : 1525210533415
+[DEBUG] 23:35:56.454 updateTabs [AWT-EventQueue-0] StreamsPanel - Updating tabs.
+[DEBUG] 23:35:56.460 updateTabs [AWT-EventQueue-0] StreamsPanel - I have obtained 1catchers.
+[DEBUG] 23:36:59.616 resolveRune [qtp1381234550-30] InterestsBase - Setting new id 996 to rune on:3686.955078125 -3624.8107910156
+[DEBUG] 23:37:00.390 doTimeUpdates [qtp1381234550-33] TimeManager - Time updates at time: 2.5322647
+[DEBUG] 23:38:00.340 doTimeUpdates [qtp1381234550-34] TimeManager - Time updates at time: 62.503616
+[INFO ] 23:38:00.340 doTimeUpdates [qtp1381234550-34] TimeManager - 62.503616: camps respawned.
+[INFO ] 23:38:20.538 execute [qtp1381234550-34] DecisionUsePotion - Using healing potion.
+[DEBUG] 23:39:00.576 doTimeUpdates [qtp1381234550-34] TimeManager - Time updates at time: 122.51643
+[INFO ] 23:39:00.576 doTimeUpdates [qtp1381234550-34] TimeManager - 122.51643: camps respawned.
+[DEBUG] 23:39:00.578 updateRunes [qtp1381234550-34] TimeManager - Last rune respawn:240.0
+[DEBUG] 23:39:00.582 triggerEvent [qtp1381234550-34] ListenersManager - Triggered event: powerupsrespawn
+[DEBUG] 23:39:00.583 triggerEvent [qtp1381234550-34] ListenersManager - Triggered event: powerupsrespawn
+[DEBUG] 23:39:00.584 triggerEvent [qtp1381234550-34] ListenersManager - Triggered event: runerespawn
+[DEBUG] 23:39:00.586 triggerEvent [qtp1381234550-34] ListenersManager - Triggered event: runerespawn
+[DEBUG] 23:39:00.590 triggerEvent [qtp1381234550-34] ListenersManager - Triggered event: runerespawn
+[DEBUG] 23:39:00.591 triggerEvent [qtp1381234550-34] ListenersManager - Triggered event: runerespawn
+[INFO ] 23:39:00.594 doTimeUpdates [qtp1381234550-34] TimeManager - 122.51643: runes respawned.
+[DEBUG] 23:40:00.563 doTimeUpdates [qtp1381234550-31] TimeManager - Time updates at time: 182.5217
+[INFO ] 23:40:00.563 doTimeUpdates [qtp1381234550-31] TimeManager - 182.5217: camps respawned.

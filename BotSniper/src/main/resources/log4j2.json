@@ -1,0 +1,39 @@
+{
+    "configuration": {
+        "status": "error",
+        "name": "JSONConfigDemo",
+        "ThresholdFilter": {
+            "level": "debug"
+        },
+
+        "appenders": {
+            "Console": {
+                "name": "STDOUT",
+                "target": "SYSTEM_OUT",
+                "PatternLayout": {
+                    "pattern": "%d [%t] %-5p %c - %m%n"
+                }
+            },
+            "File": {
+                "name": "fileAppender",
+                "fileName": "logs/exampleBOTS.log",
+                "PatternLayout": {
+                    "pattern" : "[%-5level] %d{HH:mm:ss.SSS} %M [%t] %c{1} - %msg%n"
+                }
+            }
+        },
+        "loggers": {
+            "root": {
+                "level": "DEBUG",   
+                "appender-ref": [
+                    {
+                        "ref": "fileAppender"
+                    },
+                    {
+                        "ref" : "STDOUT"
+                    }
+                ]
+            }
+        }
+    }
+}

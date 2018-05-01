@@ -1,16 +1,43 @@
-package cz.cuni.mff.kocur.Graphics;
+package cz.cuni.mff.kocur.graphics;
 
-import javax.swing.JTextField;
+import javax.swing.BorderFactory;
+import javax.swing.JTextArea;
 
-import cz.cuni.mff.kocur.Configuration.CItem;
+import cz.cuni.mff.kocur.configuration.CItem;
 
-public class CText extends JTextField implements CSavable{
+/**
+ * Class that represents configuration item, that can be represented as a text.
+ * 
+ * @author kocur
+ *
+ */
+public class CText extends JTextArea implements CSavable {
+
+	/**
+	 * Generated serial version id.
+	 */
+	private static final long serialVersionUID = 2619761032933304486L;
 	
+	/**
+	 * Item we represent.
+	 */
 	CItem item;
-	
+
+	/**
+	 * Constructor.
+	 * @param item Item we should represent.
+	 */
 	public CText(CItem item) {
-		super(item.getValue());
+		super(1, 40);
 		this.item = item;
+
+		this.setText(item.getValue());
+
+		this.setBackground(this.getBackground());
+		this.setBorder(BorderFactory.createEmptyBorder());
+
+		this.setLineWrap(true);
+		this.setWrapStyleWord(true);
 	}
 
 	@Override

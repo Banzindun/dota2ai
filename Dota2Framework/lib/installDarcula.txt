@@ -1,0 +1,1 @@
+mvn install:install-file -Dfile=C:\Users\kocur\Dropbox\Dota2AI\Dota2AIOverlay\lib\darcula.jar -DgroupId=com.bulenkov -DartifactId=darcula -Dversion=1.0.0 -Dpackaging=jar -DgeneratePom=true

@@ -1,0 +1,55 @@
+======================================
+This work explores artificial intelligence (AI) algorithms for the game Bang!,
+a Wild West-themed card game created by Italian game designer Emiliano Sciarra.
+The aim of this work was to design three different AIs for this game and to compare
+them theoretically and experimentally. First, we analyzed game Bang! with regards to
+game theory, and researched some of the AI algorithms used in similar games. We
+then designed three different AIs algorithms and compared their advantages and
+disadvantages. These three AIs included an AI based on the Monte Carlo Tree Search
+algorithm, a genetic AI and a hybrid AI using elements of both previous AIs. We also
+implemented the game itself and the AIs in C#. The implementation makes it easy to
+add more AIs or client applications in the future, and also to compare and train the
+AIs. Finally, we experimentally compared the implemented AIs. The genetic AI
+performed the best, while Monte Carlo Tree Search AI and the hybrid AI were less
+suitable for this game.
+
+Tématem této práce jsou algoritmy umelé inteligence (AI) pro hru Bang!, karetní hru s tématikou Divokého západu, vytvorenou italským vývojárem her Emilianem Sciarrem. Cílem téhle práce bylo navrhnout umelou inteligence pro tuhle hru a teoreticky a experimentálne je porovnat. Nejdrív jsme zanalyzovali hru Bang! s ohledem na teorii her a prozkoumali nekolik algoritmu umelé inteligence použitých v podobných hrách. Pak jsme navrhli tri ruzné umelé inteligence a porovnali jejich výhody a nevýhody. Tyhle tri umelé inteligence byli AI používající algoritmus Monte Carlo Tree Search, genetické AI a hybridní AI používající elementy obou predchozích AI. Také jsme naimplementovali samotnou hru a umelé inteligence v jazyce C#. Zpusob implementace umožnuje lehce pridávat další umelé inteligence nebo klientské aplikace v budoucnosti, a taky porovnávat a trénovat AI. Nakonec jsme experimentálne porovnali naimplementované umelé inteligence. Evolucní umelá inteligence hrála nejlíp, zatímco Monte Carlo Tree Search AI a hybridní AI byli méne vhodné pro tuto hru.
+
+=======================================================================================
+V predložené práci se zabývam návrhem a implementací herního
+prostredí pro pocítacem rízené hráce ve 2D prostoru. Další cástí práce je
+návrh a implementace hráce ve vytvoreném prostredí. Pri návrhu chování
+hráce se používa algoritmus A*, stejný algoritmus je použit také pro rízení
+pohybu hráce po mape. K vylepšení heuristické funkce algoritmu A* je použita
+technika genetických algoritmu. Projekt je implementován na platforme
+Java SE 5.
+
+In the presented work I devote to design and implementation of
+game enviroment for computer driven players in 2D space. Next I present
+design and implementation of player to the designed enviroment. In player
+design I have used A* algorithm for action planning. I have used A* also for
+movement managment. I have used genetic algorithms to enhance heuristic
+function of A* algorithm. Project is implemented on Java SE 5 platform.
+
+==================================================================
+Abstrakt: Poctacove hry zanru rogue-like jsou subzanrem poctacovych RPG her
+pro jednoho hrace mezi jejichz znaky patr proceduralne generovane prostred a
+vysoka obtznost. Uspet v nich je pro umelou inteligenci (AI) tezkou ulohou. Pro-
+to jsme implementovali framework pro tvorbu umelych hracu pro rogue-like hru
+Desktop Dungeons. Rozebrali jsme moznosti prstupu k AI, a nakonec pouzili ge-
+neticky algoritmus rekombinujc hladove strategie. Vysledne AI hralo hru na u-
+rovni prumerneho lidskeho hrace, vyhravajc v 72 % her. Tyto vysledky a fra-
+mework mohou byt pouzity ke zlepsen rogue-like her, proceduralnch generatoru
+obsahu a umele inteligence v podobnych prostredch.
+
+Rogue-like games are a subgenre of computer RPG games, featuring
+procedurally generated environment and permanent death. Winning them is a
+challenge for a human player, and more so for artificial intelligence (AI). In this
+work, we present a framework for implementing artificial players for a rogue-like
+game Desktop Dungeons. We then investigate options of suitable AI creation, and
+settle for using a genetic algorithm to one-tune a greedy strategy. The resulting
+AI was as succesful as a mediocre human player, winning the game 72% of the
+time. This framework and results may be used to improve the quality of rogue-
+like games, procedural content generators, and artifcial intelligence in similiar
+environments.
+

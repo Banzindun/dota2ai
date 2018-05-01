@@ -1,23 +1,40 @@
-package cz.cuni.mff.kocur.Graphics;
+package cz.cuni.mff.kocur.graphics;
 
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 
-import cz.cuni.mff.kocur.Configuration.CItem;
+import cz.cuni.mff.kocur.configuration.CItem;
 
-
+/**
+ * This class represents a list. The list can be used to configure a store CItem, that needs a list representation.
+ * @author kocur
+ *
+ */
 public class CList extends JList<String> implements CSavable {
 	
-	CItem item;
+	/**
+	 * Generated serial version id. 
+	 */
+	private static final long serialVersionUID = -3747846550483925042L;
 	
+	/**
+	 * CItem that this list represents.
+	 */
+	CItem item;
+
+	/**
+	 * Constructor of CList. 
+	 * @param item Item that we should be representing.
+	 */
 	public CList(CItem item) {
 		super(item.getOptions().toArray(new String[item.getOptions().size()]));
 		
 		this.item = item;
 		
+		// We select single item out of this.
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		this.setLayoutOrientation(JList.VERTICAL);
-		this.setVisibleRowCount(10);
+		this.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+		this.setVisibleRowCount(-1);
 		
 		int initialValue = item.getOptions().indexOf(item.getValue());
 		if(initialValue != -1) this.setSelectedIndex(initialValue);

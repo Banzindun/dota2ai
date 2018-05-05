@@ -143,12 +143,12 @@ public class GraphicResources {
 	}
 
 	/**
+	 * 	
 	 * Loads icon to supplied ImageIcon from resources with resource name.
 	 * 
-	 * @param i
-	 *            ImageIcon object that where the loaded resource should be stored.
 	 * @param resource
 	 *            Name of the resource (icon) that should be loaded.
+	 * @return Returns the loaded imageIcon. 
 	 */
 	private static ImageIcon loadIcon(String resource) {
 		try {

@@ -8,24 +8,13 @@ import java.util.Map.Entry;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
+import cz.cuni.mff.kocur.agent.AgentLoader;
 import cz.cuni.mff.kocur.base.IndentationStringBuilder;
 import cz.cuni.mff.kocur.base.Pair;
-import cz.cuni.mff.kocur.bot.ControllerWrapper;
-import cz.cuni.mff.kocur.bot.BotLoader;
 import cz.cuni.mff.kocur.exceptions.ConfigurationTestFailureException;
-import cz.cuni.mff.kocur.exceptions.KeyNotFound;
-import cz.cuni.mff.kocur.interests.Team;
-import cz.cuni.mff.kocur.world.Ability;
-import cz.cuni.mff.kocur.world.BaseNPC;
-import cz.cuni.mff.kocur.world.Building;
-import cz.cuni.mff.kocur.world.Courier;
-import cz.cuni.mff.kocur.world.Creep;
-import cz.cuni.mff.kocur.world.Hero;
-import cz.cuni.mff.kocur.world.Tower;
-import cz.cuni.mff.kocur.world.Tree;
 
 /**
  * Class that stores bot configuration.
@@ -64,7 +53,7 @@ public abstract class HeroConfiguration extends Configuration {
 	/**
 	 * Array with keys that must be stored inside "configuration".
 	 */
-	protected String[] configurationRequiredItemKeys = {"team"};
+	protected String[] configurationRequiredItemKeys = { "team" };
 
 	/**
 	 * Array with keys that are required by this configuration.
@@ -99,8 +88,9 @@ public abstract class HeroConfiguration extends Configuration {
 	/**
 	 * Sets the name of the bot.
 	 * 
-	 * @param id
-	 *            Sets {@link #name} of the bot.
+	 * @param name
+	 *            Name of the configuration.
+	 * 
 	 */
 	public void setName(String name) {
 		this.name = name.toLowerCase();
@@ -134,7 +124,6 @@ public abstract class HeroConfiguration extends Configuration {
 	 * @param name
 	 *            of the field you want to retrieve
 	 * @return return value of the specified field
-	 * @throws KeyNotFound
 	 */
 	public String getConfigValue(String name) {
 		CItem item = configuration.get(name.toLowerCase());
@@ -160,9 +149,6 @@ public abstract class HeroConfiguration extends Configuration {
 	 * 
 	 * @return Important values of this configuration (so the information about this
 	 *         config can be printed)
-	 * @throws KeyNotFound
-	 *             when some of the important values could not be found (if the
-	 *             configuration passed the test this sould not be true).
 	 */
 	@JsonIgnore
 	public LinkedList<Pair<String, String>> getImportantValues() {
@@ -172,8 +158,12 @@ public abstract class HeroConfiguration extends Configuration {
 	}
 
 	/**
-	 * Checks that the keys in this configuration contain all the required keys. Throws an error if not.
-	 * @throws ConfigurationTestFailureException Throw, when there is a key, that is not contained in the configuration.
+	 * Checks that the keys in this configuration contain all the required keys.
+	 * Throws an error if not.
+	 * 
+	 * @throws ConfigurationTestFailureException
+	 *             Throw, when there is a key, that is not contained in the
+	 *             configuration.
 	 */
 	protected void checkKeysContained() throws ConfigurationTestFailureException {
 
@@ -186,12 +176,6 @@ public abstract class HeroConfiguration extends Configuration {
 
 	}
 
-	/**
-	 * Tests the configuration for errors, logs all of the warnings/errors and
-	 * returns true if the configuration is ok (no errors).
-	 * 
-	 * @return true if the configuration passes the test
-	 */
 	@Override
 	public void test() throws ConfigurationTestFailureException {
 		if (configuration.size() == 0)
@@ -205,7 +189,7 @@ public abstract class HeroConfiguration extends Configuration {
 
 		// Try to load the bot, this is the final test and if this passes the
 		// configuration should be ok
-		if (!BotLoader.canBeLoaded(this))
+		if (!AgentLoader.canBeLoaded(this))
 			throw new ConfigurationTestFailureException(
 					"Bot could not be loaded. Make sure the class points to correct bot implementation.");
 
@@ -219,8 +203,7 @@ public abstract class HeroConfiguration extends Configuration {
 	 */
 
 	/**
-	 * Returns the configuration printed in JSON.
-	 * available to print from console
+	 * Returns the configuration printed in JSON. available to print from console
 	 */
 	@Override
 	public String toString() {
@@ -229,7 +212,7 @@ public abstract class HeroConfiguration extends Configuration {
 		builder.appendMap(configuration);
 		return builder.toString();
 	}
-	
+
 	@JsonIgnore
 	public TYPE getType() {
 		return type;
@@ -237,7 +220,9 @@ public abstract class HeroConfiguration extends Configuration {
 
 	/**
 	 * Sets a type of this configuration.
-	 * @param type The type.
+	 * 
+	 * @param type
+	 *            The type.
 	 */
 	public void setType(TYPE type) {
 		this.type = type;
@@ -245,7 +230,9 @@ public abstract class HeroConfiguration extends Configuration {
 
 	/**
 	 * Adds required items to the items required by this configuration.
-	 * @param required Array of required items, that should be added.
+	 * 
+	 * @param required
+	 *            Array of required items, that should be added.
 	 */
 	public void addRequiredItems(String... required) {
 		String[] newRequired = new String[configurationRequiredItemKeys.length + required.length];
@@ -262,7 +249,7 @@ public abstract class HeroConfiguration extends Configuration {
 			newRequired[i] = s;
 			i++;
 		}
-		
+
 		configurationRequiredItemKeys = newRequired;
 	}
 
@@ -285,7 +272,7 @@ public abstract class HeroConfiguration extends Configuration {
 
 		TYPE type = this.getType();
 		values.put("type", type.name().toLowerCase());
-		
+
 		return values;
 	}
 

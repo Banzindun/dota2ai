@@ -7,14 +7,23 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
+import cz.cuni.mff.kocur.agent.AgentParameters;
+import cz.cuni.mff.kocur.agent.EntityParameter;
 import cz.cuni.mff.kocur.base.Colors;
 import cz.cuni.mff.kocur.base.IndentationStringBuilder;
 import cz.cuni.mff.kocur.base.Location;
-import cz.cuni.mff.kocur.bot.AgentParameters;
-import cz.cuni.mff.kocur.bot.EntityParameter;
 import cz.cuni.mff.kocur.interests.Team;
 import cz.cuni.mff.kocur.server.TimeManager;
 
+/**
+ * Class that represents a BaseEntity. All game entities extend this class. When
+ * using Jackson we specify, how to create each entity class.
+ * 
+ * 
+ * 
+ * @author kocur
+ *
+ */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({ @Type(name = "Hero", value = Hero.class), @Type(name = "BaseNPC", value = BaseNPC.class),
 		@Type(name = "Tower", value = Tower.class), @Type(name = "Building", value = Building.class),
@@ -28,33 +37,30 @@ public abstract class BaseEntity extends Location {
 	@JsonIgnore
 	public static float timeToLive = 1;
 
-	protected float getTimeToLive() {
-		return timeToLive;
-	}
-
 	/**
 	 * Last time that this entity was seen in milliseconds.
 	 */
 	@JsonIgnore
 	protected float lastUpdate = 0;
 
-	
+	public BaseEntity() {
+		super();
+	}
+
+	protected float getTimeToLive() {
+		return timeToLive;
+	}
+
 	public void born() {
 		// Update the time of last update
 		lastUpdate = TimeManager.getGameTime();
-		
-	}
-	
-	public void dying() {
-		
-	}
-	
 
-	
-	public BaseEntity() {
-		super();
-		
 	}
+
+	/**
+	 * Called if the entity is dying.
+	 */
+	public abstract void dying();
 
 	/**
 	 * Checks if this entity is without visual long enough so that it can be removed
@@ -70,60 +76,148 @@ public abstract class BaseEntity extends Location {
 		return false;
 	}
 
+	/**
+	 * 
+	 * @param params
+	 *            Agent parameters.
+	 * @return Returns entity parameter, that corresponds to the class of this
+	 *         object.
+	 */
 	public EntityParameter getParameter(AgentParameters params) {
 		EntityParameter p = params.getEntityParameter(BaseEntity.class);
 		return p;
 	}
 
 	/**
-	 * Paints this entity to graphics.
+	 * * Paints this entity to graphics.
 	 * 
 	 * @param g
+	 *            Graphics.
+	 * @param cords
+	 *            x and y coordinates ([x, y]).
 	 */
 	public void paint(Integer[] cords, Graphics2D g) {
 		g.setColor(Colors.PURPLE);
 		g.fillRect(cords[0] - 3, cords[1] - 3, 6, 6);
 	}
 
+	/**
+	 * Name of the entity. (npc_hero_lina)
+	 */
 	protected String name;
+
+	/**
+	 * Health of the entity.
+	 */
 	protected int health;
+
+	/**
+	 * Maximum health of the entity.
+	 */
 	protected int maxHealth;
+
+	/**
+	 * Maximum damage of the entity.
+	 */
 	protected int damage;
-	
+
+	/**
+	 * Maximum gold bounty.
+	 */
 	protected int maxGoldBounty;
+
+	/**
+	 * Minimum gold bounty.
+	 */
 	protected int minGoldBounty;
+
+	/**
+	 * Speed of this entity projectiles.
+	 */
 	protected int projectileSpeed;
 
-
+	/**
+	 * Team of this entity.
+	 */
 	protected int team = Team.NONE;
 
+	/**
+	 * Level of this entity.
+	 */
 	protected int level;
 
-	// unit.absOrigin = VectorToString(eunit:GetAbsOrigin())
-	// unit.center = VectorToString(eunit:GetCenter())
-
+	/**
+	 * Is this entity alive?
+	 */
 	protected boolean alive;
+
+	/**
+	 * Is this entity blind?
+	 */
 	protected boolean blind;
+
+	/**
+	 * Is this entity dominated?
+	 */
 	protected boolean dominated;
+
+	/**
+	 * Can this entity be denied? (killed by the same team)
+	 */
 	protected boolean deniable;
+
+	/**
+	 * Is this entity disarmed?
+	 */
 	protected boolean disarmed;
+
+	/**
+	 * Is this entity rooted (cannot move)?
+	 */
 	protected boolean rooted;
+
+	/**
+	 * Is this entity idle?
+	 */
 	protected boolean idle;
-	
+
+	/**
+	 * Attack range of the entity.
+	 */
 	protected float attackRange;
+
+	/**
+	 * Id of target it is attacking.
+	 */
 	protected int attackTarget;
+
+	/**
+	 * Vision range of the entity.
+	 */
 	protected int visionRange;
+
+	/**
+	 * Mana of the entity.
+	 */
 	protected float mana;
+
+	/**
+	 * Maximum mana of the entity.
+	 */
 	protected float maxMana;
+
+	/**
+	 * How far can it travel per one second.
+	 */
 	protected float speed;
-			
+
 	public int getDamage() {
 		return damage;
 	}
 
 	public void setDamage(int damage) {
 		this.damage = damage;
-	}	
+	}
 
 	public float getSpeed() {
 		return speed;
@@ -184,7 +278,7 @@ public abstract class BaseEntity extends Location {
 	public boolean isRooted() {
 		return rooted;
 	}
-	
+
 	public boolean isIdle() {
 		return idle;
 	}
@@ -220,7 +314,7 @@ public abstract class BaseEntity extends Location {
 	public void setIdle(boolean idle) {
 		this.idle = idle;
 	}
-	
+
 	public void setLevel(int level) {
 		this.level = level;
 	}
@@ -270,42 +364,31 @@ public abstract class BaseEntity extends Location {
 	}
 
 	public String toString() {
-        IndentationStringBuilder builder = new IndentationStringBuilder();
-        builder.appendLines(
-        		"entid:" + entid,
-        		"team:" + team,
-        		"level:" + level,
-                "origin: " + x + ", " + y + ", " + z,
-                "alive:" + alive,
-                "health:" + health,
-                "maxHealth" + maxHealth,
-                "blind:" + blind,
-                "dominated:" + dominated,
-                "deniable:" + deniable,
-                "disarmed:" + disarmed,
-                "rooted:" + rooted,
-                "idle:" + idle,
-                "name:" + name,
-                "visionRange:" + visionRange,
-                "attackRange:" + attackRange,
-                "attackTarget:" + attackTarget,
-                "mana:" + mana,
-                "maxMana:" + maxMana,
-                "maxGoldBounty: " + maxGoldBounty,
-                "minGoldBounty: " + minGoldBounty,
-                "projectileSpeed: " + projectileSpeed
-                );
-        
-        return builder.toString();
+		IndentationStringBuilder builder = new IndentationStringBuilder();
+		builder.appendLines("entid:" + entid, "team:" + team, "level:" + level, "origin: " + x + ", " + y + ", " + z,
+				"alive:" + alive, "health:" + health, "maxHealth" + maxHealth, "blind:" + blind,
+				"dominated:" + dominated, "deniable:" + deniable, "disarmed:" + disarmed, "rooted:" + rooted,
+				"idle:" + idle, "name:" + name, "visionRange:" + visionRange, "attackRange:" + attackRange,
+				"attackTarget:" + attackTarget, "mana:" + mana, "maxMana:" + maxMana, "maxGoldBounty: " + maxGoldBounty,
+				"minGoldBounty: " + minGoldBounty, "projectileSpeed: " + projectileSpeed);
+
+		return builder.toString();
 	}
 
+	/**
+	 * Updates the BaseEntity using passed entity.
+	 * 
+	 * @param e
+	 *            The entity to update from.
+	 */
 	public void update(BaseEntity e) {
-		// Update Location 
+		// Update Location
 		super.update(e);
-		
+
 		// Update the time of last update
 		lastUpdate = TimeManager.getGameTime();
-		
+
+		// Update the fields
 		this.name = e.getName();
 		this.health = e.getHealth();
 		this.maxHealth = e.getMaxHealth();
@@ -329,7 +412,6 @@ public abstract class BaseEntity extends Location {
 		this.minGoldBounty = e.getMinGoldBounty();
 	}
 
-
 	public int getMaxGoldBounty() {
 		return maxGoldBounty;
 	}
@@ -345,27 +427,27 @@ public abstract class BaseEntity extends Location {
 	public void setMinGoldBounty(int minGoldBounty) {
 		this.minGoldBounty = minGoldBounty;
 	}
-	
+
 	public boolean isHero() {
 		return false;
 	}
-	
+
 	public boolean isBuilding() {
 		return false;
 	}
-	
+
 	public boolean isStaticEntity() {
 		return false;
 	}
-	
+
 	public boolean isDynamicEntity() {
 		return false;
 	}
-	
+
 	public boolean isCreep() {
 		return false;
 	}
-	
+
 	public boolean isTower() {
 		return false;
 	}
@@ -377,5 +459,5 @@ public abstract class BaseEntity extends Location {
 	public void setProjectileSpeed(int projectileSpeed) {
 		this.projectileSpeed = projectileSpeed;
 	}
-	
+
 }

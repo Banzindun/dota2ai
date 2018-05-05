@@ -13,8 +13,7 @@ import cz.cuni.mff.kocur.base.Utils;
  */
 public final class AgentCommands {
 	/**
-	 * Class that represents attack command. Agent can attack a target given
-	 * its id.
+	 * Class that represents attack command. Agent can attack a target given its id.
 	 * 
 	 * @author kocur
 	 *
@@ -63,7 +62,7 @@ public final class AgentCommands {
 		/**
 		 * Sets the id of our target.
 		 * 
-		 * @param targetindex
+		 * @param target
 		 *            Id of our target.
 		 */
 		public void setTarget(int target) {
@@ -189,9 +188,12 @@ public final class AgentCommands {
 		 * 
 		 * @param ability
 		 *            Index of ability we want to use.
-		 * @param crds
-		 * @param crds2
-		 * @param crds3
+		 * @param x
+		 *            x
+		 * @param y
+		 *            y
+		 * @param z
+		 *            z
 		 */
 		public Cast(int ability, Double x, Double y, Double z) {
 			System.out.println("Creating ability cast:" + ability + " [" + x + ", " + y + ", " + z + "]");
@@ -210,7 +212,7 @@ public final class AgentCommands {
 		 * @param strs
 		 *            Strigns from which it is composed. "entity_id target_id" or
 		 *            "entity_id [x, y, z]"
-		 * @return
+		 * @return Returns a Cast command.
 		 */
 		public static Cast createFromString(String... strs) {
 			// I should have two fields - ability target or ability coordinates
@@ -332,7 +334,7 @@ public final class AgentCommands {
 		 * 
 		 * @param str
 		 *            "ability_index"
-		 * @return
+		 * @return Returns Levelup command.
 		 */
 		public static LevelUp createFromString(String str) {
 			int index = 0;
@@ -346,9 +348,9 @@ public final class AgentCommands {
 		}
 
 		/**
-		 * Returns the index of ability that should be leveled up.
 		 * 
-		 * @return
+		 * 
+		 * @return Returns the index of ability that should be leveled up.
 		 */
 		public int getAbilityIndex() {
 			return abilityIndex;
@@ -382,15 +384,18 @@ public final class AgentCommands {
 		/**
 		 * Constructor of Move command. Takes x, y, z as location of where to move.
 		 * 
-		 * @param crds
-		 * @param crds2
-		 * @param crds3
+		 * @param x
+		 *            x
+		 * @param y
+		 *            y
+		 * @param z
+		 *            z
 		 */
-		public Move(Double crds, Double crds2, Double crds3) {
+		public Move(Double x, Double y, Double z) {
 			command = COMMAND_CODE.MOVE;
-			this.x = crds;
-			this.y = crds2;
-			this.z = crds3;
+			this.x = x;
+			this.y = y;
+			this.z = z;
 		}
 
 		/**
@@ -620,16 +625,19 @@ public final class AgentCommands {
 		 * 
 		 * @param slot
 		 *            Index of the item we want to use at the given location.
-		 * @param crds
-		 * @param crds2
-		 * @param crds3
+		 * @param x
+		 *            x
+		 * @param y
+		 *            y
+		 * @param z
+		 *            z
 		 */
-		public UseItem(int slot, Double crds, Double crds2, Double crds3) {
+		public UseItem(int slot, Double x, Double y, Double z) {
 			this.slot = slot;
 
-			this.x = crds;
-			this.y = crds2;
-			this.z = crds3;
+			this.x = x;
+			this.y = y;
+			this.z = z;
 
 			command = COMMAND_CODE.USE_ITEM;
 		}
@@ -640,7 +648,7 @@ public final class AgentCommands {
 		 * @param strs
 		 *            Array with fields like: "slot_index", "slot_index target_id" or
 		 *            "slot_index [x, y, z]"
-		 * @return
+		 * @return Returns a UseItem command.
 		 */
 		public static UseItem createFromString(String... strs) {
 			if (strs.length == 0)
@@ -676,9 +684,9 @@ public final class AgentCommands {
 		}
 
 		/**
-		 * Returns the index of slot with used item.
 		 * 
-		 * @return
+		 * 
+		 * @return Returns the index of slot with used item.
 		 */
 		public int getSlot() {
 			return slot;
@@ -765,7 +773,7 @@ public final class AgentCommands {
 		 * 
 		 * @param str
 		 *            "rune_id"
-		 * @return
+		 * @return Returns a PickupRune command.
 		 */
 		public static PickupRune createFromString(String str) {
 			int target = 0;

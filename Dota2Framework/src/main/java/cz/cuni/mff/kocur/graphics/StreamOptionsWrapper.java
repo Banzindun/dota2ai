@@ -4,7 +4,6 @@ import java.awt.Rectangle;
 
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 import cz.cuni.mff.kocur.streaming.BaseDropViewer;
 

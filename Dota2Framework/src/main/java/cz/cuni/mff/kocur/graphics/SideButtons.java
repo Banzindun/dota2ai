@@ -10,9 +10,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import cz.cuni.mff.kocur.base.GraphicResources;
-import cz.cuni.mff.kocur.dota2AIFramework.App;
 import cz.cuni.mff.kocur.events.FrameworkEventListener;
 import cz.cuni.mff.kocur.events.ListenersManager;
+import cz.cuni.mff.kocur.framework.App;
 
 /**
  * CLass that represents side buttons. These are buttons that are ment for
@@ -90,7 +90,7 @@ public class SideButtons extends JPanel implements MouseListener, FrameworkEvent
 				.anchor(GridBagConstraints.CENTER).insets(2).get();
 
 		labels = new JLabel[] { start, stop, pause, step, restart };
-		
+
 		this.setOpaque(false);
 	}
 
@@ -144,8 +144,8 @@ public class SideButtons extends JPanel implements MouseListener, FrameworkEvent
 
 	/**
 	 * Updates the buttons. This disables buttons that should be disabled and
-	 * changes the indicator. </br>
-	 * This function should be called on Application state change.
+	 * changes the indicator. This function should be called on Application state
+	 * change.
 	 */
 	private void updateLabels() {
 		indicator.setToolTipText(App.state.name());

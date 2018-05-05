@@ -2,10 +2,10 @@ package cz.cuni.mff.kocur.interests;
 
 import java.awt.Graphics2D;
 
+import cz.cuni.mff.kocur.agent.AgentParameters;
+import cz.cuni.mff.kocur.agent.InterestParameter;
 import cz.cuni.mff.kocur.base.Colors;
 import cz.cuni.mff.kocur.base.CustomStringBuilder;
-import cz.cuni.mff.kocur.bot.AgentParameters;
-import cz.cuni.mff.kocur.bot.InterestParameter;
 
 /**
  * Class that represents a neutral spawner. That is an object, that spawn

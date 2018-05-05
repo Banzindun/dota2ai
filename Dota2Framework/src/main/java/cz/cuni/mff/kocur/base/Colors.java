@@ -1,3 +1,6 @@
+/**
+ * cz.cuni.mff.kocur.base This package contains some classes, that are used across the application.  
+ */
 package cz.cuni.mff.kocur.base;
 
 import java.awt.Color;

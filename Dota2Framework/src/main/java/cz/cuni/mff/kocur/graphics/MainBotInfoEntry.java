@@ -2,7 +2,6 @@ package cz.cuni.mff.kocur.graphics;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
-import java.awt.Insets;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -12,8 +11,8 @@ import javax.swing.JPanel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import cz.cuni.mff.kocur.agent.ControllerWrapper;
 import cz.cuni.mff.kocur.base.GraphicResources;
-import cz.cuni.mff.kocur.bot.ControllerWrapper;
 import cz.cuni.mff.kocur.events.FrameworkEventListener;
 import cz.cuni.mff.kocur.events.ListenersManager;
 import cz.cuni.mff.kocur.world.Hero;
@@ -104,6 +103,8 @@ public class MainBotInfoEntry extends WindowedJPanel implements FrameworkEventLi
 	 */
 	public void build() {
 		inventorySection = new WindowedJPanel() {			
+			private static final long serialVersionUID = 4582329217503210257L;
+
 			@Override
 			protected void close() {
 				inventorySection.setVisible(false);

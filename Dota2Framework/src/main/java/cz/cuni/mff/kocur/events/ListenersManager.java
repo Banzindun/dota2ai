@@ -9,7 +9,8 @@ import org.apache.logging.log4j.Logger;
 /**
  * This class represents a manager, that handles all the events. Events can be
  * of two types: framework and game event. This class manages listeners for both
- * of these events. 
+ * of these events.
+ * 
  * @author kocur
  *
  */
@@ -67,7 +68,7 @@ public class ListenersManager {
 	/**
 	 * Removes listener from listeners.
 	 * 
-	 * @param name
+	 * @param eventName
 	 *            Name of the event.
 	 * @param l
 	 *            The listener.
@@ -82,7 +83,7 @@ public class ListenersManager {
 	/**
 	 * Removes listener from framework listeners.
 	 * 
-	 * @param name
+	 * @param eventName
 	 *            Name of the event.
 	 * @param l
 	 *            The listener.

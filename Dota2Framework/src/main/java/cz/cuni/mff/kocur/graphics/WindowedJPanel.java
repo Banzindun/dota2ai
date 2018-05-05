@@ -188,8 +188,8 @@ public abstract class WindowedJPanel extends BuildableJPanel {
 	}
 
 	/**
-	 * Class that should close this window. </br>
-	 * This should possible alert parent of component to remove the component.
+	 * Class that should close this window. This should possible alert parent of
+	 * component to remove the component.
 	 */
 	protected abstract void close();
 

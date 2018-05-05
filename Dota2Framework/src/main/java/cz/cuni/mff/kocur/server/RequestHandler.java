@@ -17,9 +17,8 @@ import org.apache.logging.log4j.Logger;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
 
-import cz.cuni.mff.kocur.bot.AgentController;
-import cz.cuni.mff.kocur.bot.ControllerWrapper;
-import cz.cuni.mff.kocur.bot.ControllersManager;
+import cz.cuni.mff.kocur.agent.ControllerWrapper;
+import cz.cuni.mff.kocur.agent.ControllersManager;
 import cz.cuni.mff.kocur.configuration.ConfigurationChangeListener;
 import cz.cuni.mff.kocur.configuration.FrameworkConfiguration;
 import cz.cuni.mff.kocur.console.CommandResponse;
@@ -27,12 +26,11 @@ import cz.cuni.mff.kocur.console.ConsoleCommand;
 import cz.cuni.mff.kocur.console.ConsoleHelp;
 import cz.cuni.mff.kocur.console.ConsoleManager;
 import cz.cuni.mff.kocur.console.Controllable;
-import cz.cuni.mff.kocur.dota2AIFramework.App;
-import cz.cuni.mff.kocur.dota2AIFramework.Setup;
 import cz.cuni.mff.kocur.events.FrameworkEvent;
 import cz.cuni.mff.kocur.events.ListenersManager;
 import cz.cuni.mff.kocur.exceptions.LoadingError;
-import cz.cuni.mff.kocur.interests.InterestPointsLoader;
+import cz.cuni.mff.kocur.framework.App;
+import cz.cuni.mff.kocur.framework.Setup;
 import cz.cuni.mff.kocur.interests.InterestsBase;
 import cz.cuni.mff.kocur.world.ChatEvent;
 import cz.cuni.mff.kocur.world.WorldManager;
@@ -71,7 +69,7 @@ public class RequestHandler extends AbstractHandler implements Controllable, Con
 	/**
 	 * If true, then we are saving incoming JSON POST requests to data in working
 	 * directory. Names are generated as BOTID_timestamp.data or timestamp.data in
-	 * case of bigupdate. </br>
+	 * case of bigupdate.
 	 * This can be used for example to analyze a session or for offline learning.
 	 */
 	private boolean saveIncoming = false;
@@ -175,35 +173,34 @@ public class RequestHandler extends AbstractHandler implements Controllable, Con
 			return;
 		}
 
-		RequestArguments arg = new RequestArguments();
-		res = arg.set(uriFields);
-		arg.setMessage(msg);
-
-		if (!res.isOK()) {
-			makeResponse(baseRequest, response, res);
-			return;
-		}
-
-		// If we are saving incomming data, then save them.
-		if (saveIncoming) {
-			writeIncomingJSON(arg);
-		}
-
 		// If there is a agent's response scheduled (PAUSE, UNPAUSE), then sent the
 		// response.
-		if (scheduled)
+		if (scheduled) {
 			res = handleScheduled();
-		// Else handle it, if the game is not paused.
-		else {
+			makeResponse(baseRequest, response, res);
+		} else {
+			RequestArguments arg = new RequestArguments();
+			res = arg.set(uriFields);
+			arg.setMessage(msg);
 
-			if (App.state == App.State.PAUSED)
+			if (!res.isOK()) {
+				makeResponse(baseRequest, response, res);
+				return;
+			}
+			
+			// If we are saving incoming data, then save them.
+			if (saveIncoming) {
+				writeIncomingJSON(arg);
+			}
+
+			if (App.state == App.State.PAUSED && arg.getMethod() != CODE.CHAT)
 				res.setMsg("App paused.");
 			else {
 				res = handle(arg);
-			}
-		}
-
-		makeResponse(baseRequest, response, res, arg);
+			}		
+			
+			makeResponse(baseRequest, response, res, arg);
+		}		
 	}
 
 	/**
@@ -323,7 +320,7 @@ public class RequestHandler extends AbstractHandler implements Controllable, Con
 		ListenersManager.triggerFrameworkEvent("setup", new FrameworkEvent());
 
 		// Return signature of bots with config from app
-		ControllersManager man = ControllersManager.getInstance();
+		//ControllersManager man = ControllersManager.getInstance();
 
 		// Create signatures
 		LinkedHashMap<String, HashMap<String, String>> sign = cfg.getHeroConfigurationsSignature();
@@ -379,7 +376,7 @@ public class RequestHandler extends AbstractHandler implements Controllable, Con
 		Response res = new Response();
 
 		// Create the loader.
-		InterestPointsLoader loader = new InterestPointsLoader();
+		//InterestPointsLoader loader = new InterestPointsLoader();
 
 		try {
 			// Check the args.
@@ -539,6 +536,13 @@ public class RequestHandler extends AbstractHandler implements Controllable, Con
 		logger.info("Sending UNPAUSE command from request handler.");
 		schedule(new ServerCommands.Unpause());
 	}
+	
+	/**
+	 * Restarts the game.
+	 */
+	public void restartGame() {
+		schedule(new ServerCommands.Reset());
+	}
 
 	@Override
 	public CommandResponse command(ConsoleCommand cmd) {
@@ -668,5 +672,7 @@ public class RequestHandler extends AbstractHandler implements Controllable, Con
 
 		App.getInstance().pause();
 	}
+
+
 
 }

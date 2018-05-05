@@ -37,6 +37,7 @@ public class IndentationStringBuilder extends CustomStringBuilder{
 	/**
 	 * Appends map values to the builder in form key:value.
 	 * @param in Map of strings and some type T that can be printed using toString().
+	 * @param <T> Type of the values inside the map.
 	 */
 	public <T> void appendMap(Map<String, T> in) {
 		for (Entry<String, T> e : in.entrySet()) {
@@ -109,6 +110,7 @@ public class IndentationStringBuilder extends CustomStringBuilder{
 	 * then it appends it's toString() representation.
 	 * @param key Name of the variable.
 	 * @param value Value of the variable. toString() will be called on the variable.
+	 * @param <T> Type of the variable we are appending.
 	 */
 	public <T> void appendVariable(String key, T value) {
 		if (value instanceof CItem) {

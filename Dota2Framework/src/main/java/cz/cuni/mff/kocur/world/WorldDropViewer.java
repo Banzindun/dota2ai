@@ -12,6 +12,12 @@ import cz.cuni.mff.kocur.interests.InterestsBase;
 import cz.cuni.mff.kocur.streaming.BaseDropViewer;
 import cz.cuni.mff.kocur.streaming.InformationDrop;
 
+/**
+ * A class that serves for viewing world drops.
+ * 
+ * @author kocur
+ *
+ */
 public class WorldDropViewer extends BaseDropViewer {
 
 	/**
@@ -19,6 +25,9 @@ public class WorldDropViewer extends BaseDropViewer {
 	 */
 	private static final long serialVersionUID = -7045989090280984462L;
 
+	/**
+	 * The world object, we have received.
+	 */
 	private World world = null;
 
 	public WorldDropViewer() {
@@ -41,6 +50,13 @@ public class WorldDropViewer extends BaseDropViewer {
 		super.receive(d);
 	}
 
+	/**
+	 * 
+	 * @param r Rectangle.
+	 * @param x x
+	 * @param y y
+	 * @return Returns true, if the point [x, y] is inside the rectangle.
+	 */
 	private boolean pointInside(Rectangle r, int x, int y) {
 		if (x < r.getX() || x > r.getX() + r.getWidth())
 			return false;
@@ -59,20 +75,20 @@ public class WorldDropViewer extends BaseDropViewer {
 		// Can happen on the first iteration
 		if (world == null)
 			return;
-		
+
 		Graphics2D g = (Graphics2D) buffer.getGraphics();
 
 		GridBase grid = GridBase.getInstance();
 
-		Map<Integer, BaseEntity> entities = world.getEntities();
-
 		g.drawImage(gridI, 0, 0, null);
+
+		Map<Integer, BaseEntity> entities = world.getEntities();
 
 		g.setPaint(Colors.ORANGE);
 
 		for (BaseEntity e : entities.values()) {
 			// I tell the entity to paint itself and I tell it where to paint itself.
-			e.paint(grid.toTile(grid.resolveXY(e.getX(), e.getY())), g);
+			e.paint(GridBase.toTile(grid.resolveXY(e.getX(), e.getY())), g);
 		}
 
 		InterestsBase.getInstance().paintInterests(g);

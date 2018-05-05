@@ -3,10 +3,10 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>cz.cuni.mff.kocur</groupId>
     <artifactId>Dota2AIFramework</artifactId>
-    <version> 0.0.1 </version>
+    <version> 1.0.0 </version>
     <packaging>jar</packaging>
 
-    <name>Dota2AIOverlay</name>
+    <name>Dota2AIFramework</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -56,9 +56,6 @@
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
                         </manifest>
-                        <manifestEntries>
-                            <Class-Path>Dota2AIBotLina-0.0.1.jar</Class-Path>
-                        </manifestEntries>
                     </archive>
                 </configuration>
             </plugin>

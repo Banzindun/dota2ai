@@ -9,8 +9,8 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import cz.cuni.mff.kocur.dota2AIFramework.App;
-import cz.cuni.mff.kocur.dota2AIFramework.Setup;
+import cz.cuni.mff.kocur.framework.App;
+import cz.cuni.mff.kocur.framework.Setup;
 import cz.cuni.mff.kocur.graphics.ConsolePanel;
 
 /**
@@ -32,7 +32,6 @@ public class ConsoleManager {
 
 	/**
 	 * Controllables that we registered inside ConsoleManager.
-	 * {@see cz.cuni.mff.kocur.console.Controlable#}
 	 */
 	private static Map<String, Controllable> registeredControllables = new HashMap<String, Controllable>();
 
@@ -50,7 +49,7 @@ public class ConsoleManager {
 	/**
 	 * Sets the reference to console pane where all the logs are displayed.
 	 * 
-	 * @param consolePane
+	 * @param cp
 	 *            reference to ConsolePane that contains the console
 	 */
 	public static void setConsolePane(ConsolePanel cp) {
@@ -110,7 +109,8 @@ public class ConsoleManager {
 	 * (using -ControllableName), the command is passed to App's controllable
 	 * interface.
 	 * 
-	 * @param cmd Issued console command.
+	 * @param cmd
+	 *            Issued console command.
 	 * @return Returns the command's response.
 	 */
 	public static CommandResponse command(ConsoleCommand cmd) {
@@ -170,14 +170,17 @@ public class ConsoleManager {
 	}
 
 	/**
-	 * Writes command response to file. 
-	 * @param res Command's response.
-	 * @param fileName Name of the file where we should write the result.
+	 * Writes command response to file.
+	 * 
+	 * @param res
+	 *            Command's response.
+	 * @param fileName
+	 *            Name of the file where we should write the result.
 	 */
 	private static void writeToFile(CommandResponse res, String fileName) {
 		// Get working directory
 		String outputDir = Setup.getOutputDir();
-		
+
 		PrintWriter printWriter;
 		try {
 			printWriter = new PrintWriter(new FileWriter(outputDir + fileName));

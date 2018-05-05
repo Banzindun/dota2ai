@@ -9,13 +9,20 @@ import java.util.Map.Entry;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
+import cz.cuni.mff.kocur.agent.AgentParameters;
+import cz.cuni.mff.kocur.agent.EntityParameter;
 import cz.cuni.mff.kocur.base.Colors;
 import cz.cuni.mff.kocur.base.GraphicResources;
 import cz.cuni.mff.kocur.base.IndentationStringBuilder;
-import cz.cuni.mff.kocur.bot.AgentParameters;
-import cz.cuni.mff.kocur.bot.EntityParameter;
 import cz.cuni.mff.kocur.server.TimeManager;
 
+/**
+ * Class that represents a hero. Hero has abilities and inventory. And some
+ * attributes that are specific, as well.
+ * 
+ * @author kocur
+ *
+ */
 public class Hero extends BaseNPC {
 	/**
 	 * Time for how long this entity should be alive. Should be defined and
@@ -23,7 +30,8 @@ public class Hero extends BaseNPC {
 	 */
 	@JsonIgnore
 	public static float timeToLive = 1;
-
+	
+	@Override
 	protected float getTimeToLive() {
 		return timeToLive;
 	}
@@ -93,7 +101,7 @@ public class Hero extends BaseNPC {
 	@JsonSetter("inventory")
 	public void setInventory(HashMap<Integer, ItemDummy> inv) {
 		inventory = new Inventory();
-		
+
 		for (Entry<Integer, ItemDummy> e : inv.entrySet()) {
 			ItemDummy id = e.getValue();
 			if (id.getName().equals(""))
@@ -291,9 +299,9 @@ public class Hero extends BaseNPC {
 		super.update(b);
 
 		Hero h = (Hero) b;
-		
+
 		this.inventory = h.getInventory();
-		
+
 		this.xp = h.getXp();
 		this.deaths = h.getDeaths();
 

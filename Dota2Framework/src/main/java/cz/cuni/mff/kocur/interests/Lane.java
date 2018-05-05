@@ -6,9 +6,6 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import cz.cuni.mff.kocur.base.Colors;
 import cz.cuni.mff.kocur.base.IndentationStringBuilder;
 import cz.cuni.mff.kocur.base.Location;
@@ -22,10 +19,6 @@ import cz.cuni.mff.kocur.world.GridBase;
  *
  */
 public class Lane {
-	/**
-	 * Logger registered for Lane class.
-	 */
-	private static final Logger logger = LogManager.getLogger(Lane.class);
 
 	/**
 	 * Type of the lane. Can be BOT, MID, TOP or OTHER. This is used by heroes,
@@ -163,7 +156,7 @@ public class Lane {
 	/**
 	 * Sorts the good/bad corners and towers using distance from supplied location.
 	 * 
-	 * @param f
+	 * @param base Location we use.
 	 */
 	public void sort(Location base) {
 		pathCorners = sortCorners(pathCorners, base);

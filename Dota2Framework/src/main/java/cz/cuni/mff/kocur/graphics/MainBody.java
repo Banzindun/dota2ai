@@ -10,10 +10,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EtchedBorder;
 
-import cz.cuni.mff.kocur.base.Colors;
-import cz.cuni.mff.kocur.dota2AIFramework.App;
 import cz.cuni.mff.kocur.events.FrameworkEventListener;
 import cz.cuni.mff.kocur.events.ListenersManager;
+import cz.cuni.mff.kocur.framework.App;
 import cz.cuni.mff.kocur.interests.Team;
 
 /**

@@ -89,6 +89,8 @@ function parseCommand(json, customHandle)
 		doPause()
 	elseif command == "UNPAUSE" then
 		doUnpause()
+	elseif command == "RESET" then 
+		SendToServerConsole( "dota_launch_custom_game dota2ai dota")
 	elseif command == "GAME_COMMANDS" then
 		issueCommands(decoded.commands)
 	else 

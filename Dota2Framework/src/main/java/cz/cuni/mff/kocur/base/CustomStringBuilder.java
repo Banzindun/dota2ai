@@ -61,7 +61,7 @@ public class CustomStringBuilder{
 	
 	/**
 	 * Appends passed string and comma behind it to builder.
-	 * @param msg
+	 * @param msg The string.
 	 */
 	public void appendComma(String msg) {
 		append(msg + ", ");		

@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 /**
  * Class that represents console command. The command is given as a string of
- * arguments separated by spaces. The command can be written to file by using >
+ * arguments separated by spaces. The command can be written to file by using
  * "fileName".
  * 
  * @author kocur
@@ -62,7 +62,9 @@ public class ConsoleCommand {
 
 	/**
 	 * Sets fields of this command.
-	 * @param fields Array of new fields.
+	 * 
+	 * @param fields
+	 *            Array of new fields.
 	 */
 	public void setFields(String[] fields) {
 		this.fields = new LinkedList<String>(Arrays.asList(fields));
@@ -88,7 +90,7 @@ public class ConsoleCommand {
 
 	/**
 	 * 
-	 * @return Returns the fields stored inside this console command. 
+	 * @return Returns the fields stored inside this console command.
 	 */
 	public String[] getFields() {
 		return fields.toArray(new String[fields.size()]);

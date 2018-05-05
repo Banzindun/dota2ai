@@ -32,11 +32,6 @@ public class MainAgentConfiguration extends BuildableJPanel {
 	private static final long serialVersionUID = 3029141347902903882L;
 
 	/**
-	 * Configuration.
-	 */
-	private FrameworkConfiguration cfg = FrameworkConfiguration.getInstance();
-
-	/**
 	 * Logger registered for this class.
 	 */
 	private Logger logger = LogManager.getLogger(MainAgentConfiguration.class.getName());
@@ -62,7 +57,8 @@ public class MainAgentConfiguration extends BuildableJPanel {
 	private int teamNumber = 0;
 
 	/**
-	 * Default constructor of MainBotConfiguration.
+	 * Default constructor of MainBotConfiguration.F
+	 * @param teamNumber Number of team.
 	 */
 	public MainAgentConfiguration(int teamNumber) {
 		// Initialize layout and border

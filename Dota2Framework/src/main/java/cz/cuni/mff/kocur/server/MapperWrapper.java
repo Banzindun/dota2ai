@@ -4,16 +4,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser.Feature;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,11 +19,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  *
  */
 public class MapperWrapper {
-	/**
-	 * Logger for MapperWrapper class.
-	 */
-	private final static Logger logger = LogManager.getLogger(MapperWrapper.class);
-
 	/**
 	 * Mapper from com.fasterxml.jackson.databind.ObjectMapper. Maps objects from
 	 * JSON data to a given object, when used as: MAPPER.readValue(JsonParser p,
@@ -50,6 +38,8 @@ public class MapperWrapper {
 	 * Creates a new class of type supplied as parameter. The class is created by
 	 * deserializing JSON data from input stream.
 	 * 
+	 * @param <T>
+	 *            Type of the specified class.
 	 * @param is
 	 *            Input stream, from which we read JSON data.
 	 * @param cl
@@ -72,6 +62,8 @@ public class MapperWrapper {
 	 * deserializing JSON data that are stored insite the byte array passed as
 	 * input.
 	 * 
+	 * @param <T>
+	 *            Type of the specified class.
 	 * @param bts
 	 *            Byte array of JSON data.
 	 * @param cl
@@ -94,6 +86,8 @@ public class MapperWrapper {
 	 * Creates a new class of type supplied as parameter. The class is created by
 	 * deserializing JSON data from input string.
 	 * 
+	 * @param <T>
+	 *            Type of the specified class.
 	 * @param input
 	 *            Input string with JSON data.
 	 * @param cl

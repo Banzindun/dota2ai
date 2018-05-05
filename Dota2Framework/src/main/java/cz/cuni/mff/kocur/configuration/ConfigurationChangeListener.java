@@ -8,7 +8,7 @@ package cz.cuni.mff.kocur.configuration;
 public interface ConfigurationChangeListener {
 	
 	/**
-	 * Should be called after the configuration changed. </br>
+	 * Should be called after the configuration changed.
 	 * The class that implements this interface should change values that are affected by the change in this method if possible.
 	 */
 	public void configurationChanged();

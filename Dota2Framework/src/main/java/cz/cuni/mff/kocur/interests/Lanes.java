@@ -10,12 +10,26 @@ import cz.cuni.mff.kocur.base.IndentationStringBuilder;
 import cz.cuni.mff.kocur.base.Location;
 import cz.cuni.mff.kocur.world.Creep;
 
+/**
+ * Class that represents a object, that holds all the lanes.
+ * 
+ * @author kocur
+ *
+ */
 public class Lanes {
-
+	/**
+	 * Logger registered for this class.
+	 */
 	private static final Logger logger = LogManager.getLogger(Lanes.class);
 
+	/**
+	 * Map of dire lanes addressed by their type.
+	 */
 	protected HashMap<Lane.TYPE, Lane> direLanes = new HashMap<>();
 
+	/**
+	 * Map of radiant lanes addressed by their type.
+	 */
 	protected HashMap<Lane.TYPE, Lane> radiantLanes = new HashMap<>();
 
 	public Lanes() {
@@ -28,6 +42,16 @@ public class Lanes {
 		radiantLanes.put(Lane.TYPE.TOP, new Lane(Lane.TYPE.TOP, Team.RADIANT));
 	}
 
+	/**
+	 * Adds a lane to the lanes.
+	 * 
+	 * @param team
+	 *            Team of the lane.
+	 * @param type
+	 *            Type of the lane.
+	 * @param lane
+	 *            The lane.
+	 */
 	public void addLane(int team, Lane.TYPE type, Lane lane) {
 		if (team == Team.DIRE)
 			direLanes.put(type, lane);
@@ -38,6 +62,14 @@ public class Lanes {
 		}
 	}
 
+	/**
+	 * 
+	 * @param team
+	 *            Team number.
+	 * @param type
+	 *            Type of the lane.
+	 * @return Returns lane of given team and type.
+	 */
 	public Lane getLane(int team, Lane.TYPE type) {
 		if (team == Team.DIRE)
 			return direLanes.get(type);
@@ -47,14 +79,29 @@ public class Lanes {
 		logger.warn("No lane found for team and type: " + team + " " + type);
 		return null;
 	}
-	
-	public Lane[] getLanes(int team) { 
+
+	/**
+	 * 
+	 * @param team
+	 *            Team number.
+	 * @return Returns all the stored lanes.
+	 */
+	public Lane[] getLanes(int team) {
 		if (team == Team.DIRE)
 			return direLanes.values().toArray(new Lane[direLanes.size()]);
 		else
 			return radiantLanes.values().toArray(new Lane[radiantLanes.size()]);
 	}
 
+	/**
+	 * Sorts towers and path corners on the lanes using specified radiant and dire
+	 * bases.
+	 * 
+	 * @param radiantBase
+	 *            Radiant ancient (Fort).
+	 * @param direBase
+	 *            Dire ancient (Fort).
+	 */
 	public void sort(Fort radiantBase, Fort direBase) {
 		for (Lane l : radiantLanes.values()) {
 			l.sort(radiantBase);
@@ -96,9 +143,16 @@ public class Lanes {
 		}
 	}
 
+	/**
+	 * Should be called after a tower was destroyed. Removes the tower from on of
+	 * the lanes.
+	 * 
+	 * @param entid
+	 *            Id of the tower.
+	 */
 	public void towerDestroyed(int entid) {
 		boolean destroyed = false;
-		
+
 		for (Lane l : radiantLanes.values()) {
 			destroyed = destroyed || l.towerWithIdDestroyed(entid);
 		}
@@ -106,22 +160,37 @@ public class Lanes {
 		for (Lane l : direLanes.values()) {
 			destroyed = destroyed || l.towerWithIdDestroyed(entid);
 		}
-		
+
 		if (!destroyed) {
 			logger.fatal("Tower was destroyed, but wasn found in interests. (and couldn't be deleted there)");
 		}
 	}
 
+	/**
+	 * Returns a lane, that is closest to given location.
+	 * 
+	 * @param l
+	 *            Location.
+	 * @return Returns a lane, that is closest to given location.
+	 */
 	public Lane getClosestLane(Location l) {
 		Lane l1 = getClosestLane(Team.DIRE, l);
 		Lane l2 = getClosestLane(Team.RADIANT, l);
-		
+
 		if (l1.getDistanceFromLane(l) > l2.getDistanceFromLane(l))
 			return l1;
-		else 
+		else
 			return l2;
 	}
 
+	/**
+	 * 
+	 * @param team
+	 *            Team number.
+	 * @param l
+	 *            The location.
+	 * @return Returns a lane of given team, that is close to specified location.
+	 */
 	public Lane getClosestLane(int team, Location l) {
 		if (team == Team.DIRE)
 			return direLanes.values().stream()
@@ -132,20 +201,37 @@ public class Lanes {
 				.min((l1, l2) -> Double.compare(l1.getDistanceFromLane(l), l2.getDistanceFromLane(l))).get();
 	}
 
+	/**
+	 * Adds a lane creep to the lane, that is closest to him.
+	 * 
+	 * @param team
+	 *            Team number.
+	 * @param creep
+	 *            Creep to be added.
+	 */
 	public void addCreep(int team, Creep creep) {
 		Lane l = getClosestLane(team, creep);
 		l.addCreep(creep);
 	}
-	
+
+	/**
+	 * Removes a creep from one of the lanes.
+	 * 
+	 * @param team
+	 *            Team number.
+	 * @param creep
+	 *            Creep to be removed.
+	 */
 	public void removeCreep(int team, Creep creep) {
 		boolean removed = false;
-		
+
 		for (Lane l : getLanes(team)) {
 			removed = removed || l.removeCreep(creep.getEntid());
 		}
-		
+
 		if (!removed) {
-			logger.fatal("Unable to remove creep that died from lane creeps! It probably wasn't inserted into one of the lanes, or died multiple times.");
+			logger.fatal(
+					"Unable to remove creep that died from lane creeps! It probably wasn't inserted into one of the lanes, or died multiple times.");
 		}
 	}
 

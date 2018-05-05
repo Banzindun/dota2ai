@@ -19,24 +19,24 @@ import org.apache.logging.log4j.Logger;
 import cz.cuni.mff.kocur.base.Colors;
 import cz.cuni.mff.kocur.base.GraphicResources;
 import cz.cuni.mff.kocur.base.Pair;
-import cz.cuni.mff.kocur.configuration.HeroConfiguration;
 import cz.cuni.mff.kocur.configuration.ConfigurationChangeListener;
 import cz.cuni.mff.kocur.configuration.ConfigurationLoader;
-import cz.cuni.mff.kocur.configuration.ConfigurationTestResult;
 import cz.cuni.mff.kocur.configuration.FrameworkConfiguration;
+import cz.cuni.mff.kocur.configuration.HeroConfiguration;
 import cz.cuni.mff.kocur.exceptions.ConfigurationTestFailureException;
 import cz.cuni.mff.kocur.exceptions.LoadingError;
 import cz.cuni.mff.kocur.interests.Team;
 
 /**
- * This is a JPanel that containts Swing components, that let the user create and manage agent configuration.
+ * This is a JPanel that containts Swing components, that let the user create
+ * and manage agent configuration.
  * 
  * @author Banzindun
  *
  */
 public class MainAgentConfigurationEntry extends WindowedJPanel implements ConfigurationChangeListener {
 	/**
-	 * Generated serial version id. 
+	 * Generated serial version id.
 	 */
 	private static final long serialVersionUID = -7215256965977626755L;
 
@@ -80,17 +80,17 @@ public class MainAgentConfigurationEntry extends WindowedJPanel implements Confi
 	 * Agent hero's miniicon.
 	 */
 	private JLabel miniicon = new JLabel();
-	
+
 	/**
 	 * Label with agent's id.
 	 */
 	private JLabel agentsIdLabel = new JLabel();
-	
+
 	/**
 	 * Map of important labels, so that they can be rewritten.
 	 */
 	private HashMap<String, JLabel> importantLabels = new HashMap<>();
-	
+
 	/**
 	 * Number of team of the supplied agent.
 	 */
@@ -100,6 +100,7 @@ public class MainAgentConfigurationEntry extends WindowedJPanel implements Confi
 	 * Constructor that reads the supplied file and loads the configuration.
 	 * 
 	 * @param file
+	 *            File from which we create the entry.
 	 */
 	public MainAgentConfigurationEntry(File file) {
 		super();
@@ -132,7 +133,7 @@ public class MainAgentConfigurationEntry extends WindowedJPanel implements Confi
 	}
 
 	/**
-	 * Displays information to {@link #informationPanel} for failed loading.
+	 * Displays information to panel for failed loading.
 	 * 
 	 * @param msg
 	 *            message obtained from test of the configuration
@@ -160,41 +161,40 @@ public class MainAgentConfigurationEntry extends WindowedJPanel implements Confi
 	 */
 	private void loadPassed() {
 		logger.info("Successfully loaded bot cofiguration from: " + filePath);
-		
+
 		// Set the team number.
 		teamNumber = Team.parseTeam(botCfg.getConfigValue("team"));
 
 		displayPassedLoad();
 	}
-	
+
 	/**
 	 * Displays information, if the load passed.
 	 */
-	private void  displayPassedLoad() {
+	private void displayPassedLoad() {
 		// Load important fields
 		LinkedList<Pair<String, String>> important;
 		important = botCfg.getImportantValues();
-		
+
 		// Setup constraints for importantFields JPanel
 		GridBagConstraints _gbc = getInformationConstraints();
 
 		buildHeroIconPanel();
-		
+
 		body.add(botIdPanel, gbc);
-		
-		
+
 		_gbc.insets = new Insets(0, 0, 0, 0);
 
 		// Add the important fields
 		for (Pair<String, String> s : important) {
 			JLabel panel = new JLabel(s.getValue());
 			importantLabels.put(s.getKey(), panel);
-			
+
 			JPanel wrap = new JPanel();
 			wrap.add(createColoredLabel(s.getKey() + ": ", Colors.ORANGE));
 			wrap.add(new JLabel(s.getValue()));
 			importantFields.add(wrap, _gbc);
-					
+
 			_gbc.gridx++;
 
 			if (_gbc.gridx == 3) {
@@ -218,13 +218,9 @@ public class MainAgentConfigurationEntry extends WindowedJPanel implements Confi
 	 * Builds panel with agent's hero icon.
 	 */
 	private void buildHeroIconPanel() {
-		GridBagConstraints _gbc = ConstraintsBuilder.build()
-				.gridxy(0)
-				.weightxy(1,0)
-				.fill(GridBagConstraints.BOTH)
-				.insets(0,5,5,5)				
-				.get();
-		
+		GridBagConstraints _gbc = ConstraintsBuilder.build().gridxy(0).weightxy(1, 0).fill(GridBagConstraints.BOTH)
+				.insets(0, 5, 5, 5).get();
+
 		// Load and add the bot icon
 		String botName = botCfg.getConfigValue("champion");
 		miniicon.setIcon(GraphicResources.getBotIcon(botName));
@@ -233,13 +229,16 @@ public class MainAgentConfigurationEntry extends WindowedJPanel implements Confi
 		_gbc.insets = new Insets(0, 5, 5, 5);
 		_gbc.gridy++;
 		agentsIdLabel.setText(botName.toUpperCase());
-		botIdPanel.add(agentsIdLabel, _gbc);		
+		botIdPanel.add(agentsIdLabel, _gbc);
 	}
 
 	/**
 	 * Creates colored label.
-	 * @param text The label text. 
-	 * @param c Color of the label.
+	 * 
+	 * @param text
+	 *            The label text.
+	 * @param c
+	 *            Color of the label.
 	 * @return Returns colored JLabel.
 	 */
 	private JLabel createColoredLabel(String text, Color c) {
@@ -250,7 +249,9 @@ public class MainAgentConfigurationEntry extends WindowedJPanel implements Confi
 
 	/**
 	 * Updates information from important fields.
-	 * @param important Important fields.
+	 * 
+	 * @param important
+	 *            Important fields.
 	 */
 	private void updateInformation(LinkedList<Pair<String, String>> important) {
 		// Load and add the bot icon
@@ -258,16 +259,15 @@ public class MainAgentConfigurationEntry extends WindowedJPanel implements Confi
 		miniicon.setIcon(GraphicResources.getBotIcon(botName));
 
 		agentsIdLabel.setText(botName.toUpperCase());
-		
 
 		// Add the important fields
 		for (Pair<String, String> s : important) {
-			
+
 			if (importantLabels.containsKey(s.getKey())) {
 				JLabel panel = importantLabels.get(s.getKey());
 				panel.setText(s.getValue());
-				
-			} else{
+
+			} else {
 				//
 			}
 		}
@@ -291,33 +291,34 @@ public class MainAgentConfigurationEntry extends WindowedJPanel implements Confi
 
 	/**
 	 * Loads the hero's configuration from filePath.
+	 * 
 	 * @return Returns the loaded hero configuration or null.
 	 */
 	public HeroConfiguration loadConfiguration() {
 		logger.info("Loading configuration from: " + filePath);
 
 		parseConfiguration();
-		
+
 		if (botCfg == null) {
 			logger.error("Configuration could not be loaded.");
 			return null;
 		}
-		
+
 		try {
 			botCfg.test();
-			
+
 			// If test passed ..
 			FrameworkConfiguration cfg = FrameworkConfiguration.getInstance();
-			
+
 			if (cfg.containsBotCfg(botCfg.getName())) {
 				logger.error("Bot with same id already exists.");
 			} else {
 				loadPassed();
 				return botCfg;
 			}
-			
-		} catch(ConfigurationTestFailureException ex) {
-			logger.error("Failed configuration: " + ex.getMessage());
+
+		} catch (ConfigurationTestFailureException ex) {
+			loadFailed(ex.getMessage());
 		}
 
 		return null;
@@ -330,7 +331,7 @@ public class MainAgentConfigurationEntry extends WindowedJPanel implements Confi
 			if (!FrameworkConfiguration.getInstance().removeBotCfg(botCfg)) {
 				logger.warn("Unable to remove bot configuration with name:" + botCfg.getName());
 			}
-			
+
 			botCfg.removeChangeListener(this);
 		}
 	}
@@ -344,20 +345,20 @@ public class MainAgentConfigurationEntry extends WindowedJPanel implements Confi
 	}
 
 	@Override
-	public void configurationChanged() {		
+	public void configurationChanged() {
 		logger.info("CONFIGURATION CHANGED!!");
-		
-		int t= Team.parseTeam(botCfg.getConfigValue("team"));
+
+		int t = Team.parseTeam(botCfg.getConfigValue("team"));
 		if (this.teamNumber != t) {
 			updateInformation(botCfg.getImportantValues());
-			
+
 			parent.removeEntry(this);
 			parent.getOtherTeamConfiguration().addEntry(this);
 		} else {
 			updateInformation(botCfg.getImportantValues());
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @return Returns the team number of this entry.
@@ -365,7 +366,7 @@ public class MainAgentConfigurationEntry extends WindowedJPanel implements Confi
 	public int getTeam() {
 		return teamNumber;
 	}
-	
+
 	/**
 	 * Returns parent of this entry.
 	 */
@@ -375,7 +376,9 @@ public class MainAgentConfigurationEntry extends WindowedJPanel implements Confi
 
 	/**
 	 * Sets a new parent.
-	 * @param parent New parent.
+	 * 
+	 * @param parent
+	 *            New parent.
 	 */
 	public void setParent(MainAgentConfiguration parent) {
 		this.parent = parent;

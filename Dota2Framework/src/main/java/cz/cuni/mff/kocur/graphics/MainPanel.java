@@ -12,73 +12,70 @@ import cz.cuni.mff.kocur.configuration.FrameworkConfiguration;
 
 /**
  * Class responsible for layout of the main tab.
+ * 
  * @author Banzindun
  *
  */
 public class MainPanel extends JPanel {
 
 	/**
-	 * Generated serial version id. 
+	 * Generated serial version id.
 	 */
 	private static final long serialVersionUID = -5114537895988531474L;
 
 	/**
-	 * Global configuration instance. 
+	 * Global configuration instance.
 	 */
 	public static FrameworkConfiguration cfg = FrameworkConfiguration.getInstance();
-	
+
 	/**
 	 * Logger registered for this class.
 	 */
 	public static Logger logger = LogManager.getLogger(MainPanel.class.getName());
-	
+
 	/**
 	 * Body section.
 	 */
 	private MainBody body = new MainBody();
-	
+
 	/**
 	 * GridBagConstraints to define styling.
 	 */
 	private GridBagConstraints gbc;
-	
 
 	/**
 	 * Function for defining mainPanel.
 	 */
 	public MainPanel() {
-    	super();
-    }
-	
+		super();
+	}
+
 	/**
 	 * Setups the main panel.
 	 */
 	public void setup() {
 		this.setLayout(new GridBagLayout());
-		
+
 		// Set GBC
-    	gbc = setupGbc();
-    	    	
-    	// Build body
-    	body.build();                	    	
-    	
+		gbc = setupGbc();
+
+		// Build body
+		body.build();
+
 		// And add created body and footer to this
-    	gbc.fill = GridBagConstraints.BOTH;
+		gbc.fill = GridBagConstraints.BOTH;
 		gbc.weighty = 1;
 		gbc.gridy++;
 		this.add(body, gbc);
-   	}
-	
+	}
+
 	/**
 	 * Initialization of GridBagConstraints - sets HORIZONTAL fill and NORTH anchor.
+	 * 
+	 * @return Returns the constraints.
 	 */
 	private GridBagConstraints setupGbc() {
-    	return ConstraintsBuilder.build()
-    			.gridxy(0)
-    			.fill(GridBagConstraints.HORIZONTAL)
-    			.anchor(GridBagConstraints.NORTH)
-    			.weightxy(1,0)
-    			.insets(10,50,10,50)
-    			.get();
+		return ConstraintsBuilder.build().gridxy(0).fill(GridBagConstraints.HORIZONTAL).anchor(GridBagConstraints.NORTH)
+				.weightxy(1, 0).insets(10, 50, 10, 50).get();
 	}
 }

@@ -16,7 +16,6 @@ import cz.cuni.mff.kocur.interests.Lane.TYPE;
 import cz.cuni.mff.kocur.world.Creep;
 import cz.cuni.mff.kocur.world.GridBase;
 import cz.cuni.mff.kocur.world.GridSystem;
-import cz.cuni.mff.kocur.world.Hero;
 import cz.cuni.mff.kocur.world.Item;
 import cz.cuni.mff.kocur.world.Tower;
 
@@ -87,8 +86,11 @@ public class InterestsBase extends GridSystem implements FrameworkEventListener 
 
 	/**
 	 * Loads the interests base using the interests points loader.
+	 * 
 	 * @param json
+	 *            String that represents a json.
 	 * @throws LoadingError
+	 *             Thrown if the json couldn't be parsed.
 	 */
 	public static void load(String json) throws LoadingError {
 
@@ -206,7 +208,9 @@ public class InterestsBase extends GridSystem implements FrameworkEventListener 
 
 	/**
 	 * Respawns the runes if the time is right.
-	 * @param lastRuneRespawn Time of last rune respawn.
+	 * 
+	 * @param lastRuneRespawn
+	 *            Time of last rune respawn.
 	 */
 	public void respawnRunes(float lastRuneRespawn) {
 		for (Rune r : runes) {
@@ -221,7 +225,10 @@ public class InterestsBase extends GridSystem implements FrameworkEventListener 
 
 	/**
 	 * Respawns healers if the time is right.
-	 * @param lastRuneRespawn Time of last healer respawn.
+	 * 
+	 * @param time
+	 *            Time of last healer respawn.
+	 * @return Returns true if some healers respawned.
 	 */
 	public boolean respawnHealers(float time) {
 		return getRadiantJungle().respawnHealers(time);
@@ -277,8 +284,9 @@ public class InterestsBase extends GridSystem implements FrameworkEventListener 
 
 	/**
 	 * 
-	 * @param l Location.
-	 * @return Returns a camp, that is nearest ot given location.
+	 * @param l
+	 *            Location.
+	 * @return Returns a camp, that is near the given location.
 	 */
 	public Camp getNearestCamp(Location l) {
 		Camp camp = null;
@@ -296,12 +304,22 @@ public class InterestsBase extends GridSystem implements FrameworkEventListener 
 		return camp;
 	}
 
+	/**
+	 * 
+	 * @return Returns Lanes object.
+	 */
 	public Lanes getLanes() {
 		return lanes;
 	}
 
-	public Rune getNearestRune(Hero hero) {
-		return runes.stream().min((r1, r2) -> Double.compare(GridBase.distance(r1, hero), GridBase.distance(r2, hero)))
+	/**
+	 * 
+	 * @param loc
+	 *            Location.
+	 * @return Returns a rune, that is closes to given location.
+	 */
+	public Rune getNearestRune(Location loc) {
+		return runes.stream().min((r1, r2) -> Double.compare(GridBase.distance(r1, loc), GridBase.distance(r2, loc)))
 				.get();
 	}
 
@@ -379,6 +397,12 @@ public class InterestsBase extends GridSystem implements FrameworkEventListener 
 		return shops;
 	}
 
+	/**
+	 * 
+	 * @param team
+	 *            Team number.
+	 * @return Returns given team§s jungle.
+	 */
 	public Jungle getJungle(int team) {
 		if (team == Team.RADIANT)
 			return getRadiantJungle();
@@ -386,10 +410,24 @@ public class InterestsBase extends GridSystem implements FrameworkEventListener 
 
 	}
 
+	/**
+	 * 
+	 * @param team
+	 *            Team number.
+	 * @param type
+	 *            Type of the lane.
+	 * @return Returns lane that belongs to give team and is of the specified type.
+	 */
 	public Lane getLane(int team, TYPE type) {
 		return lanes.getLane(team, type);
 	}
 
+	/**
+	 * Tries to remove creep from on of the camps inside the jungle.
+	 * 
+	 * @param creep
+	 *            The creep to be removed.
+	 */
 	public void removeCreepFromJungles(Creep creep) {
 		Camp c = getNearestCamp(creep);
 		if (!c.removeCreep(creep.getEntid())) {

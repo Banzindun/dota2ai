@@ -7,18 +7,27 @@ import org.apache.logging.log4j.Logger;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import cz.cuni.mff.kocur.agent.AgentParameters;
+import cz.cuni.mff.kocur.agent.ControllersManager;
+import cz.cuni.mff.kocur.agent.EntityParameter;
+import cz.cuni.mff.kocur.agent.TeamContext;
 import cz.cuni.mff.kocur.base.Colors;
 import cz.cuni.mff.kocur.base.IndentationStringBuilder;
-import cz.cuni.mff.kocur.bot.AgentParameters;
-import cz.cuni.mff.kocur.bot.ControllersManager;
-import cz.cuni.mff.kocur.bot.EntityParameter;
-import cz.cuni.mff.kocur.bot.TeamContext;
 import cz.cuni.mff.kocur.events.GameEvent;
 import cz.cuni.mff.kocur.events.GameEventBuilder;
 import cz.cuni.mff.kocur.events.ListenersManager;
 import cz.cuni.mff.kocur.server.TimeManager;
 
+/**
+ * Class that represents a building.
+ * @author kocur
+ *
+ */
 public class Building extends StaticEntity  {
+	
+	/**
+	 * Logger registered for Building class.
+	 */
 	private static final Logger logger = LogManager.getLogger(Building.class);
 	
 	/**

@@ -95,7 +95,7 @@ public class Shops {
 
 	/**
 	 * Paints the shop to supplied graphics.
-	 * @param g
+	 * @param g Graphics.
 	 */
 	public void paint(Graphics2D g) {
 		radiant.paint(g);

@@ -5,20 +5,26 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import cz.cuni.mff.kocur.base.CustomStringBuilder;
 import cz.cuni.mff.kocur.base.IndentationStringBuilder;
 
+/**
+ * Class that represents hero's inventory. Inventory is split in 3 parts.
+ * INVENTORY, BACKPACK, STASH. This class supplies functions to manage all of
+ * the inventory types and to look at the inventory as one object.
+ * 
+ * @author kocur
+ *
+ */
 public class Inventory {
 	/**
 	 * Logger registered for inventory class.
 	 */
 	private static final Logger logger = LogManager.getLogger(Inventory.class.getName());
 
-	public static final int INVENTORY = 0 ;
+	public static final int INVENTORY = 0;
 	public static final int BACKPACK = 1;
 	public static final int STASH = 3;
-	
-	
+
 	/**
 	 * Represents player's inventory. Slots 0-5
 	 */
@@ -33,7 +39,7 @@ public class Inventory {
 	 * Represents a player's stash. Slots 9-14
 	 */
 	protected ArrayList<Item> stash = new ArrayList<>(6);
-	
+
 	public static final int inventorySlotMax = 5;
 	public static final int inventorySlotMin = 0;
 	public static final int backpackSlotMin = 6;
@@ -41,14 +47,32 @@ public class Inventory {
 	public static final int stashSlotMin = 9;
 	public static final int stashSlotMax = 14;
 
+	/**
+	 * 
+	 * @param slot
+	 *            Slot index.
+	 * @return Returns true, if the slot is inventory slot.
+	 */
 	public static boolean isInventorySlot(int slot) {
 		return slot >= inventorySlotMin && slot <= inventorySlotMax;
 	}
 
+	/**
+	 * 
+	 * @param slot
+	 *            Slot index.
+	 * @return Returns true, if the slot is stash slot.
+	 */
 	public static boolean isStashSlot(int slot) {
 		return slot >= stashSlotMin && slot <= stashSlotMax;
 	}
 
+	/**
+	 * 
+	 * @param slot
+	 *            Slot index.
+	 * @return Returns true, if the slot is backpack slot.
+	 */
 	public static boolean isBackpackSlot(int slot) {
 		return slot >= backpackSlotMin && slot <= backpackSlotMax;
 	}
@@ -95,37 +119,54 @@ public class Inventory {
 		return item;
 	}
 
+	/**
+	 * 
+	 * @return Returns items inside the backpack.
+	 */
 	public ArrayList<Item> getBackpack() {
 		return backpack;
 	}
 
+	/**
+	 * 
+	 * @return Returns items inside the main inventory.
+	 */
 	public ArrayList<Item> getInventory() {
 		return inventory;
 	}
 
+	/**
+	 * 
+	 * @return Returns items inside the stash.
+	 */
 	public ArrayList<Item> getStash() {
 		return stash;
 	}
-	
-	public ArrayList<Item> getAllItems(){
+
+	/**
+	 * 
+	 * @return Returns list of all items from all inventory types.
+	 */
+	public ArrayList<Item> getAllItems() {
 		ArrayList<Item> items = new ArrayList<>();
-		
+
 		items.addAll(inventory);
 		items.addAll(backpack);
 		items.addAll(stash);
-		
+
 		return items;
 	}
 
 	/**
 	 * 
-	 * @param name Name of the item.
-	 * @return Returns index of item with given name in inventory(inv, backpack, stash). Returns -1 if it
-	 *         wasn't found.
+	 * @param name
+	 *            Name of the item.
+	 * @return Returns index of item with given name in inventory(inv, backpack,
+	 *         stash). Returns -1 if it wasn't found.
 	 */
 	public int findInInventory(String name) {
 		Item item = ItemsBase.getItem(name);
-		
+
 		int index = findInArray(stash, item);
 		if (index != -1) {
 			return index + stashSlotMin;
@@ -138,11 +179,20 @@ public class Inventory {
 
 		index = findInArray(backpack, item);
 		if (index != -1)
-			 return index + backpackSlotMin;
-		
+			return index + backpackSlotMin;
+
 		return -1;
 	}
 
+	/**
+	 * Finds the specified item's idnex inside the array of items.
+	 * 
+	 * @param arr
+	 *            Array of items.
+	 * @param item
+	 *            The item we are searching for.
+	 * @return Returns the item's index.
+	 */
 	private int findInArray(ArrayList<Item> arr, Item item) {
 		return arr.indexOf(item);
 	}
@@ -151,13 +201,13 @@ public class Inventory {
 		IndentationStringBuilder builder = new IndentationStringBuilder();
 		builder.appendLine("Inventory: ");
 		builder.indent();
-		
+
 		builder.append("Main: [");
 		for (Item i : inventory) {
 			if (i == null) {
 				builder.append("_");
 			} else
-			builder.append(i.toString() + ",");
+				builder.append(i.toString() + ",");
 		}
 		builder.appendLine("]");
 
@@ -166,66 +216,97 @@ public class Inventory {
 			if (i == null) {
 				builder.append("_");
 			} else
-			builder.append(i + ",");
+				builder.append(i + ",");
 		}
 		builder.appendLine("]");
-		
+
 		builder.append("Stash: [");
-		
+
 		for (Item i : stash) {
 			if (i == null) {
 				builder.append("_");
 			} else
-			builder.append(i + ",");
+				builder.append(i + ",");
 		}
-		
+
 		return builder.toString();
 	}
 
-	public int findInInventory(Item c) {
-		if (c == null) {
+	/**
+	 * Finds given item in inventory.
+	 * 
+	 * @param i
+	 *            Item.
+	 * @return Returns index of the given item.
+	 */
+	public int findInInventory(Item i) {
+		if (i == null) {
 			logger.warn("Item I received is null.");
 			return -1;
 		}
-		
-		//logger.debug("Looking for item with name: " + c.getName());
-		
-		return findInInventory(c.getName());
+
+		// logger.debug("Looking for item with name: " + c.getName());
+
+		return findInInventory(i.getName());
 	}
-	
+
+	/**
+	 * 
+	 * @param type
+	 *            Type of the inventory. (stash, backpack..)
+	 * @return Returns the inventory of given type.
+	 */
 	public ArrayList<Item> getInventory(int type) {
-		if (type == INVENTORY) return inventory;
-		else if (type == STASH) return stash;
-		
-		return backpack;		
+		if (type == INVENTORY)
+			return inventory;
+		else if (type == STASH)
+			return stash;
+
+		return backpack;
 	}
-	
+
+	/**
+	 * 
+	 * @param type
+	 *            Type of the inventory. (stash, backpack..)
+	 * @return Returns count of empty slots inside the inventory of given type.
+	 */
 	public int countEmptySlots(int type) {
 		int count = 0;
-		
+
 		for (Item i : getInventory(type))
-			if (i == null) count++;
-		
+			if (i == null)
+				count++;
+
 		return count;
 	}
-	
+
+	/**
+	 * 
+	 * @param type
+	 *            Type of the inventory. (stash, backpack..)
+	 * @return Returns count of full slots inside the inventory of given type.
+	 */
 	public int countFullSlots(int type) {
 		return getInventory(type).size() - countEmptySlots(type);
 	}
 
 	/**
-	 * Counts items with same name as passed item inside the whole inventory (stash, backpack ..).
-	 * @param nextItem Item we are counting.
+	 * Counts items with same name as passed item inside the whole inventory (stash,
+	 * backpack ..).
+	 * 
+	 * @param nextItem
+	 *            Item we are counting.
 	 * @return Returns the count of items.
 	 */
 	public int countItems(Item nextItem) {
 		int counter = 0;
-		
+
 		for (Item i : getAllItems()) {
 			// Item not found? (empty slot)
 			if (i == null)
 				continue;
-			
+
 			// We look for item with the same name
 			if (i.equals(nextItem)) {
 				counter += i.getCount();
@@ -235,31 +316,33 @@ public class Inventory {
 				counter += countInComponents(nextItem, i);
 			}
 		}
-		
+
 		return counter;
 	}
 
 	/**
 	 * Recursively counts all the components with the given name.
-	 * @param nextItem Item we are looking for.
-	 * @param item Out current item, where we start looking.
-	 * @return Returns count of items in the items "tree". 
+	 * 
+	 * @param nextItem
+	 *            Item we are looking for.
+	 * @param item
+	 *            Out current item, where we start looking.
+	 * @return Returns count of items in the items "tree".
 	 */
 	private int countInComponents(Item nextItem, Item item) {
 		if (item.getName().equals(nextItem.getName()))
 			return item.getCount();
-		
+
 		if (item.hasComponents() == false)
 			return 0;
-		
+
 		// Else the item has components
 		int counter = 0;
 		for (Item i : item.getComponents()) {
-			counter += countInComponents(nextItem, i); 
+			counter += countInComponents(nextItem, i);
 		}
-		
+
 		return counter;
 	}
-	
-	
+
 }

@@ -21,7 +21,8 @@ public class ServerCommand implements Command{
 		PAUSE,	// Pause the game.
 		UNPAUSE,	// Unpause the game.
 		CHAT,	// Chat.
-	    GAME_COMMANDS	// Game commands.	
+	    GAME_COMMANDS, // Game commands.
+	    RESET // RESET THE GAME	
 	}
 
 	/**

@@ -81,7 +81,6 @@ public class ConfigurationPanel extends BuildableJPanel {
 	/**
 	 * Loads configurations of bots that are saved in botConfigurations pane.
 	 * 
-	 * @throws ComponentNotBuiltException
 	 */
 	@Override
 	public void build() {
@@ -171,8 +170,11 @@ public class ConfigurationPanel extends BuildableJPanel {
 	}
 
 	/**
-	 * Checks if the configurations are different from the ones that we are representing. 
-	 * @param botConfigurations List of bot configurations.
+	 * Checks if the configurations are different from the ones that we are
+	 * representing.
+	 * 
+	 * @param botConfigurations
+	 *            List of bot configurations.
 	 * @return Returns true if configurations changed.
 	 */
 	private boolean cfgChanged(ArrayList<HeroConfiguration> botConfigurations) {
@@ -197,8 +199,10 @@ public class ConfigurationPanel extends BuildableJPanel {
 	}
 
 	/**
-	 * Checks if the framework configuration is different from the one we are displaying.
-	 * @return Returns true if the framework configuration changed. 
+	 * Checks if the framework configuration is different from the one we are
+	 * displaying.
+	 * 
+	 * @return Returns true if the framework configuration changed.
 	 */
 	private boolean frameworkCfgChanged() {
 		FrameworkConfiguration fcfg = FrameworkConfiguration.getInstance();

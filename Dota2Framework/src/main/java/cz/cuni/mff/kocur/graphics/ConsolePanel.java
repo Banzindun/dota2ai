@@ -302,7 +302,8 @@ public class ConsolePanel extends BuildableJPanel implements Action, Controllabl
 	 * Checks if passed string is inside the local commands. (these are commands,
 	 * that are handled by console panel itself, without passing them)
 	 * 
-	 * @param txt Command name that we are looking for.
+	 * @param txt
+	 *            Command name that we are looking for.
 	 * @return Returns true if the command is inside the local commands.
 	 */
 	public boolean inLocalCommands(String txt) {
@@ -356,7 +357,6 @@ public class ConsolePanel extends BuildableJPanel implements Action, Controllabl
 
 	/**
 	 * Clears the console.
-	 * @throws BadLocationException 
 	 */
 	private void clearConsole() {
 		consoleTextPane.setText("");

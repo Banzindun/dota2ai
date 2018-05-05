@@ -4,9 +4,10 @@ import java.awt.Component;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 
-import cz.cuni.mff.kocur.dota2AIFramework.App;
-
 import org.apache.logging.log4j.Logger;
+
+import cz.cuni.mff.kocur.framework.App;
+
 import org.apache.logging.log4j.LogManager;
 
 /**

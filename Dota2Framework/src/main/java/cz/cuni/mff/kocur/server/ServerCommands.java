@@ -35,6 +35,19 @@ public final class ServerCommands {
 			command = COMMAND_CODE.UNPAUSE;
 		}
 	}
+	
+	/**
+	 * Class that represents a reset command. This command should be sent if the
+	 * framework wants to restart the game.
+	 * 
+	 * @author kocur
+	 *
+	 */
+	public static class Reset extends ServerCommand {
+		public Reset() {
+			command = COMMAND_CODE.RESET;
+		}
+	}
 
 	/**
 	 * Class that represents a command, that sends a array of commands to server. 

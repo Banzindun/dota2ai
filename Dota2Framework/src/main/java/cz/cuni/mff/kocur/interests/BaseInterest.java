@@ -1,11 +1,10 @@
 package cz.cuni.mff.kocur.interests;
 
+import cz.cuni.mff.kocur.agent.AgentParameters;
+import cz.cuni.mff.kocur.agent.InterestParameter;
 import cz.cuni.mff.kocur.base.Location;
-import cz.cuni.mff.kocur.bot.AgentParameters;
-import cz.cuni.mff.kocur.bot.InterestParameter;
 import cz.cuni.mff.kocur.world.GridBase;
 import cz.cuni.mff.kocur.world.GridSystem;
-import cz.cuni.mff.kocur.world.WorldManager;
 
 /**
  * Class that represents a BaseInterest. This class stores informations, that
@@ -30,7 +29,7 @@ public class BaseInterest extends Location {
 	 * True if the interest is active (alive ..).
 	 */
 	protected boolean active = false;
-	
+
 	/**
 	 * X grid coordinates. (so that we don't need to calculate them all the time)
 	 */
@@ -44,11 +43,14 @@ public class BaseInterest extends Location {
 	public BaseInterest() {
 
 	}
-	
+
 	/**
-	 * Constructor. 
-	 * @param x2 X coordinate.
-	 * @param y2 Y coordinate.
+	 * Constructor.
+	 * 
+	 * @param x2
+	 *            X coordinate.
+	 * @param y2
+	 *            Y coordinate.
 	 */
 	public BaseInterest(double x2, double y2) {
 		this.x = x2;
@@ -86,7 +88,8 @@ public class BaseInterest extends Location {
 	 * Returns the InterestParameter object that corresponds to this interests type.
 	 * 
 	 * @param params
-	 * @return
+	 *            Agent parameters.
+	 * @return Returns interest parameters, that math the class of this interest.
 	 */
 	public InterestParameter getParameter(AgentParameters params) {
 		InterestParameter p = params.getInterestParameter(BaseInterest.class);
@@ -114,7 +117,7 @@ public class BaseInterest extends Location {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-	
+
 	/**
 	 * 
 	 * @return Returns the in-game model's name.
@@ -125,7 +128,9 @@ public class BaseInterest extends Location {
 
 	/**
 	 * Sets a model name.
-	 * @param modelName New model name.
+	 * 
+	 * @param modelName
+	 *            New model name.
 	 */
 	public void setModelName(String modelName) {
 		this.modelName = modelName;

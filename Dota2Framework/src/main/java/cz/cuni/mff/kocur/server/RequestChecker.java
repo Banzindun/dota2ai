@@ -10,6 +10,13 @@ import org.apache.logging.log4j.Logger;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+/**
+ * Class that checks, that the incoming request is correct. Meaning it has the
+ * correct type of information inside, it is a POST etc.
+ * 
+ * @author kocur
+ *
+ */
 public class RequestChecker {
 	/**
 	 * Logger for RequestChecker class.
@@ -92,8 +99,10 @@ public class RequestChecker {
 	 * address is wrong, the response is set as failed.
 	 * 
 	 * @param request
+	 *            HttpServletRequest request.
 	 * @param res
-	 * @return
+	 *            Response on request.
+	 * @return Returns array of URI fields, that might be useful.
 	 */
 	public static String[] getURIparams(HttpServletRequest request, Response res) {
 		if (res.isOK() == false)

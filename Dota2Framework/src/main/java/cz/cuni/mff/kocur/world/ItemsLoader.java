@@ -10,8 +10,16 @@ import cz.cuni.mff.kocur.base.Utils;
 import cz.cuni.mff.kocur.exceptions.LoadingError;
 import cz.cuni.mff.kocur.interests.Shop;
 
+/**
+ * Class that loads items from items.data inside the working directory. Class
+ * loads them and stores them inside ItemsBase.
+ * 
+ * @author kocur
+ *
+ */
 public class ItemsLoader {
-	//private static final Logger logger = LogManager.getLogger(ItemsLoader.class.getName());
+	// private static final Logger logger =
+	// LogManager.getLogger(ItemsLoader.class.getName());
 
 	/**
 	 * Scanner that we use for reading the input.
@@ -48,14 +56,18 @@ public class ItemsLoader {
 	 * Loads items from file on specified path.
 	 * 
 	 * @param path
+	 *            Path leading to items file.
 	 * @throws LoadingError
 	 *             Throws LoadingError if there was an error with input (badly
 	 *             specified item).
+	 * 
+	 * @throws FileNotFoundException
+	 *             If file was not found.
 	 */
 	public void loadItems(String path) throws FileNotFoundException, LoadingError {
 		// Load scanner to Path
 		loadFile(path);
-		
+
 		// Clear itemsBase to be sure it is empty
 		ItemsBase.clear();
 
@@ -64,9 +76,9 @@ public class ItemsLoader {
 			loadItem(line);
 		}
 		scanner.close();
-		
+
 		// After all the items are loaded, load their components.
-		for ( Entry<String, String[]> e : botComponents.entrySet()) {
+		for (Entry<String, String[]> e : botComponents.entrySet()) {
 			ItemsBase.loadItem(e.getKey(), e.getValue());
 		}
 
@@ -74,8 +86,11 @@ public class ItemsLoader {
 
 	/**
 	 * Loads item from line and stores it inside ItemsBase.
-	 * @param line Line that contains the item and that should be parsed.
-	 * @throws LoadingError Thrown if input data weren't in correct state.
+	 * 
+	 * @param line
+	 *            Line that contains the item and that should be parsed.
+	 * @throws LoadingError
+	 *             Thrown if input data weren't in correct state.
 	 */
 	private void loadItem(String line) throws LoadingError {
 		String[] fields = line.split("\\s");
@@ -85,8 +100,7 @@ public class ItemsLoader {
 		}
 
 		String name = fields[0];
-		String[] components = Utils.parseArrayOfStrings(
-				fields[3].substring(1,  fields[3].length() - 1));
+		String[] components = Utils.parseArrayOfStrings(fields[3].substring(1, fields[3].length() - 1));
 
 		botComponents.put(name, components);
 

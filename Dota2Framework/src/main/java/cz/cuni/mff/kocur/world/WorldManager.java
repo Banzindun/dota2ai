@@ -5,9 +5,7 @@ import java.io.IOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.fasterxml.jackson.databind.node.ObjectNode;
-
-import cz.cuni.mff.kocur.bot.ControllersManager;
+import cz.cuni.mff.kocur.agent.ControllersManager;
 import cz.cuni.mff.kocur.configuration.ConfigurationChangeListener;
 import cz.cuni.mff.kocur.configuration.FrameworkConfiguration;
 import cz.cuni.mff.kocur.console.CommandResponse;
@@ -15,40 +13,39 @@ import cz.cuni.mff.kocur.console.ConsoleCommand;
 import cz.cuni.mff.kocur.console.ConsoleHelp;
 import cz.cuni.mff.kocur.console.ConsoleManager;
 import cz.cuni.mff.kocur.console.Controllable;
-import cz.cuni.mff.kocur.events.FrameworkEvent;
-import cz.cuni.mff.kocur.events.ListenersManager;
-import cz.cuni.mff.kocur.interests.Camp;
-import cz.cuni.mff.kocur.interests.InterestsBase;
-import cz.cuni.mff.kocur.interests.Lane;
-import cz.cuni.mff.kocur.interests.InterestPointsLoader;
 import cz.cuni.mff.kocur.interests.Team;
 import cz.cuni.mff.kocur.server.MapperWrapper;
 import cz.cuni.mff.kocur.server.RequestArguments;
-import cz.cuni.mff.kocur.server.TimeManager;
 import cz.cuni.mff.kocur.server.RequestHandler.CODE;
+import cz.cuni.mff.kocur.server.TimeManager;
 import cz.cuni.mff.kocur.streaming.InformationDrop;
 
 /**
  * This class manages the world
  * 
  * World update will take these steps: First the client will use a POST message
- * to send some data The data will be in JSON and they will contain id of the
- * bot that issued the update Manager should then take the data and parse the to
- * objects that correspond to the World objects Then we will update the world
- * information by rewriting the objects in the world
+ * to send some data/ The data will be in JSON and they will be addressed to
+ * some agent by his name. Manager should then take the data and parse the
+ * objects that correspond to the World objects. Then we update the world
+ * information by updating/inserting the objects using their ids.
  * 
- * Manager should allow bots to query for informations that are close to them.
- * Because mod should send information about bots that is close to them, then
- * this basically means we must store references to objects that were updated
- * the last by the bot.
+ * Manager should allow agents to query for informations that are close to them.
  * 
  * 
  * @author Banzindun
  *
  */
 public class WorldManager implements Controllable, ConfigurationChangeListener {
+	/**
+	 * WorldManager instance.
+	 */
 	private static WorldManager instance = null;
 
+	/**
+	 * 
+	 * @return Returns WorldManager instance. The instance should be only one
+	 *         object, during the whole execution.
+	 */
 	public static WorldManager getInstance() {
 		if (instance == null)
 			instance = new WorldManager();
@@ -60,9 +57,15 @@ public class WorldManager implements Controllable, ConfigurationChangeListener {
 	 */
 	private static World world = new World();
 
+	/**
+	 * Our time manager.
+	 */
 	private static TimeManager timeManager = new TimeManager();
 
-	
+	/**
+	 * 
+	 * @return Returns the world stored inside this class.
+	 */
 	public static World getWorld() {
 		return world;
 	}
@@ -93,10 +96,17 @@ public class WorldManager implements Controllable, ConfigurationChangeListener {
 	 */
 	private Logger logger = LogManager.getLogger(WorldManager.class.getName());
 
+	/**
+	 * World source. This object will be sending world data to catchers.
+	 */
 	private WorldSource worldSource = null;
 
 	/**
 	 * Updates the world information.
+	 * 
+	 * @param arg
+	 *            Request arguments.
+	 * @return Returns true, if the world was updated.
 	 */
 	public boolean update(RequestArguments arg) {
 		try {
@@ -104,11 +114,12 @@ public class WorldManager implements Controllable, ConfigurationChangeListener {
 
 			// Update the world
 			world.update(u);
-			
+
 			// Update the bot's contextual information
-			updateBotContext(arg.getAgentName(), u);
+			updateAgentContext(arg.getAgentName(), u);
 		} catch (IOException e) {
-			logger.error("Unable to update the world information from supplied json.", e, arg.getAgentName(), arg.getMessage());
+			logger.error("Unable to update the world information from supplied json.", e, arg.getAgentName(),
+					arg.getMessage());
 			e.printStackTrace();
 			return false;
 		}
@@ -119,38 +130,61 @@ public class WorldManager implements Controllable, ConfigurationChangeListener {
 		return true;
 	}
 
-	private void updateBotContext(String name, WorldUpdate u) {
+	/**
+	 * Updates the agent's context.
+	 * 
+	 * @param name
+	 *            Name of the agent.
+	 * @param u
+	 *            WorldUpdate, from which we should update the context.
+	 */
+	private void updateAgentContext(String name, WorldUpdate u) {
 		ControllersManager.getInstance().updateAgentContext(name, u);
 	}
 
+	/**
+	 * Does a big world update. This one comes once a second from both teams.
+	 * 
+	 * @param arg
+	 *            Request arguments - like the body of the request, its url ..
+	 * @return Returns true if the update went ok.
+	 */
 	public synchronized boolean updateBig(RequestArguments arg) {
 		try {
 			WorldUpdate u = MapperWrapper.readValue(arg.getMessage(), WorldUpdate.class);
-			
+
 			if (u.getTime() != -1) {
 				timeManager.tick(u.getTime());
 			}
-			
+
 			// Update the world
 			world.update(u);
-			
+
 			updateTeamContext(arg.getMethod(), u);
-			
+
 			// Do the cleanup
 			world.cleanup();
 		} catch (IOException e) {
 			logger.error("Unable to perform big update from supplied json.", e);
 			e.printStackTrace();
 			return false;
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 
 		worldSource.flow(new InformationDrop(InformationDrop.WORLD, world));
 		return true;
 	}
-	
+
+	/**
+	 * Updates team context.
+	 * 
+	 * @param method
+	 *            Code of the method (UPDATEDIRE, UPDATERADIANT)
+	 * @param u
+	 *            WorldUpdate from which we update the world.
+	 */
 	private void updateTeamContext(CODE method, WorldUpdate u) {
 		if (method == CODE.UPDATERADIANT)
 			ControllersManager.getInstance().updateTeamContext(Team.RADIANT, u);
@@ -160,7 +194,6 @@ public class WorldManager implements Controllable, ConfigurationChangeListener {
 			logger.warn("Unknown update on team context level.");
 		}
 	}
-
 
 	/**
 	 * Setups the StaticEntity, Hero and BaseNPC static variables to match the
@@ -236,6 +269,15 @@ public class WorldManager implements Controllable, ConfigurationChangeListener {
 		return res;
 	}
 
+	/**
+	 * Searches the world by name (through the console). Returns the result inside
+	 * the CommandResponse.
+	 * 
+	 * @param cmd
+	 *            The command = contains the name of the entity.
+	 * @return Returns a command's response. The response can be negative or it can
+	 *         fail.
+	 */
 	private CommandResponse searchByName(ConsoleCommand cmd) {
 		CommandResponse res = new CommandResponse();
 

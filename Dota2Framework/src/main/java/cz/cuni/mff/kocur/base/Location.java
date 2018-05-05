@@ -2,8 +2,6 @@ package cz.cuni.mff.kocur.base;
 
 import com.fasterxml.jackson.annotation.JsonSetter;
 
-import cz.cuni.mff.kocur.world.BaseEntity;
-
 /**
  * Class that represents location. Each location has x,y,z coordinates and it
  * can have a entity id. This will be extended by base entity and interest
@@ -68,6 +66,18 @@ public class Location {
 			z = 0;
 		else
 			z = coords[2];
+	}
+	
+	/**
+	 * Creates the location using two coordinates.
+	 * @param x X coordinate.
+	 * @param y Y coordinate.
+	 */
+	public Location(double x, double y) {
+		this.x = x;
+		this.y = y;
+
+		this.z = 0;
 	}
 
 	/**

@@ -10,7 +10,7 @@ import javax.swing.JLayeredPane;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import cz.cuni.mff.kocur.dota2AIFramework.App;
+import cz.cuni.mff.kocur.framework.App;
 
 /**
  * Class that represents a main window of this application.
@@ -35,7 +35,12 @@ public class MainWindow extends Window {
 	private SideButtons buttons = new SideButtons();
 
 	/**
-	 * Window constructor. Does nothing now. WHY??
+	 * Window constructor. Does nothing now.
+	 * 
+	 * @param app
+	 *            Application.
+	 * @param title
+	 *            Window's title.
 	 */
 	public MainWindow(App app, String title) {
 		super(app, title);

@@ -7,10 +7,10 @@ import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import cz.cuni.mff.kocur.dota2AIFramework.App;
-import cz.cuni.mff.kocur.dota2AIFramework.App.State;
 import cz.cuni.mff.kocur.events.FrameworkEventListener;
 import cz.cuni.mff.kocur.events.ListenersManager;
+import cz.cuni.mff.kocur.framework.App;
+import cz.cuni.mff.kocur.framework.App.State;
 
 /**
  * Class that stores all the tabs, that are displayed in our application. Lets user add his own tabs.
@@ -44,13 +44,11 @@ public class Tabs extends JTabbedPane implements FrameworkEventListener, ChangeL
 	 * @param name Name of the tab that should be removed.
 	 */
 	public void removeTab(String name) {
-		FocusableJPanel tab = userTabs.remove(name);
+		FocusableJPanel tab = userTabs.get(name); 
+		
 		this.remove(tab);
 		
-		this.revalidate();
-		this.repaint();
-		
-		updateTabs();
+		userTabs.remove(name);
 	}
 	
 	
@@ -142,6 +140,10 @@ public class Tabs extends JTabbedPane implements FrameworkEventListener, ChangeL
 			if (streams != null) {
 				this.remove(streams);
 				streams = null;
+			}
+			
+			for (Entry<String, FocusableJPanel> e : userTabs.entrySet()) {
+				this.remove(e.getValue());
 			}
 			
 		} else if (App.state == State.RUNNING && App.lastState == State.INIT) {

@@ -80,14 +80,14 @@ function Dota2AI:OnGameRulesStateChange()
       )
 
       -- Finish the game after 10 minutes
-      Timers:CreateTimer(3, function()
-          if GameRules:GetGameTime() > 390 then 
-            GameRules:MakeTeamLose(DOTA_TEAM_BADGUYS)
-            return
-          end
-          return 1.0
-        end
-      )
+      --Timers:CreateTimer(3, function()
+          --if GameRules:GetGameTime() > 390 then 
+            --GameRules:MakeTeamLose(DOTA_TEAM_BADGUYS)
+            --return
+          --end
+          --return 1.0
+        --end
+      --)
 
 
   elseif nNewState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
@@ -344,13 +344,6 @@ end
  --------------------------------------------------------------------------------
 function Dota2AI:OnPlayerChat(event)
   print("ChatEvent with text:" .. event.text)
-
-  -- Custom chat events
-  if event.text == "pause" then
-    PauseGame(true);
-  elseif event.text == "unpause" then
-    PauseGame(false);
-  end
 
   print(self:JSONChat(event))
 

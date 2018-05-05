@@ -1,32 +1,80 @@
 package cz.cuni.mff.kocur.world;
 
+/**
+ * Class that represents a ChatEvent. This class stores the chat's message, id
+ * of player that sent the message and if the message is meant only for the
+ * team.
+ * 
+ * @author kocur
+ *
+ */
 public class ChatEvent {
-    private boolean teamOnly;
-    private int player;
-    private String text;
+	/**
+	 * Is this message meant only for the player's team.
+	 */
+	private boolean teamOnly;
 
-    public int getPlayer() {
-        return player;
-    }
+	/**
+	 * Id of the player.
+	 */
+	private int player;
 
-    public String getText() {
-        return text;
-    }
+	/**
+	 * Text of the chat event.
+	 */
+	private String text;
 
-    public boolean isTeamOnly() {
-        return teamOnly;
-    }
+	/**
+	 * 
+	 * @return Returns id of player that sent this message.
+	 */
+	public int getPlayer() {
+		return player;
+	}
 
-    public void setPlayer( int player ) {
-        this.player = player;
-    }
+	/**
+	 * 
+	 * @return Returns this message's text.
+	 */
+	public String getText() {
+		return text;
+	}
 
-    public void setTeamOnly( boolean teamOnly ) {
-        this.teamOnly = teamOnly;
-    }
+	/**
+	 * 
+	 * @return Returns true, if this is a team message.
+	 */
+	public boolean isTeamOnly() {
+		return teamOnly;
+	}
 
-    public void setText( String text ) {
-        this.text = text;
-    }
+	/**
+	 * Sets player id.
+	 * 
+	 * @param player
+	 *            Id of the player.
+	 */
+	public void setPlayer(int player) {
+		this.player = player;
+	}
+
+	/**
+	 * 
+	 * @param teamOnly
+	 *            True, if this message is meant only for the team of the player
+	 *            that sent the command.
+	 */
+	public void setTeamOnly(boolean teamOnly) {
+		this.teamOnly = teamOnly;
+	}
+
+	/**
+	 * 
+	 * @param text
+	 *            New text of this event.
+	 */
+	public void setText(String text) {
+		this.text = text;
+	}
 
 }

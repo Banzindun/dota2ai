@@ -18,23 +18,46 @@ import cz.cuni.mff.kocur.server.ServerCommands.GameCommand;
  */
 public class GameCommandsIssuer implements Controllable {
 	
+	/**
+	 * Command to be issued.
+	 */
 	private GameCommand gc = null;
 	
+	/**
+	 * Map of scenarios (arrays of commands).
+	 */
 	private HashMap<String, String[]> scenarios = new HashMap<String, String[]>();
 	
+	/**
+	 * Constructor.
+	 */
 	public GameCommandsIssuer() {
 		ConsoleManager.register(this);
 	}
 	
+	/**
+	 * Adds a command to scenario.
+	 * @param name Name of the scenario, we are changing.
+	 * @param str Console commands separated by ;.
+	 */
 	public void addScenario(String name, String str) {
 		String[] cmds = str.trim().split(";");
 		addScenario(name, cmds);		
 	}
 
+	/**
+	 * Creates a new scenario in scenarios.
+	 * @param name Name of the scenario.
+	 * @param cmds It's commands.
+	 */
 	public void addScenario(String name, String[] cmds) {
 		scenarios.put(name, cmds);
 	}
 	
+	/**
+	 * Removes scenario with given name.
+	 * @param name Name of the scenario to be removed.
+	 */
 	public void removeScenario(String name) {
 		scenarios.remove(name);
 	}
@@ -49,7 +72,7 @@ public class GameCommandsIssuer implements Controllable {
 	
 	/**
 	 * Saves the scenarios from this class to file.
-	 * @param path
+	 * @param path Path, where to save the scenarios.
 	 */
 	public void save(String path) {
 		

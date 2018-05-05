@@ -2,12 +2,12 @@ package cz.cuni.mff.kocur.server;
 
 import javax.servlet.http.HttpServletResponse;
 
-import cz.cuni.mff.kocur.dota2AIFramework.App;
+import cz.cuni.mff.kocur.framework.App;
 import cz.cuni.mff.kocur.server.RequestHandler.CODE;
 
 /**
  * This class should represent a object, that stores all necessary information
- * about a incoming request. It should store the url, incoming message and code
+ * about an incoming request. It should store the url, incoming message and code
  * of the request (UPDATE, UPDATEDIRE ..).
  * 
  * @author kocur

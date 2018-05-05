@@ -3,9 +3,6 @@ package cz.cuni.mff.kocur.interests;
 import java.awt.Graphics2D;
 import java.awt.Image;
 
-import javax.swing.ImageIcon;
-
-import cz.cuni.mff.kocur.base.Colors;
 import cz.cuni.mff.kocur.base.GraphicResources;
 import cz.cuni.mff.kocur.base.IndentationStringBuilder;
 import cz.cuni.mff.kocur.base.Location;

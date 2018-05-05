@@ -13,7 +13,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import cz.cuni.mff.kocur.base.IndentationStringBuilder;
-import cz.cuni.mff.kocur.bot.ControllerWrapper;
 import cz.cuni.mff.kocur.configuration.HeroConfiguration.TYPE;
 import cz.cuni.mff.kocur.exceptions.ConfigurationTestFailureException;
 import cz.cuni.mff.kocur.exceptions.KeyNotFound;
@@ -49,7 +48,7 @@ public class FrameworkConfiguration extends Configuration {
 	private Map<String, CItem> configuration = new HashMap<String, CItem>();
 
 	/**
-	 * @return Returns instance of {@link #GlobalConfiguration}.
+	 * @return Returns instance of framework configuration.
 	 */
 	@JsonCreator
 	public static FrameworkConfiguration getInstance() {
@@ -59,7 +58,7 @@ public class FrameworkConfiguration extends Configuration {
 	}
 
 	/**
-	 * Private constructor. Private for singleton pattern -> must be inaccessible.
+	 * Private constructor. Private for singleton pattern. Must be inaccessible.
 	 */
 	private FrameworkConfiguration() {
 		super();
@@ -91,18 +90,19 @@ public class FrameworkConfiguration extends Configuration {
 	private LinkedHashMap<String, HeroConfiguration> direConfigurations = new LinkedHashMap<String, HeroConfiguration>();
 
 	/**
-	 * Stores radiant hero configurations. They are stored here because they should be
-	 * accessible in more than one place during CONFIGURATION phase.
+	 * Stores radiant hero configurations. They are stored here because they should
+	 * be accessible in more than one place during CONFIGURATION phase.
 	 */
 	@JsonIgnore
 	private LinkedHashMap<String, HeroConfiguration> radiantConfigurations = new LinkedHashMap<String, HeroConfiguration>();
 
 	/**
-	 * Puts bot's configuration into {@link #botConfigurations} map.
+	 * Puts agent's configuration into map.
 	 * 
 	 * @param cfg
 	 *            Configuration of bot that should be setup.
 	 * @param teamNumber
+	 *            Team number of the agent.
 	 */
 	public void addBotCfg(HeroConfiguration cfg, int teamNumber) {
 		if (cfg == null) {
@@ -123,7 +123,8 @@ public class FrameworkConfiguration extends Configuration {
 
 	/**
 	 * 
-	 * @param cfg
+	 * @param name
+	 *            Name of the configuration
 	 * @return True if botConfigurations contain this configuration.
 	 */
 	public boolean containsBotCfg(String name) {
@@ -136,11 +137,11 @@ public class FrameworkConfiguration extends Configuration {
 	/**
 	 * Returns bot configuration if loaded.
 	 * 
-	 * @param id
-	 *            ID of bot.
-	 * @return Returns configuration of bot with {@link #name}
+	 * @param name
+	 *            Name of the bot.
+	 * @return Returns configuration of bot with given name.
 	 * @throws KeyNotFound
-	 *             when configuration with {@link #name} is not found.
+	 *             when configuration with given name is not found.
 	 */
 	public Configuration getBotCfg(String name) throws KeyNotFound {
 		Configuration c = radiantConfigurations.get(name);
@@ -280,7 +281,9 @@ public class FrameworkConfiguration extends Configuration {
 	/**
 	 * Test the configuration for incorrect fields etc.
 	 * 
-	 * @return returns result that says if the test passed and supplies message
+	 * @throws ConfigurationTestFailureException
+	 *             if the test failed.
+	 * 
 	 */
 	public void test() throws ConfigurationTestFailureException {
 		if (items == null) {
@@ -318,7 +321,6 @@ public class FrameworkConfiguration extends Configuration {
 		return result;
 	}
 
-
 	@JsonIgnore
 	public HeroConfiguration[] getHeroConfigurations(int team) {
 		if (team == Team.RADIANT)
@@ -332,8 +334,10 @@ public class FrameworkConfiguration extends Configuration {
 
 	/**
 	 * 
-	 * @param t Type of the configuration (AI, BOT, PLAYER).
-	 * @param teamNumber Number of team. 
+	 * @param t
+	 *            Type of the configuration (AI, BOT, PLAYER).
+	 * @param teamNumber
+	 *            Number of team.
 	 * @return Returns count of configuration with given type and team number.
 	 */
 	public int countHeroConfigurations(TYPE t, int teamNumber) {
@@ -342,18 +346,18 @@ public class FrameworkConfiguration extends Configuration {
 			if (c.getType() == t)
 				count++;
 		}
-		
+
 		return count;
 	}
 
 	@JsonIgnore
 	public LinkedHashMap<String, HashMap<String, String>> getHeroConfigurationsSignature() {
 		LinkedHashMap<String, HashMap<String, String>> bs = new LinkedHashMap<>();
-		
+
 		for (HeroConfiguration c : this.getHeroConfigurations()) {
 			bs.put(c.getName(), c.getSignature());
 		}
-		
-		return bs;	
+
+		return bs;
 	}
 }

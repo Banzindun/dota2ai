@@ -10,24 +10,24 @@ import org.apache.logging.log4j.Logger;
 import cz.cuni.mff.kocur.exceptions.LoadingError;
 
 /**
- * <p>
+ * 
  * This class should take file that contains navigation and height map of the
  * game world and load the data into memory and represent them in a way that is
  * usable later.
- * </p>
  * 
- * <p>
+ * 
+ * 
  * It needs to load:
  * <ul>
  * <li>navigation map - blocked and traversable positions</li>
  * <li>height map - heights for every grid position</li>
  * </ul>
- * </p>
  * 
- * <p>
- * Grid file looks like this: </br>
- * There are sections that are divided by section names (#heights, #navmap..).
- * Each section should be parsed regarding its name.
+ * 
+ * 
+ * Grid file looks like this: There are sections that are divided by section
+ * names (#heights, #navmap..). Each section should be parsed regarding its
+ * name.
  *
  * @author Banzindun
  *
@@ -60,7 +60,7 @@ public class GridLoader {
 	 * Navigation grid composed of tiles.
 	 */
 	private GridBase grid = GridBase.getInstance();
-	
+
 	/**
 	 * Constructor.
 	 * 
@@ -89,8 +89,7 @@ public class GridLoader {
 	}
 
 	/**
-	 * Parses the data. </br>
-	 * Goes line by line and parses every section name if finds.
+	 * Parses the data. Goes line by line and parses every section name if finds.
 	 * 
 	 * @throws LoadingError
 	 *             Thrown when there are some missing data.
@@ -112,10 +111,6 @@ public class GridLoader {
 	 * Checks the section name and calls the appropriate function that should handle
 	 * the input.
 	 * 
-	 * @param name
-	 *            Name of the section that should be parsed.
-	 * @return Returns true if the name was successfully resolved and the
-	 *         appropriate function - that parses the section input - called.
 	 * @throws LoadingError
 	 *             Thrown when there are some missing data.
 	 */
@@ -139,7 +134,11 @@ public class GridLoader {
 	}
 
 	/**
-	 * "X:[-1234, 1234]" "Y:[1234, -1234]"
+	 * "X:[-1234, 1234]" "Y:[1234, -1234]" Parses the header.
+	 * 
+	 * @throws LoadingError
+	 *             Throws loading error, if the data are badly formed.
+	 * 
 	 */
 	private void parseHeader() throws LoadingError {
 		int minX = 0;
@@ -197,13 +196,22 @@ public class GridLoader {
 				(int) (1 + (Math.abs(minY) + Math.abs(maxY)) / grid.getResolution()));
 		grid.setXOrigin(minX);
 		grid.setYOrigin(minY);
-		
+
 		grid.setMaxX(maxX);
 		grid.setMinX(minX);
 		grid.setMaxY(maxY);
 		grid.setMinY(minY);
 	}
 
+	/**
+	 * Parses integers stored inside a string.
+	 * 
+	 * @param line
+	 *            String with integers.
+	 * @return Returns integers in array.
+	 * @throws LoadingError
+	 *             If there is too few of them.
+	 */
 	private int[] parseInts(String line) throws LoadingError {
 		int[] ints = new int[2];
 
@@ -224,6 +232,12 @@ public class GridLoader {
 		return ints;
 	}
 
+	/**
+	 * Parses the navigation map.
+	 * 
+	 * @throws LoadingError
+	 *             If we have obtained incorrect number of lines.
+	 */
 	private void parseNavMap() throws LoadingError {
 		int y = 0;
 		int lineCount = 0;
@@ -252,6 +266,13 @@ public class GridLoader {
 		}
 	}
 
+	/**
+	 * Parses height map.
+	 * 
+	 * @throws LoadingError
+	 *             If we obtained incorrect number of lines (that do not match the
+	 *             header).
+	 */
 	private void parseHeightMap() throws LoadingError {
 		int lineCount = 0;
 		int y = 0;

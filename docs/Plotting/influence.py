@@ -77,4 +77,5 @@ for (i, j), z in np.ndenumerate(data):
 
 
 plt.title("")
+plt.savefig("Influences.pdf", bbox_inches='tight')
 plt.show()

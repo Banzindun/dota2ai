@@ -1,2 +1,2 @@
-java -cp "lib/*;*" cz.cuni.mff.kocur.dota2AIFramework.Framework -install
+java -cp "lib/*;*" cz.cuni.mff.kocur.framework.Framework -install -fastDebug
 pause

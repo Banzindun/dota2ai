@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import cz.cuni.mff.kocur.interests.InterestsBase;
-import cz.cuni.mff.kocur.world.WorldManager;
 
 /**
  * Class that is supposed to handle time. It should be synchronized with the in-game time. The time should by update by team updates, that will contain the time information. That means the tick will be around on second. 

@@ -2,9 +2,9 @@ package cz.cuni.mff.kocur.interests;
 
 import java.awt.Graphics2D;
 
+import cz.cuni.mff.kocur.agent.AgentParameters;
+import cz.cuni.mff.kocur.agent.InterestParameter;
 import cz.cuni.mff.kocur.base.CustomStringBuilder;
-import cz.cuni.mff.kocur.bot.AgentParameters;
-import cz.cuni.mff.kocur.bot.InterestParameter;
 
 /**
  * Class that represents a tower.
@@ -13,16 +13,12 @@ import cz.cuni.mff.kocur.bot.InterestParameter;
  *
  */
 public class Tower extends BaseInterest {
-	/**
-	 * This tower's team.
-	 */
-	private int team = 0;
 
 	public Tower(int id, int team, double x, double y) {
 		super(x, y);
 
-		this.team = team;
-
+		active = true;
+		
 		this.entid = id;
 	}
 

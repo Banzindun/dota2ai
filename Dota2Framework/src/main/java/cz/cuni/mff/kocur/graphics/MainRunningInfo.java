@@ -12,14 +12,14 @@ import javax.swing.JTextArea;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import cz.cuni.mff.kocur.agent.ControllerWrapper;
+import cz.cuni.mff.kocur.agent.ControllersManager;
 import cz.cuni.mff.kocur.base.Constants;
-import cz.cuni.mff.kocur.bot.ControllerWrapper;
-import cz.cuni.mff.kocur.bot.ControllersManager;
-import cz.cuni.mff.kocur.dota2AIFramework.App;
-import cz.cuni.mff.kocur.dota2AIFramework.App.State;
 import cz.cuni.mff.kocur.events.FrameworkEventListener;
 import cz.cuni.mff.kocur.events.ListenersManager;
 import cz.cuni.mff.kocur.exceptions.ComponentNotBuiltException;
+import cz.cuni.mff.kocur.framework.App;
+import cz.cuni.mff.kocur.framework.App.State;
 
 /**
  * Class that represents panel with information, that is displayed while the game is running. 

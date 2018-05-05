@@ -42,10 +42,7 @@ public class ServerManager implements Controllable {
 	private RequestHandler handler;
 
 	/**
-	 * Creates the server on given port.
-	 * 
-	 * @param port
-	 *            port on which this service should run
+	 * Creates the server and registers it to console.
 	 */
 	public ServerManager() {
 		ConsoleManager.register(this);
@@ -75,8 +72,10 @@ public class ServerManager implements Controllable {
 	}
 
 	/**
-	 * Starts the server. 
-	 * @throws Exception If something went wrong.
+	 * Starts the server.
+	 * 
+	 * @throws Exception
+	 *             If something went wrong.
 	 */
 	public void startServer() throws Exception {
 		logger.info("Starting server");
@@ -87,7 +86,9 @@ public class ServerManager implements Controllable {
 
 	/**
 	 * Stops the server.
-	 * @throws Exception If something went wrong.
+	 * 
+	 * @throws Exception
+	 *             If something went wrong.
 	 */
 	public void stopServer() throws Exception {
 		logger.info("Stopping the server.");
@@ -109,6 +110,14 @@ public class ServerManager implements Controllable {
 	public void pauseGame() {
 		logger.info("Pausing the server.");
 		handler.pause();
+	}
+
+	/**
+	 * Resets the game.
+	 */
+	public void resetGame() {
+		logger.info("Restarting the game.");
+		handler.restartGame();
 	}
 
 	/**
@@ -179,4 +188,5 @@ public class ServerManager implements Controllable {
 	public RequestHandler getHandler() {
 		return handler;
 	}
+
 }

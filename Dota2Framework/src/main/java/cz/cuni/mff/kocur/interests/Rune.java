@@ -8,14 +8,12 @@ import org.apache.logging.log4j.Logger;
 
 import com.fasterxml.jackson.annotation.JsonSetter;
 
-import cz.cuni.mff.kocur.base.Colors;
+import cz.cuni.mff.kocur.agent.AgentParameters;
+import cz.cuni.mff.kocur.agent.InterestParameter;
 import cz.cuni.mff.kocur.base.CustomStringBuilder;
 import cz.cuni.mff.kocur.base.GraphicResources;
-import cz.cuni.mff.kocur.bot.AgentParameters;
-import cz.cuni.mff.kocur.bot.InterestParameter;
 import cz.cuni.mff.kocur.events.GameEvent;
 import cz.cuni.mff.kocur.events.ListenersManager;
-import cz.cuni.mff.kocur.world.GridBase;
 
 /**
  * Class that represents a rune.

@@ -4,16 +4,14 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.util.HashMap;
 
-import cz.cuni.mff.kocur.base.Colors;
+import cz.cuni.mff.kocur.agent.AgentParameters;
+import cz.cuni.mff.kocur.agent.InterestParameter;
 import cz.cuni.mff.kocur.base.GraphicResources;
 import cz.cuni.mff.kocur.base.IndentationStringBuilder;
-import cz.cuni.mff.kocur.bot.AgentParameters;
-import cz.cuni.mff.kocur.bot.InterestParameter;
 import cz.cuni.mff.kocur.events.GameEvent;
 import cz.cuni.mff.kocur.events.ListenersManager;
 import cz.cuni.mff.kocur.exceptions.LoadingError;
 import cz.cuni.mff.kocur.world.Creep;
-import cz.cuni.mff.kocur.world.GridBase;
 
 /**
  * Class that represents a camp.

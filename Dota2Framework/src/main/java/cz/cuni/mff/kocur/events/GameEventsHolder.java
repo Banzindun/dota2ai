@@ -33,7 +33,9 @@ public class GameEventsHolder extends EventsHolder<GameEvent> {
 
 	/**
 	 * Contructor, that takes GameEvent and stores it inside the holder.
+	 * 
 	 * @param e
+	 *            Game event.
 	 */
 	public GameEventsHolder(GameEvent e) {
 		initializeCleanupPeriod();
@@ -41,8 +43,8 @@ public class GameEventsHolder extends EventsHolder<GameEvent> {
 	}
 
 	/**
-	 * Gets the cleanup period from framework configuration parses it.
-	 * The period is then stored.
+	 * Gets the cleanup period from framework configuration parses it. The period is
+	 * then stored.
 	 */
 	private void initializeCleanupPeriod() {
 		String period = FrameworkConfiguration.getInstance().getConfigValue("game_event_cleanup_period");
@@ -59,10 +61,13 @@ public class GameEventsHolder extends EventsHolder<GameEvent> {
 
 	/**
 	 * Returns events, that occured around a specific location.
-	 * @param x X coordinate.
-	 * @param y Y coordinate.
-	 * @param z Maximum distance.
-	 * @param maxDistance Maximum distance.
+	 * 
+	 * @param x
+	 *            X coordinate.
+	 * @param y
+	 *            Y coordinate.
+	 * @param maxDistance
+	 *            Maximum distance.
 	 * @return Returns events that occured nearby.
 	 */
 	public List<GameEvent> getNearbyEvents(double x, double y, int maxDistance) {

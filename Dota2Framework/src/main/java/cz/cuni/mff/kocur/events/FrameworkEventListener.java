@@ -16,6 +16,9 @@ public interface FrameworkEventListener {
 
 	/**
 	 * Called after the event was triggered. There can be some passed arguments.
+	 * 
+	 * @param os
+	 *            Objects.
 	 */
 	public void triggered(Object... os);
 

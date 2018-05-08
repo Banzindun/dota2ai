@@ -8,12 +8,16 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 import cz.cuni.mff.kocur.base.Colors;
+import cz.cuni.mff.kocur.framework.Setup;
 import cz.cuni.mff.kocur.graphics.ConstraintsBuilder;
 import cz.cuni.mff.kocur.graphics.ZoomAndPanJPanel;
 import cz.cuni.mff.kocur.influence.ExtendedAgentContext;
@@ -107,7 +111,8 @@ public class InfluenceContextViewer extends ZoomAndPanJPanel implements ActionLi
 	/**
 	 * Constructor, that takes extended bot's context.
 	 * 
-	 * @param c Agent's context.
+	 * @param c
+	 *            Agent's context.
 	 */
 	public InfluenceContextViewer(ExtendedAgentContext c) {
 		super();
@@ -294,4 +299,22 @@ public class InfluenceContextViewer extends ZoomAndPanJPanel implements ActionLi
 
 	}
 
+	/**
+	 * Saves current buffer to file.
+	 * 
+	 * @param fileName
+	 *            Name of the file.
+	 */
+	public void saveDisplayedLayer(String fileName) {
+		if (buffer == null)
+			return;
+
+		File outputfile = new File(Setup.getOutputDir() + fileName);
+
+		try {
+			ImageIO.write(buffer, "png", outputfile);
+		} catch (IOException e) {
+			// nothing
+		}
+	}
 }

@@ -79,11 +79,19 @@ public abstract class Consideration {
 	/**
 	 * Takes decision context and scores this consideration given the context.
 	 * 
-	 * @param context Decision context.
+	 * @param context
+	 *            Decision context.
 	 * @return Returns the score of this consideration.
 	 */
 	public abstract double score(DecisionContext context);
 
+	/**
+	 * Computes the utility function for passed score.
+	 * 
+	 * @param score
+	 *            The score.
+	 * @return Returns computed value.
+	 */
 	public double computeResponseCurve(double score) {
 		normalizedInput = score;
 

@@ -50,6 +50,10 @@ public abstract class BaseEntity extends Location {
 	protected float getTimeToLive() {
 		return timeToLive;
 	}
+	
+	public void updateTime() {
+		lastUpdate = TimeManager.getGameTime();
+	}
 
 	public void born() {
 		// Update the time of last update
@@ -459,5 +463,7 @@ public abstract class BaseEntity extends Location {
 	public void setProjectileSpeed(int projectileSpeed) {
 		this.projectileSpeed = projectileSpeed;
 	}
+
+
 
 }

@@ -232,6 +232,11 @@ public class LoggingTab extends BuildableJPanel implements LoggingDisplay {
 
 		// Serialize the log (apply the layout)
 		String slog = layout.toSerializable(log);
+		
+		// Check if the slog contains the supplied string
+		if (!slog.contains(configPane.getStringFilter())) {
+			return;
+		}
 
 		// If we are logging, then store log in list and in text area
 		if (configPane.getLogsOn()) {

@@ -13,14 +13,14 @@ public class PropagationPoint {
 	/**
 	 * Distance from origin.
 	 */
-	private int distance = 0;
+	private double distance = 0;
 
 	public PropagationPoint(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
 
-	public PropagationPoint(int x, int y, int distance) {
+	public PropagationPoint(int x, int y, double distance) {
 		this.x = x;
 		this.y = y;
 		this.distance = distance;
@@ -42,7 +42,7 @@ public class PropagationPoint {
 		this.y = y;
 	}
 
-	public int getDistance() {
+	public double getDistance() {
 		return distance;
 	}
 

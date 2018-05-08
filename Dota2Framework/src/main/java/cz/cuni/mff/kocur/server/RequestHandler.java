@@ -596,7 +596,7 @@ public class RequestHandler extends AbstractHandler implements Controllable, Con
 	 * Should be called if the server is stopping.
 	 */
 	public void serverStopping() {
-		controllerManager = ControllersManager.resetInstance();
+		//controllerManager = ControllersManager.resetInstance();
 	}
 
 	@Override

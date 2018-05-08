@@ -7,6 +7,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import cz.cuni.mff.kocur.events.Event;
 import cz.cuni.mff.kocur.events.FrameworkEventListener;
 import cz.cuni.mff.kocur.events.ListenersManager;
 import cz.cuni.mff.kocur.framework.App;
@@ -181,13 +182,13 @@ public class Tabs extends JTabbedPane implements FrameworkEventListener, ChangeL
 	}
 
 	@Override
-	public void triggered() {
+	public void triggered(Event e) {
 		updateTabs();
 	}
 
 	@Override
-	public void triggered(Object... os) {
-		triggered();
+	public void triggered(Event e, Object... os) {
+		triggered(e);
 		
 	}
 	

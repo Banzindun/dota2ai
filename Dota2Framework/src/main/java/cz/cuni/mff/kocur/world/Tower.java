@@ -35,6 +35,7 @@ public class Tower extends Building {
 	@JsonIgnore
 	public static float timeToLive = 2;
 
+	@Override
 	protected float getTimeToLive() {
 		return timeToLive;
 	}

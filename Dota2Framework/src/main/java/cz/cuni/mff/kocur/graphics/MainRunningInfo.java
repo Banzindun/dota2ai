@@ -15,6 +15,7 @@ import org.apache.logging.log4j.Logger;
 import cz.cuni.mff.kocur.agent.ControllerWrapper;
 import cz.cuni.mff.kocur.agent.ControllersManager;
 import cz.cuni.mff.kocur.base.Constants;
+import cz.cuni.mff.kocur.events.Event;
 import cz.cuni.mff.kocur.events.FrameworkEventListener;
 import cz.cuni.mff.kocur.events.ListenersManager;
 import cz.cuni.mff.kocur.exceptions.ComponentNotBuiltException;
@@ -129,7 +130,7 @@ public class MainRunningInfo extends BuildableJPanel implements FrameworkEventLi
 	}
 
 	@Override
-	public void triggered() {
+	public void triggered(Event e) {
 		State s = App.state;
 		State ls = App.lastState;
 		
@@ -179,8 +180,8 @@ public class MainRunningInfo extends BuildableJPanel implements FrameworkEventLi
 	}
 
 	@Override
-	public void triggered(Object... os) {
-		triggered();		
+	public void triggered(Event e, Object... os) {
+		triggered(e);		
 	}
 	
 	/**

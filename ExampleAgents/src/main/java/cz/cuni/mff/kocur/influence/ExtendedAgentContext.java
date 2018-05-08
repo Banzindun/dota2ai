@@ -5,6 +5,7 @@ import java.util.HashMap;
 import cz.cuni.mff.kocur.agent.AgentContext;
 import cz.cuni.mff.kocur.agent.BaseAgentController;
 import cz.cuni.mff.kocur.brain.Brain;
+import cz.cuni.mff.kocur.events.Event;
 import cz.cuni.mff.kocur.events.FrameworkEventListener;
 import cz.cuni.mff.kocur.events.ListenersManager;
 import cz.cuni.mff.kocur.world.WorldUpdate;
@@ -30,6 +31,11 @@ public abstract class ExtendedAgentContext extends AgentContext implements Frame
 
 	public ExtendedAgentContext(BaseAgentController bc) {
 		super(bc);
+		ListenersManager.addFrameworkListener("bigupdate", this);
+	}
+	
+	public ExtendedAgentContext(AgentContext context) {
+		super(context);
 		ListenersManager.addFrameworkListener("bigupdate", this);
 	}
 
@@ -80,13 +86,13 @@ public abstract class ExtendedAgentContext extends AgentContext implements Frame
 	}
 
 	@Override
-	public void triggered() {
+	public void triggered(Event e) {
 
 	}
 
 	@Override
-	public void triggered(Object... os) {
-		triggered();
+	public void triggered(Event e,Object... os) {
+		triggered(e);
 	}
 
 	public Brain getBrain() {

@@ -124,8 +124,9 @@ public class WavePropagationFunction<T extends Location> implements PropagationF
 		queue.clear();
 
 		// Insert the first node.
-		queue.add(new PropagationPoint(originX, originY));
-		visited[originX][originY] = true;
+		PropagationPoint startingPoint = new PropagationPoint(originX, originY);
+		queue.add(startingPoint);
+		visited[originY][originX] = true;
 
 		// Spread the influence. Stop on empty queue (that means we have spread to the
 		// distance we have needed).
@@ -160,8 +161,12 @@ public class WavePropagationFunction<T extends Location> implements PropagationF
 			if (_y < 0 || _y >= l.getHeight())
 				continue;
 
-			if (!visited[_y][_x] && passable(l, _x, _y)) {
-				queue.add(new PropagationPoint(_x, _y, distance));
+			if (!passable(l, _x, _y)) {
+				visited[_y][_x] = true;
+			}
+			
+			if (!visited[_y][_x]) {
+				queue.add(new PropagationPoint(_x, _y, GridBase.distance(_x, _y, originX, originY)));
 				visited[_y][_x] = true;
 			}
 		}
@@ -191,12 +196,12 @@ public class WavePropagationFunction<T extends Location> implements PropagationF
 	 *            x
 	 * @param y
 	 *            y
-	 * @return Returns true if tile at position x and y is passable in grid
+	 * @return Returns true if middle of tile at position x and y is passable in grid
 	 *         coordinates.
 	 */
 	protected boolean passable(InfluenceLayer l, double x, double y) {
-		int _x = (int) l.resolveXBack(x);
-		int _y = (int) l.resolveYBack(y);
+		int _x = (int) (l.resolveXBack(x)+l.getResolution()/2);
+		int _y = (int) (l.resolveYBack(y)+l.getResolution()/2);
 
 		if (!l.getParent().areInside(_x, _y)) {
 			return false;

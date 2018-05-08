@@ -11,7 +11,7 @@ import cz.cuni.mff.kocur.world.Tower;
  * @author kocur
  *
  */
-public class FriendlyThreatsLayer extends BotContextualLayer{
+public class FriendlyThreatsLayer extends ContextualLayer{
 	
 	public FriendlyThreatsLayer(GridSystem parentGS, AgentContext ctx) {
 		super(parentGS, ctx);
@@ -25,7 +25,7 @@ public class FriendlyThreatsLayer extends BotContextualLayer{
 	 * @param c Layer from which I should copy.
 	 */
 	public FriendlyThreatsLayer(InfluenceLayer c) {
-		super((BotContextualLayer) c);
+		super((ContextualLayer) c);
 	}
 
 	@Override

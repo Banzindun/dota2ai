@@ -53,7 +53,7 @@ public class Lina extends BaseAgentController {
 	 * Lina's influence layer templates.
 	 */
 	private InfluenceLayerTemplates templates;
-
+	
 	public Lina() {
 		super();
 	}
@@ -69,13 +69,13 @@ public class Lina extends BaseAgentController {
 		// Set up sequence in which I will be buying items
 		BuySequence buySequence = new BuySequence(
 				Utils.parseArrayOfStrings(configuration.getConfigValue("buy_orders")));
-		botContext.setBuySequence(buySequence);
+		agentContext.setBuySequence(buySequence);
 	}
 
 	@Override
 	public void initialize() {
 		// Override botContext with my own
-		botContext = new LayeredAgentContext(this);
+		agentContext = new LayeredAgentContext(agentContext);
 
 		// Initialize the context and the bot
 		super.initialize();
@@ -84,12 +84,12 @@ public class Lina extends BaseAgentController {
 		loadFromConfiguration();
 
 		// Initialize the bot layers.
-		((ExtendedAgentContext) botContext).initializeLayers();
+		((ExtendedAgentContext) agentContext).initializeLayers();
 
 		// Create new intelligence and decisions for this bot
-		brain = new LinaBrain((ExtendedAgentContext) botContext);
+		brain = new LinaBrain((ExtendedAgentContext) agentContext);
 		brain.createDecisions();
-		((ExtendedAgentContext) botContext).setBrain(brain);
+		((ExtendedAgentContext) agentContext).setBrain(brain);
 	}
 
 	@Override
@@ -142,7 +142,7 @@ public class Lina extends BaseAgentController {
 		}
 
 		// Update the layers
-		((ExtendedAgentContext) botContext).updateLayers();
+		((ExtendedAgentContext) agentContext).updateLayers();
 
 		return think();
 	}
@@ -158,7 +158,7 @@ public class Lina extends BaseAgentController {
 				Decision decision = brain.think();
 				Decision voidDecision = brain.voidThink();
 
-				((LayeredAgentContext) botContext).getGraphics().updateConsiderations();
+				((LayeredAgentContext) agentContext).getGraphics().updateConsiderations();
 
 				if (voidDecision != null) {
 					voidDecision.execute();
@@ -194,7 +194,7 @@ public class Lina extends BaseAgentController {
 			String layerName = cmd.getField();
 			String fileName = cmd.getField();
 			if (!layerName.equals("") && !fileName.equals("")) {
-				InfluenceLayer l = ((LayeredAgentContext) botContext)
+				InfluenceLayer l = ((LayeredAgentContext) agentContext)
 						.getLayer(LayeredAgentContext.getLayerNumber(layerName));
 				if (l != null) {
 					try {

@@ -5,6 +5,7 @@ import cz.cuni.mff.kocur.considerations.ConsiderInventorySpace;
 import cz.cuni.mff.kocur.considerations.ConsiderMoney;
 import cz.cuni.mff.kocur.considerations.ConsiderSecretShop;
 import cz.cuni.mff.kocur.considerations.ConsiderSourceHealth;
+import cz.cuni.mff.kocur.considerations.ConsiderTargetValue;
 import cz.cuni.mff.kocur.considerations.ConsiderThreat;
 import cz.cuni.mff.kocur.considerations.ConsiderTimePassed;
 import cz.cuni.mff.kocur.considerations.Consideration;
@@ -14,6 +15,7 @@ import cz.cuni.mff.kocur.decisions.DecisionBuilder;
 import cz.cuni.mff.kocur.decisions.DecisionEscapeFromThreat;
 import cz.cuni.mff.kocur.decisions.DecisionScoreEvaluator;
 import cz.cuni.mff.kocur.decisions.EscapeToBase;
+import cz.cuni.mff.kocur.decisions.MoveToFarmingPosition;
 import cz.cuni.mff.kocur.decisions.SetShopGoalDecision;
 import cz.cuni.mff.kocur.decisions.StayNearFountainDecision;
 import cz.cuni.mff.kocur.decisions.Target;
@@ -51,11 +53,11 @@ public class GoalDS extends DecisionSet {
 				.setBonusFactor(3.0)
 				// We consider time passed, we do not want to update the IM all the time
 				.addConsideration(new ConsiderTimePassed(), new LinearFunction(2, 1, 0.6, 0))
-				.addDoubleParameter(Consideration.PARAM_RANGE_MAX, 2)
+				.addDoubleParameter(Consideration.PARAM_RANGE_MAX, 1)
 				// We consider distance to target, if we are too close we decrease the score
-				.addConsideration(new ConsiderDistanceToTarget(), new LinearFunction(1, 1, 0.4, 0))
+				.addConsideration(new ConsiderDistanceToTarget(), new PolynomialFunction(8, 3, 0.5, 0.05))
 				.addDoubleParameter(Consideration.PARAM_RANGE_MIN, 0)
-				.addDoubleParameter(Consideration.PARAM_RANGE_MAX, 1000).setName("SetLaneCreepAsAGoal")
+				.addDoubleParameter(Consideration.PARAM_RANGE_MAX, 1400).setName("SetLaneCreepAsAGoal")
 				.setEvaluator(new DecisionScoreEvaluator()).get();
 
 		this.add(setLaneCreepAsAGoal);
@@ -138,6 +140,23 @@ public class GoalDS extends DecisionSet {
 
 		this.add(grabAllGoal);
 
+		Decision setFarmingGoalPosition = DecisionBuilder.build().setDecision(new MoveToFarmingPosition())
+				.setName("MoveToFarmingPosition").setBonusFactor(5.0)
+				// We do not want to adjust all the time.
+				.addConsideration(new ConsiderTimePassed(), new LinearFunction(2, 1, 0.5, 0))
+				.addDoubleParameter(Consideration.PARAM_RANGE_MAX, 3)
+				// If the farming position has low influence, we do not go there
+				.addConsideration(new ConsiderTargetValue(), new PolynomialFunction(2.5, 3, 0, 0))
+				.addDoubleParameter(Consideration.PARAM_RANGE_MIN, 0)
+				.addDoubleParameter(Consideration.PARAM_RANGE_MAX, 1)
+				// If it is close to us, we do not go there - again because we do not want to adjust all the time
+				.addConsideration(new ConsiderDistanceToTarget(), new PolynomialFunction(-2.2, 2, 0.9, 1.2))
+				.addDoubleParameter(Consideration.PARAM_RANGE_MIN, 0)
+				.addDoubleParameter(Consideration.PARAM_RANGE_MAX, 400).setEvaluator(new DecisionScoreEvaluator())
+				.get();
+
+		this.add(setFarmingGoalPosition);
+		
 	}
 
 }

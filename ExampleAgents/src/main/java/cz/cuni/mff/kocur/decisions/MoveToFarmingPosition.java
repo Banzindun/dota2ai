@@ -2,7 +2,10 @@ package cz.cuni.mff.kocur.decisions;
 
 import cz.cuni.mff.kocur.base.Location;
 import cz.cuni.mff.kocur.influence.ExtendedAgentContext;
+import cz.cuni.mff.kocur.influence.GoalLayer;
 import cz.cuni.mff.kocur.influence.InfluenceLayer;
+import cz.cuni.mff.kocur.server.AgentCommand;
+import cz.cuni.mff.kocur.world.GridBase;
 import kocur.lina.agent.LayeredAgentContext;
 
 /**
@@ -11,19 +14,36 @@ import kocur.lina.agent.LayeredAgentContext;
  * @author kocur
  *
  */
-public class MoveToFarmingPosition extends MoveToDecision {
+public class MoveToFarmingPosition extends Decision {
 
+	@Override
+	public AgentCommand execute() {
+
+		// Get goal layer
+		GoalLayer goalLayer = ((GoalLayer) context.getBotContext().getLayer(LayeredAgentContext.GOAL));
+
+		// Set the goal location
+		goalLayer.setGoal(context.getTarget().getLocation());
+		return null;
+	}
+	
 	@Override
 	public void updateContext(ExtendedAgentContext bc) {
 		InfluenceLayer l = bc.getLayer(LayeredAgentContext.FARM);
 
 		// Get maximum location in farming layer. This will return null, if position is
-		// not set.!
+		// not set.
 		Location maxLocation = l.getMaxLocation();
+		
+		// If maxLocation is null set empty target
+		if (maxLocation == null) {
+			context.setTarget(new Target());
+			return;
+		}
 
 		// Set the target to be the maximum location
 		Target target = new Target(maxLocation);
-
+		
 		// Max value will be initially set to MIN_DOUBLE, so if we use
 		// ConsiderTargetValue, then unset max value will be normalized to 0
 		target.setValue(l.getMax());

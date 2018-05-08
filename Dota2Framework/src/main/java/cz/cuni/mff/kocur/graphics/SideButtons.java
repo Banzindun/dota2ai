@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import cz.cuni.mff.kocur.base.GraphicResources;
+import cz.cuni.mff.kocur.events.Event;
 import cz.cuni.mff.kocur.events.FrameworkEventListener;
 import cz.cuni.mff.kocur.events.ListenersManager;
 import cz.cuni.mff.kocur.framework.App;
@@ -204,7 +205,7 @@ public class SideButtons extends JPanel implements MouseListener, FrameworkEvent
 	public void mousePressed(MouseEvent e) {
 		if (e.getSource() == start) {
 			if (start.isEnabled())
-				app.debug();
+				app.play();
 		} else if (e.getSource() == stop) {
 			if (stop.isEnabled())
 				app.stop();
@@ -240,12 +241,12 @@ public class SideButtons extends JPanel implements MouseListener, FrameworkEvent
 	}
 
 	@Override
-	public void triggered() {
+	public void triggered(Event e) {
 		updateLabels();
 	}
 
 	@Override
-	public void triggered(Object... os) {
+	public void triggered(Event e, Object... os) {
 		updateLabels();
 
 	}

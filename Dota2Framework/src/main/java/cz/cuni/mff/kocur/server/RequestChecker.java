@@ -127,7 +127,7 @@ public class RequestChecker {
 		int size = 4;
 		if (uriFields[2].equals("server"))
 			size = 4;
-		else if (uriFields[2].equals("client"))
+		else if (uriFields[2].equals("agent"))
 			size = 5;
 		else {
 			logger.error("Unknown resolution. I know only client and server.");

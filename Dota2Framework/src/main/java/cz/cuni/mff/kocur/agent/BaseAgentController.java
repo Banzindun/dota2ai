@@ -32,28 +32,28 @@ import cz.cuni.mff.kocur.world.Hero;
  */
 public abstract class BaseAgentController implements Controllable, AgentController, ConfigurationChangeListener {
 	/**
-	 * BaseBot logger.
+	 * BaseAgentController logger.
 	 */
 	protected Logger logger = LogManager.getLogger(BaseAgentController.class.getName());
 
 	/**
-	 * Bot context of this bot.
+	 * Agent's context.
 	 */
-	protected AgentContext botContext = null;
+	protected AgentContext agentContext = null;
 
 	/**
-	 * Team context of this bot. Contains reference to other heroes etc. on the same
+	 * Team context of this agent. Contains reference to other heroes etc. on the same
 	 * team.
 	 */
 	protected TeamContext teamContext = null;
 
 	/**
-	 * Configuration of this bot.
+	 * Configuration of this agent.
 	 */
 	protected HeroConfiguration configuration = null;
 
 	/**
-	 * Bot's id.
+	 * Agent's id.
 	 */
 	protected Integer id = -1;
 
@@ -70,7 +70,7 @@ public abstract class BaseAgentController implements Controllable, AgentControll
 	 */
 	public BaseAgentController() {
 		// Will be -1
-		botContext = new AgentContext(this);
+		agentContext = new AgentContext(this);
 	}
 
 	@Override
@@ -86,16 +86,16 @@ public abstract class BaseAgentController implements Controllable, AgentControll
 	@Override
 	public void initialize() {
 		// Set my team
-		botContext.setMyTeam(configuration.getConfigValue("team"));
+		agentContext.setMyTeam(configuration.getConfigValue("team"));
 
 		// Set champion name
-		botContext.setHeroName(configuration.getConfigValue("champion"));
+		agentContext.setHeroName(configuration.getConfigValue("champion"));
 
 		// Set lane
-		botContext.setMyLane(configuration.getConfigValue("lane"));
+		agentContext.setMyLane(configuration.getConfigValue("lane"));
 
 		// Set roles of this hero
-		botContext.setMyRoles(configuration.getConfigValue("roles"));
+		agentContext.setMyRoles(configuration.getConfigValue("roles"));
 
 		// Add change listener to configuration change
 		configuration.addChangeListener(this);
@@ -103,7 +103,7 @@ public abstract class BaseAgentController implements Controllable, AgentControll
 
 	@Override
 	public void destroy() {
-		botContext.destroyed();
+		agentContext.destroyed();
 	}
 
 	/**
@@ -115,7 +115,7 @@ public abstract class BaseAgentController implements Controllable, AgentControll
 
 	@Override
 	public AgentContext getContext() {
-		return botContext;
+		return agentContext;
 	}
 
 	@Override
@@ -149,13 +149,13 @@ public abstract class BaseAgentController implements Controllable, AgentControll
 
 	/**
 	 * This is a command, that can be used by any controller to move to some
-	 * location. This will be extended by BaseBotController.
+	 * location. This will be extended by BaseagentController.
 	 * 
 	 * @param l
 	 *            Location where we want to move. The location can have id or x, y
 	 *            set in it. If only id is set, we will move to entity with that id.
 	 *            If only location is set, we will move to that location.
-	 * @return Returns BotCommand, that moves the bot to given location.
+	 * @return Returns agentCommand, that moves the agent to given location.
 	 */
 	public AgentCommand moveTo(Location l) {
 		return new Move(l.getX(), l.getY(), 0.0);
@@ -171,7 +171,7 @@ public abstract class BaseAgentController implements Controllable, AgentControll
 	 *         too close.
 	 */
 	public AgentCommand pickupRune(Rune b) {
-		if (botContext.inRange(b, 15) && b.isActive()) {
+		if (agentContext.inRange(b, 15) && b.isActive()) {
 			b.pickedUp();
 			return new PickupRune(b.getEntid());
 		} else
@@ -187,7 +187,7 @@ public abstract class BaseAgentController implements Controllable, AgentControll
 	 * @return Returns command to come closer to shrine or to use it, if very close.
 	 */
 	public AgentCommand useShrine(Healer h) {
-		if (botContext.inRange(h, 15) && h.isActive()) {
+		if (agentContext.inRange(h, 15) && h.isActive()) {
 			h.deplete();
 			return new Attack(h.getEntid());
 		} else
@@ -252,10 +252,10 @@ public abstract class BaseAgentController implements Controllable, AgentControll
 	public AgentCommand castASpell(Location l, int index) {
 		Ability a = hero.getAbility(index);
 		// Check that the location is in range
-		if (l.isLocationSet() && !botContext.inRange(this.hero, l, a.getCastRange())) {
+		if (l.isLocationSet() && !agentContext.inRange(this.hero, l, a.getCastRange())) {
 			logger.warn("Out of range.");
 			return new Noop();
-		} else if (l.idSet() && !botContext.inRange(this.hero, l.getEntid(), a.getCastRange())) {
+		} else if (l.idSet() && !agentContext.inRange(this.hero, l.getEntid(), a.getCastRange())) {
 			logger.warn("Target out of range.");
 			return new Noop();
 		}
@@ -321,7 +321,7 @@ public abstract class BaseAgentController implements Controllable, AgentControll
 	@Override
 	public void setTeamContext(TeamContext teamContext) {
 		this.teamContext = teamContext;
-		botContext.setTeamContext(teamContext);
+		agentContext.setTeamContext(this.teamContext);
 	}
 
 }

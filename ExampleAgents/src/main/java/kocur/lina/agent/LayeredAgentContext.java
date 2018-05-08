@@ -1,5 +1,6 @@
 package kocur.lina.agent;
 
+import cz.cuni.mff.kocur.agent.AgentContext;
 import cz.cuni.mff.kocur.agent.BaseAgentController;
 import cz.cuni.mff.kocur.botGraphics.BotTab;
 import cz.cuni.mff.kocur.brain.Brain;
@@ -55,9 +56,8 @@ public class LayeredAgentContext extends ExtendedAgentContext {
 	 */
 	private BotTab graphics = null;
 
-	public LayeredAgentContext(BaseAgentController bc) {
-		super(bc);
-
+	public LayeredAgentContext(AgentContext context) {
+		super(context);
 	}
 
 	/**
@@ -128,6 +128,7 @@ public class LayeredAgentContext extends ExtendedAgentContext {
 		 */
 
 		graphics.layersUpdated();
+		
 	}
 
 	@Override
@@ -156,17 +157,17 @@ public class LayeredAgentContext extends ExtendedAgentContext {
 	 */
 	public static Integer getLayerNumber(String name) {
 		String _name = name.toLowerCase();
-		if (_name.equals("FriendlyThreats"))
+		if (_name.equals("friendlythreats"))
 			return FRIENDLY_THREATS;
-		else if (_name.equals("EnemyThreats"))
+		else if (_name.equals("enemythreats"))
 			return ENEMY_THREATS;
-		else if (_name.equals("CombinedThreats"))
+		else if (_name.equals("combinedthreats"))
 			return COMBINED_THREATS;
-		else if (_name.equals("Farm"))
+		else if (_name.equals("farm"))
 			return FARM;
-		else if (_name.equals("Goal"))
+		else if (_name.equals("goal"))
 			return GOAL;
-		else if (_name.equals("Global"))
+		else if (_name.equals("global"))
 			return GLOBAL;
 
 		return -1;

@@ -1,7 +1,5 @@
 package cz.cuni.mff.kocur.brain;
 
-import cz.cuni.mff.kocur.considerations.ConsiderDistanceToTarget;
-import cz.cuni.mff.kocur.considerations.ConsiderTargetValue;
 import cz.cuni.mff.kocur.considerations.ConsiderThreat;
 import cz.cuni.mff.kocur.considerations.ConsiderTimePassed;
 import cz.cuni.mff.kocur.considerations.Consideration;
@@ -9,7 +7,6 @@ import cz.cuni.mff.kocur.decisions.Decision;
 import cz.cuni.mff.kocur.decisions.DecisionBuilder;
 import cz.cuni.mff.kocur.decisions.DecisionScoreEvaluator;
 import cz.cuni.mff.kocur.decisions.EscapeDecision;
-import cz.cuni.mff.kocur.decisions.MoveToFarmingPosition;
 import cz.cuni.mff.kocur.decisions.MoveToGoalDecision;
 import cz.cuni.mff.kocur.utility.LinearFunction;
 import cz.cuni.mff.kocur.utility.PolynomialFunction;
@@ -73,23 +70,6 @@ public class MovementDS extends DecisionSet {
 				.get();
 
 		this.add(stayOutOfThreat);*/
-		
-		Decision stayCloseToFarm = DecisionBuilder.build().setDecision(new MoveToFarmingPosition())
-				.setName("MoveToFarmingPosition").setBonusFactor(4.0)
-				// We do not want to adjust all the time.
-				.addConsideration(new ConsiderTimePassed(), new LinearFunction(2, 1, 0.5, 0))
-				.addDoubleParameter(Consideration.PARAM_RANGE_MAX, 3)
-				// If the farming position has low influence, we do not go there
-				.addConsideration(new ConsiderTargetValue(), new PolynomialFunction(2.5, 3, 0, 0))
-				.addDoubleParameter(Consideration.PARAM_RANGE_MIN, 0)
-				.addDoubleParameter(Consideration.PARAM_RANGE_MAX, 1)
-				// If it is close to us, we do not go there - again because we do not want to adjust all the time
-				.addConsideration(new ConsiderDistanceToTarget(), new PolynomialFunction(-2.2, 2, 0.2, 1.2))
-				.addDoubleParameter(Consideration.PARAM_RANGE_MIN, 0)
-				.addDoubleParameter(Consideration.PARAM_RANGE_MAX, 400).setEvaluator(new DecisionScoreEvaluator())
-				.get();
-
-		this.add(stayCloseToFarm);
 
 
 	}

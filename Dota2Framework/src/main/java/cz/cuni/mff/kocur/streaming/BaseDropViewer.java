@@ -7,10 +7,17 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import cz.cuni.mff.kocur.base.Colors;
+import cz.cuni.mff.kocur.framework.Setup;
 import cz.cuni.mff.kocur.graphics.StreamOptionsWrapper;
 import cz.cuni.mff.kocur.graphics.ZoomAndPanJPanel;
 import cz.cuni.mff.kocur.world.GridBase;
@@ -31,6 +38,11 @@ public abstract class BaseDropViewer extends ZoomAndPanJPanel
 	 * Generated serial version ID.
 	 */
 	private static final long serialVersionUID = 6848559487682461401L;
+
+	/**
+	 * Logger.
+	 */
+	private static final Logger logger = LogManager.getLogger(BaseDropViewer.class);
 
 	/**
 	 * Image, that represents the grid.
@@ -67,6 +79,22 @@ public abstract class BaseDropViewer extends ZoomAndPanJPanel
 		AlphaComposite ac = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha);
 		g.setComposite(ac);
 		g.drawImage(heightsMap, 0, 0, null);
+	}
+
+	/**
+	 * Saves map of the grid to file.
+	 * 
+	 * @param string
+	 *            File name.
+	 */
+	public static void saveGridMap(String string) {
+		File outputfile = new File(Setup.getOutputDir() + string);
+
+		try {
+			ImageIO.write(gridI, "png", outputfile);
+		} catch (IOException e) {
+			logger.warn("Unable to save grid map.");
+		}
 	}
 
 	/**
@@ -133,7 +161,8 @@ public abstract class BaseDropViewer extends ZoomAndPanJPanel
 	/**
 	 * Receives the information drop.
 	 * 
-	 * @param d The drop.
+	 * @param d
+	 *            The drop.
 	 */
 	public void receive(InformationDrop d) {
 		if (this.isShowing()) {
@@ -165,4 +194,5 @@ public abstract class BaseDropViewer extends ZoomAndPanJPanel
 	public void setWrapper(StreamOptionsWrapper wrapper) {
 		this.wrapper = wrapper;
 	}
+
 }

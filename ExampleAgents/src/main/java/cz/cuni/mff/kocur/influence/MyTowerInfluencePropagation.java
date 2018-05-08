@@ -23,13 +23,15 @@ public class MyTowerInfluencePropagation extends EnemyTowerInfluencePropagation 
 	protected void calculateInfluence(InfluenceLayer l, PropagationPoint point) {
 		double ratio = 0;
 
+		//double distanceToTower = GridBase.distanceTileToTile((int) l.resolveX(tower.getX()), (int) l.resolveY(tower.getY()), point.getX(), point.getY());
+		
 		double distanceTileToBase = GridBase.distanceTileToTile(point.getX(), point.getY(), baseCoords);
 		double normalizedDistanceToBase = (distanceTileToBase - minDistanceToBase)
 				/ (maxDistanceToBase - minDistanceToBase);
-		ratio = ((1 - normalizedDistanceToBase) + 3 * point.getNormalizedDistance(maxDistance)) / 4;
+		
+		ratio = 1-(normalizedDistanceToBase + point.getNormalizedDistance(maxDistance)) / 2;
 
 		double influence = Math.pow(maxInfluence * ratio, power);
 		l.addInfluence(point.getX(), point.getY(), sign * (influence));
 	}
-
 }

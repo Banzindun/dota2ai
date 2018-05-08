@@ -65,7 +65,7 @@ function Dota2AI:OnGameRulesStateChange()
       
       Timers:CreateTimer(2, function()
           if INIT == true then 
-            Dota2AI:createBigUpdate(DOTA_TEAM_GOODGUYS ) 
+            Dota2AI:createBigUpdate(DOTA_TEAM_GOODGUYS) 
           end
           return 1.0
         end
@@ -79,7 +79,7 @@ function Dota2AI:OnGameRulesStateChange()
         end
       )
 
-      -- Finish the game after 10 minutes
+      ---- Finish the game after 5 minutes
       --Timers:CreateTimer(3, function()
           --if GameRules:GetGameTime() > 390 then 
             --GameRules:MakeTeamLose(DOTA_TEAM_BADGUYS)
@@ -269,7 +269,7 @@ function Dota2AI:BotLevelUp(heroEntity)
     return
   end 
 
-  request = SetRequest("/client/" .. heroEntity.name .. "/levelup", "")
+  request = SetRequest("/agent/" .. heroEntity.name .. "/levelup", "")
   sendAndHandleRequest(request, nil, function( body ) 
 		  self:ParseHeroLevelUp(heroEntity.hero, body) 
     end, nil
@@ -302,7 +302,7 @@ function Dota2AI:createUpdate(heroEntity)
     return
   end 
 
-  request = SetRequest("/client/" .. heroEntity.name .. "/update", self:JSONWorld(heroEntity))
+  request = SetRequest("/agent/" .. heroEntity.name .. "/update", self:JSONWorld(heroEntity))
     sendAndHandleRequest(request, heroEntity, 
       function( body ) -- Success function
         if body ~= nil then 
@@ -408,10 +408,7 @@ function BotPick(inDebug)
       if slot ~= nil then 
         PlayerResource:SetCustomTeamAssignment( slot, cfg.team )
         if cfg.type == "ai" then
-          --PlayerResource:GetPlayer(slot):MakeRandomHeroSelection()
-          PrecacheUnitByNameAsync(cfg.heroName, function() 
-              --local hero = PlayerResource:ReplaceHeroWith(slot, cfg.heroName, 600, 0)
-               
+          PrecacheUnitByNameAsync(cfg.heroName, function()                
               local hero = CreateHeroForPlayer(cfg.heroName, PlayerResource:GetPlayer(slot))
               hero:RespawnHero(false, false) 
                           

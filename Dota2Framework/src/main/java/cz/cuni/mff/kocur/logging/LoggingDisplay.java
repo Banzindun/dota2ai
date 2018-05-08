@@ -11,7 +11,7 @@ import org.apache.logging.log4j.core.LogEvent;
 public interface LoggingDisplay {
 
 	/**
-	 * Recieves a LogEvent.
+	 * Receives a LogEvent.
 	 * 
 	 * @param log
 	 *            LogEvent.

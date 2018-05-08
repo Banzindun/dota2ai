@@ -60,11 +60,13 @@ public class River {
 	 * @param g Graphics.
 	 */
 	private void drawRoshan(Graphics2D g) {
-		double[] roshanCoords = GridBase.getInstance().getEntityCoordinates(roshan);
-		Image roshanI = GraphicResources.getMapIcon("roshan").getImage();
-		roshanCoords[0] -= roshanI.getWidth(null)/2;
-		roshanCoords[1] -= roshanI.getHeight(null)/2;
-		g.drawImage(roshanI, (int)roshanCoords[0], (int)roshanCoords[1], null);
+		if (roshan != null) {
+			double[] roshanCoords = GridBase.getInstance().getEntityCoordinates(roshan);
+			Image roshanI = GraphicResources.getMapIcon("roshan").getImage();
+			roshanCoords[0] -= roshanI.getWidth(null)/2;
+			roshanCoords[1] -= roshanI.getHeight(null)/2;
+			g.drawImage(roshanI, (int)roshanCoords[0], (int)roshanCoords[1], null);
+		}
 	}
 	
 	public Rune getBotPowerup() {

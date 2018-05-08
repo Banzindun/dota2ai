@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EtchedBorder;
 
+import cz.cuni.mff.kocur.events.Event;
 import cz.cuni.mff.kocur.events.FrameworkEventListener;
 import cz.cuni.mff.kocur.events.ListenersManager;
 import cz.cuni.mff.kocur.framework.App;
@@ -123,7 +124,7 @@ public class MainBody extends BuildableJPanel implements FrameworkEventListener 
 
 
 	@Override
-	public void triggered() {
+	public void triggered(Event e) {
 		App.State state = App.state;
 
 		this.removeAll();
@@ -152,8 +153,8 @@ public class MainBody extends BuildableJPanel implements FrameworkEventListener 
 	}
 
 	@Override
-	public void triggered(Object... os) {
-		triggered();
+	public void triggered(Event e, Object... os) {
+		triggered(e);
 	}
 
 }

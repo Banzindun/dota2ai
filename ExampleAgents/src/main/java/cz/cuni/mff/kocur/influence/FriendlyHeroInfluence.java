@@ -34,9 +34,9 @@ public class FriendlyHeroInfluence extends EnemyHeroInfluence {
 		double distanceTileToBase = GridBase.distanceTileToTile(point.getX(), point.getY(), baseCoords);
 		double normalizedDistanceToBase = (distanceTileToBase - minDistanceToBase)
 				/ (maxDistanceToBase - minDistanceToBase);
-		double ratio = ((1 - normalizedDistanceToBase) + point.getNormalizedDistance(maxDistance)) / 2;
+		double ratio = 1-(normalizedDistanceToBase + point.getNormalizedDistance(maxDistance)) / 2;
 
 		double influence = Math.pow(maxInfluence * ratio, power);
-		l.addInfluence(point.getX(), point.getY(), sign * (maxInfluence - influence));
+		l.addInfluence(point.getX(), point.getY(), sign * (influence));
 	}
 }

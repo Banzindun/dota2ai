@@ -31,7 +31,7 @@ public class SniperGoalDS extends DecisionSet {
 	 */
 	public void createDecisions() {
 
-		Decision setRuneAsAGoal = DecisionBuilder.build().setDecision(new RuneGoalDecision() {
+		/*Decision setRuneAsAGoal = DecisionBuilder.build().setDecision(new RuneGoalDecision() {
 			@Override
 			public void updateContext(ExtendedAgentContext bc) {
 				// We will need a location of the most distant creep, as he defines the front of
@@ -48,7 +48,26 @@ public class SniperGoalDS extends DecisionSet {
 				.addDoubleParameter(Consideration.PARAM_RANGE_MAX, 1000).setEvaluator(new DecisionScoreEvaluator())
 				.get();
 
-		this.add(setRuneAsAGoal);
+		this.add(setRuneAsAGoal);*/
+		
+		Decision setLastTowerAsAGoal = DecisionBuilder.build().setDecision(new RuneGoalDecision() {
+			@Override
+			public void updateContext(ExtendedAgentContext bc) {
+				// We will need a location of the most distant creep, as he defines the front of
+				// our lane.
+				Location lastTower = bc.getMyLane().getLastStandingTower();
+				context.setTarget(new Target(lastTower));
+			}
+		}).setBonusFactor(3.0).setName("SetRuneGoal")
+				.addConsideration(new ConsiderGameTime(), new LinearFunction(2.2, 1, 1.1, 1.5))
+				.addDoubleParameter(Consideration.PARAM_RANGE_MIN, 0)
+				.addDoubleParameter(Consideration.PARAM_RANGE_MAX, 90)
+				.addConsideration(new ConsiderDistanceToTarget(), new LinearFunction(1, 1, 0.4, 0))
+				.addDoubleParameter(Consideration.PARAM_RANGE_MIN, 0)
+				.addDoubleParameter(Consideration.PARAM_RANGE_MAX, 1000).setEvaluator(new DecisionScoreEvaluator())
+				.get();
+
+		this.add(setLastTowerAsAGoal);
 
 	}
 }

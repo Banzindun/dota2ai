@@ -4,6 +4,11 @@ import cz.cuni.mff.kocur.base.Location;
 import cz.cuni.mff.kocur.decisions.DecisionContext;
 import cz.cuni.mff.kocur.world.GridBase;
 
+/**
+ * Considers distance to target.
+ * @author kocur
+ *
+ */
 public class ConsiderDistanceToTarget extends Consideration{
 	
 	public ConsiderDistanceToTarget() {

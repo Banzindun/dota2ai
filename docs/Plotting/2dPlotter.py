@@ -124,10 +124,10 @@ def main():
 
 
 def plot_four_functions():
-	fcs = {"poly" :  [4.5, 3, 0.4, 0.4],
-		"sinusoid" : [0.2, 10, 0.7, 0.5],
-		"logistic" : [1, 0.9, 0, 0.05],
-		"logit" : [1.1, 0.66, 0.5, -0.1]}
+	fcs = [["poly", [4.5, 3, 0.4, 0.4]],
+		["sinusoid", [0.2, 10, 0.7, 0.5]],
+		["logistic", [1, 0.9, 0, 0.05]],
+		["logit", [1.1, 0.66, 0.5, -0.1]]]
 
 	x = np.arange(0.0, 1.0, 0.001)
 	#plt.style.use('fivethirtyeight')
@@ -136,7 +136,7 @@ def plot_four_functions():
 	plt.figure(1, figsize=(16, 9), facecolor='w', edgecolor='k')
 	
 	i = 1
-	for key, value in fcs.iteritems(): 
+	for key, values in fcs: 
 		plt.subplot(2,2,i)
 		plt.grid(True)
 
@@ -144,10 +144,10 @@ def plot_four_functions():
 		axes.set_xlim([-0.01, 1.01])
 		axes.set_ylim([-0.01, 1.01])
 
-		axes.set_xticks(np.arange(0, 1, 0.1))
-		axes.set_yticks(np.arange(0, 1., 0.1))
+		axes.set_xticks(np.arange(0, 1.1, 0.1))
+		axes.set_yticks(np.arange(0, 1.1, 0.1))
 
-		function = getFunction(key, value[0], value[1], value[2], value[3])
+		function = getFunction(key, values[0], values[1], values[2], values[3])
 
 		plt.title(function.toString())
 		plt.plot(x, function.compute(x), linewidth=2, label="") # Plot the average

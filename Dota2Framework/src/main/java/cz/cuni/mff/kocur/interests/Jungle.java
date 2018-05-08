@@ -18,21 +18,21 @@ public class Jungle {
 	/**
 	 * Top shrine.
 	 */
-	private Healer topHealer = null;
+	protected Healer topHealer = null;
 	
 	/**
 	 * Bot shrine.
 	 */
-	private Healer botHealer = null; 
+	protected Healer botHealer = null; 
 	
 	/**
 	 * List of camps.
 	 */
-	private ArrayList<Camp> camps = new ArrayList<>();
+	protected ArrayList<Camp> camps = new ArrayList<>();
 	
-	private Rune topBounty = null;
+	protected Rune topBounty = null;
 	
-	private Rune botBounty = null;
+	protected Rune botBounty = null;
 	
 	/**
 	 * Team, that this jungle belongs to.

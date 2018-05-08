@@ -19,7 +19,9 @@ import cz.cuni.mff.kocur.influence.InfluenceLayer;
 import cz.cuni.mff.kocur.server.AgentCommand;
 import cz.cuni.mff.kocur.server.AgentCommands;
 import cz.cuni.mff.kocur.server.TimeManager;
+import cz.cuni.mff.kocur.streaming.BaseDropViewer;
 import cz.cuni.mff.kocur.world.ChatEvent;
+import cz.cuni.mff.kocur.world.GridBase;
 import cz.cuni.mff.kocur.world.Hero;
 import kocur.lina.agent.LayeredAgentContext;
 
@@ -47,6 +49,16 @@ public class Sniper extends BaseAgentController {
 	 * Our brain.
 	 */
 	SniperBrain brain;
+	
+	/**
+	 * Health we had last time.
+	 */
+	private int lastHealth = 0;
+	
+	/**
+	 * Map of places where we took damage.
+	 */
+	private HitMap hitMap = new HitMap();
 
 	public Sniper() {
 		super();
@@ -60,13 +72,13 @@ public class Sniper extends BaseAgentController {
 		// Set up sequence in which I will be buying items
 		BuySequence buySequence = new BuySequence(
 				Utils.parseArrayOfStrings(configuration.getConfigValue("buy_orders")));
-		botContext.setBuySequence(buySequence);
+		agentContext.setBuySequence(buySequence);
 	}
 
 	@Override
 	public void initialize() {
 		// Override botContext with our own
-		botContext = new LayeredAgentContext(this);
+		agentContext = new LayeredAgentContext(agentContext);
 
 		// Initialize the context and the bot
 		super.initialize();
@@ -75,12 +87,12 @@ public class Sniper extends BaseAgentController {
 		loadFromConfiguration();
 
 		// Initialize the bot layers.
-		((ExtendedAgentContext) botContext).initializeLayers();
+		((ExtendedAgentContext) agentContext).initializeLayers();
 
 		// Create new intelligence and decisions for this bot
-		brain = new SniperBrain((ExtendedAgentContext) botContext);
+		brain = new SniperBrain((ExtendedAgentContext) agentContext);
 		brain.createDecisions();
-		((ExtendedAgentContext) botContext).setBrain(brain);
+		((ExtendedAgentContext) agentContext).setBrain(brain);
 	}
 
 	@Override
@@ -125,11 +137,20 @@ public class Sniper extends BaseAgentController {
 		if (hero.getHealth() <= 0) {
 			return new AgentCommands.Noop();
 		}
+		
+		// Check if we have took damage
+		if (lastHealth != 0 && lastHealth != hero.getHealth()) {
+			double[] coords = GridBase.getInstance().getEntityCoordinates(hero);
+			hitMap.addLocation(coords);
+		}
+		
+		lastHealth = hero.getHealth();
 
 		// Update the layers
-		((ExtendedAgentContext) botContext).updateLayers();
+		((ExtendedAgentContext) agentContext).updateLayers();
 
 		return think();
+		//return null;
 	}
 
 	/**
@@ -143,7 +164,7 @@ public class Sniper extends BaseAgentController {
 				Decision decision = brain.think();
 				Decision voidDecision = brain.voidThink();
 
-				((LayeredAgentContext) botContext).getGraphics().updateConsiderations();
+				((LayeredAgentContext) agentContext).getGraphics().updateConsiderations();
 
 				if (voidDecision != null) {
 					voidDecision.execute();
@@ -165,7 +186,7 @@ public class Sniper extends BaseAgentController {
 
 	@Override
 	public void configurationChanged() {
-
+		super.initialize(); // Will load team and roles again, we don't want to change anything else for now
 	}
 
 	@Override
@@ -179,15 +200,19 @@ public class Sniper extends BaseAgentController {
 			String layerName = cmd.getField();
 			String fileName = cmd.getField();
 			if (!layerName.equals("") && !fileName.equals("")) {
-				InfluenceLayer l = ((ExtendedAgentContext) botContext)
+				InfluenceLayer l = ((ExtendedAgentContext) agentContext)
 						.getLayer(LayeredAgentContext.getLayerNumber(layerName));
 				if (l != null) {
 					try {
 						l.saveToFile(fileName);
+						res.pass("Layers saved to file: " + fileName);
 					} catch (IOException e) {
 						logger.error("Unable to save layer to file.");
+						res.fail("Unable to save layer to file:" + fileName);
 						e.printStackTrace();
 					}
+				} else {
+					res.fail("Unknown layer: " + layerName);
 				}
 			}
 			break;
@@ -217,6 +242,14 @@ public class Sniper extends BaseAgentController {
 		super.setHero(h); // Will set the hero
 
 		brain.presetDecisions();
+	}
+	
+	@Override
+	public void destroy() {
+		super.destroy();
+		
+		hitMap.save("hitmap.png");
+		BaseDropViewer.saveGridMap("gridmap.png");
 	}
 
 }

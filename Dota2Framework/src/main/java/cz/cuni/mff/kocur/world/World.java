@@ -136,6 +136,24 @@ public class World {
 		if (u.getInterests() != null)
 			InterestsBase.getInstance().update(u.getInterests());
 	}
+	
+	/**
+	 * Updates this world. Updates puts all entities to world representation. 
+	 * 
+	 * @param u
+	 *            WorldUpdate - world that we are updating from.
+	 */
+	public void voidUpdate(WorldUpdate u) {
+		for (Entry<Integer, BaseEntity> e : u.getEntities().entrySet()) {
+			BaseEntity local = entities.get(e.getKey());
+			if (local == null) {
+				entities.put(e.getKey(), e.getValue()); // Inserting new
+				e.getValue().updateTime();
+			} else {
+				local.update(e.getValue());	// Else we update the old value
+			}
+		}
+	}
 
 	/**
 	 * Cleans up the world.

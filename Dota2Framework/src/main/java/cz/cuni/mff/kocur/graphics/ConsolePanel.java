@@ -367,7 +367,7 @@ public class ConsolePanel extends BuildableJPanel implements Action, Controllabl
 	public String getHelp() {
 		StringBuilder help = new StringBuilder();
 
-		help.append("\tclear\tclears the console" + ls);
+		help.append("\tclear -> clears the console" + ls);
 
 		return help.toString();
 	}

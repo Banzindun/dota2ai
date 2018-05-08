@@ -14,6 +14,29 @@ public class FrameworkEvent extends Event {
 	protected int type = 0;
 
 	/**
+	 * Name of the source of this event.
+	 */
+	protected String sourceName = "";
+
+	/**
+	 * 
+	 * @return Returns name of the source, that caused this event.
+	 */
+	public String getSourceName() {
+		return sourceName;
+	}
+
+	/**
+	 * Sets a new source name.
+	 * 
+	 * @param sourceName
+	 *            New source name.
+	 */
+	public void setSourceName(String sourceName) {
+		this.sourceName = sourceName;
+	}
+
+	/**
 	 * 
 	 * @return Returns the type of this event.
 	 */
@@ -23,7 +46,9 @@ public class FrameworkEvent extends Event {
 
 	/**
 	 * Sets new type of this event.
-	 * @param type New type.
+	 * 
+	 * @param type
+	 *            New type.
 	 */
 	public void setType(int type) {
 		this.type = type;

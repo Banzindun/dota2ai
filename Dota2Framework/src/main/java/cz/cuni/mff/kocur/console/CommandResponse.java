@@ -10,6 +10,9 @@ import cz.cuni.mff.kocur.base.CustomStringBuilder;
  *
  */
 public class CommandResponse extends CustomStringBuilder {
+	/**
+	 * Did the command pass?
+	 */
 	private boolean passed = true;
 
 	/**

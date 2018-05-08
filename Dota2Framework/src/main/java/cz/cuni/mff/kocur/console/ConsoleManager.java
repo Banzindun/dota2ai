@@ -57,7 +57,7 @@ public class ConsoleManager {
 	}
 
 	/**
-	 * Registers given controllable inside registeredControlables
+	 * Registers given controllable inside registeredControlables.
 	 * 
 	 * @param controllable
 	 *            controllable that should be registered
@@ -84,7 +84,7 @@ public class ConsoleManager {
 	 *            Name of the controllable.
 	 * @return Returns the controllable with given name.
 	 */
-	public static Controllable getControllable(String name) {
+	private static Controllable getControllable(String name) {
 		return registeredControllables.get(name);
 	}
 

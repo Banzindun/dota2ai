@@ -108,13 +108,13 @@ public class EnemyCreepInfluence extends WavePropagationWithContext<Creep> {
 			double distanceTileToBase = GridBase.distanceTileToTile(point.getX(), point.getY(), baseCoords);
 			double normalizedDistanceToBase = (distanceTileToBase - minDistanceToBase)
 					/ (maxDistanceToBase - minDistanceToBase);
-			ratio = ((1 - normalizedDistanceToBase) + point.getNormalizedDistance(maxDistance)) / 2;
+			ratio = 1-( normalizedDistanceToBase + point.getNormalizedDistance(maxDistance)) / 2;
 		} else {
 			ratio = point.getNormalizedDistance(maxDistance);
 		}
 
 		double influence = Math.pow(maxInfluence * ratio, power);
 		// Add influence
-		l.addInfluence(point.getX(), point.getY(), sign * (maxInfluence - influence));
+		l.addInfluence(point.getX(), point.getY(), sign * influence);
 	}
 }

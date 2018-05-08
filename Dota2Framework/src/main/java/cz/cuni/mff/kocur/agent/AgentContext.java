@@ -87,6 +87,22 @@ public class AgentContext {
 	public AgentContext(BaseAgentController bc) {
 		controller = bc;
 	}
+	
+	/**
+	 * Constructor, that copies values from passed agent's context.
+	 * @param bc Bot controller.
+	 * @param context
+	 */
+	public AgentContext(AgentContext context) {
+		world = context.getWorld();
+		controller = context.getController();
+		teamContext = context.getTeamContext();
+		myLane = context.getMyLane();
+		heroName = context.getHeroName();
+		myTeam = context.getMyTeam();
+		myRoles = context.getMyRoles();
+		buySequence = context.getBuySequence();		
+	}
 
 	/**
 	 * Updates the world inside this context.
@@ -526,4 +542,21 @@ public class AgentContext {
 	public String toString() {
 		return world.toString();
 	}
+	
+	/**
+	 * 
+	 * @return Returns this context's world.
+	 */
+	public World getWorld() {
+		return world;
+	}
+
+	/**
+	 * Sets this context's world.
+	 * @param world World.
+	 */
+	public void setWorld(World world) {
+		this.world = world;
+	}
+	
 }

@@ -350,7 +350,7 @@ public class TeamContext {
 	 *            World, that should be used to update this context's world.
 	 */
 	public void update(WorldUpdate u) {
-		world.update(u);
+		world.voidUpdate(u);
 		world.voidCleanup();
 	}
 

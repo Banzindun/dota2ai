@@ -167,6 +167,8 @@ public abstract class ZoomAndPanJPanel extends JPanel
 	public void paintComponent(Graphics g) {
 		// super.paintComponent(g);
 
+		if (!this.isVisible()) return;
+		
 		Graphics2D g2D = (Graphics2D) g;
 
 		// Get the transform

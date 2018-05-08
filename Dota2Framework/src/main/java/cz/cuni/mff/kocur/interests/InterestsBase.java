@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 
 import cz.cuni.mff.kocur.base.IndentationStringBuilder;
 import cz.cuni.mff.kocur.base.Location;
+import cz.cuni.mff.kocur.events.Event;
 import cz.cuni.mff.kocur.events.FrameworkEventListener;
 import cz.cuni.mff.kocur.events.ListenersManager;
 import cz.cuni.mff.kocur.exceptions.LoadingError;
@@ -190,11 +191,11 @@ public class InterestsBase extends GridSystem implements FrameworkEventListener 
 	}
 
 	@Override
-	public void triggered() {
+	public void triggered(Event e) {
 	}
 
 	@Override
-	public void triggered(Object... os) {
+	public void triggered(Event e, Object... os) {
 		Tower t = (Tower) os[0];
 		lanes.towerDestroyed(t.getEntid());
 	}
@@ -431,6 +432,8 @@ public class InterestsBase extends GridSystem implements FrameworkEventListener 
 	public void removeCreepFromJungles(Creep creep) {
 		Camp c = getNearestCamp(creep);
 		if (!c.removeCreep(creep.getEntid())) {
+			if (c.getInterestName().contains("roshan"))
+				return;
 			logger.warn("Creep not removed.");
 		}
 

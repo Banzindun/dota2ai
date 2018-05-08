@@ -157,7 +157,7 @@ public class Camp extends BaseInterest {
 			e.setXYZ(x, y, 0);
 			e.setType(difficulty);
 
-			ListenersManager.triggerEvent("camprespawn", new GameEvent());
+			ListenersManager.triggerEvent("camprespawn", e);
 		}
 
 	}

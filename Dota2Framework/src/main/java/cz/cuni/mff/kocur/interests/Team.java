@@ -7,10 +7,10 @@ package cz.cuni.mff.kocur.interests;
  *
  */
 public class Team {
-	public static int NONE = -1;
-	public static int RADIANT = 2; // Goodguys
-	public static int DIRE = 3; // Badguys
-	public static int NEUTRAL = 4; // Badguys
+	public static final int NONE = -1;
+	public static final int RADIANT = 2; // Goodguys
+	public static final int DIRE = 3; // Badguys
+	public static final int NEUTRAL = 4; // Badguys
 
 	/**
 	 * 
@@ -43,5 +43,26 @@ public class Team {
 
 		return NONE;
 
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param team
+	 *            Number of team.
+	 * @return Returns team number converted to string representation.
+	 */
+	public static String teamToString(int team) {
+		switch (team) {
+		case RADIANT:
+			return "RADIANT";
+		case DIRE:
+			return "DIRE";
+		case NEUTRAL:
+			return "NEUTRAL";
+		default:
+			return "NONE";
+
+		}
 	}
 }

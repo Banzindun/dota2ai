@@ -1,5 +1,6 @@
 package cz.cuni.mff.kocur.influence;
 
+import cz.cuni.mff.kocur.events.Event;
 import cz.cuni.mff.kocur.events.FrameworkEventListener;
 import cz.cuni.mff.kocur.events.ListenersManager;
 import cz.cuni.mff.kocur.world.GridBase;
@@ -75,14 +76,14 @@ public class InfluenceLayerTemplates implements FrameworkEventListener{
 	}
 
 	@Override
-	public void triggered() {
+	public void triggered(Event e) {
 		updateRadiantThreats();
 		updateDireThreats();
 	}
 
 	@Override
-	public void triggered(Object... os) {
-		triggered();
+	public void triggered(Event e, Object... os) {
+		triggered(e);
 	}
 	
 	public static RadiantThreatLayer getRadiantConstantThreats() {

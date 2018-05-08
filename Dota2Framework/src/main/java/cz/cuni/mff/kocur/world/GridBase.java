@@ -201,11 +201,6 @@ public class GridBase extends GridSystem {
 	 * @return Returns the distance.
 	 */
 	public static double distanceTileToTile(int x1, int y1, int x2, int y2) {
-		if (x1 == x2) // Same column
-			return Math.abs(y2 - y1);
-		else if (y1 == y2)
-			return Math.abs(x2 - x1);
-
 		return distance(x1, y1, x2, y2);
 	}
 

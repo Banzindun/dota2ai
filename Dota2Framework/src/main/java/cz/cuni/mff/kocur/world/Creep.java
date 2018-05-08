@@ -29,26 +29,7 @@ public class Creep extends BaseNPC {
 	@JsonIgnore
 	public static float timeToLive = 1;
 
-	/**
-	 * Reference to lane, to which this creep is assigned to.
-	 */
-	/*
-	 * @JsonIgnore private Lane lane = null;
-	 */
-
-	/**
-	 * Reference to camp that this creep is assigned to.
-	 */
-	/*
-	 * @JsonIgnore private Camp camp = null;
-	 */
-
-	/*
-	 * public Lane getLane() { return lane; }
-	 * 
-	 * public void setLane(Lane lane) { this.lane = lane; }
-	 */
-
+	@Override
 	protected float getTimeToLive() {
 		return timeToLive;
 	}
@@ -129,6 +110,11 @@ public class Creep extends BaseNPC {
 	@Override
 	public boolean isCreep() {
 		return true;
+	}
+	
+	@Override
+	public void update(BaseEntity h) {
+		super.update(h);
 	}
 
 }

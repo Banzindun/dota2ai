@@ -160,6 +160,7 @@ public class WorldManager implements Controllable, ConfigurationChangeListener {
 			// Update the world
 			world.update(u);
 
+			// Update the team context.
 			updateTeamContext(arg.getMethod(), u);
 
 			// Do the cleanup

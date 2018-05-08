@@ -244,6 +244,11 @@ public class ControllersManager {
 			return;
 		}
 		bw.updateAgentContext(u);
+		
+		
+		FrameworkEvent bigUpdateEvent = new FrameworkEvent();
+		bigUpdateEvent.setSourceName(name);
+		ListenersManager.triggerFrameworkEvent("agent_updated", bigUpdateEvent);
 	}
 
 	/**

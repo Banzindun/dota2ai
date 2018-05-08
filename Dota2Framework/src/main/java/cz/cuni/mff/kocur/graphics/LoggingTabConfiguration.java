@@ -201,9 +201,19 @@ public class LoggingTabConfiguration extends JPanel {
 	private JPanel saveToPanel = null;
 
 	/**
-	 * TextFiled for filling name of logs file.
+	 * TextField for filling name of logs file.
 	 */
 	private JTextField saveTo;
+	
+	/**
+	 * Panel that holds String filter and configuration for saving to file.
+	 */
+	private JPanel filterStringPanel = null;
+
+	/**
+	 * TextField for filling String filter.
+	 */
+	private JTextField filterString;
 
 	/**
 	 * If selected then logs are on.
@@ -228,6 +238,10 @@ public class LoggingTabConfiguration extends JPanel {
 		gbc.gridy++;
 		this.add(initFilterField(), gbc);
 
+		// Move one grid down add string filter field.
+		gbc.gridy++;
+		this.add(initFilterByString(), gbc);
+		
 		// Move one grid down add save to file field.
 		gbc.gridy++;
 		this.add(initSaveToFile(), gbc);
@@ -330,6 +344,24 @@ public class LoggingTabConfiguration extends JPanel {
 		return field;
 	}
 
+	/**
+	 * Initializes save to file field.
+	 * 
+	 * @return JPanel with text area that lets user to save to file
+	 */
+	private JPanel initFilterByString() {
+		if (filterStringPanel == null) {
+			filterStringPanel = new JPanel();
+			filterStringPanel.setLayout(new GridBagLayout());
+		}
+		filterStringPanel.setBorder(BorderFactory.createTitledBorder("Filter by:"));
+
+		filterString = new JTextField("", 10);
+
+		filterStringPanel.add(filterString);
+		return filterStringPanel;
+	}
+	
 	/**
 	 * Updates filter fields
 	 */
@@ -527,6 +559,10 @@ public class LoggingTabConfiguration extends JPanel {
 	 */
 	public boolean getLogsOn() {
 		return logsOn;
+	}
+	
+	public String getStringFilter() {
+		return filterString.getText();
 	}
 
 }

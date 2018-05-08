@@ -139,7 +139,7 @@ public class RequestArguments {
 	 *            The string that should be saying the resolution.
 	 */
 	public void setResolution(String resolution) {
-		if (resolution.equals("client"))
+		if (resolution.equals("agent"))
 			agent = true;
 		else if (resolution.equals("server"))
 			server = true;

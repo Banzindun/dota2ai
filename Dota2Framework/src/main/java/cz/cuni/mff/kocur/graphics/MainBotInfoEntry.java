@@ -13,6 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 import cz.cuni.mff.kocur.agent.ControllerWrapper;
 import cz.cuni.mff.kocur.base.GraphicResources;
+import cz.cuni.mff.kocur.events.Event;
 import cz.cuni.mff.kocur.events.FrameworkEventListener;
 import cz.cuni.mff.kocur.events.ListenersManager;
 import cz.cuni.mff.kocur.world.Hero;
@@ -193,7 +194,7 @@ public class MainBotInfoEntry extends WindowedJPanel implements FrameworkEventLi
 	}
 
 	@Override
-	public void triggered() {
+	public void triggered(Event e) {
 		// Get the hero from controller
 		Hero h = wrapper.getController().getHero();
 		
@@ -232,8 +233,8 @@ public class MainBotInfoEntry extends WindowedJPanel implements FrameworkEventLi
 	}
 
 	@Override
-	public void triggered(Object... os) {
-		triggered();
+	public void triggered(Event e, Object... os) {
+		triggered(e);
 		
 	}
 

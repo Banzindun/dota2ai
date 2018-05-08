@@ -116,7 +116,7 @@ public class ListenersManager {
 
 		// Spawn a new thread for every listener
 		for (FrameworkEventListener l : ls) {
-			spawnAThread(l);
+			spawnAThread(l, e);
 		}
 	}
 
@@ -143,7 +143,7 @@ public class ListenersManager {
 
 		// Spawn a new thread for every listener
 		for (FrameworkEventListener l : ls) {
-			spawnAThread(l, os);
+			spawnAThread(l, e, os);
 		}
 	}
 
@@ -168,7 +168,7 @@ public class ListenersManager {
 
 		// Spawn a new thread for every listener
 		for (FrameworkEventListener l : ls) {
-			spawnAThread(l);
+			spawnAThread(l, e);
 		}
 	}
 
@@ -195,7 +195,7 @@ public class ListenersManager {
 
 		// Spawn a new thread for every listener
 		for (FrameworkEventListener l : ls) {
-			spawnAThread(l, os);
+			spawnAThread(l, e, os);
 		}
 	}
 
@@ -217,12 +217,15 @@ public class ListenersManager {
 	 * 
 	 * @param l
 	 *            Listener that should be triggered.
+	 * @param e
+	 *            Triggered game event.
+	 * 
 	 */
-	public static void spawnAThread(FrameworkEventListener l) {
+	public static void spawnAThread(FrameworkEventListener l, Event e) {
 		new Thread(new Runnable() {
 			public void run() {
 				try {
-					l.triggered();
+					l.triggered(e);
 				} catch (Throwable e) {
 					logger.error("Error during execution of triggered event, with stack trace:", e);
 					e.printStackTrace();
@@ -236,14 +239,16 @@ public class ListenersManager {
 	 * 
 	 * @param l
 	 *            Listener that should be triggered.
+	 * @param e
+	 *            Triggered game event.
 	 * @param os
 	 *            Objects that should be passed through the trigger.
 	 */
-	public static void spawnAThread(FrameworkEventListener l, Object... os) {
+	public static void spawnAThread(FrameworkEventListener l, Event e, Object... os) {
 		new Thread(new Runnable() {
 			public void run() {
 				try {
-					l.triggered(os);
+					l.triggered(e, os);
 				} catch (Throwable e) {
 					logger.error("Error during execution of triggered event, with stack trace:", e);
 					e.printStackTrace();

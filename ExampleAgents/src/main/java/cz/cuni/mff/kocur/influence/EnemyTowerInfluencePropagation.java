@@ -97,7 +97,7 @@ public class EnemyTowerInfluencePropagation extends WavePropagationWithContext<T
 		maxDistanceToBase = distanceEntityToBase + maxDistance;
 		minDistanceToBase = distanceEntityToBase - maxDistance;
 
-		setMaxMinInfluence();
+		if (sign == -1) setMaxMinInfluence();
 
 		// This will create origin for our object, and will start the spread from the
 		// origin.
@@ -108,6 +108,20 @@ public class EnemyTowerInfluencePropagation extends WavePropagationWithContext<T
 	 * Sets maximum and minimum influences.
 	 */
 	private void setMaxMinInfluence() {
+		// Calculate distance between tower and hero
+		double heroToTowerDistance = GridBase.distance(tower, hero);
+
+		// Find entities that are closer than hero and in tower's range
+		List<BaseEntity> entities = context.findEntitiesInRadius(tower, tower.getAttackRange()).stream()
+				.filter(e1 -> (GridBase.distance(tower, e1) < heroToTowerDistance) && (e1.getTeam() == hero.getTeam())
+						&& (e1.isCreep() || e1.isHero()))
+				.collect(Collectors.toList());
+		
+		// We set influence to PASSIVE_INFLUENCE and then we will change it to better
+		// correspond to the tower's state
+		maxInfluence = PASSIVE_INFLUENCE;
+		minInfluence = 0;
+
 		// Health of the creeps closer than the hero
 		double remainingHealth = 0;
 		double maxHealth = 0;
@@ -115,58 +129,35 @@ public class EnemyTowerInfluencePropagation extends WavePropagationWithContext<T
 		// How close to tower am I?
 		int order = 0;
 
-		// Calculate distance between tower and hero
-		double heroToTowerDistance = GridBase.distance(tower, hero);
-
-		// Find entities that are closer than hero and in tower's range
-		List<BaseEntity> entities = context.getController().getTeamContext()
-				.findEntitiesInRadius(tower, tower.getAttackRange()).stream()
-				.filter((e1) -> GridBase.distance(tower, e1) < heroToTowerDistance).collect(Collectors.toList());
-
-		// We set influence to PASSIVE_INFLUENCE and that we will change it to better
-		// correspond to the tower's state
-		maxInfluence = PASSIVE_INFLUENCE;
-		minInfluence = 0;
-
-		if (entities == null) {
-			minInfluence = 1;
-			return;
-		}
-
 		// If no entities are closer
-		if (entities.size() == 0) {
-			minInfluence = 1;
+		if (entities == null || entities.size() == 0) {
+			minInfluence = PASSIVE_INFLUENCE;
 			return;
 		}
 		// If there is enough of them, we "turn the tower off"
-		else if (entities.size() > CREEP_THRESHOLD) {
+		else if (entities.size() >= CREEP_THRESHOLD) {
 			maxInfluence = 0;
 			minInfluence = 0;
 			return;
 		} else {
-			// Go through entities, stop if there is at least 4 entities closer to tower
-			// than hero. Calculate order and hitpoints.
+			// Go through entities. Calculate order and hitpoints.
 			for (BaseEntity be : entities) {
-				if (be.getTeam() == hero.getTeam()) {
-					// Is the creep/hero too low??
-					if (be.getHealth() < 0.2 * be.getMaxHealth()) {
-						continue;
-					}
+				// Else we add his health to max and remaining health
+				maxHealth += be.getMaxHealth();
+				remainingHealth += be.getHealth();
 
-					// Else we add his health to max and remaining health
-					maxHealth += be.getMaxHealth();
-					remainingHealth += be.getHealth();
-
-					// And we increase the order
-					order++;
-				}
+				// And we increase the order
+				order++;			
 			}
 
 			// If they have some health we multiply the maxInfluence by some threshold
 			if (remainingHealth != 0 && maxHealth != 0) {
-				calculateMaxInfluence((double) order / CREEP_THRESHOLD, remainingHealth / maxHealth);
+				// (double) order / CREEP_THRESHOLD
+				calculateMaxInfluence(CREEP_THRESHOLD - order, remainingHealth / maxHealth);
+				
 			} else {
-				maxInfluence = PASSIVE_INFLUENCE * 2 * (1 - (double) order / CREEP_THRESHOLD);
+				maxInfluence = PASSIVE_INFLUENCE * 2; // As if the tower is attacking us
+				minInfluence = 2.0; 
 			}
 		}
 	}
@@ -174,19 +165,24 @@ public class EnemyTowerInfluencePropagation extends WavePropagationWithContext<T
 	/**
 	 * Calculates maximum influences from order and health.
 	 * 
-	 * @param order
+	 * @param orderOverCreep
 	 *            order / CREEP_THRESHOLD
-	 * @param healthOverMaxHealh
+	 * @param healthOverMaxHealth
 	 *            remainingHealth / maxHealth
 	 */
-	private void calculateMaxInfluence(double order, double healthOverMaxHealh) {
+	private void calculateMaxInfluence(double orderOverCreep, double healthOverMaxHealth) {
 		// Hero is the target
-		if (tower.getAttackTarget() == hero.getEntid() || order == 0) {
+		if (tower.getAttackTarget() == hero.getEntid() || hero.getHealth() < hero.getMaxHealth()*0.4) {
 			maxInfluence = PASSIVE_INFLUENCE * 2;
 			minInfluence = 2.0;
 		} else {
-			double coeff = 1 - (order + healthOverMaxHealh) / 2;
-			maxInfluence = coeff * PASSIVE_INFLUENCE;
+			double health = 0;
+			if (healthOverMaxHealth < 0.5) {
+				health = -2*healthOverMaxHealth + 1;
+			}
+			
+			maxInfluence = health * CREEP_THRESHOLD;	
+			minInfluence = orderOverCreep*health;
 		}
 	}
 
@@ -202,5 +198,8 @@ public class EnemyTowerInfluencePropagation extends WavePropagationWithContext<T
 		// Add influence
 		if (maxInfluence != 0)
 			l.addInfluence(point.getX(), point.getY(), sign * (minInfluence + maxInfluence - influence));
+		else {
+			l.setInfluence(point.getX(), point.getY(), 0);
+		}
 	}
 }

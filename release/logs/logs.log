@@ -1,0 +1,110 @@
+[INFO ] 19:36:29.080 setup [main] Setup - Working directory path is: C:\Users\kocur\Dropbox\Dota2AI\release\
+[INFO ] 19:36:29.096 setup [main] Setup - Output directory is:C:\Users\kocur\Dropbox\Dota2AI\release\out\
+[INFO ] 19:36:29.106 createDirs [main] Setup - I have created a new directory: out at C:\Users\kocur\Dropbox\Dota2AI\release\out
+[INFO ] 19:36:29.486 setup [main] Setup - I have loaded dota2_path C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta
+[INFO ] 19:36:29.520 setSize [main] GridSystem - Initializing grid with height and width: 2055 2183
+[DEBUG] 19:36:35.548 addCatcher [main] Sink - Adding catcher.
+[INFO ] 19:36:38.647 installDota2aiAddon [main] Setup - Installing the dota2ai addon to dota2 directory. [C:\Users\kocur\Dropbox\Dota2AI\release\addons\dota2ai -> C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta]
+[INFO ] 19:36:38.884 installGridExporterAddon [main] Setup - Installing the dota2ai addon to dota2 directory. [C:\Users\kocur\Dropbox\Dota2AI\release\addons\gridExporter -> C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta]
+[DEBUG] 19:36:39.108 addFrameworkListener [main] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.Tabs for: statechanged
+[DEBUG] 19:36:39.115 addFrameworkListener [main] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.SideButtons for: statechanged
+[DEBUG] 19:36:39.125 addFrameworkListener [main] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.MainBody for: statechanged
+[DEBUG] 19:36:39.222 updateTabs [main] StreamsPanel - Updating tabs.
+[DEBUG] 19:36:39.222 updateTabs [main] StreamsPanel - I have obtained 1catchers.
+[INFO ] 19:37:59.478 loadConfiguration [AWT-EventQueue-0] MainAgentConfigurationEntry - Loading configuration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\agent_sniper.json
+[INFO ] 19:37:59.526 loadPassed [AWT-EventQueue-0] MainAgentConfigurationEntry - Successfully loaded bot cofiguration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\agent_sniper.json
+[INFO ] 19:37:59.539 addBotCfg [AWT-EventQueue-0] FrameworkConfiguration - Adding new bot configuration: bot_sniper
+[INFO ] 19:37:59.543 loadConfiguration [AWT-EventQueue-0] MainAgentConfigurationEntry - Loading configuration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\bot_drow.json
+[INFO ] 19:37:59.556 loadPassed [AWT-EventQueue-0] MainAgentConfigurationEntry - Successfully loaded bot cofiguration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\bot_drow.json
+[INFO ] 19:37:59.566 addBotCfg [AWT-EventQueue-0] FrameworkConfiguration - Adding new bot configuration: drowbot
+[INFO ] 19:37:59.568 loadConfiguration [AWT-EventQueue-0] MainAgentConfigurationEntry - Loading configuration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\bot_lion.json
+[INFO ] 19:37:59.585 loadPassed [AWT-EventQueue-0] MainAgentConfigurationEntry - Successfully loaded bot cofiguration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\bot_lion.json
+[INFO ] 19:37:59.598 addBotCfg [AWT-EventQueue-0] FrameworkConfiguration - Adding new bot configuration: lionbot
+[INFO ] 19:37:59.603 loadConfiguration [AWT-EventQueue-0] MainAgentConfigurationEntry - Loading configuration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\agent_lina.json
+[INFO ] 19:37:59.623 loadPassed [AWT-EventQueue-0] MainAgentConfigurationEntry - Successfully loaded bot cofiguration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\agent_lina.json
+[INFO ] 19:37:59.634 addBotCfg [AWT-EventQueue-0] FrameworkConfiguration - Adding new bot configuration: bot_lina
+[INFO ] 19:38:00.708 load [AWT-EventQueue-0] AgentLoader - Loading 2 bots.
+[WARN ] 19:38:00.713 moveOldAisScripts [AWT-EventQueue-0] Setup - I have found an existing script inside bots directory: sniper I am moving it to _bots directory.
+[INFO ] 19:38:00.722 register [AWT-EventQueue-0] ConsoleManager - Registering new controllable with name: bot_sniper
+[INFO ] 19:38:00.723 register [AWT-EventQueue-0] ConsoleManager - Registering new controllable with name: bot_lina
+[INFO ] 19:38:00.723 load [AWT-EventQueue-0] TeamContext - BotManager loaded 2 bots.
+[INFO ] 19:38:00.724 load [AWT-EventQueue-0] AgentLoader - Loading 2 bots.
+[INFO ] 19:38:00.725 load [AWT-EventQueue-0] TeamContext - BotManager loaded 0 bots.
+[INFO ] 19:38:00.729 register [AWT-EventQueue-0] ConsoleManager - Registering new controllable with name: server
+[INFO ] 19:38:00.736 setup [AWT-EventQueue-0] ServerManager - Binding server to port: 8080
+[INFO ] 19:38:00.838 register [AWT-EventQueue-0] ConsoleManager - Registering new controllable with name: handler
+[INFO ] 19:38:00.839 startServer [AWT-EventQueue-0] ServerManager - Starting server
+[DEBUG] 19:38:00.939 addFrameworkListener [Thread-17] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.MainRunningInfo for: statechanged
+[INFO ] 19:38:39.467 handleServer [qtp189053404-34] ServerManager - Game is starting.
+[INFO ] 19:38:46.143 handleSelectedAgent [qtp189053404-41] ControllersManager - Seting id: 843 to agent with name: bot_lina
+[INFO ] 19:38:46.355 handleSelectedAgent [qtp189053404-34] ControllersManager - Seting id: 72 to agent with name: bot_sniper
+[WARN ] 19:38:46.497 parseInterests [qtp189053404-41] InterestPointsLoader - Unknown interest point:npc_dota_roshan
+[DEBUG] 19:38:53.958 addFrameworkListener [qtp189053404-41] ListenersManager - Adding framework listener cz.cuni.mff.kocur.interests.InterestsBase for: towerdestroyed
+[INFO ] 19:38:53.962 handleInterests [qtp189053404-41] ServerManager - Interests loaded sucessfully.
+[DEBUG] 19:38:53.969 addFrameworkListener [qtp189053404-41] ListenersManager - Adding framework listener kocur.lina.agent.LayeredAgentContext for: bigupdate
+[DEBUG] 19:38:53.972 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_branches
+[DEBUG] 19:38:53.972 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_branches
+[DEBUG] 19:38:53.973 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_circlet
+[DEBUG] 19:38:53.974 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_flask
+[DEBUG] 19:38:53.976 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_boots_of_elves
+[DEBUG] 19:38:53.977 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_boots
+[DEBUG] 19:38:53.977 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_wraith_band
+[DEBUG] 19:38:53.978 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_power_treads
+[DEBUG] 19:38:53.978 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_lesser_crit
+[DEBUG] 19:38:53.979 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_yasha
+[DEBUG] 19:38:53.980 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_manta
+[DEBUG] 19:38:53.982 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_desolator
+[DEBUG] 19:38:53.983 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_invis_sword
+[DEBUG] 19:38:53.984 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_sange_and_yasha
+[DEBUG] 19:38:55.001 addFrameworkListener [qtp189053404-41] ListenersManager - Adding framework listener kocur.lina.agent.LayeredAgentContext for: bigupdate
+[DEBUG] 19:38:55.019 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_flask
+[DEBUG] 19:38:55.021 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_flask
+[DEBUG] 19:38:55.022 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_clarity
+[DEBUG] 19:38:55.023 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_branches
+[DEBUG] 19:38:55.029 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_branches
+[DEBUG] 19:38:55.034 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_ring_of_protection
+[DEBUG] 19:38:55.036 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_boots
+[DEBUG] 19:38:55.036 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_magic_wand
+[DEBUG] 19:38:55.037 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_ring_of_basilius
+[DEBUG] 19:38:55.038 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_wind_lace
+[DEBUG] 19:38:55.040 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_ring_of_regen
+[DEBUG] 19:38:55.040 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_staff_of_wizardry
+[DEBUG] 19:38:55.045 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_ring_of_health
+[DEBUG] 19:38:55.046 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_recipe_force_staff
+[DEBUG] 19:38:55.047 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_ring_of_aquila
+[DEBUG] 19:38:55.048 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_ultimate_scepter
+[DEBUG] 19:38:55.051 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_sheepstick
+[INFO ] 19:38:55.928 <init> [qtp189053404-34] WorldManager - Creating the WorldManager.
+[DEBUG] 19:38:55.960 addFrameworkListener [Thread-24] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.MainBotInfoEntry for: bigupdate
+[DEBUG] 19:38:56.004 updateTabs [Thread-21] StreamsPanel - Updating tabs.
+[INFO ] 19:38:56.010 register [qtp189053404-34] ConsoleManager - Registering new controllable with name: world
+[DEBUG] 19:38:56.014 updateTabs [Thread-21] StreamsPanel - I have obtained 1catchers.
+[INFO ] 19:38:56.038 addSource [qtp189053404-34] Sink - Adding source: 
+[DEBUG] 19:38:56.097 addFrameworkListener [Thread-24] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.MainBotInfoEntry for: bigupdate
+[DEBUG] 19:38:56.416 addListener [qtp189053404-33] ListenersManager - Adding listener cz.cuni.mff.kocur.influence.InfluenceLayerTemplates for: tower_destroyed
+[INFO ] 19:38:56.661 <init> [qtp189053404-33] RadiantThreatLayer - Created radiant layer with height and width: 2055, 2183
+[INFO ] 19:38:56.746 setLocalGameStartTime [qtp189053404-41] TimeManager - Setting local game start time to : 1525973936746
+[INFO ] 19:38:56.881 <init> [qtp189053404-33] DireThreatLayer - Created dire layer with height and width: 2055, 2183
+[INFO ] 19:38:56.931 dying [qtp189053404-41] Tower - Tower destroyed at:15.300091lu: -1.0
+[DEBUG] 19:38:57.002 triggerEvent [qtp189053404-41] ListenersManager - Triggered event: tower_destroyed
+[INFO ] 19:38:57.028 dying [qtp189053404-41] Tower - Tower destroyed at:15.300091lu: -1.0
+[DEBUG] 19:38:57.031 triggerEvent [qtp189053404-41] ListenersManager - Triggered event: tower_destroyed
+[INFO ] 19:39:53.897 pauseGame [AWT-EventQueue-0] ServerManager - Pausing the server.
+[INFO ] 19:39:53.898 pause [AWT-EventQueue-0] ServerManager - Sending PAUSE command from request handler.
+[INFO ] 19:39:53.901 frameworkPaused [AWT-EventQueue-0] TimeManager - Pausing the game at:1.52597402E9ms
+[INFO ] 19:39:58.376 unpauseGame [AWT-EventQueue-0] ServerManager - Unpausing server.
+[INFO ] 19:39:58.377 unpause [AWT-EventQueue-0] ServerManager - Sending UNPAUSE command from request handler.
+[INFO ] 19:39:58.379 frameworkUnpaused [AWT-EventQueue-0] TimeManager - The pause took 4.478ms
+[INFO ] 19:39:58.379 frameworkUnpaused [AWT-EventQueue-0] TimeManager - Currently all the pauses took in total: 4.478
+[DEBUG] 19:40:18.937 resolveRune [qtp189053404-41] InterestsBase - Setting new id 535 to rune on:3686.955078125 -3624.8107910156
+[DEBUG] 19:40:19.669 doTimeUpdates [qtp189053404-31] TimeManager - Time updates at time: 2.3322678
+[DEBUG] 19:40:25.334 resolveRune [qtp189053404-31] InterestsBase - Setting new id 545 to rune on:2250.5905761719 -1857.8344726563
+[DEBUG] 19:41:19.982 doTimeUpdates [qtp189053404-29] TimeManager - Time updates at time: 62.303574
+[INFO ] 19:41:19.984 doTimeUpdates [qtp189053404-29] TimeManager - 62.303574: camps respawned.
+[INFO ] 19:41:42.656 pauseGame [AWT-EventQueue-0] ServerManager - Pausing the server.
+[INFO ] 19:41:42.657 pause [AWT-EventQueue-0] ServerManager - Sending PAUSE command from request handler.
+[INFO ] 19:41:42.659 frameworkPaused [AWT-EventQueue-0] TimeManager - Pausing the game at:1.52597402E9ms
+[INFO ] 19:42:04.753 windowClosing [AWT-EventQueue-0] Window - Closing the main window.
+[INFO ] 19:42:04.754 stopServer [AWT-EventQueue-0] ServerManager - Stopping the server.
+[INFO ] 19:42:04.769 windowClosing [AWT-EventQueue-0] Window - Closing the main window.
+[INFO ] 19:42:04.769 stopServer [AWT-EventQueue-0] ServerManager - Stopping the server.

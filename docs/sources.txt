@@ -1,15 +1,9 @@
-button images: 
+Button images: 
 	https://findicons.com/pack/2083/go_green_web
 
 Look and feel:
 	https://github.com/bulenkov/Darcula
 
-Requests - Python: 
-	http://docs.python-requests.org/en/latest/#
-
 Dota 2 pictures etc.
 	https://github.com/devilesk/dota-webassets
-
-Map etc. from game data
-	https://github.com/devilesk/dota-map-coordinates
 

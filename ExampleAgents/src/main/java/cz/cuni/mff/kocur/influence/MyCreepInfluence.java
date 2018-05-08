@@ -22,9 +22,9 @@ public class MyCreepInfluence extends EnemyCreepInfluence{
 		double distanceTileToBase = GridBase.distanceTileToTile(point.getX(), point.getY(), baseCoords);
 		double normalizedDistanceToBase = (distanceTileToBase-minDistanceToBase)/(maxDistanceToBase-minDistanceToBase);
 		//double ratio = (1-normalizedDistanceToBase + distanceTileToOrigin/maxDistance)/2;
-		double ratio = (1-normalizedDistanceToBase + point.getNormalizedDistance(maxDistance))/2;
+		double ratio = 1-(normalizedDistanceToBase + point.getNormalizedDistance(maxDistance))/2;
 		
-		// Check creeps health
+		// Check creep's health
 		if (creep.getHealth() < 0.4) {
 			ratio *= creep.getHealth()/0.4;
 		}
@@ -33,6 +33,4 @@ public class MyCreepInfluence extends EnemyCreepInfluence{
 		double influence = Math.pow(maxInfluence * ratio, power);
 		l.addInfluence(point.getX(), point.getY(), sign*(influence));
 	}
-	
-	
 }

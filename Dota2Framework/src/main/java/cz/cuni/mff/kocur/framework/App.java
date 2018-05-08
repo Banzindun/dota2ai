@@ -233,7 +233,7 @@ public class App implements Controllable {
 	/**
 	 * Starts the server, loads the bots and transfers to INIT state.
 	 */
-	public void debug() {
+	public void play() {
 		if (state == State.RUNNING)
 			return;
 
@@ -288,7 +288,7 @@ public class App implements Controllable {
 		stop();
 
 		// Start again
-		debug();
+		play();
 
 		// Reset the game.
 		serverManager.resetGame();
@@ -336,8 +336,8 @@ public class App implements Controllable {
 		response.pass();
 
 		switch (firstField) {
-		case "debug":
-			debug();
+		case "play":
+			play();
 			response.append("Debugging started correctly.");
 			break;
 		case "p":
@@ -382,7 +382,7 @@ public class App implements Controllable {
 	public String getHelp() {
 		ConsoleHelp help = new ConsoleHelp();
 
-		help.appendLines("\tdebug -> starts debugging", "\tstop -> stops the execution",
+		help.appendLines("\tplay -> starts the communication with game", "\tstop -> stops the execution",
 				"\treset -> calls stop and debug", "\tpause -> pauses the game", "\tunpause -> unpauses the game",
 				"\tconfig -> prints the configuration");
 

@@ -37,7 +37,7 @@ public class GoalLayer extends InfluenceLayer {
 	 *            Influence layer to copy inside this one.
 	 */
 	public GoalLayer(InfluenceLayer l) {
-		super((BotContextualLayer) l);
+		super((ContextualLayer) l);
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class GoalLayer extends InfluenceLayer {
 	}
 
 	/**
-	 * Sets the goal.
+	 * Sets the goal in in-game's coordinates.
 	 * 
 	 * @param l
 	 *            Location that represents the goal where we want to get.

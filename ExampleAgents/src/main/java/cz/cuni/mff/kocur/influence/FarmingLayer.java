@@ -11,7 +11,7 @@ import cz.cuni.mff.kocur.world.Tower;
  * @author kocur
  *
  */
-public class FarmingLayer extends BotContextualLayer {
+public class FarmingLayer extends ContextualLayer {
 	public FarmingLayer(GridSystem grid, ExtendedAgentContext linaContext) {
 		super(grid, linaContext);
 
@@ -26,7 +26,7 @@ public class FarmingLayer extends BotContextualLayer {
 	 *            Influence layer to copy inside this one.
 	 */
 	public FarmingLayer(InfluenceLayer l) {
-		super((BotContextualLayer) l);
+		super((ContextualLayer) l);
 	}
 
 	@Override

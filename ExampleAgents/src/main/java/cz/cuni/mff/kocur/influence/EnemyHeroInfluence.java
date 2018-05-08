@@ -112,13 +112,13 @@ public class EnemyHeroInfluence extends WavePropagationWithContext<Hero> {
 			double distanceTileToBase = GridBase.distanceTileToTile(point.getX(), point.getY(), baseCoords);
 			double normalizedDistanceToBase = (distanceTileToBase - minDistanceToBase)
 					/ (maxDistanceToBase - minDistanceToBase);
-			ratio = (normalizedDistanceToBase + (1 - point.getNormalizedDistance(maxDistance))) / 2;
+			ratio = 1-(normalizedDistanceToBase + point.getNormalizedDistance(maxDistance)) / 2;
 		} else {
-			ratio = 1 - point.getDistance() / maxDistance;
+			ratio = point.getNormalizedDistance(maxDistance);
 		}
 
 		double influence = Math.pow(maxInfluence * ratio, power);
-		l.addInfluence(point.getX(), point.getY(), sign * (maxInfluence - influence));
+		l.addInfluence(point.getX(), point.getY(), sign * (influence));
 	}
 
 }

@@ -1,9 +1,0 @@
-Button images: 
-	https://findicons.com/pack/2083/go_green_web
-
-Look and feel:
-	https://github.com/bulenkov/Darcula
-
-Dota 2 pictures etc.
-	https://github.com/devilesk/dota-webassets
-

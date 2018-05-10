@@ -1,5 +1,0 @@
-- Popis hry Dota 2
-- Analyza AI
-- Framework
-- Potenciálové pole
-- IUAS

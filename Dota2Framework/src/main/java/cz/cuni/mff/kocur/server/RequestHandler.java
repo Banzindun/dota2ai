@@ -69,7 +69,7 @@ public class RequestHandler extends AbstractHandler implements Controllable, Con
 	/**
 	 * If true, then we are saving incoming JSON POST requests to data in working
 	 * directory. Names are generated as BOTID_timestamp.data or timestamp.data in
-	 * case of bigupdate.
+	 * case of team_update.
 	 * This can be used for example to analyze a session or for offline learning.
 	 */
 	private boolean saveIncoming = false;

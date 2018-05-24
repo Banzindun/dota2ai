@@ -170,7 +170,7 @@ public class App implements Controllable {
 	 * Creates the window and runs the application.
 	 */
 	public void start() {
-		window = new MainWindow(this, "Dota2AI framework");
+		window = new MainWindow(this, "Dota2AI Framework");
 		window.build();
 		window.start();
 		changeState(State.CONFIGURATION);
@@ -406,7 +406,7 @@ public class App implements Controllable {
 			state = newState;
 		}
 
-		ListenersManager.triggerFrameworkEvent("statechanged", new FrameworkEvent());
+		ListenersManager.triggerFrameworkEvent("state_changed", new FrameworkEvent());
 	}
 
 	/**

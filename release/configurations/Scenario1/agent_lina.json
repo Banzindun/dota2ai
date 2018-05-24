@@ -1,6 +1,6 @@
 {
   "name": "bot_lina",
-  "heroType" : "player",
+  "type" : "human",
   "configuration": {
     "team": {
       "type": "CRadio",

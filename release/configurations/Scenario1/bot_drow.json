@@ -1,6 +1,6 @@
 {
   "name": "drowBot",
-  "heroType" : "bot",
+  "type" : "bot",
   "configuration": {
     "team": {
       "type": "CRadio",

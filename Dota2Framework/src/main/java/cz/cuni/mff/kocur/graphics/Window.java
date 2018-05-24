@@ -158,4 +158,12 @@ public class Window {
 	public boolean isRunning() {
 		return running;		
 	}
+
+	/**
+	 * 
+	 * @return Returns this window's frame.
+	 */
+	public JFrame getFrame() {
+		return frame;
+	}
 }

@@ -43,8 +43,18 @@ public class TimeManager {
 	/**
 	 * Period of rune respawns.
 	 */
-	protected float runeRespawnPeriod = 120; // 120 seconds
-
+	protected float runeRespawnPeriod = 300; // 120 seconds
+	
+	/**
+	 * Period of powerup respawns.
+	 */
+	protected float powerupRespawnPeriod = 120;
+	
+	/**
+	 * Last powerup reaspawn.
+	 */
+	protected float lastPowerupRespawn = 0;
+	
 	/**
 	 * When should the next respawn event occur.
 	 */
@@ -164,6 +174,10 @@ public class TimeManager {
 		if (updateHealers(time)) {
 			logger.info(time + " healers respawned.");
 		}
+		
+		if (updatePowerups(time)) {
+			logger.info(time + " powerups respawned.");
+		}
 
 		// nextEvent will be camp respawn, it has smaller period than camp respawn
 		nextEvent = lastCampRespawn + campRespawnPeriod;
@@ -201,7 +215,25 @@ public class TimeManager {
 			lastRuneRespawn = Math.floorDiv((int) time, (int) campRespawnPeriod) * runeRespawnPeriod;
 
 			logger.debug("Last rune respawn:" + lastRuneRespawn);
-			InterestsBase.getInstance().respawnRunes(lastRuneRespawn);
+			InterestsBase.getInstance().respawnRunes();
+
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * Respawns the powerups, if the time is right.
+	 * @param time Time. 
+	 * @return Returns true if the runes were respawned.
+	 */
+	private boolean updatePowerups(float time) {
+		if (time - lastPowerupRespawn > powerupRespawnPeriod) {
+			// I want this to be divisible by powerupRespawnPeriod
+			lastPowerupRespawn = Math.floorDiv((int) time, (int) powerupRespawnPeriod) * powerupRespawnPeriod;
+
+			logger.debug("Powerup respawn:" + lastPowerupRespawn);
+			InterestsBase.getInstance().respawnPowerups();
 
 			return true;
 		}

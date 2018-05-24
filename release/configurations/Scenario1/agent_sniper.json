@@ -1,6 +1,6 @@
 {
   "name" : "bot_sniper",
-  "heroType": "ai",
+  "type": "ai",
 
   "configuration" : {
     "class" : {

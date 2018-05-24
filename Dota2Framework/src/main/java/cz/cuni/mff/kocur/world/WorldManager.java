@@ -13,12 +13,13 @@ import cz.cuni.mff.kocur.console.ConsoleCommand;
 import cz.cuni.mff.kocur.console.ConsoleHelp;
 import cz.cuni.mff.kocur.console.ConsoleManager;
 import cz.cuni.mff.kocur.console.Controllable;
+import cz.cuni.mff.kocur.events.FrameworkEvent;
+import cz.cuni.mff.kocur.events.ListenersManager;
 import cz.cuni.mff.kocur.interests.Team;
 import cz.cuni.mff.kocur.server.MapperWrapper;
 import cz.cuni.mff.kocur.server.RequestArguments;
 import cz.cuni.mff.kocur.server.RequestHandler.CODE;
 import cz.cuni.mff.kocur.server.TimeManager;
-import cz.cuni.mff.kocur.streaming.InformationDrop;
 
 /**
  * This class manages the world
@@ -85,10 +86,6 @@ public class WorldManager implements Controllable, ConfigurationChangeListener {
 		ConsoleManager.register(this);
 
 		setupEntities();
-
-		// Turn on the world source
-		worldSource = new WorldSource();
-		worldSource.startFlowing();
 	}
 
 	/**
@@ -96,10 +93,6 @@ public class WorldManager implements Controllable, ConfigurationChangeListener {
 	 */
 	private Logger logger = LogManager.getLogger(WorldManager.class.getName());
 
-	/**
-	 * World source. This object will be sending world data to catchers.
-	 */
-	private WorldSource worldSource = null;
 
 	/**
 	 * Updates the world information.
@@ -124,9 +117,6 @@ public class WorldManager implements Controllable, ConfigurationChangeListener {
 			return false;
 		}
 
-		// Create separate thread (so that we won't spend more time here), that will
-		// update informations to graphics window
-		worldSource.flow(new InformationDrop(InformationDrop.WORLD, world));
 		return true;
 	}
 
@@ -140,6 +130,11 @@ public class WorldManager implements Controllable, ConfigurationChangeListener {
 	 */
 	private void updateAgentContext(String name, WorldUpdate u) {
 		ControllersManager.getInstance().updateAgentContext(name, u);
+		
+		// Create event for agent's update
+		FrameworkEvent agentUpdateEvent = new FrameworkEvent();
+		agentUpdateEvent.setSourceName(name);
+		ListenersManager.triggerFrameworkEvent("agent_update", agentUpdateEvent);		
 	}
 
 	/**
@@ -174,7 +169,6 @@ public class WorldManager implements Controllable, ConfigurationChangeListener {
 			return false;
 		}
 
-		worldSource.flow(new InformationDrop(InformationDrop.WORLD, world));
 		return true;
 	}
 
@@ -187,13 +181,26 @@ public class WorldManager implements Controllable, ConfigurationChangeListener {
 	 *            WorldUpdate from which we update the world.
 	 */
 	private void updateTeamContext(CODE method, WorldUpdate u) {
-		if (method == CODE.UPDATERADIANT)
+		// Create a new event.
+		FrameworkEvent teamUpdateEvent = new FrameworkEvent();
+		
+		if (method == CODE.UPDATERADIANT) {
 			ControllersManager.getInstance().updateTeamContext(Team.RADIANT, u);
-		else if (method == CODE.UPDATEDIRE)
+			teamUpdateEvent.setType(Team.RADIANT);
+		}
+		else if (method == CODE.UPDATEDIRE) {
 			ControllersManager.getInstance().updateTeamContext(Team.DIRE, u);
+			teamUpdateEvent.setType(Team.DIRE);
+		}
 		else {
 			logger.warn("Unknown update on team context level.");
+			return;
 		}
+		
+		
+		// Trigger the teamupdate event
+		ListenersManager.triggerFrameworkEvent("team_update", teamUpdateEvent);
+		
 	}
 
 	/**

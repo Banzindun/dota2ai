@@ -1,6 +1,6 @@
 {
   "name": "lionBot",
-  "heroType": "bot",
+  "type": "bot",
   "configuration": {
     "team": {
       "type": "CRadio",

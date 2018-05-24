@@ -75,6 +75,9 @@ public class Tower extends Building {
 	 */
 	@Override
 	public boolean shouldDie() {
+		if (lastUpdate == -1)
+			return false; 
+		
 		if (TimeManager.getGameTime() - lastUpdate > getTimeToLive()) {
 			return true;
 		}

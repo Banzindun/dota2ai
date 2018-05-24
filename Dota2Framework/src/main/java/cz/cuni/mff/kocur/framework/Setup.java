@@ -4,8 +4,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
@@ -15,10 +18,9 @@ import cz.cuni.mff.kocur.configuration.ConfigurationLoader;
 import cz.cuni.mff.kocur.configuration.FrameworkConfiguration;
 import cz.cuni.mff.kocur.exceptions.LoadingError;
 import cz.cuni.mff.kocur.exceptions.SetupException;
-import cz.cuni.mff.kocur.streaming.BaseDropViewer;
+import cz.cuni.mff.kocur.world.BaseViewer;
 import cz.cuni.mff.kocur.world.GridLoader;
 import cz.cuni.mff.kocur.world.ItemsLoader;
-import cz.cuni.mff.kocur.world.WorldDropCatcher;
 
 /**
  * This class setups the application. It loads important directoris and paths
@@ -123,9 +125,7 @@ public class Setup {
 		initFrameworkConfiguration();
 
 		dota2Path = FrameworkConfiguration.getInstance().getConfigValue("dota2_path");
-		if (dota2Path.length() == 0)
-			throw new SetupException("Path to dota 2 is empty.");
-		logger.info("I have loaded dota2_path " + dota2Path);
+		checkDota2Path();
 
 		// Setup path to Dota2ai bots folder.
 		Setup.setDota2aiBotsDirectory(
@@ -136,6 +136,29 @@ public class Setup {
 
 		// Try to load items
 		tryToLoadItems();
+	}
+
+	/**
+	 * Checks that the supplied dota2 path is correct. If none is supplied, then the
+	 * user is asked for it by pop-up window.
+	 */
+	private static void checkDota2Path() {
+		FrameworkConfiguration fcfg = FrameworkConfiguration.getInstance();
+		if (dota2Path.length() == 0) {
+			// Get the dota2path from user
+			while (true) {
+				dota2Path = (String) JOptionPane.showInputDialog("Enter path to Dota2 game folder:",
+						"C:\\Program Files (x86)\\Steam\\steamapps\\common\\dota 2 beta");
+
+				if (dota2Path != null && Files.exists(Paths.get(dota2Path))) {
+					break;
+				}
+			}
+
+			fcfg.setConfigValue("dota2_path", dota2Path);
+			fcfg.save();
+		}
+		logger.info("I have loaded dota2_path " + dota2Path);
 	}
 
 	/**
@@ -163,11 +186,7 @@ public class Setup {
 			GridLoader gl = new GridLoader(workingDir + "data/grid.data");
 			gl.parse();
 
-			// Create catcher for grid
-			WorldDropCatcher gridCatcher = new WorldDropCatcher();
-			gridCatcher.register();
-
-			BaseDropViewer.initImage();
+			BaseViewer.initImage();
 		} catch (FileNotFoundException e) {
 			logger.fatal("I have not found the grid.data at:" + workingDir + "data/");
 			throw new SetupException("Could not setup the debug.", e);

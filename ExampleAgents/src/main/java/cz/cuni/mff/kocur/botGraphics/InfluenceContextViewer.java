@@ -22,8 +22,8 @@ import cz.cuni.mff.kocur.graphics.ConstraintsBuilder;
 import cz.cuni.mff.kocur.graphics.ZoomAndPanJPanel;
 import cz.cuni.mff.kocur.influence.ExtendedAgentContext;
 import cz.cuni.mff.kocur.influence.InfluenceLayer;
-import cz.cuni.mff.kocur.streaming.BaseDropViewer;
 import cz.cuni.mff.kocur.world.BaseEntity;
+import cz.cuni.mff.kocur.world.BaseViewer;
 import kocur.lina.agent.LayeredAgentContext;
 
 /**
@@ -190,7 +190,7 @@ public class InfluenceContextViewer extends ZoomAndPanJPanel implements ActionLi
 			g.setComposite(ac);
 
 			g.scale(resolution, resolution);
-			g.drawImage(BaseDropViewer.gridI, (int) -layer.resolveXBack(0), (int) -layer.resolveYBack(0), null);
+			g.drawImage(BaseViewer.gridI, (int) -layer.resolveXBack(0), (int) -layer.resolveYBack(0), null);
 			g.scale(0.5, 0.5);
 		}
 

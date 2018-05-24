@@ -7,6 +7,7 @@ import cz.cuni.mff.kocur.considerations.ConsiderCreepHealth;
 import cz.cuni.mff.kocur.considerations.ConsiderGoldYield;
 import cz.cuni.mff.kocur.considerations.ConsiderProjectileSpeed;
 import cz.cuni.mff.kocur.considerations.ConsiderThreat;
+import cz.cuni.mff.kocur.considerations.ConsiderTimePassed;
 import cz.cuni.mff.kocur.considerations.Consideration;
 import cz.cuni.mff.kocur.decisions.AttackCreepDecision;
 import cz.cuni.mff.kocur.decisions.Decision;
@@ -112,6 +113,10 @@ public class CreepAttackingDS extends AttackingDS {
 	private void addAttackDecision() {
 		AttackCreepDecision decision = (AttackCreepDecision) DecisionBuilder.build()
 				.setDecision(new AttackCreepDecision()).setName("AttackCreep").setBonusFactor(attackBonusFactor)
+				// We consider time passed, we do not want to attack all the time
+				// There should be a space for other things and for movement
+				.addConsideration(new ConsiderTimePassed(), new LinearFunction(2, 1, 0.6, 0))
+				.addDoubleParameter(Consideration.PARAM_RANGE_MAX, 1.5)
 				// Consider creep's health, we should be more likely to attack if its health is
 				// higher than 2 times my attack damage
 				.addConsideration(new ConsiderCreepHealth(), new SinusoidFunction(1.9, 2, 5, 0.6))

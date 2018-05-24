@@ -2,18 +2,13 @@ package kocur.sniper.agent;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.LinkedList;
-
-import javax.imageio.ImageIO;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import cz.cuni.mff.kocur.base.Colors;
 import cz.cuni.mff.kocur.base.Location;
-import cz.cuni.mff.kocur.framework.Setup;
 import cz.cuni.mff.kocur.world.GridBase;
 
 /**

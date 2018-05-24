@@ -1,7 +1,6 @@
 package kocur.lina.agent;
 
 import cz.cuni.mff.kocur.agent.AgentContext;
-import cz.cuni.mff.kocur.agent.BaseAgentController;
 import cz.cuni.mff.kocur.botGraphics.BotTab;
 import cz.cuni.mff.kocur.brain.Brain;
 import cz.cuni.mff.kocur.influence.EnemyThreatsLayer;

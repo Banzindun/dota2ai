@@ -2,6 +2,8 @@ package cz.cuni.mff.kocur.agent;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -117,6 +119,9 @@ public class ControllersManager {
 	public void initializeAgents() {
 		radiantTeamContext.initialize();
 		direTeamContext.initialize();
+		
+		FrameworkEvent agentsInitializedEvent = new FrameworkEvent();
+		ListenersManager.triggerFrameworkEvent("agents_initialized", agentsInitializedEvent);
 	}
 
 	/**
@@ -209,7 +214,6 @@ public class ControllersManager {
 	 */
 	public boolean areAgentsSelected() {
 		boolean r = radiantTeamContext.areAllSelected();
-		;
 		r = r && direTeamContext.areAllSelected();
 		return r;
 	}
@@ -244,11 +248,6 @@ public class ControllersManager {
 			return;
 		}
 		bw.updateAgentContext(u);
-		
-		
-		FrameworkEvent bigUpdateEvent = new FrameworkEvent();
-		bigUpdateEvent.setSourceName(name);
-		ListenersManager.triggerFrameworkEvent("agent_updated", bigUpdateEvent);
 	}
 
 	/**
@@ -273,6 +272,17 @@ public class ControllersManager {
 		result.addAll(direTeamContext.getAllControllerWrappers());
 
 		return result;
+	}
+	
+	/**
+	 * 
+	 * @return Returns list of the names of the controllers.
+	 */
+	public List<String> getAllControllerNames(){
+		LinkedList<String> names = new LinkedList<>();
+		names.addAll(radiantTeamContext.getAllControllerNames());
+		names.addAll(direTeamContext.getAllControllerNames());
+		return names;
 	}
 
 	/**
@@ -316,12 +326,6 @@ public class ControllersManager {
 	 */
 	public void updateTeamContext(int team, WorldUpdate u) {
 		getTeamContext(team).update(u);
-
-		FrameworkEvent bigUpdateEvent = new FrameworkEvent();
-		bigUpdateEvent.setType(team);
-
-		// Trigger the bigupdate event
-		ListenersManager.triggerFrameworkEvent("bigupdate", bigUpdateEvent);
 	}
 
 }

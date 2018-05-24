@@ -185,16 +185,21 @@ function Dota2AI:Buy(eHero, result)
 			end
 
 			self:BuyAndAddItem(eHero, itemName)
+			
+			local slot = self:FindItemInInventory(itemName, eHero)
+			if slot == -1 then 
+				eHero:SwapItems(DOTA_ITEM_SLOT_1, stashSlot)
+			else 
+				eHero:SwapItems(slot, stashSlot)
+			end 
 
-			eHero:SwapItems(0, stashSlot)
-			-- Find the item I have inserted (should be on slot 1)
-			--local index = self:FindItemInInventory(itemName, eHero)
-			--if index == -1 then 
-				--Warning("I have not found the item in the inventory!!!!")
-			--else 
-				-- Swap it with stash slot
-				--eHero:SwapItems(index, stashSlot)
-			--end
+			-- To be sure, remove all items from inventory and backpack
+			for i = DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_9, 1 do 
+				local itemHandle = eHero:GetItemInSlot(i)
+				if itemHandle ~= nil then 
+					eHero:RemoveItem(itemHandle)
+				end
+			end
 
 			for n, item in pairs(items) do
 				if item ~= nil then

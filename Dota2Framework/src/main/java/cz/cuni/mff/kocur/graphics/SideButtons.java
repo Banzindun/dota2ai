@@ -85,7 +85,7 @@ public class SideButtons extends JPanel implements MouseListener, FrameworkEvent
 	public SideButtons() {
 		super(new GridBagLayout());
 
-		ListenersManager.addFrameworkListener("statechanged", this);
+		ListenersManager.addFrameworkListener("state_changed", this);
 
 		gbc = ConstraintsBuilder.build().gridxy(0).weightxy(0).fill(GridBagConstraints.NONE)
 				.anchor(GridBagConstraints.CENTER).insets(2).get();

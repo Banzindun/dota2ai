@@ -208,19 +208,23 @@ public class InterestsBase extends GridSystem implements FrameworkEventListener 
 	}
 
 	/**
-	 * Respawns the runes if the time is right.
-	 * 
-	 * @param lastRuneRespawn
-	 *            Time of last rune respawn.
+	 * Respawns the runes.
 	 */
-	public void respawnRunes(float lastRuneRespawn) {
+	public void respawnRunes() {
 		for (Rune r : runes) {
 			if (r.getType() == Rune.DOTA_RUNE_BOUNTY) {
 				r.respawn();
-			} else {
-				if (lastRuneRespawn >= 120) // Start respawning at 2:00
-					r.respawn();
 			}
+		}
+	}
+
+	/**
+	 * Respawns powerups.
+	 */
+	public void respawnPowerups() {
+		for (Rune r : runes) {
+			if (r.getType() != Rune.DOTA_RUNE_BOUNTY)
+				r.respawn();
 		}
 	}
 
@@ -235,12 +239,25 @@ public class InterestsBase extends GridSystem implements FrameworkEventListener 
 		return getRadiantJungle().respawnHealers(time);
 	}
 
+	/**
+	 * 
+	 * @param team
+	 *            Team number.
+	 * @return Returns fort for the given team.
+	 */
 	public Fort getFort(int team) {
 		if (team == Team.RADIANT)
 			return getRadiantFort();
 		return getDireFort();
 	}
 
+	/**
+	 * Searches interests by id. (shops, riiver and runes)
+	 * 
+	 * @param id
+	 *            Id of the location we are searching for.
+	 * @return Returns the location.
+	 */
 	public Location searchById(int id) {
 		// I am searching for id only on three places.
 		// The rest of the stuff shouldn't be targeted or will be targeted on contextual

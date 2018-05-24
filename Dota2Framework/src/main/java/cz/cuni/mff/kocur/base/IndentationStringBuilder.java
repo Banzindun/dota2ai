@@ -78,15 +78,6 @@ public class IndentationStringBuilder extends CustomStringBuilder{
 	public void setIndent(String indent) {
 		this.indent = indent;
 	}
-
-	/**
-	 * 
-	 * @param in String that should be quoted.
-	 * @return Returns a string surruounded by double quotes
-	 */
-	private String quote(String in) {
-		return "\"" + in + "\"";
-	}
 	
 	/**
 	 * Appends a line with indentation.

@@ -264,6 +264,6 @@ public abstract class WindowedJPanel extends BuildableJPanel {
 	 * Sets close label to visible.
 	 */
 	public void showCloseLabel() {
-		closeL.setVisible(false);
+		closeL.setVisible(true);
 	}
 }

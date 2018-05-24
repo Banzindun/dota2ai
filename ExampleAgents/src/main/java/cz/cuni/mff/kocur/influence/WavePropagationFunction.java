@@ -83,10 +83,10 @@ public class WavePropagationFunction<T extends Location> implements PropagationF
 		neighbours.add(new PropagationPoint(-1, 0));
 		neighbours.add(new PropagationPoint(0, -1));
 		neighbours.add(new PropagationPoint(0, 1));
-		// neighbours.add(new PropagationPoint(-1, -1));
-		// neighbours.add(new PropagationPoint(1, 1));
-		// neighbours.add(new PropagationPoint(-1, 1));
-		// neighbours.add(new PropagationPoint(1, -1));
+		neighbours.add(new PropagationPoint(-1, -1));
+		neighbours.add(new PropagationPoint(1, 1));
+		neighbours.add(new PropagationPoint(-1, 1));
+		neighbours.add(new PropagationPoint(1, -1));
 	}
 
 	/**
@@ -143,11 +143,6 @@ public class WavePropagationFunction<T extends Location> implements PropagationF
 	 * @param point Propagation point.
 	 */
 	protected void spreadInfluence(InfluenceLayer l, PropagationPoint point) {
-		// if (point.getDistance() > maxDistance)
-		// return;
-		if (GridBase.distanceTileToTile(point.getX(), point.getY(), originX, originY) > maxDistance)
-			return;
-
 		calculateInfluence(l, point);
 
 		// Go through neighbors and if not visited and entity
@@ -161,13 +156,19 @@ public class WavePropagationFunction<T extends Location> implements PropagationF
 			if (_y < 0 || _y >= l.getHeight())
 				continue;
 
+			// If the tile is not passable set visited to true.
 			if (!passable(l, _x, _y)) {
 				visited[_y][_x] = true;
 			}
 			
+			// If not visited create new PP and add it to queue
 			if (!visited[_y][_x]) {
-				queue.add(new PropagationPoint(_x, _y, GridBase.distance(_x, _y, originX, originY)));
-				visited[_y][_x] = true;
+				// Create new point with incremented distance 
+				PropagationPoint newPoint = new PropagationPoint(_x, _y, GridBase.distance(_x,  _y, originX, originY));
+				if (newPoint.getDistance() < maxDistance) {
+					queue.add(newPoint);
+					visited[_y][_x] = true;
+				}
 			}
 		}
 	}

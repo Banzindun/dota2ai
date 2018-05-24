@@ -5,7 +5,6 @@ import cz.cuni.mff.kocur.influence.ExtendedAgentContext;
 import cz.cuni.mff.kocur.influence.GoalLayer;
 import cz.cuni.mff.kocur.influence.InfluenceLayer;
 import cz.cuni.mff.kocur.server.AgentCommand;
-import cz.cuni.mff.kocur.world.GridBase;
 import kocur.lina.agent.LayeredAgentContext;
 
 /**

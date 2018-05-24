@@ -81,10 +81,8 @@ public class MainBotInfoEntry extends WindowedJPanel implements FrameworkEventLi
 	 */
 	protected JPanel indicatorsSection;
 	
-	//private Logger logger = LogManager.getLogger(MainBotInfoEntry.class.getName());
-
 	/**
-	 * Construcotr.
+	 * Constructor.
 	 * @param parent Parent object, that is used if this entry is closed.
 	 * @param wrap Wrapper.
 	 */
@@ -96,7 +94,7 @@ public class MainBotInfoEntry extends WindowedJPanel implements FrameworkEventLi
 		changeTitle(wrap.getName());
 		
 		// Add listener for big updates.
-		ListenersManager.addFrameworkListener("bigupdate", this);
+		ListenersManager.addFrameworkListener("team_update", this);
 	}
 	
 	/**
@@ -111,6 +109,7 @@ public class MainBotInfoEntry extends WindowedJPanel implements FrameworkEventLi
 				inventorySection.setVisible(false);
 			}};
 		inventorySection.build();
+		inventorySection.hideCloseLabel();
 		
 		// Build body.
 		buildBody();

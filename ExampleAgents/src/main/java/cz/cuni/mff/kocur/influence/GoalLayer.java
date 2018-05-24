@@ -14,7 +14,7 @@ public class GoalLayer extends InfluenceLayer {
 	/**
 	 * Wave propagation function we use to spread the goal's influence.
 	 */
-	private WavePropagationFunction<Location> wp;
+	private MaxSpreadWavePropagation wp;
 
 	/**
 	 * The goal.
@@ -44,7 +44,7 @@ public class GoalLayer extends InfluenceLayer {
 	public void createParams() {
 		// We create a wave propagation function, that will spread influene from our
 		// goal
-		wp = new WavePropagationFunction<Location>();
+		wp = new MaxSpreadWavePropagation();
 		wp.setMaxDistance(width);
 		wp.setMaxInfluence(maxInfluence);
 	}

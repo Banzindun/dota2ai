@@ -85,9 +85,11 @@ public class MainWindow extends Window {
 
 			@Override
 			public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-				logger.info("Closing the main window.");
-				app.stopServer();
-				app.finish();
+				synchronized(frame) {
+					logger.info("Closing the main window.");
+					app.stopServer();
+					app.finish();
+				}
 			}
 		});
 	}

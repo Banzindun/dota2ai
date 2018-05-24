@@ -1,6 +1,7 @@
 package cz.cuni.mff.kocur.agent;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -114,7 +115,7 @@ public class TeamContext {
 			controllers.put(bc.getConfiguration().getName(), wrapper);
 		}
 
-		logger.info("BotManager loaded " + controllers.size() + " bots.");
+		logger.info("Context for team: " + Team.teamToString(teamNumber) + " loaded " + controllers.size() + " agents.");
 		return true;
 	}
 
@@ -454,6 +455,10 @@ public class TeamContext {
 
 	public void removeTower(Integer id) {
 		towers.remove(id);
+	}
+
+	public Collection<? extends String> getAllControllerNames() {
+		return controllers.keySet();
 	}
 
 }

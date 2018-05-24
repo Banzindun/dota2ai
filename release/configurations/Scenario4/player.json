@@ -1,6 +1,6 @@
 {
   "name" : "windrunner",
-  "heroType": "player",
+  "type": "player",
   "configuration" : {
     "team" : {
       "type" : "CRadio",

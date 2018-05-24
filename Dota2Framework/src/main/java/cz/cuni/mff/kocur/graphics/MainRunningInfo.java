@@ -44,8 +44,8 @@ public class MainRunningInfo extends BuildableJPanel implements FrameworkEventLi
 	 * Constructor.
 	 */
 	public MainRunningInfo() {		
-		// Lets listen to statechanged event. This one is called each time application changes state (INIT -> RUNNING etc.)
-		ListenersManager.addFrameworkListener("statechanged", this);
+		// Lets listen to state_changed event. This one is called each time application changes state (INIT -> RUNNING etc.)
+		ListenersManager.addFrameworkListener("state_changed", this);
 	}
 	
 	@Override
@@ -154,7 +154,7 @@ public class MainRunningInfo extends BuildableJPanel implements FrameworkEventLi
 	}
 
 	/**
-	 * 
+	 * Builds information about the init.
 	 */
 	private void buildInitInformation() {
 		// Setup constraints
@@ -168,6 +168,7 @@ public class MainRunningInfo extends BuildableJPanel implements FrameworkEventLi
 		info.setLineWrap(true);
 		info.setWrapStyleWord(true);
 		info.setBackground(this.getBackground());
+		info.setEditable(false);
 		
 		this.add(info, gbc);
 		
@@ -188,7 +189,7 @@ public class MainRunningInfo extends BuildableJPanel implements FrameworkEventLi
 	 * Called after we have removed this from the main panel.
 	 */
 	public void removed() {
-		ListenersManager.removeFromListeners("statechanged", this);
+		ListenersManager.removeFromListeners("state_changed", this);
 	}
 
 }

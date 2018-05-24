@@ -33,8 +33,8 @@ import cz.cuni.mff.kocur.exceptions.ConfigurationTestFailureException;
  *
  */
 
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "heroType")
-@JsonSubTypes({ @Type(name = "player", value = PlayerConfiguration.class),
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({ @Type(name = "human", value = PlayerConfiguration.class),
 		@Type(name = "ai", value = AiConfiguration.class), @Type(name = "bot", value = BotConfiguration.class) })
 public abstract class HeroConfiguration extends Configuration {
 	public enum TYPE {
@@ -68,7 +68,7 @@ public abstract class HeroConfiguration extends Configuration {
 	/**
 	 * Type of the hero.
 	 */
-	protected String heroType;
+	protected String configurationType;
 
 	/**
 	 * Constructor.
@@ -257,13 +257,13 @@ public abstract class HeroConfiguration extends Configuration {
 	 * 
 	 * @return Returns the type of this configuration.
 	 */
-	public String getHeroType() {
-		return heroType;
+	public String getConfigurationType() {
+		return configurationType;
 	}
 
-	@JsonSetter("heroType")
-	public void setHeroType(String heroType) {
-		this.heroType = heroType;
+	@JsonSetter("type")
+	public void setConfigurationType(String heroType) {
+		this.configurationType = heroType;
 	}
 
 	@JsonIgnore

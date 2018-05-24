@@ -346,14 +346,16 @@ public class MainAgentConfigurationEntry extends WindowedJPanel implements Confi
 
 	@Override
 	public void configurationChanged() {
-		logger.info("CONFIGURATION CHANGED!!");
-
 		int t = Team.parseTeam(botCfg.getConfigValue("team"));
 		if (this.teamNumber != t) {
 			updateInformation(botCfg.getImportantValues());
 
+			this.teamNumber = t;
+			
 			parent.removeEntry(this);
-			parent.getOtherTeamConfiguration().addEntry(this);
+			
+			parent = parent.getOtherTeamConfiguration();
+			parent.addEntry(this);			
 		} else {
 			updateInformation(botCfg.getImportantValues());
 		}

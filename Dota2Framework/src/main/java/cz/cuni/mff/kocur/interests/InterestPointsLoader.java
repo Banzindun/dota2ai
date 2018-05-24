@@ -16,6 +16,7 @@ import cz.cuni.mff.kocur.base.Constants;
 import cz.cuni.mff.kocur.base.IndentationStringBuilder;
 import cz.cuni.mff.kocur.exceptions.LoadingError;
 import cz.cuni.mff.kocur.server.MapperWrapper;
+import cz.cuni.mff.kocur.world.Creep;
 import cz.cuni.mff.kocur.world.GridBase;
 
 /**
@@ -178,9 +179,9 @@ public class InterestPointsLoader {
 					handleBounty(id, x, y);
 				} else if (key.contains("powerup")) {
 					handlePowerup(id, x, y);
-				}/* else if (key.contains("roshan")) {
+				} else if (key.contains("roshan")) {
 					handleRoshan(id, x, y);
-				}*/else if (key.contains("neutral_spawner")) {
+				}else if (key.contains("neutral_spawner")) {
 					handleSpawner(id, x, y);
 				} else {
 					logger.warn("Unknown interest point:" + key);
@@ -233,10 +234,14 @@ public class InterestPointsLoader {
 		return res;
 	}
 	
-	/*private void handleRoshan(int id, double x, double y) {
-		Baron r = new Baron(id, x, y);
+	private void handleRoshan(int id, double x, double y) {
+		Creep r = new Creep();
+		r.setEntid(id);
+		r.setX(x);
+		r.setY(y);
+		
 		river.setRoshan(r);
-	}*/
+	}
 	
 	/**
 	 * "dota_item_rune_spawner_powerup1":"863 -1760,1216

@@ -1,110 +1,853 @@
-[INFO ] 19:36:29.080 setup [main] Setup - Working directory path is: C:\Users\kocur\Dropbox\Dota2AI\release\
-[INFO ] 19:36:29.096 setup [main] Setup - Output directory is:C:\Users\kocur\Dropbox\Dota2AI\release\out\
-[INFO ] 19:36:29.106 createDirs [main] Setup - I have created a new directory: out at C:\Users\kocur\Dropbox\Dota2AI\release\out
-[INFO ] 19:36:29.486 setup [main] Setup - I have loaded dota2_path C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta
-[INFO ] 19:36:29.520 setSize [main] GridSystem - Initializing grid with height and width: 2055 2183
-[DEBUG] 19:36:35.548 addCatcher [main] Sink - Adding catcher.
-[INFO ] 19:36:38.647 installDota2aiAddon [main] Setup - Installing the dota2ai addon to dota2 directory. [C:\Users\kocur\Dropbox\Dota2AI\release\addons\dota2ai -> C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta]
-[INFO ] 19:36:38.884 installGridExporterAddon [main] Setup - Installing the dota2ai addon to dota2 directory. [C:\Users\kocur\Dropbox\Dota2AI\release\addons\gridExporter -> C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta]
-[DEBUG] 19:36:39.108 addFrameworkListener [main] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.Tabs for: statechanged
-[DEBUG] 19:36:39.115 addFrameworkListener [main] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.SideButtons for: statechanged
-[DEBUG] 19:36:39.125 addFrameworkListener [main] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.MainBody for: statechanged
-[DEBUG] 19:36:39.222 updateTabs [main] StreamsPanel - Updating tabs.
-[DEBUG] 19:36:39.222 updateTabs [main] StreamsPanel - I have obtained 1catchers.
-[INFO ] 19:37:59.478 loadConfiguration [AWT-EventQueue-0] MainAgentConfigurationEntry - Loading configuration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\agent_sniper.json
-[INFO ] 19:37:59.526 loadPassed [AWT-EventQueue-0] MainAgentConfigurationEntry - Successfully loaded bot cofiguration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\agent_sniper.json
-[INFO ] 19:37:59.539 addBotCfg [AWT-EventQueue-0] FrameworkConfiguration - Adding new bot configuration: bot_sniper
-[INFO ] 19:37:59.543 loadConfiguration [AWT-EventQueue-0] MainAgentConfigurationEntry - Loading configuration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\bot_drow.json
-[INFO ] 19:37:59.556 loadPassed [AWT-EventQueue-0] MainAgentConfigurationEntry - Successfully loaded bot cofiguration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\bot_drow.json
-[INFO ] 19:37:59.566 addBotCfg [AWT-EventQueue-0] FrameworkConfiguration - Adding new bot configuration: drowbot
-[INFO ] 19:37:59.568 loadConfiguration [AWT-EventQueue-0] MainAgentConfigurationEntry - Loading configuration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\bot_lion.json
-[INFO ] 19:37:59.585 loadPassed [AWT-EventQueue-0] MainAgentConfigurationEntry - Successfully loaded bot cofiguration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\bot_lion.json
-[INFO ] 19:37:59.598 addBotCfg [AWT-EventQueue-0] FrameworkConfiguration - Adding new bot configuration: lionbot
-[INFO ] 19:37:59.603 loadConfiguration [AWT-EventQueue-0] MainAgentConfigurationEntry - Loading configuration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\agent_lina.json
-[INFO ] 19:37:59.623 loadPassed [AWT-EventQueue-0] MainAgentConfigurationEntry - Successfully loaded bot cofiguration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\agent_lina.json
-[INFO ] 19:37:59.634 addBotCfg [AWT-EventQueue-0] FrameworkConfiguration - Adding new bot configuration: bot_lina
-[INFO ] 19:38:00.708 load [AWT-EventQueue-0] AgentLoader - Loading 2 bots.
-[WARN ] 19:38:00.713 moveOldAisScripts [AWT-EventQueue-0] Setup - I have found an existing script inside bots directory: sniper I am moving it to _bots directory.
-[INFO ] 19:38:00.722 register [AWT-EventQueue-0] ConsoleManager - Registering new controllable with name: bot_sniper
-[INFO ] 19:38:00.723 register [AWT-EventQueue-0] ConsoleManager - Registering new controllable with name: bot_lina
-[INFO ] 19:38:00.723 load [AWT-EventQueue-0] TeamContext - BotManager loaded 2 bots.
-[INFO ] 19:38:00.724 load [AWT-EventQueue-0] AgentLoader - Loading 2 bots.
-[INFO ] 19:38:00.725 load [AWT-EventQueue-0] TeamContext - BotManager loaded 0 bots.
-[INFO ] 19:38:00.729 register [AWT-EventQueue-0] ConsoleManager - Registering new controllable with name: server
-[INFO ] 19:38:00.736 setup [AWT-EventQueue-0] ServerManager - Binding server to port: 8080
-[INFO ] 19:38:00.838 register [AWT-EventQueue-0] ConsoleManager - Registering new controllable with name: handler
-[INFO ] 19:38:00.839 startServer [AWT-EventQueue-0] ServerManager - Starting server
-[DEBUG] 19:38:00.939 addFrameworkListener [Thread-17] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.MainRunningInfo for: statechanged
-[INFO ] 19:38:39.467 handleServer [qtp189053404-34] ServerManager - Game is starting.
-[INFO ] 19:38:46.143 handleSelectedAgent [qtp189053404-41] ControllersManager - Seting id: 843 to agent with name: bot_lina
-[INFO ] 19:38:46.355 handleSelectedAgent [qtp189053404-34] ControllersManager - Seting id: 72 to agent with name: bot_sniper
-[WARN ] 19:38:46.497 parseInterests [qtp189053404-41] InterestPointsLoader - Unknown interest point:npc_dota_roshan
-[DEBUG] 19:38:53.958 addFrameworkListener [qtp189053404-41] ListenersManager - Adding framework listener cz.cuni.mff.kocur.interests.InterestsBase for: towerdestroyed
-[INFO ] 19:38:53.962 handleInterests [qtp189053404-41] ServerManager - Interests loaded sucessfully.
-[DEBUG] 19:38:53.969 addFrameworkListener [qtp189053404-41] ListenersManager - Adding framework listener kocur.lina.agent.LayeredAgentContext for: bigupdate
-[DEBUG] 19:38:53.972 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_branches
-[DEBUG] 19:38:53.972 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_branches
-[DEBUG] 19:38:53.973 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_circlet
-[DEBUG] 19:38:53.974 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_flask
-[DEBUG] 19:38:53.976 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_boots_of_elves
-[DEBUG] 19:38:53.977 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_boots
-[DEBUG] 19:38:53.977 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_wraith_band
-[DEBUG] 19:38:53.978 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_power_treads
-[DEBUG] 19:38:53.978 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_lesser_crit
-[DEBUG] 19:38:53.979 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_yasha
-[DEBUG] 19:38:53.980 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_manta
-[DEBUG] 19:38:53.982 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_desolator
-[DEBUG] 19:38:53.983 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_invis_sword
-[DEBUG] 19:38:53.984 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_sange_and_yasha
-[DEBUG] 19:38:55.001 addFrameworkListener [qtp189053404-41] ListenersManager - Adding framework listener kocur.lina.agent.LayeredAgentContext for: bigupdate
-[DEBUG] 19:38:55.019 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_flask
-[DEBUG] 19:38:55.021 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_flask
-[DEBUG] 19:38:55.022 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_clarity
-[DEBUG] 19:38:55.023 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_branches
-[DEBUG] 19:38:55.029 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_branches
-[DEBUG] 19:38:55.034 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_ring_of_protection
-[DEBUG] 19:38:55.036 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_boots
-[DEBUG] 19:38:55.036 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_magic_wand
-[DEBUG] 19:38:55.037 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_ring_of_basilius
-[DEBUG] 19:38:55.038 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_wind_lace
-[DEBUG] 19:38:55.040 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_ring_of_regen
-[DEBUG] 19:38:55.040 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_staff_of_wizardry
-[DEBUG] 19:38:55.045 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_ring_of_health
-[DEBUG] 19:38:55.046 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_recipe_force_staff
-[DEBUG] 19:38:55.047 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_ring_of_aquila
-[DEBUG] 19:38:55.048 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_ultimate_scepter
-[DEBUG] 19:38:55.051 loadFromItemNames [qtp189053404-41] BuySequence - Item: item_sheepstick
-[INFO ] 19:38:55.928 <init> [qtp189053404-34] WorldManager - Creating the WorldManager.
-[DEBUG] 19:38:55.960 addFrameworkListener [Thread-24] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.MainBotInfoEntry for: bigupdate
-[DEBUG] 19:38:56.004 updateTabs [Thread-21] StreamsPanel - Updating tabs.
-[INFO ] 19:38:56.010 register [qtp189053404-34] ConsoleManager - Registering new controllable with name: world
-[DEBUG] 19:38:56.014 updateTabs [Thread-21] StreamsPanel - I have obtained 1catchers.
-[INFO ] 19:38:56.038 addSource [qtp189053404-34] Sink - Adding source: 
-[DEBUG] 19:38:56.097 addFrameworkListener [Thread-24] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.MainBotInfoEntry for: bigupdate
-[DEBUG] 19:38:56.416 addListener [qtp189053404-33] ListenersManager - Adding listener cz.cuni.mff.kocur.influence.InfluenceLayerTemplates for: tower_destroyed
-[INFO ] 19:38:56.661 <init> [qtp189053404-33] RadiantThreatLayer - Created radiant layer with height and width: 2055, 2183
-[INFO ] 19:38:56.746 setLocalGameStartTime [qtp189053404-41] TimeManager - Setting local game start time to : 1525973936746
-[INFO ] 19:38:56.881 <init> [qtp189053404-33] DireThreatLayer - Created dire layer with height and width: 2055, 2183
-[INFO ] 19:38:56.931 dying [qtp189053404-41] Tower - Tower destroyed at:15.300091lu: -1.0
-[DEBUG] 19:38:57.002 triggerEvent [qtp189053404-41] ListenersManager - Triggered event: tower_destroyed
-[INFO ] 19:38:57.028 dying [qtp189053404-41] Tower - Tower destroyed at:15.300091lu: -1.0
-[DEBUG] 19:38:57.031 triggerEvent [qtp189053404-41] ListenersManager - Triggered event: tower_destroyed
-[INFO ] 19:39:53.897 pauseGame [AWT-EventQueue-0] ServerManager - Pausing the server.
-[INFO ] 19:39:53.898 pause [AWT-EventQueue-0] ServerManager - Sending PAUSE command from request handler.
-[INFO ] 19:39:53.901 frameworkPaused [AWT-EventQueue-0] TimeManager - Pausing the game at:1.52597402E9ms
-[INFO ] 19:39:58.376 unpauseGame [AWT-EventQueue-0] ServerManager - Unpausing server.
-[INFO ] 19:39:58.377 unpause [AWT-EventQueue-0] ServerManager - Sending UNPAUSE command from request handler.
-[INFO ] 19:39:58.379 frameworkUnpaused [AWT-EventQueue-0] TimeManager - The pause took 4.478ms
-[INFO ] 19:39:58.379 frameworkUnpaused [AWT-EventQueue-0] TimeManager - Currently all the pauses took in total: 4.478
-[DEBUG] 19:40:18.937 resolveRune [qtp189053404-41] InterestsBase - Setting new id 535 to rune on:3686.955078125 -3624.8107910156
-[DEBUG] 19:40:19.669 doTimeUpdates [qtp189053404-31] TimeManager - Time updates at time: 2.3322678
-[DEBUG] 19:40:25.334 resolveRune [qtp189053404-31] InterestsBase - Setting new id 545 to rune on:2250.5905761719 -1857.8344726563
-[DEBUG] 19:41:19.982 doTimeUpdates [qtp189053404-29] TimeManager - Time updates at time: 62.303574
-[INFO ] 19:41:19.984 doTimeUpdates [qtp189053404-29] TimeManager - 62.303574: camps respawned.
-[INFO ] 19:41:42.656 pauseGame [AWT-EventQueue-0] ServerManager - Pausing the server.
-[INFO ] 19:41:42.657 pause [AWT-EventQueue-0] ServerManager - Sending PAUSE command from request handler.
-[INFO ] 19:41:42.659 frameworkPaused [AWT-EventQueue-0] TimeManager - Pausing the game at:1.52597402E9ms
-[INFO ] 19:42:04.753 windowClosing [AWT-EventQueue-0] Window - Closing the main window.
-[INFO ] 19:42:04.754 stopServer [AWT-EventQueue-0] ServerManager - Stopping the server.
-[INFO ] 19:42:04.769 windowClosing [AWT-EventQueue-0] Window - Closing the main window.
-[INFO ] 19:42:04.769 stopServer [AWT-EventQueue-0] ServerManager - Stopping the server.
+[INFO ] 15:01:25.680 setup [main] Setup - Working directory path is: C:\Users\kocur\Dropbox\Dota2AI\release\
+[INFO ] 15:01:25.687 setup [main] Setup - Output directory is:C:\Users\kocur\Dropbox\Dota2AI\release\out\
+[INFO ] 15:01:25.688 createDirs [main] Setup - I have created a new directory: out at C:\Users\kocur\Dropbox\Dota2AI\release\out
+[FATAL] 15:01:25.772 loadFrameworkConfiguration [main] ConfigurationLoader - Could not load GlobalConfiguration.
+com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of java.lang.String out of START_ARRAY token
+ at [Source: (byte[])"{
+  "configuration" : {
+    "dota2_path" : {
+      "type" : "CText",
+      "value" : "",
+      "label" : "Path to the game folder.",
+      "help" : "This will be used if you want to setup the mod automatically, as well as replace the bots inside bots directory.",
+      "options" : null
+    },
+    "port" : {
+      "type" : "CText",
+      "value" : "8080",
+      "label" : "Port of this application.",
+      "help" : "",
+      "options" : null
+    },
+    "hero_time_to_live" : {
+    "[truncated 2742 bytes]; line: 81, column: 36] (through reference chain: cz.cuni.mff.kocur.configuration.FrameworkConfiguration["radiantConfigurationsInArray"])
+	at com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:63) ~[jackson-databind-2.9.0.jar:2.9.0]
+	at com.fasterxml.jackson.databind.DeserializationContext.reportInputMismatch(DeserializationContext.java:1329) ~[jackson-databind-2.9.0.jar:2.9.0]
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1138) ~[jackson-databind-2.9.0.jar:2.9.0]
+	at com.fasterxml.jackson.databind.deser.std.StdDeserializer._deserializeFromArray(StdDeserializer.java:673) ~[jackson-databind-2.9.0.jar:2.9.0]
+	at com.fasterxml.jackson.databind.deser.std.StringDeserializer.deserialize(StringDeserializer.java:40) ~[jackson-databind-2.9.0.jar:2.9.0]
+	at com.fasterxml.jackson.databind.deser.std.StringDeserializer.deserialize(StringDeserializer.java:10) ~[jackson-databind-2.9.0.jar:2.9.0]
+	at com.fasterxml.jackson.databind.deser.SettableAnyProperty.deserialize(SettableAnyProperty.java:154) ~[jackson-databind-2.9.0.jar:2.9.0]
+	at com.fasterxml.jackson.databind.deser.SettableAnyProperty.deserializeAndSet(SettableAnyProperty.java:134) ~[jackson-databind-2.9.0.jar:2.9.0]
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownVanilla(BeanDeserializerBase.java:1539) ~[jackson-databind-2.9.0.jar:2.9.0]
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:293) ~[jackson-databind-2.9.0.jar:2.9.0]
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:151) ~[jackson-databind-2.9.0.jar:2.9.0]
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4001) ~[jackson-databind-2.9.0.jar:2.9.0]
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3079) ~[jackson-databind-2.9.0.jar:2.9.0]
+	at cz.cuni.mff.kocur.configuration.ConfigurationLoader.loadFrameworkConfiguration(ConfigurationLoader.java:201) [Dota2AIFramework-1.0.0.jar:?]
+	at cz.cuni.mff.kocur.framework.Setup.initFrameworkConfiguration(Setup.java:252) [Dota2AIFramework-1.0.0.jar:?]
+	at cz.cuni.mff.kocur.framework.Setup.setup(Setup.java:125) [Dota2AIFramework-1.0.0.jar:?]
+	at cz.cuni.mff.kocur.framework.App.setup(App.java:119) [Dota2AIFramework-1.0.0.jar:?]
+	at cz.cuni.mff.kocur.framework.Framework.main(Framework.java:43) [Dota2AIFramework-1.0.0.jar:?]
+[INFO ] 15:02:26.640 setup [main] Setup - Working directory path is: C:\Users\kocur\Dropbox\Dota2AI\release\
+[INFO ] 15:02:26.646 setup [main] Setup - Output directory is:C:\Users\kocur\Dropbox\Dota2AI\release\out\
+[INFO ] 15:03:54.240 save [main] Configuration - Saving the configuration
+[INFO ] 15:03:54.307 checkDota2Path [main] Setup - I have loaded dota2_path C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta
+[INFO ] 15:03:54.316 setSize [main] GridSystem - Initializing grid with height and width: 2055 2183
+[INFO ] 15:04:02.854 installDota2aiAddon [main] Setup - Installing the dota2ai addon to dota2 directory. [C:\Users\kocur\Dropbox\Dota2AI\release\addons\dota2ai -> C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta]
+[INFO ] 15:04:03.064 installGridExporterAddon [main] Setup - Installing the dota2ai addon to dota2 directory. [C:\Users\kocur\Dropbox\Dota2AI\release\addons\gridExporter -> C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta]
+[DEBUG] 15:04:03.238 addFrameworkListener [main] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.WorldViewersWrapper for: team_update
+[DEBUG] 15:04:03.239 addFrameworkListener [main] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.WorldViewersWrapper for: agent_update
+[DEBUG] 15:04:03.239 addFrameworkListener [main] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.WorldViewersWrapper for: agents_initialized
+[DEBUG] 15:04:03.240 addFrameworkListener [main] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.WorldPanel for: state_changed
+[DEBUG] 15:04:03.241 addFrameworkListener [main] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.Tabs for: state_changed
+[DEBUG] 15:04:03.242 addFrameworkListener [main] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.SideButtons for: state_changed
+[DEBUG] 15:04:03.249 addFrameworkListener [main] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.MainBody for: state_changed
+[INFO ] 15:04:15.187 loadConfiguration [AWT-EventQueue-0] MainAgentConfigurationEntry - Loading configuration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\agent_sniper.json
+[INFO ] 15:04:15.234 loadPassed [AWT-EventQueue-0] MainAgentConfigurationEntry - Successfully loaded bot cofiguration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\agent_sniper.json
+[INFO ] 15:04:15.248 addBotCfg [AWT-EventQueue-0] FrameworkConfiguration - Adding new bot configuration: bot_sniper
+[INFO ] 15:04:15.250 loadConfiguration [AWT-EventQueue-0] MainAgentConfigurationEntry - Loading configuration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\bot_drow.json
+[INFO ] 15:04:15.259 loadPassed [AWT-EventQueue-0] MainAgentConfigurationEntry - Successfully loaded bot cofiguration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\bot_drow.json
+[INFO ] 15:04:15.269 addBotCfg [AWT-EventQueue-0] FrameworkConfiguration - Adding new bot configuration: drowbot
+[INFO ] 15:04:15.270 loadConfiguration [AWT-EventQueue-0] MainAgentConfigurationEntry - Loading configuration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\bot_lion.json
+[INFO ] 15:04:15.283 loadPassed [AWT-EventQueue-0] MainAgentConfigurationEntry - Successfully loaded bot cofiguration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\bot_lion.json
+[INFO ] 15:04:15.292 addBotCfg [AWT-EventQueue-0] FrameworkConfiguration - Adding new bot configuration: lionbot
+[INFO ] 15:04:15.298 loadConfiguration [AWT-EventQueue-0] MainAgentConfigurationEntry - Loading configuration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\agent_lina.json
+[INFO ] 15:04:15.315 loadPassed [AWT-EventQueue-0] MainAgentConfigurationEntry - Successfully loaded bot cofiguration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\agent_lina.json
+[INFO ] 15:04:15.331 addBotCfg [AWT-EventQueue-0] FrameworkConfiguration - Adding new bot configuration: bot_lina
+[INFO ] 15:04:23.230 load [AWT-EventQueue-0] AgentLoader - Loading 2 bots.
+[ERROR] 15:04:23.233 overrideAisScripts [AWT-EventQueue-0] Setup - Unable to create file: C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta\game\dota_addons\dota2ai\scripts\vscripts\bots\bot_sniper.lua
+[INFO ] 15:04:23.235 register [AWT-EventQueue-0] ConsoleManager - Registering new controllable with name: bot_sniper
+[INFO ] 15:04:23.236 register [AWT-EventQueue-0] ConsoleManager - Registering new controllable with name: bot_lina
+[INFO ] 15:04:23.236 load [AWT-EventQueue-0] TeamContext - Context for team: RADIANT loaded 2 agents.
+[INFO ] 15:04:23.237 load [AWT-EventQueue-0] AgentLoader - Loading 2 bots.
+[INFO ] 15:04:23.237 load [AWT-EventQueue-0] TeamContext - Context for team: DIRE loaded 0 agents.
+[INFO ] 15:04:23.242 register [AWT-EventQueue-0] ConsoleManager - Registering new controllable with name: server
+[INFO ] 15:04:23.243 setup [AWT-EventQueue-0] ServerManager - Binding server to port: 8080
+[INFO ] 15:04:23.310 register [AWT-EventQueue-0] ConsoleManager - Registering new controllable with name: handler
+[INFO ] 15:04:23.311 startServer [AWT-EventQueue-0] ServerManager - Starting server
+[DEBUG] 15:04:23.373 addFrameworkListener [Thread-19] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.MainRunningInfo for: state_changed
+[INFO ] 15:11:55.585 handleServer [qtp899262162-29] ServerManager - Game is starting.
+[INFO ] 15:12:01.878 handleSelectedAgent [qtp899262162-34] ControllersManager - Seting id: 846 to agent with name: bot_lina
+[INFO ] 15:12:01.976 handleSelectedAgent [qtp899262162-32] ControllersManager - Seting id: 870 to agent with name: bot_sniper
+[DEBUG] 15:12:06.989 addFrameworkListener [qtp899262162-34] ListenersManager - Adding framework listener cz.cuni.mff.kocur.interests.InterestsBase for: towerdestroyed
+[INFO ] 15:12:06.991 handleInterests [qtp899262162-34] ServerManager - Interests loaded sucessfully.
+[DEBUG] 15:12:07.002 addFrameworkListener [qtp899262162-34] ListenersManager - Adding framework listener kocur.lina.agent.LayeredAgentContext for: team_update
+[DEBUG] 15:12:07.005 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_branches
+[DEBUG] 15:12:07.005 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_branches
+[DEBUG] 15:12:07.006 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_circlet
+[DEBUG] 15:12:07.007 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_flask
+[DEBUG] 15:12:07.007 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_boots_of_elves
+[DEBUG] 15:12:07.009 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_boots
+[DEBUG] 15:12:07.010 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_wraith_band
+[DEBUG] 15:12:07.010 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_power_treads
+[DEBUG] 15:12:07.011 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_lesser_crit
+[DEBUG] 15:12:07.012 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_yasha
+[DEBUG] 15:12:07.017 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_manta
+[DEBUG] 15:12:07.018 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_desolator
+[DEBUG] 15:12:07.019 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_invis_sword
+[DEBUG] 15:12:07.020 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_sange_and_yasha
+[DEBUG] 15:12:07.918 addFrameworkListener [qtp899262162-34] ListenersManager - Adding framework listener kocur.lina.agent.LayeredAgentContext for: team_update
+[DEBUG] 15:12:07.924 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_flask
+[DEBUG] 15:12:07.925 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_flask
+[DEBUG] 15:12:07.926 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_clarity
+[DEBUG] 15:12:07.926 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_branches
+[DEBUG] 15:12:07.927 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_branches
+[DEBUG] 15:12:07.932 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_ring_of_protection
+[DEBUG] 15:12:07.933 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_boots
+[DEBUG] 15:12:07.935 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_magic_wand
+[DEBUG] 15:12:07.937 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_ring_of_basilius
+[DEBUG] 15:12:07.938 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_wind_lace
+[DEBUG] 15:12:07.940 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_ring_of_regen
+[DEBUG] 15:12:07.941 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_staff_of_wizardry
+[DEBUG] 15:12:07.945 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_ring_of_health
+[DEBUG] 15:12:07.949 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_recipe_force_staff
+[DEBUG] 15:12:07.950 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_ring_of_aquila
+[DEBUG] 15:12:07.951 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_ultimate_scepter
+[DEBUG] 15:12:07.952 loadFromItemNames [qtp899262162-34] BuySequence - Item: item_sheepstick
+[DEBUG] 15:12:08.736 addFrameworkListener [Thread-25] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.MainBotInfoEntry for: team_update
+[DEBUG] 15:12:08.809 addFrameworkListener [Thread-25] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.MainBotInfoEntry for: team_update
+[INFO ] 15:12:08.983 <init> [qtp899262162-32] WorldManager - Creating the WorldManager.
+[INFO ] 15:12:09.013 register [qtp899262162-32] ConsoleManager - Registering new controllable with name: world
+[DEBUG] 15:12:09.358 addListener [qtp899262162-32] ListenersManager - Adding listener cz.cuni.mff.kocur.influence.InfluenceLayerTemplates for: tower_destroyed
+[INFO ] 15:12:09.495 <init> [qtp899262162-32] RadiantThreatLayer - Created radiant layer with height and width: 2055, 2183
+[INFO ] 15:12:09.690 <init> [qtp899262162-32] DireThreatLayer - Created dire layer with height and width: 2055, 2183
+[INFO ] 15:12:10.065 setLocalGameStartTime [qtp899262162-31] TimeManager - Setting local game start time to : 1527167530065
+[DEBUG] 15:13:09.710 doTimeUpdates [qtp899262162-34] TimeManager - Time updates at time: 2.0656052
+[DEBUG] 15:14:09.854 doTimeUpdates [qtp899262162-28] TimeManager - Time updates at time: 62.03685
+[INFO ] 15:14:09.854 doTimeUpdates [qtp899262162-28] TimeManager - 62.03685: camps respawned.
+[DEBUG] 15:15:10.268 doTimeUpdates [qtp899262162-693] TimeManager - Time updates at time: 122.04967
+[INFO ] 15:15:10.268 doTimeUpdates [qtp899262162-693] TimeManager - 122.04967: camps respawned.
+[DEBUG] 15:15:10.269 updatePowerups [qtp899262162-693] TimeManager - Powerup respawn:120.0
+[DEBUG] 15:15:10.275 triggerEvent [qtp899262162-693] ListenersManager - Triggered event: powerupsrespawn
+[DEBUG] 15:15:10.276 triggerEvent [qtp899262162-693] ListenersManager - Triggered event: powerupsrespawn
+[INFO ] 15:15:10.276 doTimeUpdates [qtp899262162-693] TimeManager - 122.04967 powerups respawned.
+[DEBUG] 15:16:10.379 doTimeUpdates [qtp899262162-28] TimeManager - Time updates at time: 182.05515
+[INFO ] 15:16:10.381 doTimeUpdates [qtp899262162-28] TimeManager - 182.05515: camps respawned.
+[DEBUG] 15:17:10.433 doTimeUpdates [qtp899262162-694] TimeManager - Time updates at time: 242.0405
+[INFO ] 15:17:10.434 doTimeUpdates [qtp899262162-694] TimeManager - 242.0405: camps respawned.
+[DEBUG] 15:17:10.434 updatePowerups [qtp899262162-694] TimeManager - Powerup respawn:240.0
+[INFO ] 15:17:10.435 doTimeUpdates [qtp899262162-694] TimeManager - 242.0405 powerups respawned.
+[INFO ] 15:17:11.369 windowClosing [AWT-EventQueue-0] Window - Closing the main window.
+[INFO ] 15:17:11.370 stopServer [AWT-EventQueue-0] ServerManager - Stopping the server.
+[INFO ] 15:17:11.377 windowClosing [AWT-EventQueue-0] Window - Closing the main window.
+[INFO ] 15:17:11.378 stopServer [AWT-EventQueue-0] ServerManager - Stopping the server.
+[INFO ] 15:17:22.421 setup [main] Setup - Working directory path is: C:\Users\kocur\Dropbox\Dota2AI\release\
+[INFO ] 15:17:22.431 setup [main] Setup - Output directory is:C:\Users\kocur\Dropbox\Dota2AI\release\out\
+[INFO ] 15:17:22.610 checkDota2Path [main] Setup - I have loaded dota2_path C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta
+[INFO ] 15:17:22.642 setSize [main] GridSystem - Initializing grid with height and width: 2055 2183
+[INFO ] 15:17:29.478 installDota2aiAddon [main] Setup - Installing the dota2ai addon to dota2 directory. [C:\Users\kocur\Dropbox\Dota2AI\release\addons\dota2ai -> C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta]
+[INFO ] 15:17:29.634 installGridExporterAddon [main] Setup - Installing the dota2ai addon to dota2 directory. [C:\Users\kocur\Dropbox\Dota2AI\release\addons\gridExporter -> C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta]
+[DEBUG] 15:17:29.993 addFrameworkListener [main] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.WorldViewersWrapper for: team_update
+[DEBUG] 15:17:29.993 addFrameworkListener [main] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.WorldViewersWrapper for: agent_update
+[DEBUG] 15:17:29.993 addFrameworkListener [main] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.WorldViewersWrapper for: agents_initialized
+[DEBUG] 15:17:29.994 addFrameworkListener [main] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.WorldPanel for: state_changed
+[DEBUG] 15:17:29.995 addFrameworkListener [main] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.Tabs for: state_changed
+[DEBUG] 15:17:29.996 addFrameworkListener [main] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.SideButtons for: state_changed
+[DEBUG] 15:17:30.004 addFrameworkListener [main] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.MainBody for: state_changed
+[INFO ] 15:17:35.266 loadConfiguration [AWT-EventQueue-0] MainAgentConfigurationEntry - Loading configuration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\agent_sniper.json
+[INFO ] 15:17:35.330 loadPassed [AWT-EventQueue-0] MainAgentConfigurationEntry - Successfully loaded bot cofiguration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\agent_sniper.json
+[INFO ] 15:17:35.341 addBotCfg [AWT-EventQueue-0] FrameworkConfiguration - Adding new bot configuration: bot_sniper
+[INFO ] 15:17:35.343 loadConfiguration [AWT-EventQueue-0] MainAgentConfigurationEntry - Loading configuration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\bot_drow.json
+[INFO ] 15:17:35.360 loadPassed [AWT-EventQueue-0] MainAgentConfigurationEntry - Successfully loaded bot cofiguration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\bot_drow.json
+[INFO ] 15:17:35.371 addBotCfg [AWT-EventQueue-0] FrameworkConfiguration - Adding new bot configuration: drowbot
+[INFO ] 15:17:35.374 loadConfiguration [AWT-EventQueue-0] MainAgentConfigurationEntry - Loading configuration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\bot_lion.json
+[INFO ] 15:17:35.388 loadPassed [AWT-EventQueue-0] MainAgentConfigurationEntry - Successfully loaded bot cofiguration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\bot_lion.json
+[INFO ] 15:17:35.395 addBotCfg [AWT-EventQueue-0] FrameworkConfiguration - Adding new bot configuration: lionbot
+[INFO ] 15:17:35.398 loadConfiguration [AWT-EventQueue-0] MainAgentConfigurationEntry - Loading configuration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\agent_lina.json
+[INFO ] 15:17:35.419 loadPassed [AWT-EventQueue-0] MainAgentConfigurationEntry - Successfully loaded bot cofiguration from: C:\Users\kocur\Dropbox\Dota2AI\release\configurations\Scenario1\agent_lina.json
+[INFO ] 15:17:35.430 addBotCfg [AWT-EventQueue-0] FrameworkConfiguration - Adding new bot configuration: bot_lina
+[INFO ] 15:17:36.327 load [AWT-EventQueue-0] AgentLoader - Loading 2 bots.
+[ERROR] 15:17:36.332 overrideAisScripts [AWT-EventQueue-0] Setup - Unable to create file: C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta\game\dota_addons\dota2ai\scripts\vscripts\bots\bot_sniper.lua
+[INFO ] 15:17:36.337 register [AWT-EventQueue-0] ConsoleManager - Registering new controllable with name: bot_sniper
+[INFO ] 15:17:36.338 register [AWT-EventQueue-0] ConsoleManager - Registering new controllable with name: bot_lina
+[INFO ] 15:17:36.339 load [AWT-EventQueue-0] TeamContext - Context for team: RADIANT loaded 2 agents.
+[INFO ] 15:17:36.341 load [AWT-EventQueue-0] AgentLoader - Loading 2 bots.
+[INFO ] 15:17:36.342 load [AWT-EventQueue-0] TeamContext - Context for team: DIRE loaded 0 agents.
+[INFO ] 15:17:36.348 register [AWT-EventQueue-0] ConsoleManager - Registering new controllable with name: server
+[INFO ] 15:17:36.348 setup [AWT-EventQueue-0] ServerManager - Binding server to port: 8080
+[INFO ] 15:17:36.445 register [AWT-EventQueue-0] ConsoleManager - Registering new controllable with name: handler
+[INFO ] 15:17:36.447 startServer [AWT-EventQueue-0] ServerManager - Starting server
+[DEBUG] 15:17:36.530 addFrameworkListener [Thread-19] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.MainRunningInfo for: state_changed
+[INFO ] 15:18:55.694 handleServer [qtp973336484-33] ServerManager - Game is starting.
+[INFO ] 15:19:00.787 handleSelectedAgent [qtp973336484-29] ControllersManager - Seting id: 405 to agent with name: bot_lina
+[INFO ] 15:19:00.935 handleSelectedAgent [qtp973336484-33] ControllersManager - Seting id: 488 to agent with name: bot_sniper
+[DEBUG] 15:19:05.845 addFrameworkListener [qtp973336484-29] ListenersManager - Adding framework listener cz.cuni.mff.kocur.interests.InterestsBase for: towerdestroyed
+[INFO ] 15:19:05.846 handleInterests [qtp973336484-29] ServerManager - Interests loaded sucessfully.
+[DEBUG] 15:19:05.849 addFrameworkListener [qtp973336484-29] ListenersManager - Adding framework listener kocur.lina.agent.LayeredAgentContext for: team_update
+[DEBUG] 15:19:05.851 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_branches
+[DEBUG] 15:19:05.852 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_branches
+[DEBUG] 15:19:05.852 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_circlet
+[DEBUG] 15:19:05.853 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_flask
+[DEBUG] 15:19:05.853 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_boots_of_elves
+[DEBUG] 15:19:05.854 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_boots
+[DEBUG] 15:19:05.856 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_wraith_band
+[DEBUG] 15:19:05.857 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_power_treads
+[DEBUG] 15:19:05.858 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_lesser_crit
+[DEBUG] 15:19:05.859 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_yasha
+[DEBUG] 15:19:05.860 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_manta
+[DEBUG] 15:19:05.861 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_desolator
+[DEBUG] 15:19:05.863 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_invis_sword
+[DEBUG] 15:19:05.864 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_sange_and_yasha
+[DEBUG] 15:19:06.823 addFrameworkListener [qtp973336484-29] ListenersManager - Adding framework listener kocur.lina.agent.LayeredAgentContext for: team_update
+[DEBUG] 15:19:06.828 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_flask
+[DEBUG] 15:19:06.831 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_flask
+[DEBUG] 15:19:06.833 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_clarity
+[DEBUG] 15:19:06.834 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_branches
+[DEBUG] 15:19:06.834 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_branches
+[DEBUG] 15:19:06.835 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_ring_of_protection
+[DEBUG] 15:19:06.839 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_boots
+[DEBUG] 15:19:06.841 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_magic_wand
+[DEBUG] 15:19:06.841 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_ring_of_basilius
+[DEBUG] 15:19:06.842 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_wind_lace
+[DEBUG] 15:19:06.842 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_ring_of_regen
+[DEBUG] 15:19:06.843 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_staff_of_wizardry
+[DEBUG] 15:19:06.844 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_ring_of_health
+[DEBUG] 15:19:06.844 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_recipe_force_staff
+[DEBUG] 15:19:06.845 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_ring_of_aquila
+[DEBUG] 15:19:06.846 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_ultimate_scepter
+[DEBUG] 15:19:06.847 loadFromItemNames [qtp973336484-29] BuySequence - Item: item_sheepstick
+[DEBUG] 15:19:07.299 addFrameworkListener [Thread-27] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.MainBotInfoEntry for: team_update
+[INFO ] 15:19:07.433 <init> [qtp973336484-33] WorldManager - Creating the WorldManager.
+[INFO ] 15:19:07.450 register [qtp973336484-33] ConsoleManager - Registering new controllable with name: world
+[DEBUG] 15:19:07.513 addFrameworkListener [Thread-27] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.MainBotInfoEntry for: team_update
+[DEBUG] 15:19:07.611 addListener [qtp973336484-31] ListenersManager - Adding listener cz.cuni.mff.kocur.influence.InfluenceLayerTemplates for: tower_destroyed
+[INFO ] 15:19:07.731 <init> [qtp973336484-31] RadiantThreatLayer - Created radiant layer with height and width: 2055, 2183
+[INFO ] 15:19:07.846 <init> [qtp973336484-31] DireThreatLayer - Created dire layer with height and width: 2055, 2183
+[INFO ] 15:19:08.956 setLocalGameStartTime [qtp973336484-33] TimeManager - Setting local game start time to : 1527167948956
+[INFO ] 15:19:14.195 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:14.369 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:14.632 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:14.897 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:15.266 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:16.937 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:17.236 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:17.470 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:17.647 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:17.785 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:17.923 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:18.037 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:18.338 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:18.682 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:20.252 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:20.535 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:20.780 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:21.050 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:21.319 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:21.624 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:21.904 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:22.120 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:22.330 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:22.479 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:22.724 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:22.739 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:22.917 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:22.939 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:23.087 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:23.170 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:23.402 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:23.475 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:23.676 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:23.754 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:23.950 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:24.062 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:24.233 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:24.546 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:24.790 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:24.964 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:25.042 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:25.200 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:25.342 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:25.475 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:25.622 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:25.828 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:25.867 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:26.017 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:26.103 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:26.290 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:26.399 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:26.575 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:26.683 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:26.823 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:26.934 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:27.070 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:27.175 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:27.383 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:27.502 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:27.637 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:27.747 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:27.885 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:28.002 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:28.285 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:28.556 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:28.786 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:29.035 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:29.372 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:29.618 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:29.862 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:30.133 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:30.398 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:30.643 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:30.937 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:31.177 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:31.453 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:31.743 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:32.005 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:32.354 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[DEBUG] 15:19:32.378 doTimeUpdates [qtp973336484-29] TimeManager - Time updates at time: 2.7989273
+[INFO ] 15:19:32.541 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:32.809 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:33.048 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:33.372 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:33.606 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:33.933 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:34.119 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:34.523 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:34.775 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:35.065 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:35.325 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:35.588 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:35.821 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:36.100 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:36.378 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:36.651 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:36.901 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:37.175 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:37.462 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:37.719 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:37.982 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:38.243 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:38.529 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:38.773 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:39.055 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:39.307 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:39.576 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:39.846 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:40.102 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:40.376 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:40.645 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:40.890 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:41.172 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:41.455 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:41.732 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:41.980 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:42.266 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:42.533 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:42.776 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:43.042 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:43.283 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:43.566 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:43.837 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:44.111 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:44.381 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:44.642 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:44.917 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:45.157 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:45.428 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:45.711 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:45.972 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:46.242 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:46.537 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:46.784 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:47.049 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:47.282 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:47.583 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:47.818 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:48.088 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:48.357 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:48.630 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:48.917 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:49.154 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:49.422 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:49.700 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:49.970 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:50.239 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:50.530 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:50.767 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:51.050 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:51.286 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:51.579 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:51.847 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:52.093 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:52.362 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:52.626 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:52.895 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:53.165 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:53.443 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:53.717 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:53.981 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:54.218 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:54.505 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:54.776 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:55.047 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:55.281 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:55.572 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:55.849 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:56.082 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:56.383 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:56.641 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:56.910 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:57.179 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:57.455 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:57.725 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:57.958 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:58.227 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:58.512 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:58.788 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:59.016 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:59.284 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:59.583 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:19:59.823 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:00.097 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:00.401 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:00.641 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:00.917 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:01.166 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:01.432 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:01.708 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:01.997 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:02.224 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:02.508 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:02.750 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:03.025 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:03.294 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:03.565 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:03.840 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:04.084 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:04.334 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:04.566 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:04.853 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:05.054 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:05.334 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:05.562 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:05.838 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:06.076 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:06.350 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:06.567 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:06.846 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:07.076 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:07.314 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:07.560 execute [qtp973336484-33] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:07.840 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:08.076 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:08.344 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:08.586 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:08.829 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:09.059 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:09.338 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:09.553 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:09.830 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:10.075 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:10.347 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:10.551 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:10.827 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:11.070 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:11.345 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:11.583 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:11.819 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:12.094 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:12.365 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:12.637 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:12.920 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:13.158 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:13.428 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:13.702 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:13.989 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:14.225 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:14.514 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:14.769 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:15.041 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:15.293 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:15.560 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:15.832 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:16.110 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:16.374 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:16.637 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:16.916 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:17.158 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:17.440 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:17.694 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:17.966 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:18.237 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:18.493 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:18.765 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:19.036 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:19.305 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:19.588 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:19.825 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:20.093 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:20.365 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:20.636 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:20.916 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:21.149 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:21.424 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:21.686 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:21.971 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:22.226 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:22.484 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:22.758 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:23.029 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:23.306 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:23.577 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:23.823 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:24.095 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:24.362 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:24.630 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:24.905 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:25.191 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:25.450 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:25.704 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:25.973 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:26.262 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:26.538 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:26.775 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:27.034 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:27.311 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:27.618 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:27.848 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:28.121 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:28.365 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:28.653 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:28.896 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:29.191 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:29.445 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:29.694 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:30.000 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:30.244 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:30.513 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:30.830 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:31.022 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:31.335 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:31.565 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:31.843 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:32.120 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:32.371 execute [qtp973336484-29] GrabAllDecision - Grabbing all items.
+[DEBUG] 15:20:32.410 doTimeUpdates [qtp973336484-31] TimeManager - Time updates at time: 62.77034
+[INFO ] 15:20:32.411 doTimeUpdates [qtp973336484-31] TimeManager - 62.77034: camps respawned.
+[INFO ] 15:20:32.633 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:32.913 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:33.157 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:33.444 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:33.685 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:33.977 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:34.227 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:34.504 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:34.753 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:35.050 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:35.294 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:35.585 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:35.835 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:36.122 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:36.361 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:36.642 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:36.920 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:37.172 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:37.432 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:37.722 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:37.966 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:38.270 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:38.506 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:38.758 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:39.051 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:39.299 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:39.586 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:39.834 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:40.105 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:40.389 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:40.642 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:40.890 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:41.171 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:41.449 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:41.684 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:41.974 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:42.246 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:42.519 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:42.771 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:43.053 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:43.306 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:43.567 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:43.828 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:44.096 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:44.380 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:44.633 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:44.921 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:45.184 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:45.461 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:45.713 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:45.962 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:46.229 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:46.529 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:46.792 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:47.061 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:47.323 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:47.590 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:47.820 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:48.118 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:48.382 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:48.674 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:48.939 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:49.194 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:49.459 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:49.700 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:49.958 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:50.262 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:50.505 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:50.778 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:51.030 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:51.293 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:51.582 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:51.870 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:52.122 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:52.382 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:52.697 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:52.940 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:53.194 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:53.461 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:53.703 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:53.965 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:54.255 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:54.514 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:54.776 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:55.028 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:55.308 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:55.569 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:55.832 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:56.108 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:56.373 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:56.633 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:56.892 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:57.170 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:57.444 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:57.720 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:57.974 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:58.244 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:58.527 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:58.776 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:59.044 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:59.301 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:59.575 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:20:59.831 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:00.102 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:00.370 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:00.632 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:00.903 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:01.155 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:01.445 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:01.701 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:01.971 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:02.238 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:02.593 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:02.793 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:03.063 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:03.304 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:03.586 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:03.866 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:04.102 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:04.365 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:04.657 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:04.896 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:05.159 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:05.438 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:05.701 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:05.986 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:06.248 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:06.506 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:06.771 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:07.042 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:07.314 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:07.576 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:07.844 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:08.104 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:08.362 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:08.630 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:08.897 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:09.162 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:09.437 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:09.719 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:09.980 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:10.253 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:10.543 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:10.774 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:11.041 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:11.311 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:11.609 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:11.850 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:12.123 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:12.391 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:12.657 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:12.897 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:13.161 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:13.443 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:13.701 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:13.967 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:14.227 execute [qtp973336484-40] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:14.537 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:14.775 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:15.046 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:15.312 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:15.587 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:15.819 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:16.089 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:21:16.333 pauseGame [AWT-EventQueue-0] ServerManager - Pausing the server.
+[INFO ] 15:21:16.333 pause [AWT-EventQueue-0] ServerManager - Sending PAUSE command from request handler.
+[INFO ] 15:21:16.337 frameworkPaused [AWT-EventQueue-0] TimeManager - Pausing the game at:1.52716813E9ms
+[INFO ] 15:21:16.368 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:33.365 unpauseGame [AWT-EventQueue-0] ServerManager - Unpausing server.
+[INFO ] 15:24:33.365 unpause [AWT-EventQueue-0] ServerManager - Sending UNPAUSE command from request handler.
+[INFO ] 15:24:33.368 frameworkUnpaused [AWT-EventQueue-0] TimeManager - The pause took 197.032ms
+[INFO ] 15:24:33.369 frameworkUnpaused [AWT-EventQueue-0] TimeManager - Currently all the pauses took in total: 197.032
+[INFO ] 15:24:33.810 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:34.057 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:34.368 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:34.417 dying [qtp973336484-40] Building - Building with id 903 destroyed.
+[DEBUG] 15:24:34.419 triggerEvent [qtp973336484-40] ListenersManager - Triggered event: building_destroyed
+[INFO ] 15:24:34.420 dying [qtp973336484-40] Tower - Tower destroyed at:197.77995lu: 195.77953
+[DEBUG] 15:24:34.421 triggerEvent [qtp973336484-40] ListenersManager - Triggered event: tower_destroyed
+[INFO ] 15:24:34.422 dying [qtp973336484-40] Tower - Tower destroyed at:197.77995lu: 195.77953
+[DEBUG] 15:24:34.423 triggerEvent [qtp973336484-40] ListenersManager - Triggered event: tower_destroyed
+[INFO ] 15:24:34.423 dying [qtp973336484-40] Tower - Tower destroyed at:197.77995lu: 195.77953
+[DEBUG] 15:24:34.424 triggerEvent [qtp973336484-40] ListenersManager - Triggered event: tower_destroyed
+[INFO ] 15:24:34.425 dying [qtp973336484-40] Tower - Tower destroyed at:197.77995lu: 195.77953
+[DEBUG] 15:24:34.425 triggerEvent [qtp973336484-40] ListenersManager - Triggered event: tower_destroyed
+[INFO ] 15:24:34.426 dying [qtp973336484-40] Tower - Tower destroyed at:197.77995lu: 195.77953
+[DEBUG] 15:24:34.427 triggerEvent [qtp973336484-40] ListenersManager - Triggered event: tower_destroyed
+[INFO ] 15:24:34.427 dying [qtp973336484-40] Tower - Tower destroyed at:197.77995lu: 195.77953
+[DEBUG] 15:24:34.432 triggerEvent [qtp973336484-40] ListenersManager - Triggered event: tower_destroyed
+[INFO ] 15:24:34.433 dying [qtp973336484-40] Tower - Tower destroyed at:197.77995lu: 195.77953
+[DEBUG] 15:24:34.434 triggerEvent [qtp973336484-40] ListenersManager - Triggered event: tower_destroyed
+[INFO ] 15:24:34.435 dying [qtp973336484-40] Tower - Tower destroyed at:197.77995lu: 195.77953
+[DEBUG] 15:24:34.435 triggerEvent [qtp973336484-40] ListenersManager - Triggered event: tower_destroyed
+[INFO ] 15:24:34.436 dying [qtp973336484-40] Tower - Tower destroyed at:197.77995lu: 195.77953
+[DEBUG] 15:24:34.437 triggerEvent [qtp973336484-40] ListenersManager - Triggered event: tower_destroyed
+[INFO ] 15:24:34.437 dying [qtp973336484-40] Tower - Tower destroyed at:197.77995lu: 195.77953
+[DEBUG] 15:24:34.438 triggerEvent [qtp973336484-40] ListenersManager - Triggered event: tower_destroyed
+[INFO ] 15:24:34.439 dying [qtp973336484-40] Tower - Tower destroyed at:197.77995lu: 195.77953
+[DEBUG] 15:24:34.441 triggerEvent [qtp973336484-40] ListenersManager - Triggered event: tower_destroyed
+[INFO ] 15:24:34.442 dying [qtp973336484-40] Building - Building with id 996 destroyed.
+[DEBUG] 15:24:34.443 triggerEvent [qtp973336484-40] ListenersManager - Triggered event: building_destroyed
+[INFO ] 15:24:34.444 dying [qtp973336484-40] Building - Building with id 998 destroyed.
+[DEBUG] 15:24:34.444 triggerEvent [qtp973336484-40] ListenersManager - Triggered event: building_destroyed
+[INFO ] 15:24:34.445 dying [qtp973336484-40] Building - Building with id 999 destroyed.
+[DEBUG] 15:24:34.445 triggerEvent [qtp973336484-40] ListenersManager - Triggered event: building_destroyed
+[INFO ] 15:24:34.446 dying [qtp973336484-40] Building - Building with id 1000 destroyed.
+[DEBUG] 15:24:34.447 triggerEvent [qtp973336484-40] ListenersManager - Triggered event: building_destroyed
+[INFO ] 15:24:34.448 dying [qtp973336484-40] Building - Building with id 1001 destroyed.
+[DEBUG] 15:24:34.448 triggerEvent [qtp973336484-40] ListenersManager - Triggered event: building_destroyed
+[INFO ] 15:24:34.449 dying [qtp973336484-40] Building - Building with id 1003 destroyed.
+[DEBUG] 15:24:34.449 triggerEvent [qtp973336484-40] ListenersManager - Triggered event: building_destroyed
+[INFO ] 15:24:34.694 execute [qtp973336484-2136] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:34.887 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:35.127 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:35.392 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:35.654 execute [qtp973336484-2136] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:35.933 execute [qtp973336484-2136] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:36.190 execute [qtp973336484-2136] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:36.989 execute [qtp973336484-2136] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:39.672 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:39.943 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:40.200 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:40.459 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:40.730 execute [qtp973336484-2136] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:41.004 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:41.281 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:42.092 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:42.351 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:42.605 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:42.861 execute [qtp973336484-2136] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:43.134 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:43.411 execute [qtp973336484-2136] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:43.669 execute [qtp973336484-31] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:43.928 execute [qtp973336484-27] GrabAllDecision - Grabbing all items.
+[INFO ] 15:24:44.196 execute [qtp973336484-39] GrabAllDecision - Grabbing all items.
+[DEBUG] 15:24:49.526 doTimeUpdates [qtp973336484-27] TimeManager - Time updates at time: 122.78316
+[INFO ] 15:24:49.528 doTimeUpdates [qtp973336484-27] TimeManager - 122.78316: camps respawned.
+[DEBUG] 15:24:49.529 updatePowerups [qtp973336484-27] TimeManager - Powerup respawn:120.0
+[DEBUG] 15:24:49.530 triggerEvent [qtp973336484-27] ListenersManager - Triggered event: powerupsrespawn
+[DEBUG] 15:24:49.532 triggerEvent [qtp973336484-27] ListenersManager - Triggered event: powerupsrespawn
+[INFO ] 15:24:49.533 doTimeUpdates [qtp973336484-27] TimeManager - 122.78316 powerups respawned.
+[INFO ] 15:25:09.021 stopServer [AWT-EventQueue-0] ServerManager - Stopping the server.
+[DEBUG] 15:25:09.138 clearListeners [AWT-EventQueue-0] ListenersManager - Clearing listeners.
+[INFO ] 15:25:09.138 unregister [AWT-EventQueue-0] ConsoleManager - Unregistering controllable with name: bot_sniper
+[INFO ] 15:25:09.911 unregister [AWT-EventQueue-0] ConsoleManager - Unregistering controllable with name: bot_lina
+[INFO ] 15:25:09.926 load [AWT-EventQueue-0] AgentLoader - Loading 2 bots.
+[ERROR] 15:25:09.932 overrideAisScripts [AWT-EventQueue-0] Setup - Unable to create file: C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta\game\dota_addons\dota2ai\scripts\vscripts\bots\bot_sniper.lua
+[INFO ] 15:25:09.941 register [AWT-EventQueue-0] ConsoleManager - Registering new controllable with name: bot_sniper
+[INFO ] 15:25:09.946 register [AWT-EventQueue-0] ConsoleManager - Registering new controllable with name: bot_lina
+[INFO ] 15:25:09.952 load [AWT-EventQueue-0] TeamContext - Context for team: RADIANT loaded 2 agents.
+[INFO ] 15:25:09.958 load [AWT-EventQueue-0] AgentLoader - Loading 2 bots.
+[INFO ] 15:25:09.960 load [AWT-EventQueue-0] TeamContext - Context for team: DIRE loaded 0 agents.
+[INFO ] 15:25:09.961 register [AWT-EventQueue-0] ConsoleManager - Registering new controllable with name: server
+[INFO ] 15:25:09.962 setup [AWT-EventQueue-0] ServerManager - Binding server to port: 8080
+[INFO ] 15:25:09.967 register [AWT-EventQueue-0] ConsoleManager - Registering new controllable with name: handler
+[INFO ] 15:25:09.968 startServer [AWT-EventQueue-0] ServerManager - Starting server
+[INFO ] 15:25:09.981 resetGame [AWT-EventQueue-0] ServerManager - Restarting the game.
+[DEBUG] 15:25:09.997 addFrameworkListener [Thread-2918] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.MainRunningInfo for: state_changed
+[INFO ] 15:25:28.034 handleServer [qtp1996667507-2932] ServerManager - Game is starting.
+[INFO ] 15:25:34.784 handleSelectedAgent [qtp1996667507-2933] ControllersManager - Seting id: 427 to agent with name: bot_lina
+[INFO ] 15:25:35.141 handleSelectedAgent [qtp1996667507-2932] ControllersManager - Seting id: 191 to agent with name: bot_sniper
+[DEBUG] 15:25:38.219 addFrameworkListener [qtp1996667507-2933] ListenersManager - Adding framework listener cz.cuni.mff.kocur.interests.InterestsBase for: towerdestroyed
+[INFO ] 15:25:38.222 handleInterests [qtp1996667507-2933] ServerManager - Interests loaded sucessfully.
+[DEBUG] 15:25:38.224 addFrameworkListener [qtp1996667507-2933] ListenersManager - Adding framework listener kocur.lina.agent.LayeredAgentContext for: team_update
+[DEBUG] 15:25:38.225 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_branches
+[DEBUG] 15:25:38.227 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_branches
+[DEBUG] 15:25:38.229 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_circlet
+[DEBUG] 15:25:38.229 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_flask
+[DEBUG] 15:25:38.230 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_boots_of_elves
+[DEBUG] 15:25:38.231 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_boots
+[DEBUG] 15:25:38.233 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_wraith_band
+[DEBUG] 15:25:38.235 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_power_treads
+[DEBUG] 15:25:38.237 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_lesser_crit
+[DEBUG] 15:25:38.238 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_yasha
+[DEBUG] 15:25:38.239 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_manta
+[DEBUG] 15:25:38.240 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_desolator
+[DEBUG] 15:25:38.241 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_invis_sword
+[DEBUG] 15:25:38.244 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_sange_and_yasha
+[DEBUG] 15:25:38.609 addFrameworkListener [qtp1996667507-2933] ListenersManager - Adding framework listener kocur.lina.agent.LayeredAgentContext for: team_update
+[DEBUG] 15:25:38.610 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_flask
+[DEBUG] 15:25:38.611 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_flask
+[DEBUG] 15:25:38.612 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_clarity
+[DEBUG] 15:25:38.613 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_branches
+[DEBUG] 15:25:38.614 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_branches
+[DEBUG] 15:25:38.614 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_ring_of_protection
+[DEBUG] 15:25:38.615 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_boots
+[DEBUG] 15:25:38.616 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_magic_wand
+[DEBUG] 15:25:38.617 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_ring_of_basilius
+[DEBUG] 15:25:38.617 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_wind_lace
+[DEBUG] 15:25:38.617 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_ring_of_regen
+[DEBUG] 15:25:38.618 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_staff_of_wizardry
+[DEBUG] 15:25:38.618 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_ring_of_health
+[DEBUG] 15:25:38.619 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_recipe_force_staff
+[DEBUG] 15:25:38.619 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_ring_of_aquila
+[DEBUG] 15:25:38.620 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_ultimate_scepter
+[DEBUG] 15:25:38.623 loadFromItemNames [qtp1996667507-2933] BuySequence - Item: item_sheepstick
+[DEBUG] 15:25:38.854 addFrameworkListener [Thread-2925] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.MainBotInfoEntry for: team_update
+[DEBUG] 15:25:38.854 addFrameworkListener [Thread-2926] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.MainBotInfoEntry for: team_update
+[DEBUG] 15:25:39.042 addFrameworkListener [Thread-2926] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.MainBotInfoEntry for: team_update
+[DEBUG] 15:25:39.042 addFrameworkListener [Thread-2925] ListenersManager - Adding framework listener cz.cuni.mff.kocur.graphics.MainBotInfoEntry for: team_update
+[INFO ] 15:25:39.268 <init> [qtp1996667507-2928] RadiantThreatLayer - Created radiant layer with height and width: 2055, 2183
+[INFO ] 15:25:39.293 <init> [qtp1996667507-2928] DireThreatLayer - Created dire layer with height and width: 2055, 2183
+[DEBUG] 15:26:58.645 doTimeUpdates [qtp1996667507-2931] TimeManager - Time updates at time: 2.9989243
+[DEBUG] 15:26:59.755 resolveRune [qtp1996667507-2931] InterestsBase - Setting new id 973 to rune on:3686.955078125 -3624.8107910156
+[DEBUG] 15:27:05.925 resolveRune [qtp1996667507-2930] InterestsBase - Setting new id 970 to rune on:2394.5905761719 -1857.8344726563
+[DEBUG] 15:27:59.021 doTimeUpdates [qtp1996667507-2931] TimeManager - Time updates at time: 62.970383
+[INFO ] 15:27:59.022 doTimeUpdates [qtp1996667507-2931] TimeManager - 62.970383: camps respawned.
+[DEBUG] 15:29:00.480 doTimeUpdates [qtp1996667507-2926] TimeManager - Time updates at time: 122.9832
+[INFO ] 15:29:00.480 doTimeUpdates [qtp1996667507-2926] TimeManager - 122.9832: camps respawned.
+[DEBUG] 15:29:00.483 updatePowerups [qtp1996667507-2926] TimeManager - Powerup respawn:120.0
+[DEBUG] 15:29:00.484 triggerEvent [qtp1996667507-2926] ListenersManager - Triggered event: powerupsrespawn
+[INFO ] 15:29:00.485 doTimeUpdates [qtp1996667507-2926] TimeManager - 122.9832 powerups respawned.
+[DEBUG] 15:29:03.186 resolveRune [qtp1996667507-2932] InterestsBase - Setting new id 975 to rune on:4263.9223632813 -1704.0325927734
+[INFO ] 15:29:24.729 execute [qtp1996667507-2926] DecisionUsePotion - Using healing potion.
+[DEBUG] 15:29:58.681 resolveRune [qtp1996667507-2930] InterestsBase - Setting new id 153 to rune on:-1712.0 1184.0
+[DEBUG] 15:30:01.952 doTimeUpdates [qtp1996667507-2926] TimeManager - Time updates at time: 182.98825
+[INFO ] 15:30:01.954 doTimeUpdates [qtp1996667507-2926] TimeManager - 182.98825: camps respawned.

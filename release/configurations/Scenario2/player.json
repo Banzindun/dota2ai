@@ -1,6 +1,6 @@
 {
   "name" : "player",
-  "heroType": "player",
+  "type": "player",
   "configuration" : {
     "team" : {
       "type" : "CRadio",

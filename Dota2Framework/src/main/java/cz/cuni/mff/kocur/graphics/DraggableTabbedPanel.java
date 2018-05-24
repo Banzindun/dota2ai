@@ -1,7 +1,6 @@
 package cz.cuni.mff.kocur.graphics;
 
 import java.awt.Component;
-import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -36,11 +35,6 @@ public class DraggableTabbedPanel  extends JTabbedPane{
 	 * True if we exited the borders of the tabbed pane. 
 	 */
 	private boolean exited = false;
-	  
-	/**
-	 * Current mouse position for checking where we are dragging the tab.
-	 */
-	private Point currentMouseLocation = null;
 	
 	/**
 	 * Index of currently dragged pane.
@@ -56,10 +50,7 @@ public class DraggableTabbedPanel  extends JTabbedPane{
 		addMouseListener(new MouseAdapter() {
 			// Listener that listens for mouse dragged event.
 			public void mouseDragged(MouseEvent e) {
-				// If we are dragging then store mouse position.
-	    		if (dragging) 
-	    			currentMouseLocation = e.getPoint();
-	    		
+   		
 	    		super.mouseDragged(e);
 	    	}
 	    	

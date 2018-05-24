@@ -1,4 +1,4 @@
-package cz.cuni.mff.kocur.streaming;
+package cz.cuni.mff.kocur.world;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
@@ -18,11 +18,7 @@ import org.apache.logging.log4j.Logger;
 
 import cz.cuni.mff.kocur.base.Colors;
 import cz.cuni.mff.kocur.framework.Setup;
-import cz.cuni.mff.kocur.graphics.StreamOptionsWrapper;
 import cz.cuni.mff.kocur.graphics.ZoomAndPanJPanel;
-import cz.cuni.mff.kocur.world.GridBase;
-import cz.cuni.mff.kocur.world.GridSystem;
-import cz.cuni.mff.kocur.world.Tile;
 
 /**
  * A base viewer we use to display world. This class has static methods, that
@@ -31,7 +27,7 @@ import cz.cuni.mff.kocur.world.Tile;
  * @author kocur
  *
  */
-public abstract class BaseDropViewer extends ZoomAndPanJPanel
+public abstract class BaseViewer extends ZoomAndPanJPanel
 		implements MouseWheelListener, MouseMotionListener, MouseListener {
 
 	/**
@@ -42,7 +38,7 @@ public abstract class BaseDropViewer extends ZoomAndPanJPanel
 	/**
 	 * Logger.
 	 */
-	private static final Logger logger = LogManager.getLogger(BaseDropViewer.class);
+	private static final Logger logger = LogManager.getLogger(BaseViewer.class);
 
 	/**
 	 * Image, that represents the grid.
@@ -149,12 +145,7 @@ public abstract class BaseDropViewer extends ZoomAndPanJPanel
 		return heightsMap;
 	}
 
-	/**
-	 * Wrapper, that wraps around the options.
-	 */
-	protected StreamOptionsWrapper wrapper = null;
-
-	public BaseDropViewer(GridSystem g) {
+	public BaseViewer(GridSystem g) {
 		super(g);
 	}
 
@@ -164,7 +155,7 @@ public abstract class BaseDropViewer extends ZoomAndPanJPanel
 	 * @param d
 	 *            The drop.
 	 */
-	public void receive(InformationDrop d) {
+	public void update() {
 		if (this.isShowing()) {
 			redrawBuffer();
 			repaint();
@@ -177,22 +168,5 @@ public abstract class BaseDropViewer extends ZoomAndPanJPanel
 	 */
 	public abstract JPanel getOptionsPanel();
 
-	/**
-	 * 
-	 * @return Returns the options wrapper.
-	 */
-	public StreamOptionsWrapper getWrapper() {
-		return wrapper;
-	}
-
-	/**
-	 * Sets the options wrapper.
-	 * 
-	 * @param wrapper
-	 *            The wrapper.
-	 */
-	public void setWrapper(StreamOptionsWrapper wrapper) {
-		this.wrapper = wrapper;
-	}
 
 }

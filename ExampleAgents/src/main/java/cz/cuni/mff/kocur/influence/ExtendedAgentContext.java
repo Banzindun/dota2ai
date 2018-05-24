@@ -31,12 +31,12 @@ public abstract class ExtendedAgentContext extends AgentContext implements Frame
 
 	public ExtendedAgentContext(BaseAgentController bc) {
 		super(bc);
-		ListenersManager.addFrameworkListener("bigupdate", this);
+		ListenersManager.addFrameworkListener("team_update", this);
 	}
 	
 	public ExtendedAgentContext(AgentContext context) {
 		super(context);
-		ListenersManager.addFrameworkListener("bigupdate", this);
+		ListenersManager.addFrameworkListener("team_update", this);
 	}
 
 	/**

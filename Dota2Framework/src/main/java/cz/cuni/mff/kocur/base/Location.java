@@ -93,7 +93,7 @@ public class Location {
 	 * @param x
 	 *            New x coordinate.
 	 */
-	public void setX(int x) {
+	public void setX(double x) {
 		this.x = x;
 	}
 
@@ -127,7 +127,7 @@ public class Location {
 	 * @param y
 	 *            New y coordinate.
 	 */
-	public void setY(int y) {
+	public void setY(double y) {
 		this.y = y;
 	}
 

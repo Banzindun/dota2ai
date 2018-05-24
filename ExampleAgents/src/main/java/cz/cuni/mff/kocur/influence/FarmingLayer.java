@@ -2,7 +2,6 @@ package cz.cuni.mff.kocur.influence;
 
 import cz.cuni.mff.kocur.world.Creep;
 import cz.cuni.mff.kocur.world.GridSystem;
-import cz.cuni.mff.kocur.world.Tower;
 
 /**
  * Layer that represents farming influence. Enemy creeps emmit influence in
@@ -34,7 +33,8 @@ public class FarmingLayer extends ContextualLayer {
 		// I should define function for every creep, tower, etc.
 		params = ParamsBuilder.build()
 				.createEntityParameter(Creep.class, new FarmingInfluence<Creep>(context), context.getEnemyTeam())
-				.createEntityParameter(Tower.class, new FarmingInfluence<Tower>(context), context.getEnemyTeam()).get();
+				//.createEntityParameter(Tower.class, new FarmingInfluence<Tower>(context), context.getEnemyTeam())
+				.get();
 
 	}
 

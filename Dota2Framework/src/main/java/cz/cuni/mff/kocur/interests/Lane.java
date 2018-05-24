@@ -439,7 +439,7 @@ public class Lane {
 	 * @return Returns first tower (closest to base) without counting towers that
 	 *         protect the ancient.
 	 */
-	private Tower getFirstTower() {
+	public Tower getFirstTower() {
 		if (this.getType() == Lane.TYPE.BOT || this.getType() == Lane.TYPE.TOP) {
 			return towers.get(1);
 		} else

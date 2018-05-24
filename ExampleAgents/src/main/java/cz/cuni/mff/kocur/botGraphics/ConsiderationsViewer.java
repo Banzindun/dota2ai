@@ -1,5 +1,6 @@
 package cz.cuni.mff.kocur.botGraphics;
 
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -8,6 +9,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.apache.logging.log4j.LogManager;
@@ -83,22 +85,39 @@ public class ConsiderationsViewer extends JPanel implements ActionListener {
 
 		addButtons();
 
-		LinkedList<Decision> decisions = brain.getAllDecisions();
+		// Add decisions
+		LinkedList<Decision> decisions = brain.getDecisions();
 		for (Decision d : decisions) {
-			DecisionPanel panel = new DecisionPanel(d);
-			panel.build();
-			panel.updateDecisions();
-
-			decisionPanels.put(d, panel);
-
-			this.add(panel, gbc);
-			gbc.gridy++;
+			addDecision(d);
+		}
+		
+		// Add label that separates decisions and void decisions
+		JLabel separator = new JLabel("VOID DECISIONS");
+		separator.setFont(new Font("Serif", Font.PLAIN, 20));
+		this.add(separator, gbc);
+		gbc.gridy++;
+		
+		// Add VOID decisions
+		decisions = brain.getVoidDecisions();
+		for (Decision d : decisions) {
+			addDecision(d);
 		}
 
 		// Addd filler
 		gbc.gridy++;
 		gbc.weighty = 1;
 		this.add(new JPanel(), gbc);
+	}
+	
+	private void addDecision(Decision d) {
+		DecisionPanel panel = new DecisionPanel(d);
+		panel.build();
+		panel.updateDecisions();
+
+		decisionPanels.put(d, panel);
+
+		this.add(panel, gbc);
+		gbc.gridy++;
 	}
 
 	/**

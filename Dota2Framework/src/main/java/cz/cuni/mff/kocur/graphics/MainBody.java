@@ -73,10 +73,10 @@ public class MainBody extends BuildableJPanel implements FrameworkEventListener 
 		radiantBotConfiguration.setBorder(
 				BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "RADIANT"));
 
-		// Add this to listeners, we will be listening for statechanged event. That one
+		// Add this to listeners, we will be listening for state_changed event. That one
 		// is called each time the app changes the state. (CONFIGURATION, INIT,
 		// RUNNING..)
-		ListenersManager.addFrameworkListener("statechanged", this);
+		ListenersManager.addFrameworkListener("state_changed", this);
 	}
 
 	@Override

@@ -167,6 +167,7 @@ public class FrameworkConfiguration extends Configuration {
 	 * 
 	 * @return Returns array of all dire agent configurations.
 	 */
+	@JsonIgnore
 	public HeroConfiguration[] getDireConfigurationsInArray() {
 		int size = direConfigurations.size();
 		return direConfigurations.values().stream().collect(Collectors.toList()).toArray(new HeroConfiguration[size]);
@@ -176,6 +177,7 @@ public class FrameworkConfiguration extends Configuration {
 	 * 
 	 * @return Returns array of all radiant agent configurations.
 	 */
+	@JsonIgnore
 	public HeroConfiguration[] getRadiantConfigurationsInArray() {
 		int size = radiantConfigurations.size();
 		return radiantConfigurations.values().stream().collect(Collectors.toList())
@@ -309,6 +311,7 @@ public class FrameworkConfiguration extends Configuration {
 	 * 
 	 * @return Returns array of all hero configuration.
 	 */
+	@JsonIgnore
 	public ArrayList<HeroConfiguration> getHeroConfigurations() {
 		ArrayList<HeroConfiguration> result = new ArrayList<>();
 

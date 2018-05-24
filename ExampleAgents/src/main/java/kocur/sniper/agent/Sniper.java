@@ -19,7 +19,7 @@ import cz.cuni.mff.kocur.influence.InfluenceLayer;
 import cz.cuni.mff.kocur.server.AgentCommand;
 import cz.cuni.mff.kocur.server.AgentCommands;
 import cz.cuni.mff.kocur.server.TimeManager;
-import cz.cuni.mff.kocur.streaming.BaseDropViewer;
+import cz.cuni.mff.kocur.world.BaseViewer;
 import cz.cuni.mff.kocur.world.ChatEvent;
 import cz.cuni.mff.kocur.world.GridBase;
 import cz.cuni.mff.kocur.world.Hero;
@@ -249,7 +249,7 @@ public class Sniper extends BaseAgentController {
 		super.destroy();
 		
 		hitMap.save("hitmap.png");
-		BaseDropViewer.saveGridMap("gridmap.png");
+		BaseViewer.saveGridMap("gridmap.png");
 	}
 
 }

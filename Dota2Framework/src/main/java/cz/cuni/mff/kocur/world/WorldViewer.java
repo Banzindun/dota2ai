@@ -2,15 +2,12 @@ package cz.cuni.mff.kocur.world;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
 import java.util.Map;
 
 import javax.swing.JPanel;
 
 import cz.cuni.mff.kocur.base.Colors;
 import cz.cuni.mff.kocur.interests.InterestsBase;
-import cz.cuni.mff.kocur.streaming.BaseDropViewer;
-import cz.cuni.mff.kocur.streaming.InformationDrop;
 
 /**
  * A class that serves for viewing world drops.
@@ -18,7 +15,7 @@ import cz.cuni.mff.kocur.streaming.InformationDrop;
  * @author kocur
  *
  */
-public class WorldDropViewer extends BaseDropViewer {
+public class WorldViewer extends BaseViewer {
 
 	/**
 	 * Generated serial version ID.
@@ -30,50 +27,23 @@ public class WorldDropViewer extends BaseDropViewer {
 	 */
 	private World world = null;
 
-	public WorldDropViewer() {
+	public WorldViewer() {
 		// Initialize BaseDropViewer using grid from WorldManager
 		super(GridBase.getInstance());
 	}
 
+	public void switchWorld(World world) {
+		this.world = world;
+	}
+	
 	@Override
 	public void focused() {
 		super.focused();
 	}
 
 	@Override
-	public void receive(InformationDrop d) {
-		if (this.isShowing()) {
-			world = (World) d.getData();
-		}
-
-		// Will redraw the component
-		super.receive(d);
-	}
-
-	/**
-	 * 
-	 * @param r Rectangle.
-	 * @param x x
-	 * @param y y
-	 * @return Returns true, if the point [x, y] is inside the rectangle.
-	 */
-	private boolean pointInside(Rectangle r, int x, int y) {
-		if (x < r.getX() || x > r.getX() + r.getWidth())
-			return false;
-
-		if (y < r.getY() || y > r.getY() + getHeight())
-			return false;
-
-		return true;
-	}
-
-	@Override
 	protected void redrawBuffer() {
 		if (buffer == null)
-			return;
-
-		// Can happen on the first iteration
-		if (world == null)
 			return;
 
 		Graphics2D g = (Graphics2D) buffer.getGraphics();
@@ -82,6 +52,10 @@ public class WorldDropViewer extends BaseDropViewer {
 
 		g.drawImage(gridI, 0, 0, null);
 
+		// Can happen on the first iteration
+		if (world == null)
+			return;
+		
 		Map<Integer, BaseEntity> entities = world.getEntities();
 
 		g.setPaint(Colors.ORANGE);

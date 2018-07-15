@@ -93,7 +93,7 @@ public class Lina extends BaseAgentController {
 	}
 
 	@Override
-	public int getLevelUpIndex() {
+	public int onLevelup() {
 		if (hero == null)
 			return -1;
 
@@ -134,6 +134,12 @@ public class Lina extends BaseAgentController {
 		if (hero.getHealth() <= 0) {
 			return new AgentCommands.Noop();
 		}
+		
+		// Debug 
+		if (hero.getHealth() <= 100) {
+			System.out.println("whoopsie");
+		}
+		
 
 		if (templates == null) {
 			templates = InfluenceLayerTemplates.getInstance();
@@ -180,6 +186,9 @@ public class Lina extends BaseAgentController {
 
 	@Override
 	public void configurationChanged() {
+		// Called after the configuration changed.
+		super.configurationChanged();
+		
 		loadFromConfiguration();
 	}
 
@@ -189,6 +198,7 @@ public class Lina extends BaseAgentController {
 
 		String commandName = cmd.getField();
 
+		// Saves a layer to file (given its name)
 		switch (commandName) {
 		case "save_layer":
 			String layerName = cmd.getField();
@@ -220,12 +230,6 @@ public class Lina extends BaseAgentController {
 		builder.appendLines(
 				"save_layer [layer_name] [file_name] -> saves layer with given name to file with given name located in working dir");
 		return builder.toString();
-	}
-
-	@Override
-	public String getControllableName() {
-		// Bots are controlled through BotControllerWrapper, this method does nothing
-		return null;
 	}
 
 	@Override

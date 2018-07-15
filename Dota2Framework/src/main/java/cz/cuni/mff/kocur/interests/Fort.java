@@ -15,7 +15,7 @@ import cz.cuni.mff.kocur.base.CustomStringBuilder;
 public class Fort extends BaseInterest{
 
 	/**
-	 * It's team.
+	 * Its team.
 	 */
 	private int team = Team.NONE;
 	

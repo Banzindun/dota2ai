@@ -30,7 +30,7 @@ public class AiConfiguration extends HeroConfiguration {
 	public AiConfiguration() {
 		type = TYPE.AI;
 
-		addRequiredItems("class", "logger_classpath", "roles", "lane", "champion");
+		addRequiredItems("class", "logger_classpath", "roles", "lane");
 	}
 
 	@Override

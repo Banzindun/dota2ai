@@ -16,6 +16,23 @@ public class CommandResponse extends CustomStringBuilder {
 	private boolean passed = true;
 
 	/**
+	 * Empty constructor.
+	 */
+	public CommandResponse() {
+		
+	}
+	
+	/**
+	 * Constructor, that takes boolean and a string.
+	 * @param ok Did the command pass?
+	 * @param msg Message to the user.
+	 */
+	public CommandResponse(boolean ok, String msg) {
+		setMsg(msg);
+		setDone(ok);
+	}
+
+	/**
 	 * Sets this response as done with given status.
 	 * 
 	 * @param d

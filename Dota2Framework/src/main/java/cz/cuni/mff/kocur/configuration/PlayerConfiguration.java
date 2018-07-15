@@ -1,13 +1,6 @@
 package cz.cuni.mff.kocur.configuration;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import cz.cuni.mff.kocur.base.Pair;
 import cz.cuni.mff.kocur.exceptions.ConfigurationTestFailureException;
-import cz.cuni.mff.kocur.interests.Team;
 
 /**
  * Configuration of player. It should extend a HeroConfiguration and
@@ -22,15 +15,14 @@ import cz.cuni.mff.kocur.interests.Team;
  * @author kocur
  *
  */
-public class PlayerConfiguration extends HeroConfiguration {
+public class PlayerConfiguration extends AiConfiguration {
 	
 	/**
 	 * Constructor that sets the type of the player configuration and its required items.
 	 */
 	public PlayerConfiguration() {
-		type = TYPE.PLAYER;
-		
-		addRequiredItems("class", "logger_classpath", "roles", "lane", "champion");
+		super();
+		type = TYPE.HUMAN;
 	}
 	
 	@Override
@@ -38,30 +30,5 @@ public class PlayerConfiguration extends HeroConfiguration {
 		super.test();
 		
 		
-	}
-	
-	@Override
-	public HashMap<String, String> getSignature() {
-		HashMap<String, String> values = super.getSignature();
-		
-		values.put("heroName", "npc_dota_hero_" + this.getConfigValue("champion"));
-		values.put("team", Team.parseTeam(this.getConfigValue("team")) + "");
-		
-		return values;
-	}
-	
-	
-	@JsonIgnore
-	@Override
-	public LinkedList<Pair<String, String>> getImportantValues() {
-		LinkedList<Pair<String, String>> important = new LinkedList<>();
-		
-		important.add(new Pair<String, String>("Hero", getConfigValue("champion")));
-		important.add(new Pair<String, String>("Lane", getConfigValue("lane")));
-		important.add(new Pair<String, String>("Roles", getConfigValue("roles")));
-		important.add(new Pair<String, String>("Class", getConfigValue("class")));
-		important.add(new Pair<String, String>("Logger classpath", getConfigValue("logger_classpath")));
-		
-		return important;
 	}
 }

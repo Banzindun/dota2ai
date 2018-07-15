@@ -36,8 +36,8 @@ function Dota2AI:OnGameRulesStateChange()
     print( "OnGameRulesStateChange: Hero Selection" )
   	
     for name, slot in pairs(slots) do
-      if bots[name].type == "player" then 
-        print("Setting team and random hero to player on pos:" .. slot .. " " .. "[" .. name .. "]")
+      if bots[name].type == "human" then 
+        print("Setting team and random hero to human on pos:" .. slot .. " " .. "[" .. name .. "]")
         PlayerResource:SetCustomTeamAssignment( slot, bots[name].team  )
         PlayerResource:GetPlayer(slot):MakeRandomHeroSelection()
       end
@@ -126,7 +126,7 @@ function Dota2AI:HandleGameSetup(body)
         bots[botName].difficulty = cfg.difficulty
 
 
-        if cfg.type == "player" then 
+        if cfg.type == "human" then 
           slots[botName] = 0
         elseif cfg.type == "bot" then
           slots[botName] = slotIndex
@@ -171,7 +171,7 @@ function Dota2AI:CheckBotsConfiguration(botName, cfg)
     Warning("No type supplied in player configuration.")
     return false
   else
-    if cfg.type ~= "bot" and cfg.type ~= "ai" and cfg.type ~= "player" then 
+    if cfg.type ~= "bot" and cfg.type ~= "ai" and cfg.type ~= "human" then 
       Warning("Bot type should be bot or ai. Instead you have passed " .. cfg.type)
       return false
     end
@@ -373,7 +373,7 @@ function BotPick(inDebug)
 
       if slot ~= nil then 
         PlayerResource:SetCustomTeamAssignment( slot, cfg.team )
-        if cfg.type == "player" then
+        if cfg.type == "human" then
           -- Player is always on slot 0
           --PlayerResource:GetPlayer(slot):MakeRandomHeroSelection()
           PrecacheUnitByNameAsync(cfg.heroName, function() 

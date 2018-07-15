@@ -555,14 +555,22 @@ public class Setup {
 	 *            empty script created.
 	 */
 	public static void overrideAisScripts(ArrayList<String> aisNames) {
+		// Check that the bots directory exists
+		File f = new File(dota2aiBotsDirectory + "bots");
+		if (f.exists() == false) {
+			f.mkdir();
+			logger.warn("Directory" + dota2aiBotsDirectory + "bots" + " doesn't exist.");
+		}
+			
 		moveOldAisScripts(aisNames);
 
+		// Create a dummy bot file for each agent inside the game's directory.
 		for (String name : aisNames) {
 			String path = dota2aiBotsDirectory + "bot_" + name + ".lua";
 
-			File f = new File(path);
-			try (FileWriter writer = new FileWriter(f);) {
-				f.createNewFile();
+			File emptyBotFile = new File(path);
+			try (FileWriter writer = new FileWriter(emptyBotFile);) {
+				emptyBotFile.createNewFile();
 				writer.write(emptyAiScript);
 			} catch (IOException e) {
 				logger.error("Unable to create file: " + path);

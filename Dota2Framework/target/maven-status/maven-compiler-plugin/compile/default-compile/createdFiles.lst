@@ -46,6 +46,7 @@ cz\cuni\mff\kocur\world\World.class
 cz\cuni\mff\kocur\server\AgentCommands$GrabAll.class
 cz\cuni\mff\kocur\agent\SelectedAgentDummy.class
 cz\cuni\mff\kocur\configuration\Configuration.class
+cz\cuni\mff\kocur\console\ControllableAgent.class
 cz\cuni\mff\kocur\server\ServerManager.class
 cz\cuni\mff\kocur\world\Tree.class
 cz\cuni\mff\kocur\interests\Difficulties.class
@@ -175,6 +176,7 @@ cz\cuni\mff\kocur\server\Command$Issuer.class
 cz\cuni\mff\kocur\console\Controllable.class
 cz\cuni\mff\kocur\server\TimeManager.class
 cz\cuni\mff\kocur\framework\App$State.class
+cz\cuni\mff\kocur\agent\Context.class
 cz\cuni\mff\kocur\graphics\LogsPanel$1.class
 cz\cuni\mff\kocur\server\Response.class
 cz\cuni\mff\kocur\exceptions\CreateClassException.class

@@ -11,7 +11,7 @@ import cz.cuni.mff.kocur.interests.Team;
 
 
 /**
- * Configuration of in-game bot. It should extend a HeroConfiguration and
+ * Configuration of in-game agent. It should extend a HeroConfiguration and
  * it should have some custom fields as difficulty and lane.
  * Those parameters are explained below:
  * 
@@ -42,6 +42,8 @@ public class BotConfiguration extends HeroConfiguration{
 	public HashMap<String, String> getSignature() {
 		HashMap<String, String> values = super.getSignature();
 		
+		// We require champion name, team, difficulty and a lane where the bot will be playing.
+		// HeroName should be in form npc_dota_hero_[hero_name], so that we can use it in-game
 		values.put("heroName", "npc_dota_hero_" + this.getConfigValue("champion"));
 		values.put("team", Team.parseTeam(this.getConfigValue("team")) + "");
 		values.put("lane", this.getConfigValue("lane"));

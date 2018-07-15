@@ -54,7 +54,8 @@ public abstract class Configuration {
 	 *            Listener that should be added to waiting list.
 	 */
 	public void addChangeListener(ConfigurationChangeListener l) {
-		waiting.add(l);
+		if (!waiting.contains(l))
+			waiting.add(l);
 	}
 
 	/**
@@ -69,6 +70,16 @@ public abstract class Configuration {
 		return waiting.remove(l);
 	}
 
+	/**
+	 * Should be called after there was a change in the configuration fields. This
+	 * method allerts all the listeners that there was a change in configuration.
+	 */
+	public void onChange() {
+		for (ConfigurationChangeListener l : waiting) {
+			l.configurationChanged();
+		}
+	}
+	
 	/**
 	 * Sample constructor.
 	 */
@@ -239,15 +250,7 @@ public abstract class Configuration {
 		return null;
 	}
 
-	/**
-	 * Should be called after there was a change in the configuration fields. This
-	 * method allerts all the listeners that there was a change in configuration.
-	 */
-	public void onChange() {
-		for (ConfigurationChangeListener l : waiting) {
-			l.configurationChanged();
-		}
-	}
+
 
 	/**
 	 * Test the configuration for incorrect fields etc.

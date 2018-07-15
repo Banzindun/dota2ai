@@ -528,4 +528,21 @@ public class Lane {
 		return null;
 	}
 
+	/**
+	 * 
+	 * @return Returns list of towers.
+	 */
+	public Tower[] getTowers() {
+		return towers.toArray(new Tower[towers.size()]);
+	}
+
+	/**
+	 * 
+	 * @return Returns list of lane creeps.
+	 */
+	public Creep[] getLaneCreeps() {
+		return laneCreeps.values().toArray(new Creep[laneCreeps.values().size()]);
+	}
+
+	
 }

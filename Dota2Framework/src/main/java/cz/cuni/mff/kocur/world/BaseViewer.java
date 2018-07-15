@@ -150,10 +150,8 @@ public abstract class BaseViewer extends ZoomAndPanJPanel
 	}
 
 	/**
-	 * Receives the information drop.
+	 * Updates the viewer.
 	 * 
-	 * @param d
-	 *            The drop.
 	 */
 	public void update() {
 		if (this.isShowing()) {
@@ -167,6 +165,5 @@ public abstract class BaseViewer extends ZoomAndPanJPanel
 	 * @return Returns a options panel.
 	 */
 	public abstract JPanel getOptionsPanel();
-
 
 }

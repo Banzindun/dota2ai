@@ -284,5 +284,16 @@ public class TimeManager {
 		logger.info("The pause took " + (System.currentTimeMillis() - pauseStart) / 1000.0f + "ms");
 		logger.info("Currently all the pauses took in total: " + offset);
 	}
+	
+	/**
+	 * Night and day last 4 minutes.
+	 * @return Returns true, if it is currently day time inside the game.
+	 */
+	public static boolean isDay() {
+		int dayNight = (int) (getElapsedTime()/4);
+		
+		if (dayNight % 2 == 0) return true;
+		else return false;
+	}
 
 }

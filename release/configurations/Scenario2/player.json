@@ -1,6 +1,6 @@
 {
   "name" : "player",
-  "type": "player",
+  "type": "human",
   "configuration" : {
     "team" : {
       "type" : "CRadio",

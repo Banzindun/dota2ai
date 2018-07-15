@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.logging.log4j.LogManager;
@@ -17,32 +16,26 @@ import cz.cuni.mff.kocur.exceptions.LoadingError;
 import cz.cuni.mff.kocur.interests.InterestsBase;
 import cz.cuni.mff.kocur.interests.Lane;
 import cz.cuni.mff.kocur.interests.Team;
-import cz.cuni.mff.kocur.world.BaseEntity;
 import cz.cuni.mff.kocur.world.Building;
 import cz.cuni.mff.kocur.world.ChatEvent;
 import cz.cuni.mff.kocur.world.Courier;
 import cz.cuni.mff.kocur.world.Creep;
 import cz.cuni.mff.kocur.world.Tower;
-import cz.cuni.mff.kocur.world.World;
 import cz.cuni.mff.kocur.world.WorldUpdate;
 
 /**
- * Class that represents team's context.
- * Team context is a representation of a world that is inherent to every bot (that has a team). 
- * It's goal is to supply function that will help agents to navigate around the world.
+ * Class that represents team's context. Team context is a representation of a
+ * world that is inherent to every bot (that has a team). It's goal is to supply
+ * function that will help agents to navigate around the world.
+ * 
  * @author kocur
  *
  */
-public class TeamContext {
+public class TeamContext extends Context {
 	/**
 	 * TeamContext registered logger.
 	 */
 	private static final Logger logger = LogManager.getLogger(TeamContext.class);
-
-	/**
-	 * Our team's world.
-	 */
-	protected World world = new World();
 
 	/**
 	 * HashMap of controllers of given team.
@@ -90,8 +83,9 @@ public class TeamContext {
 	}
 
 	/**
-	 * Loads the team context from BotLoader. Checks the bots and adds bots to Controllers.
-	 * Basically loads the whole team.
+	 * Loads the team context from BotLoader. Checks the bots and adds bots to
+	 * Controllers. Basically loads the whole team.
+	 * 
 	 * @return Returns true if the loading was successful.
 	 */
 	public boolean load() {
@@ -115,13 +109,16 @@ public class TeamContext {
 			controllers.put(bc.getConfiguration().getName(), wrapper);
 		}
 
-		logger.info("Context for team: " + Team.teamToString(teamNumber) + " loaded " + controllers.size() + " agents.");
+		logger.info(
+				"Context for team: " + Team.teamToString(teamNumber) + " loaded " + controllers.size() + " agents.");
 		return true;
 	}
 
 	/**
-	 * Checks that the agents, that are being loaded are correctly set. 
-	 * @param bs ArrayList of agent controllers.
+	 * Checks that the agents, that are being loaded are correctly set.
+	 * 
+	 * @param bs
+	 *            ArrayList of agent controllers.
 	 * @return Returns true, if the bots were loaded correctly.
 	 */
 	private boolean checkLoadedAgents(ArrayList<AgentController> bs) {
@@ -131,7 +128,7 @@ public class TeamContext {
 		}
 
 		// Count the configurations of bots we will be loading
-		int count = cfg.countHeroConfigurations(TYPE.PLAYER, teamNumber)
+		int count = cfg.countHeroConfigurations(TYPE.HUMAN, teamNumber)
 				+ cfg.countHeroConfigurations(TYPE.AI, teamNumber);
 
 		if (bs.size() != count) {
@@ -156,8 +153,10 @@ public class TeamContext {
 
 	/**
 	 * 
-	 * @param name Name of the agent, that we want controller wrapper for.
-	 * @return Returns controller wrapper, that corresponds to agent with given name.
+	 * @param name
+	 *            Name of the agent, that we want controller wrapper for.
+	 * @return Returns controller wrapper, that corresponds to agent with given
+	 *         name.
 	 */
 	public ControllerWrapper getControllerWrapper(String name) {
 		return controllers.get(name);
@@ -197,7 +196,8 @@ public class TeamContext {
 
 	/**
 	 * 
-	 * @param role Role, that we want to get.
+	 * @param role
+	 *            Role, that we want to get.
 	 * @return Returns all the ControllerWrappers with given role.
 	 */
 	public ControllerWrapper[] getAgentsWithRole(int role) {
@@ -218,7 +218,9 @@ public class TeamContext {
 
 	/**
 	 * Function, that reacts to chat event.
-	 * @param e ChatEvent object.
+	 * 
+	 * @param e
+	 *            ChatEvent object.
 	 */
 	public void chatEvent(ChatEvent e) {
 		for (ControllerWrapper b : controllers.values()) {
@@ -229,8 +231,11 @@ public class TeamContext {
 
 	/**
 	 * Tries to set an agent with given name and id.
-	 * @param name Name of the agent.
-	 * @param id Id of the agent.
+	 * 
+	 * @param name
+	 *            Name of the agent.
+	 * @param id
+	 *            Id of the agent.
 	 * @return Returns true if the agent was set. False otherwise.
 	 */
 	public boolean tryToSetAgent(String name, int id) {
@@ -261,7 +266,7 @@ public class TeamContext {
 
 	/**
 	 * 
-	 * @return Returns all the agent controllers. 
+	 * @return Returns all the agent controllers.
 	 */
 	public ArrayList<AgentController> getAllControllers() {
 		ArrayList<AgentController> result = new ArrayList<>();
@@ -294,7 +299,8 @@ public class TeamContext {
 	}
 
 	/**
-	 * Should be called after the framework was stopped. Destroys all the wrappers and clears controllers.
+	 * Should be called after the framework was stopped. Destroys all the wrappers
+	 * and clears controllers.
 	 */
 	public void frameworkStopped() {
 
@@ -315,12 +321,20 @@ public class TeamContext {
 
 	/**
 	 * Sets this team's courier.
-	 * @param teamCourier New team courier.
+	 * 
+	 * @param teamCourier
+	 *            New team courier.
 	 */
 	public void setTeamCourier(Courier teamCourier) {
 		this.teamCourier = teamCourier;
 	}
 
+	/**
+	 * 
+	 * @param t
+	 *            Type of the lane (Lane.TYPE).
+	 * @return Returns lane of the given type.
+	 */
 	public Lane getLane(cz.cuni.mff.kocur.interests.Lane.TYPE t) {
 		return InterestsBase.getInstance().getLanes().getLane(teamNumber, t);
 	}
@@ -356,47 +370,9 @@ public class TeamContext {
 	}
 
 	/**
-	 * Finds entities in radius around some entity.
-	 * @param e Midpoint of our search.
-	 * @param dist The radius.
-	 * @return Returns list of entities in given radius.
-	 */
-	public List<BaseEntity> findEntitiesInRadius(BaseEntity e, double dist) {
-		if (world == null)
-			return new LinkedList<BaseEntity>();
-		return world.findEntitiesInRadius(e, dist);
-	}
-
-	/**
 	 * 
-	 * @return Returns map of world's entities.
+	 * @return Returns list of towers.
 	 */
-	public ConcurrentHashMap<Integer, BaseEntity> getEntites() {
-		return world.getEntities();
-	}
-
-	/**
-	 * 
-	 * @return Returns world representation.
-	 */
-	public World getWorld() {
-		return world;
-	}
-
-	/**
-	 * Sets a new world.
-	 * @param world New world.
-	 */
-	public void setWorld(World world) {
-		this.world = world;
-	}
-
-	
-	public String toString() {
-		return world.toString();
-	}
-	
-	
 	public ConcurrentHashMap<Integer, Tower> getTowers() {
 		return towers;
 	}
@@ -405,6 +381,10 @@ public class TeamContext {
 		this.towers = towers;
 	}
 
+	/**
+	 * 
+	 * @return Returns list of creeps.
+	 */
 	public ConcurrentHashMap<Integer, Creep> getCreeps() {
 		return creeps;
 	}
@@ -413,6 +393,10 @@ public class TeamContext {
 		this.creeps = creeps;
 	}
 
+	/**
+	 * 
+	 * @return Returns list of buildings.
+	 */
 	public ConcurrentHashMap<Integer, Building> getBuildings() {
 		return buildings;
 	}
@@ -421,10 +405,24 @@ public class TeamContext {
 		this.buildings = buildings;
 	}
 
+	/**
+	 * Adds a building with given id to buildings.
+	 * 
+	 * @param id
+	 *            If of the building.
+	 * @param b
+	 *            Building.
+	 */
 	public void addBuilding(Integer id, Building b) {
 		buildings.put(id, b);
 	}
 
+	/**
+	 * 
+	 * @param id
+	 *            If of the building.
+	 * @return Returns building with given id.
+	 */
 	public Building getBuilding(Integer id) {
 		return buildings.get(id);
 	}
@@ -433,26 +431,66 @@ public class TeamContext {
 		buildings.remove(id);
 	}
 
-	public void addCreep(Integer id, Creep b) {
-		creeps.put(id, b);
+	/**
+	 * Adds a creep with given id to creeps.
+	 * 
+	 * @param id
+	 *            Id of the creep.
+	 * @param c
+	 *            creep
+	 */
+	public void addCreep(Integer id, Creep c) {
+		creeps.put(id, c);
 	}
 
+	/**
+	 * 
+	 * @param id
+	 *            Id of the creep.
+	 * @return Returns a creep with given id.
+	 */
 	public Creep getCreep(Integer id) {
 		return creeps.get(id);
 	}
 
+	/**
+	 * Removes creep with given id from creeps.
+	 * 
+	 * @param id
+	 *            Id of the creep.
+	 */
 	public void removeCreep(Integer id) {
 		creeps.remove(id);
 	}
 
-	public void addTower(Integer id, Tower b) {
-		towers.put(id, b);
+	/**
+	 * Adds tower with given id to the context.
+	 * 
+	 * @param id
+	 *            Id of the tower.
+	 * @param t
+	 *            Tower.
+	 */
+	public void addTower(Integer id, Tower t) {
+		towers.put(id, t);
 	}
 
+	/**
+	 * 
+	 * @param id
+	 *            Id of the tower.
+	 * @return Returns a tower with given id.
+	 */
 	public Tower getTower(Integer id) {
 		return towers.get(id);
 	}
 
+	/**
+	 * Removes a tower with given id.
+	 * 
+	 * @param id
+	 *            Id of the tower to be removed.
+	 */
 	public void removeTower(Integer id) {
 		towers.remove(id);
 	}

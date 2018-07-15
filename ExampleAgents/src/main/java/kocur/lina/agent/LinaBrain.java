@@ -25,17 +25,19 @@ public class LinaBrain extends BaseBrain {
 		// This will create all the base decision sets that handle movement etc.
 		super.createDecisions();
 
+		// Create lina ability decision set
 		LinaAbilitiesDS abilitiesDS = new LinaAbilitiesDS();
 		abilitiesDS.createDecisions();
 
+		// Add abilities decision set
 		this.addDecisionSet(abilitiesDS);
 
+		// Create lina goal set (go to rune etc.)
 		LinaGoalDS goals = new LinaGoalDS();
 		goals.createDecisions();
 
+		// Add goals decision set
 		this.addVoidDecisionSet(goals);
-
-		// Here we must define our skill/ability sets
 	}
 
 }

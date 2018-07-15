@@ -44,16 +44,30 @@ public class InterestPointsLoader {
 	 * Lanes object.
 	 */
 	private Lanes lanes = new Lanes(); 
-	
-	
+
+	/**
+	 * Radiant jungle.
+	 */
 	private Jungle radiantJungle = new Jungle(Team.RADIANT);
 	
+	/**
+	 * Dire jungle.
+	 */
 	private Jungle direJungle = new Jungle(Team.DIRE);
 	
+	/**
+	 * The river.
+	 */
 	private River river = new River();
 	
+	/**
+	 * List of shops.
+	 */
 	private Shops shops = new Shops();
 	
+	/**
+	 * Spawners - objects that spawn monsters in each camp. Used to identify the camps.
+	 */
 	private NeutralSpawner[] spawners = new NeutralSpawner[18];
 	
 	/**
@@ -187,9 +201,13 @@ public class InterestPointsLoader {
 					logger.warn("Unknown interest point:" + key);
 				}
 			}
-		}		
+		}
+		
+		// And add resolved shops to jungles
+		addSecretShopsToJungles();
 	}
 	
+
 
 	/**
 	 * Handles a monster spawner.
@@ -310,7 +328,6 @@ public class InterestPointsLoader {
 	 */
 	private void handleShop(int id, double x, double y) {
 		shops.addShop(id, x, y);
-		
 	}
 	/**
 	 * "good_healer_6":"641 -4348.0727539063,198.23217773438
@@ -483,6 +500,14 @@ public class InterestPointsLoader {
 		else {
 			throw new LoadingError("Unable to find top, bot or mid in path node's name.");
 		}
+	}
+	
+	/**
+	 * Adds secret shops to both jungles.
+	 */
+	private void addSecretShopsToJungles() {
+		direJungle.setSecretShop(shops.getDireSecret());
+		radiantJungle.setSecretShop(shops.getRadiantSecret());
 	}
 		
 	public String toString() {

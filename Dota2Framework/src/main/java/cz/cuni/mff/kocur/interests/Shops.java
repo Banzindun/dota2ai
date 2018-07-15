@@ -18,15 +18,39 @@ import cz.cuni.mff.kocur.world.Item;
  *
  */
 public class Shops {
+	/**
+	 * List of all shops.
+	 */
 	private ArrayList<Shop> allShops = new ArrayList<>();
 
+	/**
+	 * Radiant base shop.
+	 */
 	private Shop radiant;
+	
+	/**
+	 * Dire base shop.
+	 */
 	private Shop dire;
 
+	/**
+	 * Radiant secret shop.
+	 */
 	private Shop radiantSecret;
+	
+	/**
+	 * Radiant side shop. 
+	 */
 	private Shop radiantSide;
 
+	/**
+	 * Dire side shop.
+	 */
 	private Shop direSide;
+	
+	/**
+	 * Dire secret shop.
+	 */
 	private Shop direSecret;
 
 	/**
@@ -108,6 +132,10 @@ public class Shops {
 		direSecret.paint(g);
 	}
 
+	/**
+	 * 
+	 * @return Returns Radiant base shop.
+	 */
 	public Shop getRadiant() {
 		return radiant;
 	}
@@ -116,14 +144,26 @@ public class Shops {
 		this.radiant = radiant;
 	}
 
+	/**
+	 * 
+	 * @return Returns Dire base shop.
+	 */
 	public Shop getDire() {
 		return dire;
 	}
 
+	/**
+	 * Sets a new Dire shop.
+	 * @param dire New Dire shop.
+	 */
 	public void setDire(Shop dire) {
 		this.dire = dire;
 	}
 
+	/**
+	 * 
+	 * @return Returns a Radiant secret shop.
+	 */
 	public Shop getRadiantSecret() {
 		return radiantSecret;
 	}
@@ -132,6 +172,10 @@ public class Shops {
 		this.radiantSecret = radiantSecret;
 	}
 
+	/**
+	 * 
+	 * @return Retursn radiant side shop.
+	 */
 	public Shop getRadiantSide() {
 		return radiantSide;
 	}
@@ -140,6 +184,10 @@ public class Shops {
 		this.radiantSide = radiantSide;
 	}
 
+	/**
+	 * 
+	 * @return Returns dire side shop.
+	 */
 	public Shop getDireSide() {
 		return direSide;
 	}
@@ -148,6 +196,10 @@ public class Shops {
 		this.direSide = direSide;
 	}
 
+	/**
+	 * 
+	 * @return Returns dire secret shop.
+	 */
 	public Shop getDireSecret() {
 		return direSecret;
 	}
@@ -211,6 +263,11 @@ public class Shops {
 		this.allShops = allShops;
 	}
 
+	/**
+	 * 
+	 * @param team Team number (e.g. Team.RADIANT)
+	 * @return Returns base shop of the given team.
+	 */
 	public Shop getBaseShop(int team) {
 		if (team == Team.RADIANT)
 			return this.getRadiant();
@@ -218,6 +275,11 @@ public class Shops {
 		return this.getDire();
 	}
 
+	/**
+	 * 
+	 * @param team Team number (e.g. Team.DIRE).
+	 * @return Returns secret shop of the given team.
+	 */
 	public Shop getSecretShop(int team) {
 		if (team == Team.RADIANT)
 			return this.getRadiantSecret();
@@ -225,6 +287,11 @@ public class Shops {
 		return this.getDireSecret();
 	}
 
+	/**
+	 * 
+	 * @param team Team number (e.g. Team.DIRE).
+	 * @return Returns side shop of given team.
+	 */
 	public Shop getSideShop(int team) {
 		if (team == Team.RADIANT)
 			return this.getRadiantSide();

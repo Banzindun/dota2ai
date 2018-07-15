@@ -69,12 +69,28 @@ public class River {
 		}
 	}
 	
+	/**
+	 * 
+	 * @return Returns the bot powerup.
+	 */
 	public Rune getBotPowerup() {
 		return botPowerup;
 	}
 	
+	/**
+	 * 
+	 * @return Returns the top powerup.
+	 */
 	public Rune getTopPowerup() {
 		return topPowerup;
+	}
+	
+	/**
+	 * 
+	 * @return Returns the roshan.
+	 */
+	public Creep getRoshan() {
+		return roshan;
 	}
 
 	/**

@@ -279,7 +279,7 @@ public class InterestsBase extends GridSystem implements FrameworkEventListener 
 
 	/**
 	 * 
-	 * @return Returns array of runes that are on top of the map.
+	 * @return Returns array of runes that are on top of the map (in the jungles and in the river).
 	 */
 	public Rune[] getTopRunes() {
 		return new Rune[] { river.getTopPowerup(), this.getRadiantJungle().getTopBounty(),
@@ -295,8 +295,14 @@ public class InterestsBase extends GridSystem implements FrameworkEventListener 
 				this.getDireJungle().getBotBounty() };
 	}
 
-	public Location getNearestShop(double x, double y, double z, Item i) {
-		shops.findNearest(new Location(x, y, z), i);
+	/**
+	 * 
+	 * @param l Location.
+	 * @param i Item.
+	 * @return Returns shop, that is nearest the given location.
+	 */
+	public Location getNearestShop(Location l, Item i) {
+		shops.findNearest(l, i);
 		return null;
 	}
 

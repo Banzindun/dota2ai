@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 import cz.cuni.mff.kocur.base.Location;
 import cz.cuni.mff.kocur.configuration.ConfigurationChangeListener;
 import cz.cuni.mff.kocur.configuration.HeroConfiguration;
-import cz.cuni.mff.kocur.console.Controllable;
+import cz.cuni.mff.kocur.console.ControllableAgent;
 import cz.cuni.mff.kocur.interests.Healer;
 import cz.cuni.mff.kocur.interests.Rune;
 import cz.cuni.mff.kocur.server.AgentCommand;
@@ -30,7 +30,7 @@ import cz.cuni.mff.kocur.world.Hero;
  * @author Banzindun
  *
  */
-public abstract class BaseAgentController implements Controllable, AgentController, ConfigurationChangeListener {
+public abstract class BaseAgentController implements ControllableAgent, AgentController, ConfigurationChangeListener {
 	/**
 	 * BaseAgentController logger.
 	 */
@@ -82,9 +82,20 @@ public abstract class BaseAgentController implements Controllable, AgentControll
 	public HeroConfiguration getConfiguration() {
 		return configuration;
 	}
-
+	
 	@Override
 	public void initialize() {
+		updateAgentContext();
+		
+		// Add change listener to configuration change
+		configuration.addChangeListener(this);
+	}
+	
+	/**
+	 * Updates the agent's context from the configuration. 
+	 * This is called on every configuration change and during init.
+	 */
+	private void updateAgentContext() {
 		// Set my team
 		agentContext.setMyTeam(configuration.getConfigValue("team"));
 
@@ -96,9 +107,6 @@ public abstract class BaseAgentController implements Controllable, AgentControll
 
 		// Set roles of this hero
 		agentContext.setMyRoles(configuration.getConfigValue("roles"));
-
-		// Add change listener to configuration change
-		configuration.addChangeListener(this);
 	}
 
 	@Override
@@ -322,6 +330,12 @@ public abstract class BaseAgentController implements Controllable, AgentControll
 	public void setTeamContext(TeamContext teamContext) {
 		this.teamContext = teamContext;
 		agentContext.setTeamContext(this.teamContext);
+	}
+	
+	@Override
+	public void configurationChanged() {
+		// Initialize again, this will change the required values
+		updateAgentContext();
 	}
 
 }

@@ -53,9 +53,7 @@ public class FOWPropagation<T extends BaseEntity> implements PropagationFunction
 		int x0 = (int) origin[0];
 		int y0 = (int) origin[1];
 
-		// Optimization: it would be preferable to calculate in
-		// advance the size of "result" and to use a fixed-size array
-		// instead of a list.
+		// List of points.
 		ArrayList<Point> result = new ArrayList<Point>();
 
 		boolean steep = Math.abs(y1 - y0) > Math.abs(x1 - x0);

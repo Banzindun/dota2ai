@@ -44,10 +44,10 @@ public interface AgentController extends Controllable {
 	public void setHero(Hero hero);
 
 	/**
-	 * 
+	 * Called on hero's levelup.
 	 * @return Should return the index of ability, that the hero wants to level up.
 	 */
-	public int getLevelUpIndex();
+	public int onLevelup();
 
 	/**
 	 * 

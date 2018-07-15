@@ -31,7 +31,7 @@ public class ShoppingDS extends DecisionSet{
 		createDecisions();
 	}
 
-	/**
+	/**	
 	 * Creates decisions.
 	 */
 	private void createDecisions() {

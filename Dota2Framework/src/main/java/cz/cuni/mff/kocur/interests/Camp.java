@@ -2,6 +2,7 @@ package cz.cuni.mff.kocur.interests;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.util.Collection;
 import java.util.HashMap;
 
 import cz.cuni.mff.kocur.agent.AgentParameters;
@@ -38,6 +39,14 @@ public class Camp extends BaseInterest {
 	 * Creeps in this camp.
 	 */
 	private HashMap<Integer, Creep> creeps = new HashMap<>();
+
+	/**
+	 * 
+	 * @return Returns creeps in this camp.
+	 */
+	public Collection<Creep> getCreeps() {
+		return creeps.values();
+	}
 
 	/**
 	 * Difficulties of dire camps.

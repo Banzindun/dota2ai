@@ -96,16 +96,20 @@ public class Sniper extends BaseAgentController {
 	}
 
 	@Override
-	public int getLevelUpIndex() {
+	public int onLevelup() {
 		if (hero == null)
 			return -1;
 
+		// Get our level
 		int level = hero.getLevel();
 
+		// Get the index from levelup queue
 		int index = levelUpQueue.getAbilityIndex(level);
 
+		// If index is negative, then there is nothing to levelup
+		// so choose at random
 		if (index == -1) {
-			logger.warn("I have spent all preset levels.");
+			logger.warn("I have spent all the preset levels.");
 			logger.warn("Choosing at random.");
 			Random rnd = new Random();
 			index = rnd.nextInt(4);
@@ -158,7 +162,7 @@ public class Sniper extends BaseAgentController {
 	 * @return Returns command we want to execute.
 	 */
 	private AgentCommand think() {
-		// Catch block is for debugging and should be removed eventually.
+		// Catch block is for debugging (should be removed eventually).
 		try {
 			if (TimeManager.getLocalGameStartTime() > 0) {
 				Decision decision = brain.think();
@@ -186,7 +190,8 @@ public class Sniper extends BaseAgentController {
 
 	@Override
 	public void configurationChanged() {
-		super.initialize(); // Will load team and roles again, we don't want to change anything else for now
+		// Called after the configuration changed.
+		super.configurationChanged();
 	}
 
 	@Override
@@ -230,11 +235,6 @@ public class Sniper extends BaseAgentController {
 		builder.appendLines(
 				"save_layer [layer_name] [file_name] -> saves layer with given name to file with given name located in working dir");
 		return builder.toString();
-	}
-
-	@Override
-	public String getControllableName() {
-		return null;
 	}
 
 	@Override

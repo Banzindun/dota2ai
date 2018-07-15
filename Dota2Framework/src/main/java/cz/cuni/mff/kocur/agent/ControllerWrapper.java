@@ -132,7 +132,7 @@ public class ControllerWrapper implements Controllable {
 	 * @return Returns a Response to levelup request.
 	 */
 	private Response levelup() {
-		int index = controller.getLevelUpIndex();
+		int index = controller.onLevelup();
 
 		AgentCommand l;
 		if (index == -1)

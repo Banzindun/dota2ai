@@ -38,7 +38,7 @@ import cz.cuni.mff.kocur.exceptions.ConfigurationTestFailureException;
 		@Type(name = "ai", value = AiConfiguration.class), @Type(name = "bot", value = BotConfiguration.class) })
 public abstract class HeroConfiguration extends Configuration {
 	public enum TYPE {
-		AI, PLAYER, BOT
+		AI, HUMAN, BOT
 	}
 
 	@JsonIgnore
@@ -53,7 +53,7 @@ public abstract class HeroConfiguration extends Configuration {
 	/**
 	 * Array with keys that must be stored inside "configuration".
 	 */
-	protected String[] configurationRequiredItemKeys = { "team" };
+	protected String[] configurationRequiredItemKeys = { "team", "champion" };
 
 	/**
 	 * Array with keys that are required by this configuration.

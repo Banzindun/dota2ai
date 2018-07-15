@@ -5,4 +5,4 @@
  * @author kocur
  *
  */
-package kocur.emptyAgent.agent;
+package kocur.emptyAgent;

@@ -35,7 +35,7 @@ public class World {
 
 	/**
 	 * 
-	 * @return Returns list of entitites inside this world.
+	 * @return Returns list of entities inside this world.
 	 */
 	public ConcurrentHashMap<Integer, BaseEntity> getEntities() {
 		return entities;
@@ -52,7 +52,7 @@ public class World {
 	}
 
 	/**
-	 * Searches for entity by id.
+	 * Searches for entity by its name.
 	 * 
 	 * @param name
 	 *            Name of the entity.
@@ -82,22 +82,6 @@ public class World {
 		return entities.values().stream().filter(p -> GridBase.distance(p, l) < dist && GridBase.distance(p, l) != 0)
 				.sorted((e1, e2) -> Double.compare(GridBase.distance(e1, l), GridBase.distance(e2, l)))
 				.collect(Collectors.toList());
-	}
-
-	/**
-	 * Converts the ids of two entities to the index in distance HashMap.
-	 * 
-	 * @param e1
-	 *            Id of the first entity.
-	 * @param e2
-	 *            If of the second entity.
-	 * @return Id in distance hash map.
-	 */
-	public Double toIndex(int e1, int e2) {
-		if (e1 < e2)
-			return e1 + e2 / 10000.0;
-		else
-			return e2 + e1 / 10000.0;
 	}
 
 	/**

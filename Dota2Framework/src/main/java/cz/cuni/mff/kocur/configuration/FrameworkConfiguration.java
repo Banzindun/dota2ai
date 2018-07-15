@@ -19,12 +19,12 @@ import cz.cuni.mff.kocur.exceptions.KeyNotFound;
 import cz.cuni.mff.kocur.interests.Team;
 
 /**
- * This class holds configuration that should store values that are important on
- * the top level of the application. (Not dependent on bot etc.)
+ * This class represents a framework's configuration.  
  * 
  * It should be loaded from config.cfg file.
  * 
- * This class implements singleton pattern.
+ * This class is implemented using the Singleton pattern. We want to have 
+ * only one framework configuration that is accessible from around the framework.
  * 
  * @author Banzindun
  *

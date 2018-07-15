@@ -55,6 +55,10 @@ public abstract class GridSystem {
 
 	}
 
+	/**
+	 * Creates a GridSystem by copying from the arguemnt GS.  
+	 * @param s GridSystem
+	 */
 	public GridSystem(GridSystem s) {
 		this.parent = s.getParent();
 		this.xOrigin = s.getXOrigin();

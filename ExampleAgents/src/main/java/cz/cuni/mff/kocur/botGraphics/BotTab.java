@@ -21,7 +21,7 @@ public class BotTab extends FocusableJPanel {
 	private static final long serialVersionUID = -5692636748301689746L;
 
 	/**
-	 * Wraps around ic.
+	 * Wraps around influence context.
 	 */
 	protected InfluenceContextWrapper influenceContextWrapper = null;
 
@@ -51,7 +51,7 @@ public class BotTab extends FocusableJPanel {
 	public BotTab(ExtendedAgentContext context, String tabName) {
 		super();
 
-		this.tabName = tabName;
+		this.tabName = tabName.substring(0, 1).toUpperCase() + tabName.substring(1);
 
 		influenceContextWrapper = new InfluenceContextWrapper(context);
 		considerationsViewer = new ConsiderationsViewer(context.getBrain());

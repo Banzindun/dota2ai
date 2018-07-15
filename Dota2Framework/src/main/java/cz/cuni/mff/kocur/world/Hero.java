@@ -30,7 +30,7 @@ public class Hero extends BaseNPC {
 	 */
 	@JsonIgnore
 	public static float timeToLive = 1;
-	
+
 	@Override
 	protected float getTimeToLive() {
 		return timeToLive;
@@ -83,6 +83,12 @@ public class Hero extends BaseNPC {
 		super();
 	}
 
+	/**
+	 * Creates hero by copying from the hero passed in arguments.
+	 * 
+	 * @param h
+	 *            Hero to copy from.
+	 */
 	public Hero(Hero h) {
 		super();
 		this.update(h);

@@ -1,7 +1,6 @@
 package cz.cuni.mff.kocur.agent;
 
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,7 +18,6 @@ import cz.cuni.mff.kocur.interests.Team;
 import cz.cuni.mff.kocur.world.BaseEntity;
 import cz.cuni.mff.kocur.world.GridBase;
 import cz.cuni.mff.kocur.world.Hero;
-import cz.cuni.mff.kocur.world.World;
 import cz.cuni.mff.kocur.world.WorldManager;
 import cz.cuni.mff.kocur.world.WorldUpdate;
 
@@ -32,16 +30,11 @@ import cz.cuni.mff.kocur.world.WorldUpdate;
  * @author kocur
  *
  */
-public class AgentContext {
+public class AgentContext extends Context {
 	/**
 	 * Logger for BaseBotContext.
 	 */
 	private static final Logger logger = LogManager.getLogger(AgentContext.class.getName());
-
-	/**
-	 * World around the bot. Will basically represent the hero's vision.
-	 */
-	protected World world = null;
 
 	/**
 	 * Reference to bot's controller.
@@ -87,11 +80,12 @@ public class AgentContext {
 	public AgentContext(BaseAgentController bc) {
 		controller = bc;
 	}
-	
+
 	/**
 	 * Constructor, that copies values from passed agent's context.
-	 * @param bc Bot controller.
+	 * 
 	 * @param context
+	 *            Agent context.
 	 */
 	public AgentContext(AgentContext context) {
 		world = context.getWorld();
@@ -101,7 +95,7 @@ public class AgentContext {
 		heroName = context.getHeroName();
 		myTeam = context.getMyTeam();
 		myRoles = context.getMyRoles();
-		buySequence = context.getBuySequence();		
+		buySequence = context.getBuySequence();
 	}
 
 	/**
@@ -134,20 +128,6 @@ public class AgentContext {
 	}
 
 	/**
-	 * Finds entitites in radius around specified Location.
-	 * 
-	 * @param l
-	 *            The location around which we are looking.
-	 * @param dist
-	 *            The radius.
-	 * @return Returns all the entities that have distance to specified location
-	 *         less that the given radius.
-	 */
-	public List<BaseEntity> findEntitiesInRadius(Location l, double dist) {
-		return world.findEntitiesInRadius(l, dist);
-	}
-
-	/**
 	 * 
 	 * Finds entites around hero from this context in given radius.
 	 * 
@@ -157,14 +137,6 @@ public class AgentContext {
 	 */
 	public List<BaseEntity> findEntititesAroundMe(double dist) {
 		return world.findEntitiesInRadius(controller.getHero(), dist);
-	}
-
-	/**
-	 * 
-	 * @return Returns map containing all the entities.
-	 */
-	public ConcurrentHashMap<Integer, BaseEntity> getEntites() {
-		return world.getEntities();
 	}
 
 	/**
@@ -539,24 +511,4 @@ public class AgentContext {
 		return InterestsBase.getInstance().getJungle(myTeam);
 	}
 
-	public String toString() {
-		return world.toString();
-	}
-	
-	/**
-	 * 
-	 * @return Returns this context's world.
-	 */
-	public World getWorld() {
-		return world;
-	}
-
-	/**
-	 * Sets this context's world.
-	 * @param world World.
-	 */
-	public void setWorld(World world) {
-		this.world = world;
-	}
-	
 }

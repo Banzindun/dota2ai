@@ -99,8 +99,8 @@ public class ControllersManager {
 	 * @return Returns true, if team context is correctly set.
 	 */
 	private boolean checkTeamContext() {
-		int playerCount = radiantTeamContext.countControllers(TYPE.PLAYER)
-				+ direTeamContext.countControllers(TYPE.PLAYER);
+		int playerCount = radiantTeamContext.countControllers(TYPE.HUMAN)
+				+ direTeamContext.countControllers(TYPE.HUMAN);
 
 		if (playerCount == 0) {
 			logger.error("You have not supplied a player. Please supply one.");
@@ -176,8 +176,7 @@ public class ControllersManager {
 		Response res = new Response();
 
 		// Read data from agent that was selected. Should contain name of the agent and
-		// then
-		// it's hero's in-game id.
+		// then it's hero's in-game id.
 		SelectedAgentDummy d;
 		try {
 			d = MapperWrapper.readValue(msg, SelectedAgentDummy.class);

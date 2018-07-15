@@ -99,6 +99,7 @@ C:\Users\kocur\Dropbox\Dota2AI\Dota2Framework\src\main\java\cz\cuni\mff\kocur\gr
 C:\Users\kocur\Dropbox\Dota2AI\Dota2Framework\src\main\java\cz\cuni\mff\kocur\graphics\MainAgentConfiguration.java
 C:\Users\kocur\Dropbox\Dota2AI\Dota2Framework\src\main\java\cz\cuni\mff\kocur\graphics\SideButtons.java
 C:\Users\kocur\Dropbox\Dota2AI\Dota2Framework\src\main\java\cz\cuni\mff\kocur\logging\LoggingDisplay.java
+C:\Users\kocur\Dropbox\Dota2AI\Dota2Framework\src\main\java\cz\cuni\mff\kocur\agent\Context.java
 C:\Users\kocur\Dropbox\Dota2AI\Dota2Framework\src\main\java\cz\cuni\mff\kocur\agent\EntityParameter.java
 C:\Users\kocur\Dropbox\Dota2AI\Dota2Framework\src\main\java\cz\cuni\mff\kocur\configuration\ConfigurationSaver.java
 C:\Users\kocur\Dropbox\Dota2AI\Dota2Framework\src\main\java\cz\cuni\mff\kocur\interests\Healer.java
@@ -148,6 +149,7 @@ C:\Users\kocur\Dropbox\Dota2AI\Dota2Framework\src\main\java\cz\cuni\mff\kocur\wo
 C:\Users\kocur\Dropbox\Dota2AI\Dota2Framework\src\main\java\cz\cuni\mff\kocur\world\StaticEntity.java
 C:\Users\kocur\Dropbox\Dota2AI\Dota2Framework\src\main\java\cz\cuni\mff\kocur\framework\CommandLineArgument.java
 C:\Users\kocur\Dropbox\Dota2AI\Dota2Framework\src\main\java\cz\cuni\mff\kocur\events\GameEventBuilder.java
+C:\Users\kocur\Dropbox\Dota2AI\Dota2Framework\src\main\java\cz\cuni\mff\kocur\console\ControllableAgent.java
 C:\Users\kocur\Dropbox\Dota2AI\Dota2Framework\src\main\java\cz\cuni\mff\kocur\server\RequestChecker.java
 C:\Users\kocur\Dropbox\Dota2AI\Dota2Framework\src\main\java\cz\cuni\mff\kocur\exceptions\CreateClassException.java
 C:\Users\kocur\Dropbox\Dota2AI\Dota2Framework\src\main\java\cz\cuni\mff\kocur\graphics\LoggingTabConfiguration.java

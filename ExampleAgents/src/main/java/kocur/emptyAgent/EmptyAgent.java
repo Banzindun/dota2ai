@@ -1,4 +1,4 @@
-package kocur.emptyAgent.agent;
+package kocur.emptyAgent;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -35,7 +35,7 @@ public class EmptyAgent extends BaseAgentController {
 	}
 
 	@Override
-	public int getLevelUpIndex() {
+	public int onLevelup() {
 		logger.info("levelup");
 		return -1;
 	}
@@ -65,12 +65,6 @@ public class EmptyAgent extends BaseAgentController {
 	@Override
 	public String getHelp() {
 		return "";
-	}
-
-	@Override
-	public String getControllableName() {
-		// Bots are controlled through BotControllerWrapper, this method does nothing
-		return null;
 	}
 
 	@Override

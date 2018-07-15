@@ -79,7 +79,7 @@ public class GoalDS extends DecisionSet {
 
 		// If we are too low, we try to escape to base.
 		Decision escapeToBase = DecisionBuilder.build().setDecision(new EscapeToBase()).setName("EscapeToBase")
-				.setBonusFactor(5.0).addConsideration(new ConsiderSourceHealth(),
+				.setBonusFactor(6.0).addConsideration(new ConsiderSourceHealth(),
 						// new PolynomialFunction(-11, 2, 0, 1))
 						new PolynomialFunction(7.4, -10, -1, -0.5))
 				.setEvaluator(new DecisionScoreEvaluator()).get();
